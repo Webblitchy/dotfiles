@@ -8,4 +8,4 @@
 	rebase = false
 [core]
 	editor = vim
-	excludesfile = /home/eliott/.gitignore_global
+	excludesfile = $HOME/.gitignore_global
