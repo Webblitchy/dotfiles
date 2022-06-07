@@ -27,7 +27,7 @@ set autoread              " Automatically reload changes if detected
 " Recherche
 set ignorecase            " Case insensitive search
 set hlsearch              " Highlight search results
-nnoremap <esc> :noh<return><esc> " stop highlighting when pressing ESC
+nnoremap <esc>:noh<return><esc> " stop highlighting when pressing ESC
 set incsearch             " Show search results as you type
 
 " Persistent undo (le dossier doit exister)
