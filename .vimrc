@@ -64,3 +64,7 @@ set listchars+=precedes:←             " Show arrow if line continues leftwards
 set listchars+=tab:▸\ 
 set listchars+=trail:·
 
+" Color current line number
+hi CursorLineNr guifg=#af00af
+set cursorline
+set cursorlineopt=number
