@@ -1,0 +1,10 @@
+[user]
+	name = Webblitchy
+	email = 55515713+Webblitchy@users.noreply.github.com
+	signingkey = 5C76EB91280A995662888DB3C6B69D9BB006EB9A
+[commit]
+	gpgsign = true
+[pull]
+	rebase = false
+[core]
+	editor = vim
