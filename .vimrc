@@ -44,7 +44,6 @@ set timeoutlen=1000 ttimeoutlen=0     " Remove timeout when hitting escape (ex: 
 syntax on
 
 " active le thème gruvbox
-"autocmd vimenter * ++nested colorscheme gruvbox " Empeche l'italic
 colorscheme gruvbox
 
 " Showcase comments in italics
@@ -68,3 +67,21 @@ set listchars+=trail:·
 hi CursorLineNr guifg=#af00af
 set cursorline
 set cursorlineopt=number
+
+
+" Change la forme du curseur en fonction du mode (VTE compatible terminals)
+" https://vim.fandom.com/wiki/Change_cursor_shape_in_different_modes
+let &t_SI = "\<Esc>[6 q"
+let &t_SR = "\<Esc>[4 q"
+let &t_EI = "\<Esc>[2 q"
+
+" Airline parameters
+" Vim Airline
+let g:airline_theme='base16_gruvbox_dark_hard' " installer airline-themes
+let g:airline_powerline_fonts = 1 " activer les caratères fleches
+let g:airline#extensions#tabline#enabled = 1 " afficher les buffer comme des onglets
+
+" indirectement lié (cache barre de status originale)
+set noshowmode " hide mode (not directly related to airline)
+set noshowcmd  " to get rid of display of last command
+set shortmess+=F  " to get rid of the file name displayed in the command line bar
