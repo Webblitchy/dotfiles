@@ -20,14 +20,18 @@ set softtabstop=4 " when hitting <BS>, pretend like a tab is removed, even if sp
 set tabstop=4 " tabs are n spaces 
 
 " Display filename in window name (Konsole)
-silent !echo -en $"\033]30;%:t\007" 
+"if @% != ""  " if a file is opened
+"    silent !echo -en $"\033]30;%:t\007" 
+"else
+"    silent !echo -en $"\033]30;vim\007"
+"endif
 
 set autoread              " Automatically reload changes if detected
 
 " Recherche
 set ignorecase            " Case insensitive search
 set hlsearch              " Highlight search results
-nnoremap <esc>:noh<return><esc> " stop highlighting when pressing ESC
+nnoremap <CR> :noh<CR><CR>" Disable highlight when pressing enter again
 set incsearch             " Show search results as you type
 
 " Persistent undo (le dossier doit exister)
@@ -38,16 +42,25 @@ set undoreload=10000
 
 set timeoutlen=1000 ttimeoutlen=0     " Remove timeout when hitting escape (ex: V-mode)
 
+" Restore cursor position
+autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+" Use default FZF
+nmap <C-P> :FZF<CR>
+
 " ############### UI ###############
 
 " appliquer les couleurs pour la syntaxe
 syntax on
+set t_Co=256
+set termguicolors " afficher les bonnes couleurs
 
+let g:gruvbox_italic=1 " active l'italique (p.ex pour les commentaires)
 " active le thème gruvbox
 colorscheme gruvbox
 
 " Showcase comments in italics
-highlight Comment cterm=italic gui=italic
+"highlight Comment cterm=italic gui=italic
 
 " afficher le no de ligne
 set number  " Affiche le numéro de la ligne actuelle
@@ -75,8 +88,12 @@ let &t_SI = "\<Esc>[6 q"
 let &t_SR = "\<Esc>[4 q"
 let &t_EI = "\<Esc>[2 q"
 
-" Airline parameters
-" Vim Airline
+
+set splitright                        " Open new splits to the right
+set splitbelow                        " Open new splits to the bottom
+
+" ######### PLUGINS ########
+" ### Airline parameters
 let g:airline_theme='base16_gruvbox_dark_hard' " installer airline-themes
 let g:airline_powerline_fonts = 1 " activer les caratères fleches
 let g:airline#extensions#tabline#enabled = 1 " afficher les buffer comme des onglets
@@ -85,3 +102,35 @@ let g:airline#extensions#tabline#enabled = 1 " afficher les buffer comme des ong
 set noshowmode " hide mode (not directly related to airline)
 set noshowcmd  " to get rid of display of last command
 set shortmess+=F  " to get rid of the file name displayed in the command line bar
+
+" ### coc.nvim
+" More examples : https://github.com/neoclide/coc.nvim#example-vim-configuration
+
+" handle these types of files
+let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-clangd', 'coc-java', 'coc-css', 'coc-pyright', 'coc-html', 'coc-tsserver', 'coc-sh', 'coc-rls']
+
+" Use tab for trigger completion with characters ahead and navigate.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ CheckBackspace() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+" Make <CR> auto-select the first completion item and notify coc.nvim to
+" format on enter, <cr> could be remapped by other vim plugin
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+" Toggle plugin
+function! CocToggle()
+    if g:coc_enabled
+        CocDisable
+    else
+        CocEnable
+    endif
+endfunction
+
+" Call CocToggle() function :
+command! Coc : call CocToggle() " :CocToggle
+inoremap <C-@> : call CocToggle()<CR><Left> " ctrl-space (in insert mode)
+nnoremap <C-@> : call CocToggle()<CR><Left> " ctrl-space (in normal mode)
+

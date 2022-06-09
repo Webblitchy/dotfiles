@@ -32,7 +32,6 @@ alias cours="cd /home/eliott/cours"
 alias hello="kdialog --passivepopup 'Hello'"
 
 # demande confirmation avant overwrite:
-alias rm="rm -i"
 alias cp="cp -i"
 alias mv="mv -i"
 
