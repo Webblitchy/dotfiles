@@ -23,9 +23,16 @@ fi
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 
+# Apply fzf-gruvbox theme
+# https://github.com/base16-project/base16-fzf
+source ~/.vim/fzf-gruvbox.config
+
+
 # mes alias
 alias ll="ls -Athor"
 alias open="dolphin"
+alias vrc="vim ~/.vimrc"
+alias vimtutor="cp /usr/share/vim/vim82/tutor/tutor.fr.utf-8 /tmp/vimtutor; vim /tmp/vimtutor"
 alias grep="grep --color=auto"
 alias sshvm="ssh ubuntu@152.67.78.43"
 alias cours="cd /home/eliott/cours"
