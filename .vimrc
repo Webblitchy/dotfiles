@@ -48,17 +48,13 @@ set history=1000                     " Command history
 
 set nobackup writebackup
 
+set noswapfile " disable the swapfile
+
 set timeoutlen=250 ttimeoutlen=0     " Remove timeout when hitting escape (ex: V-mode)
 
 " Restore cursor position
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
-" Use default FZF for file search
-nmap <C-P> :FZF<CR>
-
-" move among buffers with CTRL h and j
-map <C-L> :bnext<CR>
-map <C-H> :bprev<CR>
 
 " ##### :command auto completion #####
 " Enable auto completion menu after pressing TAB.
@@ -141,12 +137,24 @@ inoremap <silent> <Esc> <Esc>:echo "=> Use ctrl-c"<CR><Esc>:startinsert<CR>
 
 nnoremap <silent> <CR> :noh<CR><CR>" Disable highlight when pressing enter again
 
+inoremap  <C-W> " CTRL-BS for delete previous word (set char with CTRL-v + CTRL-BS)
+
+" Use default FZF for file search
+nmap <C-P> :FZF<CR>
+
+" move among buffers with CTRL h and j
+map <C-L> :bnext<CR>
+map <C-H> :bprev<CR>
+
 
 " ######### PLUGINS ########
 " ### Airline parameters
 let g:airline_theme='base16_gruvbox_dark_hard' " installer airline-themes
 let g:airline_powerline_fonts = 1 " activer les caratères fleches
 let g:airline#extensions#tabline#enabled = 1 " afficher les buffer comme des onglets
+let g:airline#extensions#whitespace#enabled = 0 " disable trailing count in the bar
+let g:airline_section_z = '%3p%% %3l/%L:%3v' " format char counter in the bar
+let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]' " hide encoding when default
 
 " indirectement lié (cache barre de status originale)
 set noshowmode " hide mode (not directly related to airline)

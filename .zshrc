@@ -27,6 +27,11 @@ fi
 # https://github.com/base16-project/base16-fzf
 source ~/.vim/fzf-gruvbox.config
 
+# Configuration manuelle
+#Disable autocorrect
+unsetopt correct_all
+unsetopt correct
+DISABLE_CORRECTION="true" 
 
 # mes alias
 alias ll="ls -Athor"
