@@ -91,7 +91,6 @@ set matchpairs=(:),{:},[:],<:>
 
 set scrolloff=10                      " keep lines under cursor
 
-set nowrap                            " Don't wrap long lines
 set list                              " Sinon les listschars ne fonctionnent pas
 set listchars=extends:→               " Show arrow if line continues rightwards
 set listchars+=precedes:←             " Show arrow if line continues leftwards
@@ -119,6 +118,17 @@ set signcolumn=yes                     " Always have a sign and number columns
 "set signcolumn=number                 " Fusion sign and number columns
 hi SignColumn ctermbg=NONE guibg=NONE  " Sign column has same color as number column 
 
+" Set wrapping/textwidth according to type
+function! SetupEnvironment()
+  if (&ft == 'markdown' || &ft == 'text' || &ft == 'html')
+    setlocal wrap
+  else
+    " default textwidth slightly narrower than the default
+    setlocal nowrap
+  endif
+endfunction
+autocmd! BufReadPost,BufNewFile * call SetupEnvironment()
+
 
 " ############ COMMANDS ############
 " Command W : save as root (when file is not open as it)
@@ -137,7 +147,8 @@ inoremap <silent> <Esc> <Esc>:echo "=> Use ctrl-c"<CR><Esc>:startinsert<CR>
 
 nnoremap <silent> <CR> :noh<CR><CR>" Disable highlight when pressing enter again
 
-inoremap  <C-W> " CTRL-BS for delete previous word (set char with CTRL-v + CTRL-BS)
+" CTRL-BS for delete previous word (set char with CTRL-v + CTRL-BS)
+inoremap  <C-W>
 
 " Use default FZF for file search
 nmap <C-P> :FZF<CR>

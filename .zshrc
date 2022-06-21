@@ -42,6 +42,8 @@ alias grep="grep --color=auto"
 alias sshvm="ssh ubuntu@152.67.78.43"
 alias cours="cd /home/eliott/cours"
 alias hello="kdialog --passivepopup 'Hello'"
+alias wifi-list="nmcli device wifi"
+alias wifi-connect="nmcli device wifi connect --ask"
 
 # demande confirmation avant overwrite:
 alias cp="cp -i"
