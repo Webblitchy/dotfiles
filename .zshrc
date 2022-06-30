@@ -26,6 +26,11 @@ fi
 # Apply fzf-gruvbox theme
 # https://github.com/base16-project/base16-fzf
 source ~/.vim/fzf-gruvbox.config
+export BAT_THEME="gruvbox-dark"
+
+# Include dotfiles in searches
+export FZF_DEFAULT_COMMAND="find -L"
+source ~/.vim/plug-plugins/fzf/shell/completion.zsh # enable ** to open fzf
 
 # Configuration manuelle
 #Disable autocorrect

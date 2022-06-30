@@ -9,14 +9,51 @@
 "                                                                    "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" ######## FILE FORMATS #######
 set encoding=utf-8
 scriptencoding utf-8
+set fileformat=unix
 
+" ###### BEFORE ALL #####
 let mapleader = "-" " Define leader key
-
 autocmd BufEnter * silent! lcd %:p:h " automatically set vim path to current dir
 
+" ############## PLUGIN INSTALLATION ###############
+call plug#begin('~/.vim/plug-plugins')
+
+Plug 'morhetz/gruvbox'
+Plug 'scrooloose/nerdtree'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'tpope/vim-fugitive'  " show git branch
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'tpope/vim-commentary'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'ap/vim-css-color'  " highlight hex color text to the right color
+Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-indent'
+"sudo npm i -g bash-language-server    => coc for bash
+
+call plug#end()
+
+" Plug commands
+"PlugInstall -> to run on first launch
+"PlugUpdate
+"PlugStatus
+"PlugClean
+"PlugUpgrade
+
 " ############## BEHAVOURS #############
+
+" KEYS BEHAVOURS
+
+set backspace=indent,eol,start  " more powerful backspacing
+
+" to use mouse only for resizing windows
+set mouse=a
+nnoremap <LeftMouse> m'<LeftMouse>
+nnoremap <LeftRelease> <LeftRelease>g``
 
 " Indentation settings
 set autoindent " always set autoindenting on
@@ -29,22 +66,24 @@ set smarttab " insert tabs on the start of a line according to shiftwidth, not t
 set softtabstop=4 " when hitting <BS>, pretend like a tab is removed, even if spaces
 set tabstop=4 " tabs are n spaces 
 
-set backspace=indent,eol,start  " more powerful backspacing
+
+" Timeout before a command key stop waiting
+set timeoutlen=500    " Timeout before a command key stop waiting
+set ttimeoutlen=0     " Remove timeout when hitting escape (ex: V-mode)
 
 set autoread              " Automatically reload changes if detected
 
-set mouse=a
 
 set belloff=all           " Disable error bell
 
-" Recherche
+" SEARCH
 set ignorecase            " Case insensitive search
 set smartcase             " Sensible to capital letters
 set incsearch             " Show search results as you type
 "set hlsearch              " Highlight search results
 "nnoremap <silent> <CR> :noh<CR><CR>" Disable highlight when pressing enter again
 
-
+" HISTORY
 " Persistent undo (le dossier doit exister)
 set undodir=~/.vim/undodir/
 set undofile
@@ -56,9 +95,7 @@ set history=1000                     " Command history
 set nobackup writebackup
 
 set noswapfile " disable the swapfile
-   " Timeout before a command key stop waiting
-set timeoutlen=500    " Timeout before a command key stop waiting
-set ttimeoutlen=0     " Remove timeout when hitting escape (ex: V-mode)
+
 
 " ##### :command auto completion #####
 " Enable auto completion menu after pressing TAB.
@@ -87,8 +124,12 @@ set title " display file name on window title
 set showcmd " afficher les compositions de lettre en direct
 
 let g:gruvbox_italic=1 " active l'italique (p.ex pour les commentaires)
+let g:gruvbox_bold=1
 " active le thème gruvbox
 colorscheme gruvbox
+
+
+hi Normal guibg=NONE ctermbg=NONE   " transparent background
 
 " afficher le no de ligne
 set number  " Affiche le numéro de la ligne actuelle
@@ -105,9 +146,10 @@ endfunction
 autocmd! VimResized,VimEnter,WinEnter,WinLeave * call SetAutoScrolloff()
 
 set list                              " Sinon les listschars ne fonctionnent pas
+" Invisible char and their representation
 set listchars=extends:→               " Show arrow if line continues rightwards
 set listchars+=precedes:←             " Show arrow if line continues leftwards
-set listchars+=tab:▸\
+set listchars+=tab:⊦—▸
 set listchars+=trail:·
 
 " Color current line number
@@ -167,16 +209,21 @@ command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 
 " ################ REMAPS / SHORTCUTS ################
 inoremap <silent> <Esc> <Esc>:echo "=> Use ctrl-c"<CR><Esc>:startinsert<CR>
-inoremap <C-c> <Esc>" to make ctrl-c behave exactly like esc
-nnoremap <C-c> <Esc>" to make ctrl-c behave exactly like esc
-vnoremap <C-c> <Esc>" to make ctrl-c behave exactly like esc
 
+" to make ctrl-c behave exactly like esc
+inoremap <C-c> <Esc>
+nnoremap <C-c> <Esc>
+vnoremap <C-c> <Esc>
+
+" to make TAB rotate between all buffers
+nnoremap <silent> <TAB> :bn<CR>
+
+" close buffer with --
+nnoremap <silent> <leader>- :bd<CR>
 
 " CTRL-BS for delete previous word (set char with CTRL-v + CTRL-BS)
 inoremap  <C-W>
 
-" Use default FZF for file search
-nmap <C-P> :FZF<CR>
 
 
 " register macro with qq and play it with Q
@@ -190,19 +237,21 @@ map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
+
 " Resize easily windows
 map <s-LEFT> :vertical resize +5 <Cr>
 map <s-RIGHT> :vertical resize -5 <Cr>
 map <s-UP> :resize +5 <Cr>
 map <s-DOWN> :resize -5 <Cr>
 
-" ######### PLUGINS ########
+" ######### PLUGINS SETTINGS ########
 " ### Airline parameters
 let g:airline_theme='base16_gruvbox_dark_hard' " installer airline-themes
 let g:airline_powerline_fonts = 1 " activer les caratères fleches
 let g:airline#extensions#tabline#enabled = 1 " afficher les buffer comme des onglets
 let g:airline#extensions#whitespace#enabled = 0 " disable trailing count in the bar
-let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]' " hide encoding when default
+"let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]' " hide encoding when default
+let g:airline#extensions#branch#enabled=1
 " Set tabs as vertical lines
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
@@ -212,13 +261,13 @@ let g:airline_section_z = airline#section#create_right(['%3p%%','L:%3l/%L','C:%3
 " indirectement lié (cache barre de status originale)
 set noshowmode " hide mode (not directly related to airline)
 set shortmess+=F  " to get rid of the file name displayed in the command line bar
+set shortmess+=c  " get rid of the 'match 1 of 2' in the command line bar
 
 " ### coc.nvim
 " More examples : https://github.com/neoclide/coc.nvim#example-vim-configuration
 
 " handle these types of files
-let g:coc_global_extensions = ['coc-git', 'coc-json', 'coc-clangd', 'coc-java', 'coc-css', 'coc-pyright', 'coc-html', 'coc-tsserver', 'coc-sh', 'coc-rls']
-" add 'coc-git' to show changes
+let g:coc_global_extensions = ['coc-git', 'coc-json', 'coc-clangd', 'coc-java', 'coc-css', 'coc-pyright', 'coc-html', 'coc-tsserver', 'coc-rls']
 " uninstall with :CocUninstall <name>
 
 " Use tab for trigger completion with characters ahead and navigate.
@@ -257,6 +306,44 @@ nnoremap <silent> cr <Plug>(coc-references)
 nnoremap <leader>rn <Plug>(coc-rename)
 
 " Nerd tree
-nnoremap <C-t> :NERDTreeToggle<CR>
-let NERDTreeIgnore=['\.git$', '\.jpg$', '\.mp4$', '\.ogg$', '\.iso$', '\.pdf$', '\.pyc$', '\.odt$', '\.png$', '\.gif$']
-nnoremap <C-f> :NERDTreeFind<CR>
+nnoremap <silent> <C-t> :NERDTreeToggle<CR>
+let NERDTreeRespectWildIgnore=1
+set wildignore+=*.git,*.jpg,*.mp4,*.ogg,*.iso,*.pdf,*.pyc,*.odt,*.png,*.gif
+let NERDTreeShowHidden=1
+
+" Commentary
+" (use Ctrl-7)
+xmap  gc
+nmap  gc
+omap  gc
+nmap  gcc
+
+" set comment style to // for c(++) and java
+autocmd FileType c,cpp,java setlocal commentstring=//\ %s
+
+" FZF
+
+" Use vim FZF for file search
+nmap <C-P> :Files ~<CR>
+
+" Customize fzf colors to match your color scheme
+" - fzf#wrap translates this to a set of `--color` options
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
+" Display nicely document preview in fzf
+let $FZF_DEFAULT_OPTS="--ansi --preview-window 'right:60%' --margin=1,4 --preview 'bat --color=always --style=header,grid --line-range :300 {}'"
+"   -> INSTALL bat and add "export BAT_THEME="gruvbox-dark"" to .zshrc
