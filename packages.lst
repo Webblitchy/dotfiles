@@ -37,6 +37,7 @@ vim
 vim-spell-en
 vim-spell-fr
 virtualbox
+virtualbox-host-modules-arch
 wget
 wireshark-qt
 zsh-theme-powerlevel10k-git

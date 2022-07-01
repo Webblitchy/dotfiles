@@ -12,7 +12,7 @@ git clone git@github.com:Webblitchy/dotfiles.git .
 
 # Install packages
 sudo pacman -Syu --noconfirm paru
-cat packages.lst | xargs paru --needed --noconfirm
+cat packages.lst | xargs paru -Syu --needed --noconfirm
 
 # Copy config files (add links)
 for file in .*; do 
