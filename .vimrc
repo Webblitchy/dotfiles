@@ -54,6 +54,8 @@ set backspace=indent,eol,start  " more powerful backspacing
 set mouse=a
 nnoremap <LeftMouse> m'<LeftMouse>
 nnoremap <LeftRelease> <LeftRelease>g``
+inoremap <LeftMouse> <ESC>m'i<LeftMouse>
+inoremap <LeftRelease> <LeftRelease><ESC>g``a
 
 " Indentation settings
 set autoindent " always set autoindenting on
@@ -157,6 +159,8 @@ hi CursorLineNr guifg=#fe8019 " gruvbox light orange
 set cursorline
 set cursorlineopt=number
 
+" Enable color highlighting inside markdown code blocs
+let g:markdown_fenced_languages = ['python', 'cpp', 'c', 'java', 'rust', 'bash', 'css', 'js=javascript', 'html']
 
 " Change the cursor lenght in function of the mode (VTE compatible terminals)
 " https://vim.fandom.com/wiki/Change_cursor_shape_in_different_modes
@@ -251,6 +255,7 @@ let g:airline_powerline_fonts = 1 " activer les caratères fleches
 let g:airline#extensions#tabline#enabled = 1 " afficher les buffer comme des onglets
 let g:airline#extensions#whitespace#enabled = 0 " disable trailing count in the bar
 "let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]' " hide encoding when default
+let g:airline#extensions#wordcount#enabled = 0
 let g:airline#extensions#branch#enabled=1
 " Set tabs as vertical lines
 let g:airline#extensions#tabline#left_sep = ' '
