@@ -39,7 +39,8 @@ virtualbox
 virtualbox-host-modules-arch
 wget
 wireshark-qt
-zsh-theme-powerlevel10k-git
+zsh-theme-powerlevel10k-bin-git
+ttf-meslo-nerd-font-powerlevel10k
 adobe-base-14-fonts
 firefox-appmenu-bin
 joplin-desktop-bin
