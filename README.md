@@ -4,7 +4,7 @@ My dotfiles
 ## Install packages
 ```
 sudo pacman -Syu --noconfirm paru
-paru 
+cat packages.lst | paru --needed --noconfirm
 ```
 
 
