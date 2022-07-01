@@ -21,7 +21,7 @@ for file in .*; do
 done
 
 cd dotconfig
-for file in .*; do
+for file in *; do
     ls -sf ~/.dotfiles/dotconfig/$file ~/.config/$file
 done
 
