@@ -1,13 +1,6 @@
 # dotfiles
 My dotfiles
 
-## Install packages
-```
-sudo pacman -Syu --noconfirm paru
-cat packages.lst | paru --needed --noconfirm
-```
-
-
 ## Commands to make it work
 
 ```bash
@@ -17,7 +10,11 @@ mkdir ~/.dotfiles
 cd ~/.dotfiles
 git clone git@github.com:Webblitchy/dotfiles.git .
 
-# create links
+# Install packages
+sudo pacman -Syu --noconfirm paru
+cat packages.lst | paru --needed --noconfirm
+
+# Copy config files (add links)
 for file in .*; do 
     ln -sf ~/.dotfiles/$file ~/$file
 done
