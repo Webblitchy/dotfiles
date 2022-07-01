@@ -11,6 +11,8 @@ paru
 ## Commands to make it work
 
 ```bash
+setopt interactivecomments
+
 mkdir ~/.dotfiles
 cd ~/.dotfiles
 git clone git@github.com:Webblitchy/dotfiles.git .
@@ -21,8 +23,9 @@ for file in .*; do
 done
 
 cd dotconfig
-for file in *; do
-    ls -sf ~/.dotfiles/dotconfig/$file ~/.config/$file
+for file in *; do 
+    # move directories
+    ln -sf ~/.dotfiles/dotconfig/$file/ ~/.config/$file
 done
 
 ```

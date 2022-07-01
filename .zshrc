@@ -37,6 +37,8 @@ source ~/.vim/plug-plugins/fzf/shell/completion.zsh # enable ** to open fzf
 unsetopt correct_all
 unsetopt correct
 DISABLE_CORRECTION="true" 
+#Enable comments inside for inline commands
+setopt interactivecomments
 
 # mes alias
 alias ll="ls -Athor"
