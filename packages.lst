@@ -29,7 +29,6 @@ okular
 openssh
 owncloud-client
 pinta
-pycharm-community-edition
 qbittorrent
 rustup
 timeshift
@@ -41,3 +40,18 @@ virtualbox-host-modules-arch
 wget
 wireshark-qt
 zsh-theme-powerlevel10k-git
+adobe-base-14-fonts
+firefox-appmenu-bin
+joplin-desktop-bin
+logiops
+normcap
+notion-app
+onlyoffice-bin
+spotify
+simplenote-electron-bin
+telegram-desktop-bin
+thunderbird-appmenu-bin
+ttf-ms-fonts
+vim-gruvbox-git
+virtualbox-ext-oracle
+visual-studio-code-bin
