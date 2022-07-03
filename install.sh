@@ -43,3 +43,8 @@ sudo ln -sf ~/.dotfiles/logid.cfg /etc/logid.cfg # to make MXMaster3 works
 # vim commands
 mkdir ~/.vim/undodir 2>/dev/null
 # vim add ~/.vim/coc-settings.json and fzf-theme
+
+# add zsh plugins 
+sudo git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /usr/share/zsh/plugins/zsh-syntax-highlighting/
+sudo git clone https://github.com/zsh-users/zsh-history-substring-search.git /usr/share/zsh/plugins/zsh-history-substring-search/
+sudo git clone https://github.com/zsh-users/zsh-autosuggestions.git /usr/share/zsh/plugins/zsh-autosuggestions/
