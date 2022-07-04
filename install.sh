@@ -4,7 +4,7 @@ cd ~/.dotfiles
 
 # Install packages
 sudo pacman -Syu --noconfirm paru
-paru -R --noconfirm firefox
+paru -Rns --noconfirm firefox
 cat packages.lst | xargs paru -Syu --needed --noconfirm
 
 # Copy config files (add links)
@@ -37,17 +37,23 @@ sudo ln -sf ~/.dotfiles/logid.cfg /etc/logid.cfg # to make MXMaster3 works
 
 # libinput gestures
 sudo gpasswd -a $USER input
-libinput-gestures-setup autostart start
+libinput-gestures-setup autostart
 
 # vim commands
 mkdir -p ~/.vim/undodir 2>/dev/null
 # vim add ~/.vim/coc-settings.json and fzf-theme
-vim +PlugInstall +PlugClean! +qa! 2>/dev/null
+vim +PlugInstall +PlugClean! +qa! 1>/dev/null 2>/dev/null
 
 # add zsh plugins 
 sudo git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /usr/share/zsh/plugins/zsh-syntax-highlighting/
 sudo git clone https://github.com/zsh-users/zsh-history-substring-search.git /usr/share/zsh/plugins/zsh-history-substring-search/
 sudo git clone https://github.com/zsh-users/zsh-autosuggestions.git /usr/share/zsh/plugins/zsh-autosuggestions/
 
+# transfer firefox options
+cd home/firefox
+mkdir deadbeef.default-release
+for file in *; do
+    ln -sf ~/.dotfiles/home/firefox/$file ~/.mozilla/firefox/deadbeef.default-release/$file
+done
 
 chsh -s /bin/zsh
