@@ -26,10 +26,6 @@ if empty(glob('~/.vim/autoload/plug.vim'))
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 endif
 
-" Run PlugInstall if there are missing plugins
-autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-  \| PlugInstall --sync | source $MYVIMRC
-\| endif
 
 call plug#begin('~/.vim/plug-plugins')
 Plug 'morhetz/gruvbox'
@@ -47,6 +43,11 @@ Plug 'kana/vim-textobj-indent'
 "sudo npm i -g bash-language-server    => coc for bash
 
 call plug#end()
+
+" Run PlugInstall if there are missing plugins
+autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \| PlugInstall --sync | q
+  \| endif
 
 " Plug commands
 "PlugInstall -> to run on first launch
