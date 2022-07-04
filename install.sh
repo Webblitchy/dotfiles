@@ -3,8 +3,8 @@
 cd ~/.dotfiles
 
 # Install packages
-#sudo pacman -Syu --noconfirm paru
-#cat packages.lst | xargs paru -Syu --needed --noconfirm
+sudo pacman -Syu --noconfirm paru
+cat packages.lst | xargs paru -Syu --needed --noconfirm
 
 # Copy config files (add links)
 cd home
@@ -35,8 +35,8 @@ done
 sudo ln -sf ~/.dotfiles/logid.cfg /etc/logid.cfg # to make MXMaster3 works
 
 # libinput gestures
-#sudo gpasswd -a $USER input
-#libinput-gestures-setup autostart start
+sudo gpasswd -a $USER input
+libinput-gestures-setup autostart start
 
 # vim commands
 mkdir -p ~/.vim/undodir 2>/dev/null

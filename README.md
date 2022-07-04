@@ -6,7 +6,7 @@ My dotfiles
 ```bash
 mkdir ~/.dotfiles
 cd ~/.dotfiles
-git clone git@github.com:Webblitchy/dotfiles.git .
+git clone https://github.com/Webblitchy/dotfiles.git .
 chmod +x install.sh
 ./install.sh
 ```
