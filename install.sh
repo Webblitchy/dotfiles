@@ -51,9 +51,10 @@ sudo git clone https://github.com/zsh-users/zsh-autosuggestions.git /usr/share/z
 
 # transfer firefox options
 cd home/firefox
+profileFolder=$(ls ~/.mozilla/firefox | grep .default-release)
 for file in *; do
-    rm -rf ~/.mozilla/firefox/*.default-release/$file
-    ln -sf ~/.dotfiles/home/firefox/$file ~/.mozilla/firefox/*.default-release/$file
+    rm -rf ~/.mozilla/firefox/$profileFolder/$file
+    ln -sf ~/.dotfiles/home/firefox/$file ~/.mozilla/firefox/$profileFolder/$file
 done
 cd ../..
 
