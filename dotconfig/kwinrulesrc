@@ -1,0 +1,44 @@
+[$Version]
+update_info=kwinrules.upd:replace-placement-string-to-enum,kwinrules.upd:use-virtual-desktop-ids
+
+[1]
+Description=Window settings for dolphin (transparent)
+clientmachine=localhost
+opacityactive=99
+opacityactiverule=2
+title=Home — Dolphin
+types=1
+wmclass=dolphin
+wmclassmatch=1
+
+[904a4c59-a06d-40f5-83a2-f2301468d54d]
+Description=JetBrains force focus
+acceptfocus=true
+acceptfocusrule=2
+wmclass=([Cc][Ll]ion)|([Ii]ntelli[Jj])|([Pp]y[Cc]harm)|([Jj]et[Bb]rains)
+wmclasscomplete=true
+wmclassmatch=3
+
+[General]
+count=1
+rules=1
+
+[a650bbb7-5635-4391-9102-5398011cbd77]
+Description=Application settings for morgen
+clientmachine=localhost
+shortcut=Alt+Right
+shortcutrule=3
+wmclass=morgen
+wmclassmatch=1
+
+[abb1adc9-e4fd-4a75-96ab-0a86c5030594]
+Description=Window settings for dolphin
+clientmachine=localhost
+opacityactive=99
+opacityactiverule=2
+title=Home — Dolphin
+types=1
+windowrole=dolphin#1
+windowrolematch=1
+wmclass=dolphin
+wmclassmatch=1

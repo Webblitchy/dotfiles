@@ -1,0 +1,54 @@
+[FileDialogSize]
+eDP-1 DP-3 Height 1920x1080=772
+eDP-1 DP-3 Width 1920x1080=1300
+
+[KFileDialog Settings]
+Recent Files[$e]=file:$HOME/Pictures/Fond écran/1678026.jpg,file:$HOME/Pictures/Fond écran/wallhaven-136m9w.png,file:$HOME/Pictures/Fond écran/girl-with-dog-looking-at-the-sunset-digital-art_5120x2880_xtrafondos.com.jpg,file:$HOME/Pictures/Fond écran/WallpaperDog-10853261.jpg,file:$HOME/Pictures/Fond écran/TheDrive.png,file:$HOME/Pictures/Fond écran/sunset-in-the-mountains-illustration_3840x2160_xtrafondos.com.jpg,file:$HOME/Pictures/Fond écran/pink-sunset-digital-art_3840x2160_xtrafondos.com.jpg,file:$HOME/Pictures/Fond écran/mountains-in-forest-scenery-minimalist-design_3840x2160_xtrafondos.com.jpg,file:$HOME/Pictures/Fond écran/minimalist--from-firewatch-wallpaper.jpg,file:$HOME/Pictures/Fond écran/Lockscreen.jpg,file:$HOME/Pictures/Fond écran/lake-at-sunset-landscape_3840x2160_xtrafondos.com.jpg,file:$HOME/Pictures/Fond écran/highway-animated-wallpaper-4k-3840x2160.jpg,file:$HOME/Pictures/Fond écran/futuristic-city-retro-style_7680x4224_xtrafondos.com.jpg,file:$HOME/Pictures/Fond écran/digital-landscape-at-sunset_3840x2160_xtrafondos.com.jpg,file:$HOME/Pictures/Fond écran/challenger.png
+Recent URLs[$e]=file:$HOME/Pictures/Fond écran/,file:$HOME/Downloads/,file:$HOME/Pictures/,file:$HOME/,file:$HOME/Documents/
+detailViewIconSize=16
+
+[KPropertiesDialog]
+eDP-1 DP-3 Height 1920x1080=545
+eDP-1 DP-3 Height 2560x1440=584
+eDP-1 DP-3 Width 1920x1080=345
+eDP-1 DP-3 Width 2560x1440=472
+
+[PlasmaViews][Panel 11][Defaults]
+thickness=27
+
+[PlasmaViews][Panel 11][Horizontal2560]
+thickness=27
+
+[PlasmaViews][Panel 2]
+alignment=1
+panelVisibility=1
+
+[PlasmaViews][Panel 2][Defaults]
+thickness=27
+
+[PlasmaViews][Panel 2][Horizontal1920]
+thickness=27
+
+[PlasmaViews][Panel 2][Horizontal2560]
+thickness=27
+
+[PlasmaViews][Panel 2][Vertical1080]
+thickness=44
+
+[PlasmaViews][Panel 4][Defaults]
+thickness=27
+
+[PlasmaViews][Panel 4][Horizontal1920]
+thickness=27
+
+[PlasmaViews][Panel 4][Horizontal2560]
+thickness=27
+
+[ScreenConnectors]
+0=eDP-1
+1=DP-3
+2=:0.0
+3=DP-1-3
+
+[Updates]
+performed=/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/containmentactions_middlebutton.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/obsolete_kickoffrc.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/move_desktop_layout_config.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/klipper_clear_config.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/systemloadviewer_systemmonitor.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/unlock_widgets.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/digitalclock_rename_timezonedisplay_key.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/maintain_existing_desktop_icon_sizes.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/no_middle_click_paste_on_panels.js

@@ -1,0 +1,5 @@
+[$Version]
+update_info=kscreenlocker.upd:0.1-autolock
+
+[Greeter][Wallpaper][org.kde.image][General]
+Image=/home/eliott/Pictures/Fond écran/sunset-in-the-mountains-illustration_3840x2160_xtrafondos.com.jpg
