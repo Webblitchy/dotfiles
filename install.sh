@@ -58,4 +58,7 @@ for file in *; do
 done
 cd ../..
 
+# maybe not useful
+killall latte-dock ; rm ~/.cache/icon-cache.kcache
+
 chsh -s /bin/zsh
