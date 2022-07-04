@@ -51,9 +51,10 @@ sudo git clone https://github.com/zsh-users/zsh-autosuggestions.git /usr/share/z
 
 # transfer firefox options
 cd home/firefox
-mkdir deadbeef.default-release
+mkdir -p ~/.mozilla/firefox/deadbeef.default-release
 for file in *; do
     ln -sf ~/.dotfiles/home/firefox/$file ~/.mozilla/firefox/deadbeef.default-release/$file
 done
+cd ../..
 
 chsh -s /bin/zsh
