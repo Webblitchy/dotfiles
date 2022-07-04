@@ -16,7 +16,7 @@ gimp
 kalendar
 kamera
 kate
-kcalk
+kcalc
 kdeconnect
 konsole
 latte-dock
@@ -43,7 +43,7 @@ zsh-theme-powerlevel10k-bin-git
 ttf-meslo-nerd-font-powerlevel10k
 adobe-base-14-fonts
 firefox-appmenu-bin
-joplin-desktop-bin
+joplin-desktop
 logiops
 normcap
 notion-app
@@ -56,3 +56,4 @@ ttf-ms-fonts
 vim-gruvbox-git
 virtualbox-ext-oracle
 visual-studio-code-bin
+libinput-gestures

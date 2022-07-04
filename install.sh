@@ -49,4 +49,4 @@ sudo git clone https://github.com/zsh-users/zsh-history-substring-search.git /us
 sudo git clone https://github.com/zsh-users/zsh-autosuggestions.git /usr/share/zsh/plugins/zsh-autosuggestions/
 
 
-chsh /bin/zsh
+chsh -s /bin/zsh
