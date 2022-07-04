@@ -39,8 +39,9 @@ sudo ln -sf ~/.dotfiles/logid.cfg /etc/logid.cfg # to make MXMaster3 works
 #libinput-gestures-setup autostart start
 
 # vim commands
-mkdir ~/.vim/undodir 2>/dev/null
+mkdir -p ~/.vim/undodir 2>/dev/null
 # vim add ~/.vim/coc-settings.json and fzf-theme
+vim +PlugInstall +PlugClean! +qa!
 
 # add zsh plugins 
 sudo git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /usr/share/zsh/plugins/zsh-syntax-highlighting/
