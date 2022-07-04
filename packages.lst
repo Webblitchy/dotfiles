@@ -31,7 +31,7 @@ owncloud-client
 pinta
 qbittorrent
 rustup
-timeshift
+timeshift-bin
 vim
 vim-spell-en
 vim-spell-fr
@@ -43,7 +43,7 @@ zsh-theme-powerlevel10k-bin-git
 ttf-meslo-nerd-font-powerlevel10k
 adobe-base-14-fonts
 firefox-appmenu-bin
-joplin-desktop
+joplin-appimage
 logiops
 normcap
 notion-app
