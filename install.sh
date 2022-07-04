@@ -41,7 +41,7 @@ sudo ln -sf ~/.dotfiles/logid.cfg /etc/logid.cfg # to make MXMaster3 works
 # vim commands
 mkdir -p ~/.vim/undodir 2>/dev/null
 # vim add ~/.vim/coc-settings.json and fzf-theme
-vim +PlugInstall +PlugClean! +qa!
+vim +PlugInstall +PlugClean! +qa! 2>/dev/null
 
 # add zsh plugins 
 sudo git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /usr/share/zsh/plugins/zsh-syntax-highlighting/
