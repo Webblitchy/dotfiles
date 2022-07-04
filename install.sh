@@ -26,7 +26,8 @@ for dotDir in */; do
         fi
         #ln -sf ~/.dotfiles/dotconfig/$dir/ ~/.config/$dir
         unescapedDir=$(echo $dir | sed "s/dot/./g" | sed "s/_/\//g")
-        ln -sf ~/.dotfiles/$dir ~/$unescapedDir
+        ln -sf ~/.dotfiles/$dir ~/$unescapedDir \
+          || echo "Programm not installed : $dir does not exists" # message when error
     done
 done
 
