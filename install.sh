@@ -21,12 +21,8 @@ for dotDir in */; do
         continue
     fi
     for dir in $dotDir*; do
-        if [[ -d $dir ]]; then
-            dir=$dir/
-        fi
-        #ln -sf ~/.dotfiles/dotconfig/$dir/ ~/.config/$dir
         unescapedDir=$(echo $dir | sed "s/dot/./g" | sed "s/_/\//g")
-        unescapedDir=${unescapedDir::-1}
+        rm -rf ~/$unescapedDir 2>/dev/null
         ln -sf ~/.dotfiles/$dir ~/$unescapedDir 2>/dev/null \
           || echo "Programm not installed : $dir cannot be transfered" # message when error
     done
