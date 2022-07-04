@@ -4,6 +4,7 @@ cd ~/.dotfiles
 
 # Install packages
 sudo pacman -Syu --noconfirm paru
+paru -R --noconfirm firefox
 cat packages.lst | xargs paru -Syu --needed --noconfirm
 
 # Copy config files (add links)
