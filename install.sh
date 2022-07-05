@@ -54,14 +54,34 @@ sudo git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /usr/sha
 sudo git clone https://github.com/zsh-users/zsh-history-substring-search.git /usr/share/zsh/plugins/zsh-history-substring-search/
 sudo git clone https://github.com/zsh-users/zsh-autosuggestions.git /usr/share/zsh/plugins/zsh-autosuggestions/
 
+# save firefox settings with
+saveFirefoxData () {
+    # if too big, clear cache before
+    cd ~/
+    tar -jcvf firefox-browser-profile.tar.bz2 .mozilla
+    mv firefox-browser-profile.tar.bz2 ~/.dotfiles/
+    cd ~/.dotfiles
+    gpg -c firefox-browser-profile.tar.bz2
+    rm firefox-browser-profile.tar.bz2
+}
+
 # transfer firefox options
-cd home/firefox
-profileFolder=$(ls ~/.mozilla/firefox | grep .default-release)
-for file in *; do
-    rm -rf ~/.mozilla/firefox/$profileFolder/$file
-    ln -sf ~/.dotfiles/home/firefox/$file ~/.mozilla/firefox/$profileFolder/$file
-done
-cd ../..
+restoreFirefoxData () {
+    rm -rf ~/.mozilla 2>/dev/null
+    gpg firefox-browser-profile.tar.bz2.gpg
+    mv firefox-browser-profile.tar.bz2 ~/
+    tar -xvf firefox-browser-profile.tar.bz2
+    rm firefox-browser-profile.tar.bz2
+}
+restoreFirefoxData
+
+# cd home/firefox
+# profileFolder=$(ls ~/.mozilla/firefox | grep .default-release)
+# for file in *; do
+#     rm -rf ~/.mozilla/firefox/$profileFolder/$file
+#     ln -sf ~/.dotfiles/home/firefox/$file ~/.mozilla/firefox/$profileFolder/$file
+# done
+# cd ../..
 
 # transfer wallpapers
 ln -sf ~/.dotfiles/wallpapers ~/Pictures/wallpapers
