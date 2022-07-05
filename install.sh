@@ -59,11 +59,11 @@ saveFirefoxData () {
     # if too big, clear cache before
     oldPath=$(pwd)
     cd ~/
-    tar -jcvf firefox-browser-profile.tar.bz2 .mozilla
-    mv firefox-browser-profile.tar.bz2 ~/.dotfiles/
+    tar -jcvf dotmozilla.tar.bz2 .mozilla
+    mv dotmozilla.tar.bz2 ~/.dotfiles/
     cd ~/.dotfiles
-    gpg -c firefox-browser-profile.tar.bz2
-    rm firefox-browser-profile.tar.bz2
+    gpg -c dotmozilla.tar.bz2
+    rm dotmozilla.tar.bz2
     cd $oldPath
 }
 
@@ -72,10 +72,10 @@ restoreFirefoxData () {
     oldPath=$(pwd)
     cd ~
     rm -rf ~/.mozilla 2>/dev/null
-    gpg ~/.dotfiles/firefox-browser-profile.tar.bz2.gpg
-    mv ~/.dotfiles/firefox-browser-profile.tar.bz2 ./
-    tar -xvf ~/firefox-browser-profile.tar.bz2
-    rm ~/firefox-browser-profile.tar.bz2
+    gpg ~/.dotfiles/dotmozilla.tar.bz2.gpg
+    mv ~/.dotfiles/dotmozilla.tar.bz2 ./
+    tar -xvf ~/dotmozilla.tar.bz2
+    rm ~/dotmozilla.tar.bz2
     cd $oldPath
 }
 restoreFirefoxData
