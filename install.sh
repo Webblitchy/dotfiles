@@ -21,14 +21,14 @@ done
 cd ..
 
 for dotDir in */; do
-    if [[ "$dotDir" == "home/" ]]; then
+    if [[ $dotDir != dot* ]]; then
         continue
     fi
     for dir in $dotDir*; do
         unescapedDir=$(echo $dir | sed "s/dot/./g" | sed "s/_/\//g")
         rm -rf ~/$unescapedDir 2>/dev/null
         ln -sf ~/.dotfiles/$dir ~/$unescapedDir 2>/dev/null \
-          || echo "Programm not installed : $dir cannot be transfered" # message when error
+          || echo "$dir cannot be transfered" # message when error
     done
 done
 
@@ -63,12 +63,15 @@ for file in *; do
 done
 cd ../..
 
+# transfer wallpapers
+ln -sf ~/.dotfiles/wallpapers ~/Pictures/wallpapers
+
 # change shell for zsh
 chsh -s /bin/zsh
 
 echo Everything is done !
 read -p "Do you want to reboot to apply config ?[y/n]:" userEntry
-if [[ "$userEntry" == "y" ]]; do
+if [[ "$userEntry" == "y" ]]; then
     sudo shutdown -r now
-done
+fi
 
