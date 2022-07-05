@@ -16,7 +16,7 @@ Install the programms and configs
 ```bash
 mkdir ~/.dotfiles
 cd ~/.dotfiles
-git clone git@github.com:Webblitchy/dotfiles.git 2>/dev/null ||
+git clone git@github.com:Webblitchy/dotfiles.git . 2>/dev/null ||
   git clone https://github.com/Webblitchy/dotfiles.git .
 chmod +x install.sh
 ./install.sh
