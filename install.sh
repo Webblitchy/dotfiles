@@ -61,7 +61,7 @@ saveFirefoxData () {
     tar -jcvf dotmozilla.tar.bz2 .mozilla
     mv dotmozilla.tar.bz2 ~/.dotfiles/
     cd ~/.dotfiles
-    echo Enter gpg password to encrypt the file:
+    echo "    => Enter gpg password to encrypt the file"
     gpg -c dotmozilla.tar.bz2
     rm dotmozilla.tar.bz2
     cd $oldPath
@@ -72,7 +72,7 @@ restoreFirefoxData () {
     oldPath=$(pwd)
     cd ~
     rm -rf ~/.mozilla 2>/dev/null
-    echo Enter gpg password to decrypt the firefox profile
+    echo "    => Enter gpg password to decrypt the firefox profile"
     gpg ~/.dotfiles/dotmozilla.tar.bz2.gpg
     mv ~/.dotfiles/dotmozilla.tar.bz2 ./
     tar -xvf ~/dotmozilla.tar.bz2

@@ -51,7 +51,6 @@ onlyoffice-bin
 spotify
 simplenote-electron-bin
 telegram-desktop-bin
-thunderbird-appmenu-bin
 ttf-ms-fonts
 vim-gruvbox-git
 virtualbox-ext-oracle
@@ -59,4 +58,4 @@ visual-studio-code-bin
 libinput-gestures
 zsh
 lightly-qt
-gpg
+gnupg
