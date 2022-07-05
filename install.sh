@@ -70,8 +70,8 @@ restoreFirefoxData () {
     rm -rf ~/.mozilla 2>/dev/null
     gpg firefox-browser-profile.tar.bz2.gpg
     mv firefox-browser-profile.tar.bz2 ~/
-    tar -xvf firefox-browser-profile.tar.bz2
-    rm firefox-browser-profile.tar.bz2
+    tar -xvf ~/firefox-browser-profile.tar.bz2
+    rm ~/firefox-browser-profile.tar.bz2
 }
 restoreFirefoxData
 
