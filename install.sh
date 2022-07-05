@@ -46,7 +46,7 @@ echo test 1
 mkdir -p ~/.vim/undodir 2>/dev/null
 echo test 2
 # vim add ~/.vim/coc-settings.json and fzf-theme
-vim +PlugInstall +PlugClean! +qa! 1>/dev/null 2>/dev/null
+vim -c "PlugInstall" -c "PlugClean" -c "qa!"
 echo test 3
 
 # add zsh plugins 
