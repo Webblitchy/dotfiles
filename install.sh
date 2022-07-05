@@ -2,6 +2,35 @@
 
 cd ~/.dotfiles
 
+## (Is first because of gpg timeout)
+# save firefox settings
+saveFirefoxData () {
+    # if too big, clear cache before
+    oldPath=$(pwd)
+    cd ~/
+    tar -jcvf dotmozilla.tar.bz2 .mozilla
+    mv dotmozilla.tar.bz2 ~/.dotfiles/
+    cd ~/.dotfiles
+    echo "    => Enter gpg password to encrypt the file"
+    gpg -c dotmozilla.tar.bz2
+    rm dotmozilla.tar.bz2
+    cd $oldPath
+}
+
+# transfer firefox options
+restoreFirefoxData () {
+    oldPath=$(pwd)
+    cd ~
+    rm -rf ~/.mozilla 2>/dev/null
+    echo "    => Enter gpg password to decrypt the firefox profile"
+    gpg ~/.dotfiles/dotmozilla.tar.bz2.gpg
+    mv ~/.dotfiles/dotmozilla.tar.bz2 ./
+    tar -xvf ~/dotmozilla.tar.bz2
+    rm ~/dotmozilla.tar.bz2
+    cd $oldPath
+}
+restoreFirefoxData
+
 # Install packages
 sudo pacman -Syu --noconfirm paru
 paru -Rns --noconfirm firefox
@@ -52,34 +81,6 @@ ln -sf ~/.dotfiles/vim/fzf-gruvbox.config ~/.vim/fzf-gruvbox.config
 sudo git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /usr/share/zsh/plugins/zsh-syntax-highlighting/
 sudo git clone https://github.com/zsh-users/zsh-history-substring-search.git /usr/share/zsh/plugins/zsh-history-substring-search/
 sudo git clone https://github.com/zsh-users/zsh-autosuggestions.git /usr/share/zsh/plugins/zsh-autosuggestions/
-
-# save firefox settings with
-saveFirefoxData () {
-    # if too big, clear cache before
-    oldPath=$(pwd)
-    cd ~/
-    tar -jcvf dotmozilla.tar.bz2 .mozilla
-    mv dotmozilla.tar.bz2 ~/.dotfiles/
-    cd ~/.dotfiles
-    echo "    => Enter gpg password to encrypt the file"
-    gpg -c dotmozilla.tar.bz2
-    rm dotmozilla.tar.bz2
-    cd $oldPath
-}
-
-# transfer firefox options
-restoreFirefoxData () {
-    oldPath=$(pwd)
-    cd ~
-    rm -rf ~/.mozilla 2>/dev/null
-    echo "    => Enter gpg password to decrypt the firefox profile"
-    gpg ~/.dotfiles/dotmozilla.tar.bz2.gpg
-    mv ~/.dotfiles/dotmozilla.tar.bz2 ./
-    tar -xvf ~/dotmozilla.tar.bz2
-    rm ~/dotmozilla.tar.bz2
-    cd $oldPath
-}
-restoreFirefoxData
 
 # transfer wallpapers
 ln -sf ~/.dotfiles/wallpapers ~/Pictures/wallpapers
