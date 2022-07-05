@@ -1,0 +1,19 @@
+{
+    "git.changedSign.hlGroup":"none",
+    "git.addedSign.hlGroup":"none",
+    "git.removedSign.hlGroup":"none",
+    "git.topRemovedSign.hlGroup":"none",
+    "git.changeRemovedSign.hlGroup": "none",
+    "git.changedSign.text":"~",
+    "git.addedSign.text":"+",
+    "git.removedSign.text":"-",
+    "diagnostic.checkCurrentLine": true,
+    "languageserver": {
+        "bash": {
+            "command": "bash-language-server",
+            "args": ["start"],
+            "filetypes": ["sh"],
+            "ignoredRootPaths": ["~"]
+        }
+  }
+}

@@ -41,13 +41,12 @@ sudo ln -sf ~/.dotfiles/logid.cfg /etc/logid.cfg # to make MXMaster3 works
 # libinput gestures
 sudo gpasswd -a $USER input
 libinput-gestures-setup autostart
-echo test 1
+
 # vim commands
 mkdir -p ~/.vim/undodir 2>/dev/null
-echo test 2
-# vim add ~/.vim/coc-settings.json and fzf-theme
 vim -c "PlugInstall" -c "PlugClean" -c "qa!"
-echo test 3
+ln -sf ~/.dotfiles/vim/coc-settings.json ~/.vim/coc-settings.json
+ln -sf ~/.dotfiles/vim/fzf-gruvbox.config ~/.vim/fzf-gruvbox.config
 
 # add zsh plugins 
 sudo git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /usr/share/zsh/plugins/zsh-syntax-highlighting/
@@ -62,6 +61,7 @@ saveFirefoxData () {
     tar -jcvf dotmozilla.tar.bz2 .mozilla
     mv dotmozilla.tar.bz2 ~/.dotfiles/
     cd ~/.dotfiles
+    echo Enter gpg password to encrypt the file:
     gpg -c dotmozilla.tar.bz2
     rm dotmozilla.tar.bz2
     cd $oldPath
@@ -72,6 +72,7 @@ restoreFirefoxData () {
     oldPath=$(pwd)
     cd ~
     rm -rf ~/.mozilla 2>/dev/null
+    echo Enter gpg password to decrypt the firefox profile
     gpg ~/.dotfiles/dotmozilla.tar.bz2.gpg
     mv ~/.dotfiles/dotmozilla.tar.bz2 ./
     tar -xvf ~/dotmozilla.tar.bz2
@@ -88,7 +89,7 @@ ln -sf ~/.dotfiles/media/abstergo-transparent-small.png ~/Pictures/abstergo-tran
 chsh -s /bin/zsh
 
 echo Everything is done !
-read -p "Do you want to reboot to apply config ?[y/n]:" userEntry
+read -p "Do you want to reboot to apply config ?[y/n]: " userEntry
 if [[ "$userEntry" == "y" ]]; then
     sudo shutdown -r now
 fi

@@ -133,11 +133,12 @@ set termguicolors " afficher les bonnes couleurs
 set title " display file name on window title
 set showcmd " afficher les compositions de lettre en direct
 
-let g:gruvbox_italic=1 " active l'italique (p.ex pour les commentaires)
-let g:gruvbox_bold=1
-" active le thème gruvbox
-colorscheme gruvbox
-
+if isdirectory( expand("$HOME/.vim/plug-plugins/gruvbox") )
+    let g:gruvbox_italic=1 " active l'italique (p.ex pour les commentaires)
+    let g:gruvbox_bold=1
+    " active le thème gruvbox
+    colorscheme gruvbox
+endif
 
 hi Normal guibg=NONE ctermbg=NONE   " transparent background
 
@@ -259,18 +260,20 @@ map <s-DOWN> :resize -5 <Cr>
 
 " ######### PLUGINS SETTINGS ########
 " ### Airline parameters
-let g:airline_theme='base16_gruvbox_dark_hard' " installer airline-themes
-let g:airline_powerline_fonts = 1 " activer les caratères fleches
-let g:airline#extensions#tabline#enabled = 1 " afficher les buffer comme des onglets
-let g:airline#extensions#whitespace#enabled = 0 " disable trailing count in the bar
-"let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]' " hide encoding when default
-let g:airline#extensions#wordcount#enabled = 0
-let g:airline#extensions#branch#enabled=1
-" Set tabs as vertical lines
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-"Set downsection
-let g:airline_section_z = airline#section#create_right(['%3p%%','L:%3l/%L','C:%3v']) " format char counter in the bar
+if isdirectory( expand("$HOME/.vim/plug-plugins/vim-airline"))
+    let g:airline_theme='base16_gruvbox_dark_hard' " installer airline-themes
+    let g:airline_powerline_fonts = 1 " activer les caratères fleches
+    let g:airline#extensions#tabline#enabled = 1 " afficher les buffer comme des onglets
+    let g:airline#extensions#whitespace#enabled = 0 " disable trailing count in the bar
+    "let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]' " hide encoding when default
+    let g:airline#extensions#wordcount#enabled = 0
+    let g:airline#extensions#branch#enabled=1
+    " Set tabs as vertical lines
+    let g:airline#extensions#tabline#left_sep = ' '
+    let g:airline#extensions#tabline#left_alt_sep = '|'
+    "Set downsection
+    let g:airline_section_z = airline#section#create_right(['%3p%%','L:%3l/%L','C:%3v']) " format char counter in the bar
+endif
 
 " indirectement lié (cache barre de status originale)
 set noshowmode " hide mode (not directly related to airline)
