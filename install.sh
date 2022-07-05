@@ -73,6 +73,7 @@ restoreFirefoxData () {
     cd ~
     rm -rf ~/.mozilla 2>/dev/null
     gpg ~/.dotfiles/firefox-browser-profile.tar.bz2.gpg
+    mv ~/.dotfiles/firefox-browser-profile.tar.bz2.gpg ./
     tar -xvf ~/firefox-browser-profile.tar.bz2
     rm ~/firefox-browser-profile.tar.bz2
     cd $oldPath
