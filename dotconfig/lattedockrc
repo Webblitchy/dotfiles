@@ -15,8 +15,8 @@ eDP-1 Width 1920x1080=980
 Number of Actions=0
 
 [KFileDialog Settings]
-Recent Files[$e]=archlinux-logo-white.png,file:$HOME/OwnCloud/Logos/abstergo-transparent-small.png,file:$HOME/OwnCloud/Logos/archlinux-logo-white-small.png,file:$HOME/OwnCloud/Logos/abstergo-transparent.png,file:$HOME/OwnCloud/Logos/archlinux-logo-white.png
-Recent URLs[$e]=file:$HOME/OwnCloud/Logos/,file:$HOME/,file:$HOME/OwnCloud/,file:$HOME/Documents/
+Recent Files[$e]=archlinux-logo-white.png,file:$HOME/Pictures/abstergo-transparent-small.png
+Recent URLs[$e]=file:$HOME/,file:$HOME/Documents/,file:$HOME/Pictures/
 detailViewIconSize=16
 
 [KPropertiesDialog]
