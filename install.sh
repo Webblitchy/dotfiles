@@ -57,21 +57,25 @@ sudo git clone https://github.com/zsh-users/zsh-autosuggestions.git /usr/share/z
 # save firefox settings with
 saveFirefoxData () {
     # if too big, clear cache before
+    oldPath=$(pwd)
     cd ~/
     tar -jcvf firefox-browser-profile.tar.bz2 .mozilla
     mv firefox-browser-profile.tar.bz2 ~/.dotfiles/
     cd ~/.dotfiles
     gpg -c firefox-browser-profile.tar.bz2
     rm firefox-browser-profile.tar.bz2
+    cd $oldPath
 }
 
 # transfer firefox options
 restoreFirefoxData () {
+    oldPath=$(pwd)
+    cd ~
     rm -rf ~/.mozilla 2>/dev/null
-    gpg firefox-browser-profile.tar.bz2.gpg
-    mv firefox-browser-profile.tar.bz2 ~/
+    gpg ~/.dotfiles/firefox-browser-profile.tar.bz2.gpg
     tar -xvf ~/firefox-browser-profile.tar.bz2
     rm ~/firefox-browser-profile.tar.bz2
+    cd $oldPath
 }
 restoreFirefoxData
 
