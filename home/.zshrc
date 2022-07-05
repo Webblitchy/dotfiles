@@ -66,12 +66,6 @@ bindkey '^[[1;5C' forward-word                                  #
 bindkey '^H' backward-kill-word                                 # delete previous word with ctrl+backspace
 bindkey '^[[Z' undo                                             # Shift+tab undo last action
 
-## Alias section 
-alias cp="cp -i"                                                # Confirm before overwriting something
-alias df='df -h'                                                # Human-readable sizes
-alias free='free -m'                                            # Show sizes in MB
-alias gitu='git add . && git commit && git push'
-
 # Theming section  
 autoload -U compinit colors zcalc
 compinit -d
@@ -215,6 +209,7 @@ alias ls='ls $LS_OPTIONS'
 () {
   emulate -L zsh
 
+# Customization
   source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
   source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
@@ -239,18 +234,10 @@ alias ls='ls $LS_OPTIONS'
     ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=black,bold'
   else
     # Use 256 colors and UNICODE.
-    source /usr/share/zsh/p10k.zsh
     ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=244'
+    [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
   fi
 }
-
-
-# Decommenter pour ajouter des themes
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
 
 # Apply fzf-gruvbox theme
 # https://github.com/base16-project/base16-fzf
@@ -261,7 +248,6 @@ export BAT_THEME="gruvbox-dark"
 export FZF_DEFAULT_COMMAND="find -L"
 source ~/.vim/plug-plugins/fzf/shell/completion.zsh # enable ** to open fzf
 
-# Configuration manuelle
 #Disable autocorrect
 unsetopt correct_all
 unsetopt correct
@@ -269,19 +255,18 @@ DISABLE_CORRECTION="true"
 #Enable comments inside for inline commands
 setopt interactivecomments
 
-# mes alias
+# my aliases
+alias cp="cp -i"                                                # Confirm before overwriting something
+alias df='df -h'                                                # Human-readable sizes
+alias free='free -m'                                            # Show sizes in MB
+alias mv="mv -i"
+
 alias ll="ls -Athor"
 alias open="dolphin"
 alias vrc="vim ~/.vimrc"
-alias vimtutor="cp /usr/share/vim/vim82/tutor/tutor.fr.utf-8 /tmp/vimtutor; vim /tmp/vimtutor"
 alias grep="grep --color=auto"
-alias sshvm="ssh ubuntu@152.67.78.43"
 alias cours="cd /home/eliott/cours"
 alias hello="kdialog --passivepopup 'Hello'"
 alias wifi-list="nmcli device wifi"
 alias wifi-connect="nmcli device wifi connect --ask"
-
-# demande confirmation avant overwrite:
-alias cp="cp -i"
-alias mv="mv -i"
 

@@ -57,12 +57,12 @@ call plug#end()
 
 set backspace=indent,eol,start  " more powerful backspacing
 
-" to use mouse only for resizing windows
-set mouse=a
-nnoremap <LeftMouse> m'<LeftMouse>
-nnoremap <LeftRelease> <LeftRelease>g``
-inoremap <LeftMouse> <ESC>m'i<LeftMouse>
-inoremap <LeftRelease> <LeftRelease><ESC>g``a
+" To use mouse only for resizing windows (make Ctrl-Shift-c not working)
+" set mouse=a
+" nnoremap <LeftMouse> m'<LeftMouse>
+" nnoremap <LeftRelease> <LeftRelease>g``
+" inoremap <LeftMouse> <ESC>m'i<LeftMouse>
+" inoremap <LeftRelease> <LeftRelease><ESC>g``a
 
 " Indentation settings
 set autoindent " always set autoindenting on
@@ -105,6 +105,7 @@ set nobackup writebackup
 
 set noswapfile " disable the swapfile
 
+set clipboard=unnamedplus " use system clipboard as the main clipboard
 
 " ##### :command auto completion #####
 " Enable auto completion menu after pressing TAB.
@@ -254,6 +255,7 @@ map <s-LEFT> :vertical resize +5 <Cr>
 map <s-RIGHT> :vertical resize -5 <Cr>
 map <s-UP> :resize +5 <Cr>
 map <s-DOWN> :resize -5 <Cr>
+
 
 " ######### PLUGINS SETTINGS ########
 " ### Airline parameters
