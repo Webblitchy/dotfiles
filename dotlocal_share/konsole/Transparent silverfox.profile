@@ -26,7 +26,7 @@ TextEditorCmd=0
 KeyBindings=default
 
 [Scrolling]
-ReflowLines=false
+ReflowLines=true
 ScrollBarPosition=2
 
 [Terminal Features]

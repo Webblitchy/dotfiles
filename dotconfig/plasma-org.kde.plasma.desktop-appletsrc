@@ -46,7 +46,6 @@ PreloadWeight=0
 [Containments][14][General]
 ToolBoxButtonState=topcenter
 ToolBoxButtonX=576
-ToolBoxButtonY=27
 positions={"1920x1080":[]\\,"2560x1440":[""]}
 previews=false
 sortMode=-1
@@ -160,32 +159,6 @@ PreloadWeight=0
 
 [Containments][2][General]
 AppletOrder=3
-
-[Containments][4]
-activityId=
-formfactor=2
-immutability=1
-lastScreen=0
-location=3
-plugin=org.kde.panel
-wallpaperplugin=org.kde.image
-
-[Containments][4][Applets][5]
-immutability=1
-plugin=org.kde.plasma.appmenu
-
-[Containments][4][Applets][5][Configuration]
-PreloadWeight=0
-
-[Containments][4][ConfigDialog]
-DialogHeight=74
-DialogWidth=1920
-
-[Containments][4][Configuration]
-PreloadWeight=0
-
-[Containments][4][General]
-AppletOrder=5
 
 [ScreenMapping]
 itemsOnDisabledScreens=2,1,desktop:/exos13-15lucien
