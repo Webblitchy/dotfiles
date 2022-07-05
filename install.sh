@@ -65,6 +65,7 @@ cd ../..
 
 # transfer wallpapers
 ln -sf ~/.dotfiles/wallpapers ~/Pictures/wallpapers
+ln -sf ~/.dotfiles/media/abstergo-transparent-small.png ~/Pictures/abstergo-transparent-small.png
 
 # change shell for zsh
 chsh -s /bin/zsh
