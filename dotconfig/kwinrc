@@ -35,6 +35,7 @@ NightTemperature=3800
 
 [Plugins]
 alwaysopenonactivescreenEnabled=true
+blurEnabled=true
 desktopchangeosdEnabled=true
 forceblurEnabled=true
 glideEnabled[$d]

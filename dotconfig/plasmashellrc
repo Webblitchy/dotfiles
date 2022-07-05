@@ -13,9 +13,6 @@ eDP-1 DP-3 Height 2560x1440=584
 eDP-1 DP-3 Width 1920x1080=345
 eDP-1 DP-3 Width 2560x1440=472
 
-[PlasmaTransientsConfig]
-PreloadWeight=34
-
 [PlasmaViews][Panel 11][Defaults]
 thickness=27
 
