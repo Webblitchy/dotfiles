@@ -80,14 +80,6 @@ restoreFirefoxData () {
 }
 restoreFirefoxData
 
-# cd home/firefox
-# profileFolder=$(ls ~/.mozilla/firefox | grep .default-release)
-# for file in *; do
-#     rm -rf ~/.mozilla/firefox/$profileFolder/$file
-#     ln -sf ~/.dotfiles/home/firefox/$file ~/.mozilla/firefox/$profileFolder/$file
-# done
-# cd ../..
-
 # transfer wallpapers
 ln -sf ~/.dotfiles/wallpapers ~/Pictures/wallpapers
 ln -sf ~/.dotfiles/media/abstergo-transparent-small.png ~/Pictures/abstergo-transparent-small.png
