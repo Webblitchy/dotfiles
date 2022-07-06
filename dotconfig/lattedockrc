@@ -55,18 +55,21 @@ outlineWidth=1
 11=DP-3:::0,0 2560x1440
 12=eDP-1-1:::0,0 1920x1080
 13=DP-1-3:::0,0 2560x1440
-14=Virtual1:::0,0 1920x996
+14=Virtual1:::0,0 950x990
 
 [UniversalSettings]
 badges3DStyle=false
 canDisableBorders=false
 contextMenuActionsAlwaysShown=_preferences,_quit_latte,_separator1,_add_latte_widgets,_add_view
 inAdvancedModeForEditSettings=true
+inConfigureAppletsMode=false
 isAvailableGeometryBroadcastedToPlasma=true
 launchers=
 memoryUsage=0
 metaPressAndHoldEnabled=true
 mouseSensitivity=0
+parabolicSpread=3
+parabolicThicknessMarginInfluence=1
 screenTrackerInterval=2500
 showInfoWindow=true
 singleModeLayoutName=Dock bottom and taskbar top

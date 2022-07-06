@@ -9,7 +9,7 @@ RepeatRate=25
 
 [Mouse]
 X11LibInputXAccelProfileFlat=false
-XLbInptNaturalScroll=true
+XLbInptNaturalScroll=false
 XLbInptPointerAcceleration=0.2
 cursorSize=32
 cursorTheme=volantes_cursors

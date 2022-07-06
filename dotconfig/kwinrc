@@ -54,7 +54,7 @@ TextOnly=true
 [TabBox]
 BorderActivate=9
 DesktopMode=0
-LayoutName=thumbnail_grid
+LayoutName=org.kde.breeze.desktop
 
 [org.kde.kdecoration2]
 ButtonsOnLeft=FS
