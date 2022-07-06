@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE xbel>
-<xbel xmlns:bookmark="http://www.freedesktop.org/standards/desktop-bookmarks" xmlns:mime="http://www.freedesktop.org/standards/shared-mime-info" xmlns:kdepriv="http://www.kde.org/kdepriv">
+<xbel xmlns:mime="http://www.freedesktop.org/standards/shared-mime-info" xmlns:kdepriv="http://www.kde.org/kdepriv" xmlns:bookmark="http://www.freedesktop.org/standards/desktop-bookmarks">
  <info>
   <metadata owner="http://www.kde.org">
    <kde_places_version>4</kde_places_version>
@@ -316,47 +316,6 @@
   </info>
   <title>OS</title>
  </separator>
- <bookmark href="remote:/Films">
-  <title>Films</title>
-  <info>
-   <metadata owner="http://freedesktop.org">
-    <bookmark:icon name="folder-video"/>
-   </metadata>
-   <metadata owner="http://www.kde.org">
-    <ID>1641322950/0</ID>
-    <isSystemItem>false</isSystemItem>
-    <IsHidden>false</IsHidden>
-    <OnlyInApp/>
-   </metadata>
-  </info>
- </bookmark>
- <bookmark href="remote:/Séries">
-  <title>Séries</title>
-  <info>
-   <metadata owner="http://freedesktop.org">
-    <bookmark:icon name="folder-cd"/>
-   </metadata>
-   <metadata owner="http://www.kde.org">
-    <ID>1641325995/1</ID>
-    <isSystemItem>false</isSystemItem>
-    <IsHidden>false</IsHidden>
-    <OnlyInApp/>
-   </metadata>
-  </info>
- </bookmark>
- <bookmark href="remote:/Divers">
-  <title>Divers</title>
-  <info>
-   <metadata owner="http://freedesktop.org">
-    <bookmark:icon name="folder-remote"/>
-   </metadata>
-   <metadata owner="http://www.kde.org">
-    <ID>1641661926/0</ID>
-    <isSystemItem>false</isSystemItem>
-    <IsHidden>false</IsHidden>
-   </metadata>
-  </info>
- </bookmark>
  <separator>
   <info>
    <metadata owner="http://www.kde.org">

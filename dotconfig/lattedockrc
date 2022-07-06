@@ -55,7 +55,7 @@ outlineWidth=1
 11=DP-3:::0,0 2560x1440
 12=eDP-1-1:::0,0 1920x1080
 13=DP-1-3:::0,0 2560x1440
-14=Virtual1:::0,0 1920x997
+14=Virtual1:::0,0 1920x996
 
 [UniversalSettings]
 badges3DStyle=false
