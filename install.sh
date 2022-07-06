@@ -55,9 +55,10 @@ ln -sf ~/.dotfiles/vscode/settings.json ~/.config/Code/User/settings.json
 # jetbrains settings
 programs=("clion" "intellij" "pycharm")
 for nickname in ${programs[@]}; do
+    timeout 1s /bin/$nickname* # open the app to create the config folder
     program=$(ls ~/.config/JetBrains | grep -i $nickname)
     mkdir -p ~/.config/JetBrains/$program/options 2>/dev/null
-    for file in *; do
+    for file in $(ls ~/.dotfiles/jetbrains/); do
         ln -sf ~/.dotfiles/jetbrains/$file ~/.config/JetBrains/$program/options/$file
     done
 done
