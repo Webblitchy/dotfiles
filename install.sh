@@ -49,8 +49,18 @@ ln -sf ~/.dotfiles/vim/fzf-gruvbox.config ~/.vim/fzf-gruvbox.config
 sudo npm i -g bash-language-server
 
 # vscode settings
-mkdir ~/.config/Code/User
+mkdir -p ~/.config/Code/User 2>/dev/null
 ln -sf ~/.dotfiles/vscode/settings.json ~/.config/Code/User/settings.json
+
+# jetbrains settings
+programs=("clion" "intellij" "pycharm")
+for nickname in ${programs[@]}; do
+    program=$(ls ~/.config/JetBrains | grep -i $nickname)
+    mkdir -p ~/.config/JetBrains/$program/options 2>/dev/null
+    for file in *; do
+        ln -sf ~/.dotfiles/jetbrains/$file ~/.config/JetBrains/$program/options/$file
+    done
+done
 
 # add zsh plugins 
 sudo git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /usr/share/zsh/plugins/zsh-syntax-highlighting/
