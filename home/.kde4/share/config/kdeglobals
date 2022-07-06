@@ -138,10 +138,10 @@ menuFont=Source Sans 3 VF,10,-1,5,50,0,0,0,0,0
 shadeSortColumn=true
 smallestReadableFont=Source Sans 3 VF,8,-1,5,25,0,0,0,0,0,Regular
 toolBarFont=Source Sans 3 VF,10,-1,5,50,0,0,0,0,0
-widgetStyle=Lightly
+widgetStyle=Breeze
 
 [Icons]
-Theme=kora
+Theme=breeze-dark
 
 [KDE]
 ShowIconsInMenuItems=true

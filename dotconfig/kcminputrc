@@ -8,6 +8,7 @@ RepeatDelay=300
 RepeatRate=25
 
 [Mouse]
+X11LibInputXAccelProfileFlat=false
 XLbInptNaturalScroll=true
 XLbInptPointerAcceleration=0.2
 cursorSize=32
