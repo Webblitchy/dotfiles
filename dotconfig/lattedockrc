@@ -20,6 +20,8 @@ Recent URLs[$e]=file:$HOME/,file:$HOME/Documents/,file:$HOME/Pictures/
 detailViewIconSize=16
 
 [KPropertiesDialog]
+Virtual1 Height 1920x996=538
+Virtual1 Width 1920x996=426
 eDP-1 DP-3 Height 1920x1080=607
 eDP-1 DP-3 Height 2560x1440=586
 eDP-1 DP-3 Width 1920x1080=466
