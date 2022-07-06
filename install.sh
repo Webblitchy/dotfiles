@@ -2,35 +2,6 @@
 
 cd ~/.dotfiles
 
-## (Is first because of gpg timeout)
-# save firefox settings
-saveFirefoxData () {
-    # if too big, clear cache before
-    oldPath=$(pwd)
-    cd ~/
-    tar -jcvf dotmozilla.tar.bz2 .mozilla
-    mv dotmozilla.tar.bz2 ~/.dotfiles/
-    cd ~/.dotfiles
-    echo "    => Enter gpg password to encrypt the file"
-    gpg -c dotmozilla.tar.bz2
-    rm dotmozilla.tar.bz2
-    cd $oldPath
-}
-
-# transfer firefox options
-restoreFirefoxData () {
-    oldPath=$(pwd)
-    cd ~
-    rm -rf ~/.mozilla 2>/dev/null
-    echo "    => Enter gpg password to decrypt the firefox profile"
-    gpg ~/.dotfiles/dotmozilla.tar.bz2.gpg
-    mv ~/.dotfiles/dotmozilla.tar.bz2 ./
-    tar -xvf ~/dotmozilla.tar.bz2
-    rm ~/dotmozilla.tar.bz2
-    cd $oldPath
-}
-restoreFirefoxData
-
 # Install packages
 sudo pacman -Syu --noconfirm paru
 paru -Rns --noconfirm firefox
@@ -65,11 +36,14 @@ done
 # TODO: sudo chmod +x /usr/bin/dumpcap
 
 # Copy specifc settings
-sudo ln -sf ~/.dotfiles/logid.cfg /etc/logid.cfg # to make MXMaster3 works
 
 # libinput gestures
 sudo gpasswd -a $USER input
 libinput-gestures-setup autostart
+
+# Logid (logitech mouse drivers)
+logid -c ~/.dotfiles/logid.cfg
+sudo systemctl enable logid
 
 # vim commands
 mkdir -p ~/.vim/undodir 2>/dev/null
@@ -85,6 +59,36 @@ sudo git clone https://github.com/zsh-users/zsh-autosuggestions.git /usr/share/z
 # transfer wallpapers
 ln -sf ~/.dotfiles/wallpapers ~/Pictures/wallpapers
 ln -sf ~/.dotfiles/media/abstergo-transparent-small.png ~/Pictures/abstergo-transparent-small.png
+
+# save firefox settings
+saveFirefoxData () {
+    # if too big, clear cache before
+    oldPath=$(pwd)
+    cd ~/
+    tar -jcvf dotmozilla.tar.bz2 .mozilla
+    mv dotmozilla.tar.bz2 ~/.dotfiles/
+    cd ~/.dotfiles
+    read -ps "You will have to enter the key to encrypt Firefox profile"
+    echo
+    gpg -c dotmozilla.tar.bz2
+    rm dotmozilla.tar.bz2
+    cd $oldPath
+}
+
+# transfer firefox options
+restoreFirefoxData () {
+    oldPath=$(pwd)
+    cd ~
+    rm -rf ~/.mozilla 2>/dev/null
+    read -ps "You will have to enter the key to decrypt Firefox profile"
+    echo
+    gpg ~/.dotfiles/dotmozilla.tar.bz2.gpg
+    mv ~/.dotfiles/dotmozilla.tar.bz2 ./
+    tar -xvf ~/dotmozilla.tar.bz2
+    rm ~/dotmozilla.tar.bz2
+    cd $oldPath
+}
+restoreFirefoxData
 
 # change shell for zsh
 chsh -s /bin/zsh
