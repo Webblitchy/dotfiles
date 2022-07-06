@@ -111,7 +111,7 @@ chsh -s /bin/zsh
 
 # set grub chose time to 0 seconds
 sudo vim /etc/default/grub -u NONE -c "/GRUB_TIMEOUT" -c "s/[0-9]\+/0" -c "wq"
-sudo update-grub
+sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 echo Everything is done !
 read -p "Do you want to reboot to apply config ?[y/n]: " userEntry
