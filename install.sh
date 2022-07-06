@@ -48,6 +48,10 @@ ln -sf ~/.dotfiles/vim/coc-settings.json ~/.vim/coc-settings.json
 ln -sf ~/.dotfiles/vim/fzf-gruvbox.config ~/.vim/fzf-gruvbox.config
 sudo npm i -g bash-language-server
 
+# vscode settings
+mkdir ~/.config/Code/User
+ln -sf ~/.dotfiles/vscode/settings.json ~/.config/Code/User/settings.json
+
 # add zsh plugins 
 sudo git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /usr/share/zsh/plugins/zsh-syntax-highlighting/
 sudo git clone https://github.com/zsh-users/zsh-history-substring-search.git /usr/share/zsh/plugins/zsh-history-substring-search/
