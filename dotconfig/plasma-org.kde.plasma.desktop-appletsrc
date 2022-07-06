@@ -24,6 +24,14 @@ run associated application=true
 [ActionPlugins][1]
 RightButton;NoModifier=org.kde.contextmenu
 
+[Containments][1][ConfigDialog]
+DialogHeight=540
+DialogWidth=720
+
+[Containments][1][Wallpaper][org.kde.image][General]
+Image=/home/eliott/.dotfiles/wallpapers/wallhaven-136m9w.png
+SlidePaths=/usr/share/wallpapers
+
 [Containments][20]
 ItemGeometries-1920x996=
 ItemGeometriesHorizontal=
