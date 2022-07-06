@@ -55,6 +55,10 @@ sudo git clone https://github.com/zsh-users/zsh-autosuggestions.git /usr/share/z
 # transfer wallpapers
 ln -sf ~/.dotfiles/wallpapers ~/Pictures/wallpapers
 ln -sf ~/.dotfiles/media/abstergo-transparent-small.png ~/Pictures/abstergo-transparent-small.png
+plasma-apply-wallpaperimage ~/Pictures/wallpapers/wallhaven-136m9w.png
+
+# Apply icon theme
+/usr/lib/plasma-changeicons ~/.local/share/icons/kora
 
 # save firefox settings
 saveFirefoxData () {
