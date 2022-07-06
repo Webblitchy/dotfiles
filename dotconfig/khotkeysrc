@@ -1131,6 +1131,7 @@ XftHintStyle[$d]
 XftSubPixel[$d]
 font[$d]
 shadeSortColumn[$d]
+widgetStyle[$d]
 
 [Gestures]
 Disabled=true

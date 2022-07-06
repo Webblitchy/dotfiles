@@ -9,6 +9,7 @@ docker
 docker-compose
 dolphin
 dolphin-plugins
+kdeplasma-addons
 elisa
 flameshot
 gcc
@@ -58,4 +59,4 @@ libinput-gestures
 zsh
 lightly-qt
 gnupg
-thunderbird-appmenu
+thunderbird-bin

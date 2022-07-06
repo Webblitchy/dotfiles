@@ -153,7 +153,7 @@ shadeSortColumn=true
 widgetStyle=Breeze
 
 [Icons]
-Theme=breeze-dark
+Theme=kora
 
 [KDE]
 AnimationDurationFactor=0.5

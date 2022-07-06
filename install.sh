@@ -41,11 +41,12 @@ done
 sudo gpasswd -a $USER input
 libinput-gestures-setup autostart
 
-# vim commands
+# vim
 mkdir -p ~/.vim/undodir 2>/dev/null
 vim -c "PlugInstall" -c "PlugClean" -c "qa!"
 ln -sf ~/.dotfiles/vim/coc-settings.json ~/.vim/coc-settings.json
 ln -sf ~/.dotfiles/vim/fzf-gruvbox.config ~/.vim/fzf-gruvbox.config
+sudo npm i -g bash-language-server
 
 # add zsh plugins 
 sudo git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /usr/share/zsh/plugins/zsh-syntax-highlighting/
