@@ -41,10 +41,6 @@ done
 sudo gpasswd -a $USER input
 libinput-gestures-setup autostart
 
-# Logid (logitech mouse drivers)
-logid -c ~/.dotfiles/logid.cfg
-sudo systemctl enable logid
-
 # vim commands
 mkdir -p ~/.vim/undodir 2>/dev/null
 vim -c "PlugInstall" -c "PlugClean" -c "qa!"
