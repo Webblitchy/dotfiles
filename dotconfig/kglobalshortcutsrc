@@ -293,12 +293,12 @@ _launch=Meta+.,Meta+.,Emoji Selector
 [org.kde.spectacle.desktop]
 ActiveWindowScreenShot=Meta+Print,Meta+Print,Capture Active Window
 CurrentMonitorScreenShot=none,none,Capture Current Monitor
-FullScreenScreenShot=,Shift+Print,Capture Entire Desktop
+FullScreenScreenShot=none,Shift+Print,Capture Entire Desktop
 OpenWithoutScreenshot=none,none,Launch without taking a screenshot
 RectangularRegionScreenShot=Meta+Shift+Print,Meta+Shift+Print,Capture Rectangular Region
 WindowUnderCursorScreenShot=Meta+Ctrl+Print,Meta+Ctrl+Print,Capture Window Under Cursor
 _k_friendly_name=Spectacle
-_launch=,Print,Spectacle
+_launch=none,Print,Spectacle
 
 [org_kde_powerdevil]
 Decrease Keyboard Brightness=Keyboard Brightness Down,Keyboard Brightness Down,Decrease Keyboard Brightness
