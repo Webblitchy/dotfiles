@@ -3,7 +3,7 @@
 	email = 55515713+Webblitchy@users.noreply.github.com
 	signingkey = 4D80AE4E1C242CAC7AB7E2F939D698317A4CAE09
 [commit]
-	gpgsign = false
+	gpgsign = true
 [pull]
 	rebase = false
 [core]
