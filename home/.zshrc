@@ -261,7 +261,7 @@ alias df='df -h'                                                # Human-readable
 alias free='free -m'                                            # Show sizes in MB
 alias mv="mv -i"
 
-alias ll="ls -Athor"
+alias ll="ls -Alho"
 alias open="dolphin"
 alias vrc="vim ~/.vimrc"
 alias grep="grep --color=auto"
