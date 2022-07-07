@@ -9,3 +9,5 @@
 [core]
 	editor = vim
 	excludesfile = $HOME/.gitignore_global
+[alias]
+	graph = log --all --decorate --oneline --graph
