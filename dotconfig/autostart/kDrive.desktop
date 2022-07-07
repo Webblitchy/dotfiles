@@ -1,9 +1,9 @@
 [Desktop Entry]
-Name=ownCloud
+Name=kDrive
 GenericName=File Synchronizer
-Exec=/usr/bin/owncloud
+Exec="/usr/bin/kDrive"
 Terminal=false
-Icon=owncloud
+Icon=kdrive
 Categories=Network
 Type=Application
 StartupNotify=false
