@@ -115,6 +115,9 @@ sudo sed -i '45 a\unlock_time = 10' /etc/security/faillock.conf
 # optimus manager settings
 systemctl enable optimus-manager.service
 
+# timeshift settings
+sudo ln -sf ~/.dotfiles/timeshift.json /etc/timeshift/timeshift.json
+
 # set grub chose time to 0 seconds
 sudo vim /etc/default/grub -u NONE -c "/GRUB_TIMEOUT" -c "s/[0-9]\+/0" -c "wq"
 sudo grub-mkconfig -o /boot/grub/grub.cfg
