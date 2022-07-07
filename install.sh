@@ -8,7 +8,11 @@ paru -Rns --noconfirm firefox
 cat packages.lst | xargs paru -Syu --needed --noconfirm
 
 # to copy dolphin layout files
-mkdir ~/.local/share/kxmlgui5
+mkdir ~/.local/share/kxmlgui5 2>/dev/null
+
+# remove useless dirs
+rm -r ~/Templates 2>/dev/null
+rm -r ~/Public 2>/dev/null
 
 # Copy config files (add links)
 cd home
