@@ -272,7 +272,7 @@ if isdirectory( expand("$HOME/.vim/plug-plugins/vim-airline"))
     let g:airline#extensions#tabline#left_sep = ' '
     let g:airline#extensions#tabline#left_alt_sep = '|'
     "Set downsection
-    let g:airline_section_z = airline#section#create_right(['%3p%%','L:%3l/%L','C:%3v']) " format char counter in the bar
+    let g:airline_section_z = airline#section#create_right(['%3p%%',':%3l/%L',':%3v']) " format char counter in the bar
 endif
 
 " indirectement lié (cache barre de status originale)

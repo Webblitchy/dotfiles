@@ -28,7 +28,6 @@ noto-fonts-emoji
 npm
 okular
 openssh
-owncloud-client
 pinta
 qbittorrent
 rustup
@@ -63,3 +62,6 @@ thunderbird-bin
 pycharm-community-edition
 intellij-idea-ultimate-edition
 clion
+kdrive-bin
+optimus-manager
+optimus-manager-qt
