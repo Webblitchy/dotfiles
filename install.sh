@@ -112,6 +112,8 @@ chsh -s /bin/zsh
 # Set too many errors password time to 10s
 sudo sed -i '45 a\unlock_time = 10' /etc/security/faillock.conf
 
+# optimus manager settings
+systemctl enable optimus-manager.service
 
 # set grub chose time to 0 seconds
 sudo vim /etc/default/grub -u NONE -c "/GRUB_TIMEOUT" -c "s/[0-9]\+/0" -c "wq"
