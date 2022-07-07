@@ -1,0 +1,50 @@
+[Added Associations]
+application/x-bittorrent=org.qbittorrent.qBittorrent.desktop;
+application/x-vmware-enc-vm=org.kde.kate.desktop;vmware-player.desktop;vmware-workstation.desktop;
+application/x-vmware-vm=org.kde.kate.desktop;vmware-player.desktop;vmware-workstation.desktop;
+image/svg+xml=org.kde.gwenview.desktop;
+image/x-xcf=gimp.desktop;
+inode/directory=org.kde.dolphin.desktop;org.kde.kate.desktop;org.kde.gwenview.desktop;visual-studio-code.desktop;org.kde.filelight.desktop;
+text/csv=org.onlyoffice.desktopeditors.desktop;org.kde.kate.desktop;okularApplication_txt.desktop;vim.desktop;code-oss.desktop;
+text/markdown=visual-studio-code.desktop;code-oss.desktop;
+text/x-sagemath=visual-studio-code.desktop;
+x-scheme-handler/http=firefox.desktop;userapp-Firefox-QCPVF1.desktop;
+x-scheme-handler/https=firefox.desktop;userapp-Firefox-QCPVF1.desktop;
+x-scheme-handler/mailto=thunderbird.desktop;userapp-Thunderbird-9VG0E1.desktop;
+x-scheme-handler/mid=userapp-Thunderbird-9VG0E1.desktop;
+x-scheme-handler/tg=userapp-Telegram Desktop-CWDXE1.desktop;
+
+[Default Applications]
+application/x-bittorrent=org.qbittorrent.qBittorrent.desktop;
+application/x-extension-htm=userapp-Firefox-QCPVF1.desktop
+application/x-extension-html=userapp-Firefox-QCPVF1.desktop
+application/x-extension-shtml=userapp-Firefox-QCPVF1.desktop
+application/x-extension-xht=userapp-Firefox-QCPVF1.desktop
+application/x-extension-xhtml=userapp-Firefox-QCPVF1.desktop
+application/x-vmware-enc-vm=org.kde.kate.desktop;
+application/x-vmware-vm=org.kde.kate.desktop;
+application/xhtml+xml=userapp-Firefox-QCPVF1.desktop
+image/svg+xml=org.kde.gwenview.desktop;
+image/x-xcf=gimp.desktop;
+inode/directory=org.kde.dolphin.desktop;
+message/rfc822=userapp-Thunderbird-9VG0E1.desktop
+text/csv=org.onlyoffice.desktopeditors.desktop;
+text/html=userapp-Firefox-QCPVF1.desktop
+text/markdown=visual-studio-code.desktop;
+text/x-sagemath=visual-studio-code.desktop;
+x-scheme-handler/bitwarden=Electron.desktop
+x-scheme-handler/chrome=userapp-Firefox-QCPVF1.desktop
+x-scheme-handler/http=userapp-Firefox-QCPVF1.desktop
+x-scheme-handler/https=userapp-Firefox-QCPVF1.desktop
+x-scheme-handler/mailto=thunderbird.desktop;
+x-scheme-handler/mid=userapp-Thunderbird-9VG0E1.desktop
+x-scheme-handler/morgen=morgen.desktop
+x-scheme-handler/msteams=teams.desktop
+x-scheme-handler/notion=notion-app.desktop
+x-scheme-handler/obsidian=obsidian.desktop
+x-scheme-handler/postman=Postman.desktop
+x-scheme-handler/simplenote=simplenote.desktop
+x-scheme-handler/tg=userapp-Telegram Desktop-CWDXE1.desktop
+
+[Removed Associations]
+text/csv=krita_csv.desktop;

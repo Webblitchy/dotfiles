@@ -36,6 +36,10 @@ for dotDir in */; do
     done
 done
 
+for file in $(ls myscripts); do
+    sudo ln -sf ~/.dotfiles/myscripts/$file /usr/local/bin/$file
+done
+
 # Configure wireshark
 # TODO: sudo chmod +x /usr/bin/dumpcap
 
