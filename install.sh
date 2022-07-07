@@ -37,7 +37,7 @@ for dotDir in */; do
 done
 
 # Configure wireshark
-# TODO: sudo chmod +x /usr/bin/dumpcap
+sudo chmod +x /usr/bin/dumpcap
 
 # Copy specifc settings
 
