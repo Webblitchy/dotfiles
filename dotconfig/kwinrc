@@ -27,10 +27,9 @@ CommandAllWheel=Change Opacity
 [NightColor]
 Active=true
 LatitudeAuto=46.5388
-LatitudeFixed=46
+LatitudeFixed=46.8089
 LongitudeAuto=6.5886
-LongitudeFixed=7
-Mode=Location
+LongitudeFixed=7.1626
 NightTemperature=3800
 
 [Plugins]

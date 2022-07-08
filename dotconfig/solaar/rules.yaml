@@ -1,0 +1,11 @@
+%YAML 1.3
+---
+- Modifiers: Shift
+- Execute: [echo, oui]
+...
+---
+- MouseGesture: Mouse Left
+- KeyPress:
+  - [Meta_L, Left]
+  - click
+...

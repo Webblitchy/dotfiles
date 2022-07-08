@@ -81,6 +81,9 @@ ln -sf ~/.dotfiles/wallpapers ~/Pictures/wallpapers
 ln -sf ~/.dotfiles/media/abstergo-transparent-small.png ~/Pictures/abstergo-transparent-small.png
 plasma-apply-wallpaperimage ~/Pictures/wallpapers/wallhaven-136m9w.png
 
+# transfer sddm background
+sudo ln -sf ~/.dotfiles/sddm/theme.conf.user /usr/share/sddm/themes/breeze/theme.conf.user
+
 # Apply icon theme
 /usr/lib/plasma-changeicons ~/.local/share/icons/kora
 
@@ -129,6 +132,8 @@ sudo ln -sf ~/.dotfiles/timeshift.json /etc/timeshift/timeshift.json
 # set grub chose time to 0 seconds
 sudo vim /etc/default/grub -u NONE -c "/GRUB_TIMEOUT" -c "s/[0-9]\+/0" -c "wq"
 sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+sudo systemctl enable bluetooth
 
 echo Everything is done !
 read -p "Do you want to reboot to apply config ?[y/n]: " userEntry
