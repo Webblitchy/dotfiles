@@ -55,7 +55,7 @@ videowallEnabled=false
 TextOnly=true
 
 [Script-forceblur]
-patterns=dolphin
+patterns=dolphin\nspotify
 
 [TabBox]
 BorderActivate=9

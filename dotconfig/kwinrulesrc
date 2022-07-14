@@ -2,9 +2,9 @@
 update_info=kwinrules.upd:replace-placement-string-to-enum,kwinrules.upd:use-virtual-desktop-ids
 
 [1]
-Description=Window settings for dolphin (transparent)
+Description=Dolphin transparent
 clientmachine=localhost
-opacityactive=75
+opacityactive=80
 opacityactiverule=2
 title=Home — Dolphin
 types=1
@@ -15,6 +15,16 @@ wmclassmatch=1
 Description=New window settings
 wmclassmatch=1
 
+[8717264f-f861-48db-a4e0-5bcbda764a44]
+Description=Spotify transparent
+clientmachine=localhost
+opacityactive=85
+opacityactiverule=2
+title=Home — Dolphin
+types=1
+wmclass=spotify
+wmclassmatch=2
+
 [904a4c59-a06d-40f5-83a2-f2301468d54d]
 Description=JetBrains force focus
 acceptfocus=true
@@ -24,8 +34,8 @@ wmclasscomplete=true
 wmclassmatch=3
 
 [General]
-count=1
-rules=1
+count=2
+rules=1,8717264f-f861-48db-a4e0-5bcbda764a44
 
 [a650bbb7-5635-4391-9102-5398011cbd77]
 Description=Application settings for morgen
