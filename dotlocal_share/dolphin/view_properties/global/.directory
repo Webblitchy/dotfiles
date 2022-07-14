@@ -1,9 +1,6 @@
 [Dolphin]
-HeaderColumnWidths=313,72,119,149
-Timestamp=2022,7,8,14,56,7.82
+HeaderColumnWidths=465,72,119,149
+Timestamp=2022,7,11,17,23,23.928
 Version=4
 ViewMode=1
 VisibleRoles=Compact_text,CustomizedDetails,Details_text,Details_size,Details_modificationtime,Details_creationtime
-
-[Settings]
-HiddenFilesShown=true

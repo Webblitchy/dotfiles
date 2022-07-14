@@ -55,6 +55,8 @@ vim-gruvbox-git
 virtualbox-ext-oracle
 visual-studio-code-bin
 libinput-gestures
+wmctrl
+xdotool
 zsh
 lightly-qt
 gnupg
@@ -65,3 +67,5 @@ clion
 kdrive-bin
 optimus-manager
 optimus-manager-qt
+rmtrash
+tree

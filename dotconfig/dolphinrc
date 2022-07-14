@@ -9,7 +9,6 @@ ShowAddToPlaces=false
 [DetailsMode]
 ExpandableFolders=false
 FontWeight=50
-PreviewSize=32
 
 [General]
 AutoExpandFolders=true
@@ -29,9 +28,9 @@ Places Icons Auto-resize=false
 Places Icons Static Size=22
 
 [KPropertiesDialog]
-eDP-1 DP-3 Height 2048x1152=493
+eDP-1 DP-3 Height 2048x1152=619
 eDP-1 DP-3 Height 2560x1440=647
-eDP-1 DP-3 Width 2048x1152=335
+eDP-1 DP-3 Width 2048x1152=435
 eDP-1 DP-3 Width 2560x1440=520
 eDP-1 Height 1536x864=619
 eDP-1 Height 1920x1080=441
@@ -82,12 +81,13 @@ ToolButtonStyle=IconOnly
 
 [Open-with settings]
 CompletionMode=1
-History=kate,vis,inte,intell,visu,scri,scr,wir,gnu,dol,code,bit,kat
+History=kate,gwe,vl,kat,code,vis,inte,intell,visu,scri,scr,wir,gnu,dol,bit
 
 [PreviewSettings]
-Plugins=appimagethumbnail,audiothumbnail,blenderthumbnail,comicbookthumbnail,cursorthumbnail,djvuthumbnail,ebookthumbnail,exrthumbnail,fontthumbnail,imagethumbnail,jpegthumbnail,kraorathumbnail,windowsexethumbnail,windowsimagethumbnail,opendocumentthumbnail,gsthumbnail,rawthumbnail,svgthumbnail,ffmpegthumbs
+Plugins=appimagethumbnail,audiothumbnail,comicbookthumbnail,cursorthumbnail,djvuthumbnail,ebookthumbnail,exrthumbnail,fontthumbnail,imagethumbnail,jpegthumbnail,kraorathumbnail,windowsexethumbnail,windowsimagethumbnail,opendocumentthumbnail,svgthumbnail
 
 [Search]
+Location=Everywhere
 What=Content
 
 [Toolbar mainToolBar]

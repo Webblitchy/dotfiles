@@ -9,7 +9,7 @@ showSubtodosInCalendarViews=false
 
 [GlobalCollectionSelection]
 Current=x-1
-Selection=c14,c13,c15
+Selection=c14,c13,c12
 
 [KFileDialog Settings]
 detailViewIconSize=16
@@ -20,7 +20,9 @@ weekdayLabelAlignment=Center
 
 [Resources Colors]
 -12=invalid
+-13=invalid
 -27=invalid
+-29=invalid
 -56=invalid
 -5649=invalid
 -5650=invalid
@@ -43,9 +45,12 @@ weekdayLabelAlignment=Center
 -6145=invalid
 -6146=invalid
 -62=invalid
+-63=invalid
 -66=invalid
+-68=invalid
+-72=invalid
 11=invalid
-12=123,209,72
+12=0,170,255
 13=154,156,255
 14=22,167,101
 15=202,189,191

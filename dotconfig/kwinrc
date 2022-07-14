@@ -18,6 +18,9 @@ NoiseStrength=10
 [Effect-PresentWindows]
 BorderActivateAll=9
 
+[Effect-blur]
+BlurStrength=13
+
 [Effect-kwin4_effect_translucency]
 MoveResize=87
 
@@ -35,6 +38,7 @@ NightTemperature=3800
 [Plugins]
 alwaysopenonactivescreenEnabled=true
 blurEnabled=true
+contrastEnabled=true
 desktopchangeosdEnabled=true
 forceblurEnabled=true
 glideEnabled[$d]
@@ -49,6 +53,9 @@ videowallEnabled=false
 
 [Script-desktopchangeosd]
 TextOnly=true
+
+[Script-forceblur]
+patterns=dolphin
 
 [TabBox]
 BorderActivate=9

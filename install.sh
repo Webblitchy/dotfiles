@@ -49,6 +49,10 @@ sudo chmod +x /usr/bin/dumpcap
 sudo gpasswd -a $USER input
 libinput-gestures-setup autostart
 
+# docker
+sudo gpasswd -a $user docker
+sudo systemctl enable docker.service
+
 # vim
 mkdir -p ~/.vim/undodir 2>/dev/null
 vim -c "PlugInstall" -c "PlugClean" -c "qa!"
@@ -71,7 +75,7 @@ for nickname in ${programs[@]}; do
     done
 done
 
-# add zsh plugins 
+# add zsh plugins
 sudo git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /usr/share/zsh/plugins/zsh-syntax-highlighting/
 sudo git clone https://github.com/zsh-users/zsh-history-substring-search.git /usr/share/zsh/plugins/zsh-history-substring-search/
 sudo git clone https://github.com/zsh-users/zsh-autosuggestions.git /usr/share/zsh/plugins/zsh-autosuggestions/
@@ -82,7 +86,10 @@ ln -sf ~/.dotfiles/media/abstergo-transparent-small.png ~/Pictures/abstergo-tran
 plasma-apply-wallpaperimage ~/Pictures/wallpapers/wallhaven-136m9w.png
 
 # transfer sddm background
-sudo ln -sf ~/.dotfiles/sddm/theme.conf.user /usr/share/sddm/themes/breeze/theme.conf.user
+# (doesn't work with ln)
+sudo cp ~/.dotfiles/sddm/theme.conf /usr/share/sddm/themes/breeze/
+sudo cp ~/.dotfiles/sddm/theme.conf.user /usr/share/sddm/themes/breeze/
+sudo cp ~/.dotfiles/wallpapers/sunset-in-the-mountains-illustration_3840x2160_xtrafondos.com.jpg /usr/share/sddm/themes/breeze/
 
 # Apply icon theme
 /usr/lib/plasma-changeicons ~/.local/share/icons/kora
@@ -116,6 +123,9 @@ restoreFirefoxData () {
     cd $oldPath
 }
 restoreFirefoxData
+
+# Smooth scroll firefox
+echo export MOZ_USE_XINPUT2=1 | sudo tee /etc/profile.d/use-xinput2.sh
 
 # change shell for zsh
 chsh -s /bin/zsh

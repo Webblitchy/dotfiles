@@ -262,11 +262,17 @@ alias free='free -m'                                            # Show sizes in 
 alias mv="mv -i"
 
 alias ll="ls -Alho"
-alias open="dolphin"
+alias open="xdg-open"
 alias vrc="vim ~/.vimrc"
 alias grep="grep --color=auto"
 alias cours="cd /home/eliott/cours"
 alias hello="kdialog --passivepopup 'Hello'"
 alias wifi-list="nmcli device wifi"
 alias wifi-connect="nmcli device wifi connect --ask"
+alias cdf='cd $(fzf)'
 
+# need rmtrash
+if [[ -f /usr/bin/rmtrash ]]; then
+    alias rm='rmtrash'
+    alias rmdir='rmdirtrash'
+fi
