@@ -4,15 +4,11 @@ update_info=kwinrules.upd:replace-placement-string-to-enum,kwinrules.upd:use-vir
 [1]
 Description=Window settings for dolphin (transparent)
 clientmachine=localhost
-opacityactive=90
+opacityactive=75
 opacityactiverule=2
 title=Home — Dolphin
 types=1
 wmclass=dolphin
-wmclassmatch=1
-
-[2]
-Description=New window settings
 wmclassmatch=1
 
 [513888f7-c3b0-4aa8-8f2a-51cbe4b5c6bf]
@@ -28,8 +24,8 @@ wmclasscomplete=true
 wmclassmatch=3
 
 [General]
-count=2
-rules=1,2
+count=1
+rules=1
 
 [a650bbb7-5635-4391-9102-5398011cbd77]
 Description=Application settings for morgen

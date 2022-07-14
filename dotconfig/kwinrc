@@ -39,7 +39,7 @@ NightTemperature=3800
 alwaysopenonactivescreenEnabled=true
 blurEnabled=true
 contrastEnabled=true
-desktopchangeosdEnabled=true
+desktopchangeosdEnabled=false
 forceblurEnabled=true
 glideEnabled[$d]
 keepjetbrainsaboveEnabled=true
