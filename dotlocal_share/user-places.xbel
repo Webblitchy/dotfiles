@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE xbel>
-<xbel xmlns:bookmark="http://www.freedesktop.org/standards/desktop-bookmarks" xmlns:kdepriv="http://www.kde.org/kdepriv" xmlns:mime="http://www.freedesktop.org/standards/shared-mime-info">
+<xbel xmlns:mime="http://www.freedesktop.org/standards/shared-mime-info" xmlns:bookmark="http://www.freedesktop.org/standards/desktop-bookmarks" xmlns:kdepriv="http://www.kde.org/kdepriv">
  <info>
   <metadata owner="http://www.kde.org">
    <kde_places_version>4</kde_places_version>
@@ -94,20 +94,6 @@
    </metadata>
   </info>
  </bookmark>
- <bookmark href="file:///home/eliott/cours">
-  <title>cours</title>
-  <info>
-   <metadata owner="http://freedesktop.org">
-    <bookmark:icon name="folder-books"/>
-   </metadata>
-   <metadata owner="http://www.kde.org">
-    <ID>1649083935/0</ID>
-    <isSystemItem>false</isSystemItem>
-    <IsHidden>false</IsHidden>
-    <OnlyInApp/>
-   </metadata>
-  </info>
- </bookmark>
  <bookmark href="file:///home/eliott/Music">
   <title>Music</title>
   <info>
@@ -144,6 +130,20 @@
     <ID>1640691374/8</ID>
     <isSystemItem>true</isSystemItem>
     <IsHidden>true</IsHidden>
+   </metadata>
+  </info>
+ </bookmark>
+ <bookmark href="file:///home/eliott/kDrive/HEIG-VD/S5/">
+  <title>cours</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="folder-books"/>
+   </metadata>
+   <metadata owner="http://www.kde.org">
+    <ID>1649083935/0</ID>
+    <isSystemItem>false</isSystemItem>
+    <IsHidden>false</IsHidden>
+    <OnlyInApp/>
    </metadata>
   </info>
  </bookmark>
@@ -426,4 +426,17 @@
    </metadata>
   </info>
  </separator>
+ <bookmark href="tags:/A%20voir">
+  <title>A voir</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="tag"/>
+   </metadata>
+   <metadata owner="http://www.kde.org">
+    <ID>1663622775/0</ID>
+    <tag>A voir</tag>
+    <isSystemItem>true</isSystemItem>
+   </metadata>
+  </info>
+ </bookmark>
 </xbel>

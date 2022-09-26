@@ -255,24 +255,43 @@ DISABLE_CORRECTION="true"
 #Enable comments inside for inline commands
 setopt interactivecomments
 
-# my aliases
-alias cp="cp -i"                                                # Confirm before overwriting something
-alias df='df -h'                                                # Human-readable sizes
-alias free='free -m'                                            # Show sizes in MB
-alias mv="mv -i"
+# Enable autojump
+source /etc/profile.d/autojump.zsh
 
-alias ll="ls -Alho"
-alias open="xdg-open"
-alias vrc="vim ~/.vimrc"
-alias grep="grep --color=auto"
-alias cours="cd /home/eliott/cours"
-alias hello="kdialog --passivepopup 'Hello'"
-alias wifi-list="nmcli device wifi"
-alias wifi-connect="nmcli device wifi connect --ask"
-alias cdf='cd $(fzf)'
+# To use docker constant like on mac or windows
+export DOCKER_GATEWAY_HOST=172.17.0.1
 
-# need rmtrash
+
+# To use volta (nvm)
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
+
+### MY ALIASES ###
+
+# replacement aliases
+alias cp='cp -i'                                      # Confirm before overwriting something
+alias df='df -h'                                      # Human-readable sizes
+alias free='free -m'                                  # Show sizes in MB
+alias mv='mv -i'
+alias grep='grep --color=auto'
+alias ip='ip -c -br'                                  # color and brief
+alias bat='bat --style header,header-filename,header-filesize,grid,snip'
 if [[ -f /usr/bin/rmtrash ]]; then
+# need rmtrash
     alias rm='rmtrash'
     alias rmdir='rmdirtrash'
 fi
+
+# new commands
+alias ll='ls -Alho'
+alias open='xdg-open'
+alias vrc='vim ~/.vimrc'
+alias zrc='vim ~/.zshrc; source ~/.zshrc'
+alias cours='cd /home/eliott/kDrive/HEIG-VD/S5'
+alias hello="notify-send 'Hello world!' 'This is an example notification.' --icon=dialog-information"
+alias wifi-list='nmcli device wifi'
+alias wifi-connect='nmcli device wifi connect --ask'
+alias cdf='cd $(fzf)'
+alias vi='vim'
+
+

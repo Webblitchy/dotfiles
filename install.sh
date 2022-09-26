@@ -40,9 +40,6 @@ for file in $(ls myscripts); do
     sudo ln -sf ~/.dotfiles/myscripts/$file /usr/local/bin/$file
 done
 
-# Configure wireshark
-sudo chmod +x /usr/bin/dumpcap
-
 # Copy specifc settings
 
 # libinput gestures
@@ -94,6 +91,9 @@ sudo cp ~/.dotfiles/wallpapers/sunset-in-the-mountains-illustration_3840x2160_xt
 # Apply icon theme
 /usr/lib/plasma-changeicons ~/.local/share/icons/kora
 
+# Make fonts available on system (p.ex filename in Dolphin)
+sudo ln -sf ~/.dotfiles/local.conf  /etc/fonts/local.conf
+
 # save firefox settings
 saveFirefoxData () {
     # if too big, clear cache before
@@ -142,6 +142,9 @@ sudo ln -sf ~/.dotfiles/timeshift.json /etc/timeshift/timeshift.json
 # set grub chose time to 0 seconds
 sudo vim /etc/default/grub -u NONE -c "/GRUB_TIMEOUT" -c "s/[0-9]\+/0" -c "wq"
 sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+# Configure wireshark
+sudo chmod +x /usr/bin/dumpcap
 
 sudo systemctl enable bluetooth
 

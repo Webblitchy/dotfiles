@@ -9,7 +9,7 @@ showSubtodosInCalendarViews=false
 
 [GlobalCollectionSelection]
 Current=x-1
-Selection=c14,c13,c12
+Selection=c12,c13,c14
 
 [KFileDialog Settings]
 detailViewIconSize=16

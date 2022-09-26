@@ -1,20 +1,20 @@
-- 1.1.4
+- 1.1.5
 - _NAME: MX Master 3 Wireless Mouse
   _absent: [hi-res-scroll, lowres-scroll-mode, onboard_profiles, report_rate, pointer_speed, speed-change, backlight, backlight-timed, fn-swap, persistent-remappable-keys,
     disable-keyboard-keys, divert-crown, crown-smooth, divert-gkeys, m-key-leds, mr-key-led, multiplatform, gesture2-gestures, gesture2-divert, gesture2-params,
     sidetone, equalizer]
+  _battery: 4096
   _modelId: B02340820000
   _sensitive: {change-host: false, divert-keys: false, dpi: false, dpi-sliding: false, hires-scroll-mode: false, hires-smooth-invert: true, mouse-gestures: true,
     thumb-scroll-invert: true, thumb-scroll-mode: false}
   _unitId: 2A81D98A
   change-host: null
-  divert-keys: {82: 0, 83: 0, 86: 0, 195: 1, 196: 0}
+  divert-keys: {82: 0, 83: 0, 86: 0, 195: 2, 196: 0}
   dpi: 1000
   dpi-sliding: 0
   hires-scroll-mode: false
   hires-smooth-invert: true
   hires-smooth-resolution: true
-  mouse-gestures: 195
   reprogrammable-keys: {80: 80, 81: 81, 82: 82, 83: 83, 86: 86, 195: 195, 196: 196}
   smart-shift: 10
   thumb-scroll-invert: true
@@ -23,6 +23,7 @@
   _absent: [hi-res-scroll, lowres-scroll-mode, hires-smooth-invert, hires-smooth-resolution, hires-scroll-mode, smart-shift, thumb-scroll-mode, thumb-scroll-invert,
     onboard_profiles, report_rate, pointer_speed, dpi, dpi-sliding, speed-change, mouse-gestures, backlight-timed, reprogrammable-keys, persistent-remappable-keys,
     divert-crown, crown-smooth, divert-gkeys, m-key-leds, mr-key-led, gesture2-gestures, gesture2-divert, gesture2-params, sidetone, equalizer]
+  _battery: 4096
   _modelId: B35B408A0000
   _sensitive: {multiplatform: false}
   _serial: 6E1E91F0
@@ -54,3 +55,4 @@
   smart-shift: 10
   thumb-scroll-invert: true
   thumb-scroll-mode: false
+- {_NAME: MX Master 3 Wireless Mouse, _serial: 2A81D98A, _wpid: '4082'}

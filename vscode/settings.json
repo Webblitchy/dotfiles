@@ -10,5 +10,6 @@
     },
     "terminal.integrated.fontFamily": "MesloLGS NF",
     "telemetry.telemetryLevel": "off",
-    "workbench.startupEditor": "none"
+    "workbench.startupEditor": "none",
+    "javascript.updateImportsOnFileMove.enabled": "always"
 }

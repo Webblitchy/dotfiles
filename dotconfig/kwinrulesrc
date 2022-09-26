@@ -11,6 +11,16 @@ types=1
 wmclass=dolphin
 wmclassmatch=1
 
+[2]
+Description=Spotify transparent
+clientmachine=localhost
+opacityactive=85
+opacityactiverule=2
+title=Home — Dolphin
+types=1
+wmclass=spotify
+wmclassmatch=2
+
 [513888f7-c3b0-4aa8-8f2a-51cbe4b5c6bf]
 Description=New window settings
 wmclassmatch=1
@@ -35,7 +45,7 @@ wmclassmatch=3
 
 [General]
 count=2
-rules=1,8717264f-f861-48db-a4e0-5bcbda764a44
+rules=1,2
 
 [a650bbb7-5635-4391-9102-5398011cbd77]
 Description=Application settings for morgen

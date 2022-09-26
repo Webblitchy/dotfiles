@@ -24,8 +24,8 @@ IntensityAmount=0
 IntensityEffect=0
 
 [Colors:Button]
-BackgroundAlternate=8,70,116,0
-BackgroundNormal=49,54,59,150
+BackgroundAlternate=14,77,124
+BackgroundNormal=49,54,59
 DecorationFocus=0,87,152
 DecorationHover=0,87,152
 ForegroundActive=0,87,152
@@ -136,20 +136,25 @@ ForegroundPositive=39,174,96
 ForegroundVisited=155,89,182
 
 [DirSelect Dialog]
-DirSelectDialog Size=800,594
-History Items[$e]=file:$HOME/VM Shared,file:$HOME/Pictures,file:$HOME/VirtualBox VMs/reds2021-09/Shared,file:$HOME/OwnCloud,file:$HOME
+DirSelectDialog Size=799,612
+History Items[$e]=file:$HOME/kDrive/HEIG-VD/E2,file:$HOME/VM Shared,file:$HOME/Pictures,file:$HOME/VirtualBox VMs/reds2021-09/Shared,file:$HOME/OwnCloud,file:$HOME
 
 [General]
 AccentColor=0,87,152
 BrowserApplication=firefox.desktop
-ColorSchemeHash=1d0fedc67a946d678003332817452c3e9373f021
+ColorSchemeHash=bcce7c1c6181c5e14e633cd8301e7a9036b67ac6
 Name=Breeze Dark
 UseSystemBell=true
 XftAntialias=true
-XftHintStyle=hintslight
+XftHintStyle=hintmedium
 XftSubPixel=rgb
 accentColorFromWallpaper=false
+fixed=Clarity City,10,-1,5,50,0,0,0,0,0
+font=Clarity City,10,-1,5,50,0,0,0,0,0
+menuFont=Clarity City,10,-1,5,50,0,0,0,0,0
 shadeSortColumn=true
+smallestReadableFont=Clarity City,8,-1,5,50,0,0,0,0,0
+toolBarFont=Clarity City,10,-1,5,50,0,0,0,0,0
 widgetStyle=Breeze
 
 [Icons]
@@ -199,9 +204,10 @@ Back=Back
 Forward=Forward
 
 [WM]
-activeBackground=35,47,59
+activeBackground=49,54,59
 activeBlend=252,252,252
-activeForeground=255,255,255
-inactiveBackground=35,47,59
+activeFont=Clarity City,10,-1,5,50,0,0,0,0,0
+activeForeground=252,252,252
+inactiveBackground=42,46,50
 inactiveBlend=161,169,177
-inactiveForeground=167,171,176
+inactiveForeground=161,169,177

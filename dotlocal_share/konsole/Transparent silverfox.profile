@@ -26,6 +26,8 @@ TextEditorCmd=0
 KeyBindings=default
 
 [Scrolling]
+HighlightScrolledLines=false
+HistorySize=10000
 ReflowLines=true
 ScrollBarPosition=2
 

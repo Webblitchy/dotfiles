@@ -16,6 +16,9 @@ eDP-1 DP-3 YPosition 2560x1440=148
 [Desktop Entry]
 DefaultProfile=Transparent silverfox.profile
 
+[General]
+ConfigVersion=1
+
 [KonsoleWindow]
 RememberWindowSize=false
 
@@ -54,23 +57,23 @@ eDP-1 DP-3 Height 1536x864=602
 eDP-1 DP-3 Height 1920x1080=851
 eDP-1 DP-3 Height 2048x1152=602
 eDP-1 DP-3 Height 2560x1440=511
-eDP-1 DP-3 Width 1536x864=989
+eDP-1 DP-3 Width 1536x864=982
 eDP-1 DP-3 Width 1920x1080=1903
-eDP-1 DP-3 Width 2048x1152=989
+eDP-1 DP-3 Width 2048x1152=982
 eDP-1 DP-3 Width 2560x1440=911
-eDP-1 DP-3 XPosition 1536x864=2890
-eDP-1 DP-3 XPosition 2048x1152=599
+eDP-1 DP-3 XPosition 1536x864=2994
+eDP-1 DP-3 XPosition 2048x1152=907
 eDP-1 DP-3 XPosition 2560x1440=314
-eDP-1 DP-3 YPosition 1536x864=542
-eDP-1 DP-3 YPosition 2048x1152=198
+eDP-1 DP-3 YPosition 1536x864=48
+eDP-1 DP-3 YPosition 2048x1152=48
 eDP-1 DP-3 YPosition 2560x1440=557
 eDP-1 Height 1536x864=602
 eDP-1 Height 1920x1080=511
-eDP-1 Width 1536x864=989
+eDP-1 Width 1536x864=982
 eDP-1 Width 1920x1080=911
-eDP-1 XPosition 1536x864=544
+eDP-1 XPosition 1536x864=277
 eDP-1 XPosition 1920x1080=419
-eDP-1 YPosition 1536x864=224
+eDP-1 YPosition 1536x864=153
 eDP-1 YPosition 1920x1080=297
 eDP-1-1 DP-1-3 Height 1920x1080=623
 eDP-1-1 DP-1-3 Height 2560x1440=682

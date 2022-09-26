@@ -7,7 +7,7 @@ switch-to-activity-54d7f042-e18a-45c5-8482-79e07226b252=none,none,Switch to acti
 [KDE Keyboard Layout Switcher]
 Switch keyboard layout to Français (Suisse)=none,none,Passer à la disposition de clavier Français (Suisse)
 Switch keyboard layout to French (Switzerland)=none,none,Switch keyboard layout to French (Switzerland)
-Switch to Next Keyboard Layout=Ctrl+Alt+K,none,Switch to Next Keyboard Layout
+Switch to Next Keyboard Layout=none,none,Switch to Next Keyboard Layout
 _k_friendly_name=Keyboard Layout Switcher
 
 [kaccess]
@@ -21,14 +21,13 @@ Toggle Touchpad=Touchpad Toggle,Touchpad Toggle,Toggle Touchpad
 _k_friendly_name=Touchpad
 
 [kded5]
-Show System Activity=Ctrl+Esc,Ctrl+Esc,Show System Activity
+Show System Activity=Ctrl+Esc\tMeta+Alt+Esc,Ctrl+Esc,Show System Activity
 _k_friendly_name=KDE Daemon
 display=Display\tMeta+P,Display\tMeta+P,Switch Display
 
 [khotkeys]
 _k_friendly_name=Custom Shortcuts Service
 {d03619b6-9b3c-48cc-9d9c-a2aadb485550}=none,none,Search
-{d0b46648-7751-4d05-9fb8-fac7d362871d}=Ctrl+Alt+Shift+Esc,none,test
 
 [kmix]
 _k_friendly_name=Audio Volume
@@ -42,7 +41,7 @@ mute=Volume Mute,Volume Mute,Mute
 [ksmserver]
 Halt Without Confirmation=none,,Halt Without Confirmation
 Lock Session=Meta+L\tCtrl+Alt+L\tScreensaver,Meta+L\tScreensaver,Lock Session
-Log Out=Meta+Shift+Q\tCtrl+Alt+Del\tAlt+Shift+Q,Ctrl+Alt+Del,Log Out
+Log Out=Ctrl+Alt+Del\tAlt+Shift+Q,Ctrl+Alt+Del,Log Out
 Log Out Without Confirmation=none,,Log Out Without Confirmation
 Reboot Without Confirmation=none,,Reboot Without Confirmation
 _k_friendly_name=Session Management
@@ -296,11 +295,11 @@ _launch=Meta+.,Meta+.,Emoji Selector
 ActiveWindowScreenShot=Meta+Print,Meta+Print,Capture Active Window
 CurrentMonitorScreenShot=none,none,Capture Current Monitor
 FullScreenScreenShot=none,Shift+Print,Capture Entire Desktop
-OpenWithoutScreenshot=none,none,Launch without taking a screenshot
+OpenWithoutScreenshot=none,none,Launch Spectacle without capturing
 RectangularRegionScreenShot=Meta+Shift+Print,Meta+Shift+Print,Capture Rectangular Region
 WindowUnderCursorScreenShot=Meta+Ctrl+Print,Meta+Ctrl+Print,Capture Window Under Cursor
 _k_friendly_name=Spectacle
-_launch=none,Print,Spectacle
+_launch=none,Print,Launch Spectacle
 
 [org_kde_powerdevil]
 Decrease Keyboard Brightness=Keyboard Brightness Down,Keyboard Brightness Down,Decrease Keyboard Brightness
@@ -360,7 +359,3 @@ kcm-lookandfeel=none,none,Global Theme
 kcm-users=none,none,Users
 powerdevilprofilesconfig=none,none,Energy Saving
 screenlocker=none,none,Screen Locking
-
-[yakuake]
-_k_friendly_name=Yakuake
-toggle-window-state=none,F12,Open/Retract Yakuake
