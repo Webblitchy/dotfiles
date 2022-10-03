@@ -3,6 +3,7 @@ _k_friendly_name=Activity Manager
 switch-to-activity-137a13b9-5bb0-4689-a679-355fab064ba4=none,none,Switch to activity "Default"
 switch-to-activity-31ea0295-d4f0-430b-8cdf-1ef699812dbe=none,none,Switch to activity "Default"
 switch-to-activity-54d7f042-e18a-45c5-8482-79e07226b252=none,none,Switch to activity "Default"
+switch-to-activity-5fc0fb0c-0e83-42f7-ab66-a251abdda174=none,none,Switch to activity "Default"
 
 [KDE Keyboard Layout Switcher]
 Switch keyboard layout to Français (Suisse)=none,none,Passer à la disposition de clavier Français (Suisse)
@@ -252,11 +253,11 @@ show-on-mouse-pos=Meta+V,Meta+V,Open Klipper at Mouse Position
 
 [mediacontrol]
 _k_friendly_name=Media Controller
-mediavolumedown=none,,Media volume down
-mediavolumeup=none,,Media volume up
+mediavolumedown=none,none,Media volume down
+mediavolumeup=none,none,Media volume up
 nextmedia=Media Next,Media Next,Media playback next
 pausemedia=Media Pause,Media Pause,Pause media playback
-playmedia=none,,Play media playback
+playmedia=none,none,Play media playback
 playpausemedia=Media Play,Media Play,Play/Pause media playback
 previousmedia=Media Previous,Media Previous,Media playback previous
 stopmedia=Media Stop,Media Stop,Stop media playback
@@ -328,6 +329,7 @@ activate task manager entry 8=Meta+8,Meta+8,Activate Task Manager Entry 8
 activate task manager entry 9=Meta+9,Meta+9,Activate Task Manager Entry 9
 activate widget 23=none,none,Activate Application Launcher Widget
 activate widget 25=none,none,Activer le composant graphique Tâches Latte
+activate widget 26=none,none,Activate Application Launcher Widget
 activate widget 3=Alt+F1,none,Activer le composant graphique Lanceur d'application
 clear-history=none,none,Clear Clipboard History
 clipboard_action=Ctrl+Alt+X,Meta+Ctrl+X,Automatic Action Popup Menu

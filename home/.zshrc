@@ -293,5 +293,5 @@ alias wifi-list='nmcli device wifi'
 alias wifi-connect='nmcli device wifi connect --ask'
 alias cdf='cd $(fzf)'
 alias vi='vim'
-
+alias btop='sudo btop'
 

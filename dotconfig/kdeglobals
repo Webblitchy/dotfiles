@@ -136,7 +136,7 @@ ForegroundPositive=39,174,96
 ForegroundVisited=155,89,182
 
 [DirSelect Dialog]
-DirSelectDialog Size=799,612
+DirSelectDialog Size=801,612
 History Items[$e]=file:$HOME/kDrive/HEIG-VD/E2,file:$HOME/VM Shared,file:$HOME/Pictures,file:$HOME/VirtualBox VMs/reds2021-09/Shared,file:$HOME/OwnCloud,file:$HOME
 
 [General]
@@ -187,7 +187,7 @@ Sort directories first=true
 Sort hidden files last=false
 Sort reversed=false
 Speedbar Width=138
-View Style=Simple
+View Style=Detail
 
 [KScreen]
 ScaleFactor=1.25

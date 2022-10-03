@@ -41,6 +41,12 @@ thickness=44
 [PlasmaViews][Panel 22][Horizontal1920]
 thickness=44
 
+[PlasmaViews][Panel 25][Defaults]
+thickness=34
+
+[PlasmaViews][Panel 25][Horizontal1920]
+thickness=34
+
 [PlasmaViews][Panel 4][Defaults]
 thickness=27
 

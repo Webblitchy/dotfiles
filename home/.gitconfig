@@ -1,7 +1,7 @@
 [user]
 	name = Webblitchy
 	email = 55515713+Webblitchy@users.noreply.github.com
-	signingkey = 4D80AE4E1C242CAC7AB7E2F939D698317A4CAE09
+	signingkey = D82D12852AFC900A2FC3CB91680A3F4FA50253B3
 [commit]
 	gpgsign = true
 [pull]

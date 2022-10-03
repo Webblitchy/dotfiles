@@ -1,16 +1,6 @@
 [$Version]
 update_info=kwinrules.upd:replace-placement-string-to-enum,kwinrules.upd:use-virtual-desktop-ids
 
-[1]
-Description=Dolphin transparent
-clientmachine=localhost
-opacityactive=80
-opacityactiverule=2
-title=Home — Dolphin
-types=1
-wmclass=dolphin
-wmclassmatch=1
-
 [2]
 Description=Spotify transparent
 clientmachine=localhost
@@ -42,10 +32,6 @@ acceptfocusrule=2
 wmclass=([Cc][Ll]ion)|([Ii]ntelli[Jj])|([Pp]y[Cc]harm)|([Jj]et[Bb]rains)
 wmclasscomplete=true
 wmclassmatch=3
-
-[General]
-count=2
-rules=1,2
 
 [a650bbb7-5635-4391-9102-5398011cbd77]
 Description=Application settings for morgen

@@ -16,14 +16,14 @@ immutability=1
 plugin=org.kde.plasma.devicenotifier
 
 [Containments][129][Applets][131][Configuration]
-PreloadWeight=41
+PreloadWeight=1
 
 [Containments][129][Applets][133]
 immutability=1
 plugin=org.kde.plasma.volume
 
 [Containments][129][Applets][133][Configuration]
-PreloadWeight=15
+PreloadWeight=0
 
 [Containments][129][Applets][133][Configuration][ConfigDialog]
 DialogHeight=540
@@ -69,24 +69,14 @@ immutability=1
 plugin=org.kde.plasma.networkmanagement
 
 [Containments][129][Applets][140][Configuration]
-PreloadWeight=100
+PreloadWeight=80
 
 [Containments][129][Applets][142]
 immutability=1
 plugin=org.kde.plasma.bluetooth
 
 [Containments][129][Applets][142][Configuration]
-PreloadWeight=78
-
-[Containments][129][Applets][160][Configuration]
-PreloadWeight=42
-
-[Containments][129][Applets][172]
-immutability=1
-plugin=org.kde.plasma.mediacontroller
-
-[Containments][129][Applets][172][Configuration]
-PreloadWeight=0
+PreloadWeight=38
 
 [Containments][129][ConfigDialog]
 DialogHeight=720
@@ -97,9 +87,10 @@ PreloadWeight=10
 
 [Containments][129][General]
 extraItems=org.kde.plasma.devicenotifier,org.kde.plasma.networkmanagement,org.kde.plasma.volume,org.kde.plasma.mediacontroller,org.kde.plasma.clipboard,org.kde.plasma.printmanager,org.kde.kdeconnect,org.kde.plasma.notifications,org.kde.plasma.bluetooth,org.kde.plasma.nightcolorcontrol
-hiddenItems=flameshot,Gestionnaire de paquets,MSM Notifier for Plasma5,ownCloud,org.kde.plasma.clipboard,org.kde.plasma.nightcolorcontrol,morgen,org.kde.kdeconnect,Morgen1,kDrive,Solaar,org.kde.plasma.devicenotifier,org.kde.plasma.notifications,Optimus Manager Qt,firewall-applet
+hiddenItems=flameshot,Gestionnaire de paquets,MSM Notifier for Plasma5,ownCloud,org.kde.plasma.clipboard,org.kde.plasma.nightcolorcontrol,morgen,org.kde.kdeconnect,Morgen1,Solaar,org.kde.plasma.devicenotifier,org.kde.plasma.notifications,Optimus Manager Qt,firewall-applet
 iconSpacing=6
 knownItems=org.kde.plasma.devicenotifier,org.kde.plasma.manage-inputmethod,org.kde.plasma.battery,org.kde.plasma.networkmanagement,org.kde.plasma.volume,org.kde.plasma.notifications,org.kde.plasma.mediacontroller,org.kde.plasma.clipboard,org.kde.plasma.bluetooth,org.kde.plasma.printmanager,org.kde.kdeconnect,org.kde.plasma.keyboardlayout,org.kde.plasma.keyboardindicator,org.kde.plasma.nightcolorcontrol,org.kde.kalendar.contact
+shownItems=kDrive
 
 [Containments][21]
 activityId=
@@ -252,14 +243,21 @@ immutability=1
 plugin=org.kde.plasma.battery
 
 [Containments][26][Applets][173][Configuration]
-PreloadWeight=85
+PreloadWeight=60
+
+[Containments][26][Applets][174]
+immutability=1
+plugin=org.kde.plasma.batteryPercentage
+
+[Containments][26][Applets][174][Configuration]
+PreloadWeight=23
 
 [Containments][26][Applets][78]
 immutability=1
 plugin=org.kde.plasma.digitalclock
 
 [Containments][26][Applets][78][Configuration]
-PreloadWeight=25
+PreloadWeight=0
 
 [Containments][26][Applets][78][Configuration][Appearance]
 dateDisplayFormat=BesideTime
@@ -280,7 +278,7 @@ immutability=1
 plugin=org.kde.plasma.kickoff
 
 [Containments][26][Applets][79][Configuration]
-PreloadWeight=100
+PreloadWeight=70
 
 [Containments][26][Applets][79][Configuration][ConfigDialog]
 DialogHeight=540
@@ -337,26 +335,8 @@ immutability=1
 plugin=org.kde.plasma.systemtray
 
 [Containments][26][Applets][83][Configuration]
-PreloadWeight=100
+PreloadWeight=92
 SystrayContainmentId=129
-
-[Containments][26][Applets][84]
-immutability=1
-plugin=org.kde.plasma.bigSur-inlineBattery
-
-[Containments][26][Applets][84][Configuration]
-PreloadWeight=30
-
-[Containments][26][Applets][84][Configuration][ConfigDialog]
-DialogHeight=540
-DialogWidth=720
-
-[Containments][26][Applets][84][Configuration][General]
-chargingColor=#2d5ef8
-iconHeight=13
-lowBatteryColor=#f82d5e
-padding=6
-showBatteryIcon=false
 
 [Containments][26][Applets][85]
 immutability=1
@@ -416,7 +396,7 @@ PreloadWeight=0
 advanced=false
 alignment=10
 alignmentUpgraded=true
-appletOrder=85;79;97;80;171;83;78;99;173;84;100;167;82;81
+appletOrder=85;79;97;80;171;83;78;99;173;174;100;167;82;81
 appletShadowsEnabled=false
 autoDecreaseIconSize=false
 autoSizeEnabled=false
@@ -453,7 +433,7 @@ customBackground=
 customTextColor=
 disableBordersForMaximizedWindows=false
 icon=
-lastUsedActivity=54d7f042-e18a-45c5-8482-79e07226b252
+lastUsedActivity=5fc0fb0c-0e83-42f7-ab66-a251abdda174
 launchers=
 popUpMargin=-1
 preferredForShortcutsTouched=false
