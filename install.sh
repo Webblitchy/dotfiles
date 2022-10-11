@@ -2,7 +2,7 @@
 
 if (( $EUID != 0 )); then
     echo "Please run as root"
-    exit
+    exit 1
 fi
 
 cd ~/.dotfiles
@@ -48,7 +48,7 @@ done
 # Copy specifc settings
 
 # libinput gestures
-gpasswd -a $USER input
+gpasswd -a $SUDO_USER input
 sudo -u $SUDO_USER libinput-gestures-setup autostart
 
 # docker
@@ -76,6 +76,9 @@ for nickname in ${programs[@]}; do
         sudo -u $SUDO_USER ln -sf ~/.dotfiles/jetbrains/$file ~/.config/JetBrains/$program/options/$file
     done
 done
+
+# install rust
+sudo -u $SUDO_USER curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sudo -u $SUDO_USER sh -s  -- -y
 
 # add zsh plugins
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /usr/share/zsh/plugins/zsh-syntax-highlighting/
@@ -151,6 +154,9 @@ systemctl enable bluetooth
 sudo -u $SUDO_USER chsh -s /bin/zsh
 
 restoreFirefoxData
+
+# To check if python packages are missing
+sudo -u $SUDO_USER pip check
 
 echo Everything is done !
 read -p "Do you want to reboot to apply config ?[y/n]: " userEntry

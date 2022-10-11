@@ -284,7 +284,7 @@ fi
 
 # new commands
 alias ll='ls -Alho'
-alias open='xdg-open'
+alias open='xdg-open $1 2>&1 > /dev/null'
 alias vrc='vim ~/.vimrc'
 alias zrc='vim ~/.zshrc; source ~/.zshrc'
 alias cours='cd /home/eliott/kDrive/HEIG-VD/S5'

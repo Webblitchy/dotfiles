@@ -27,8 +27,8 @@ eDP-1 DP-3 Height 1920x1080=607
 eDP-1 DP-3 Height 2560x1440=586
 eDP-1 DP-3 Width 1920x1080=466
 eDP-1 DP-3 Width 2560x1440=476
-eDP-1 Height 1920x1080=538
-eDP-1 Width 1920x1080=605
+eDP-1 Height 1920x1080=510
+eDP-1 Width 1920x1080=614
 
 [LatteSettingsDialog]
 downloadWindowSize=980,600

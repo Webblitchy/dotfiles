@@ -30,8 +30,6 @@ okular
 openssh
 pinta
 qbittorrent
-rustup
-timeshift-bin
 vim
 vim-spell-en
 vim-spell-fr
@@ -72,3 +70,4 @@ rmtrash
 tree
 autojump
 p7zip
+traceroute

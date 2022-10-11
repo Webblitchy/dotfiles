@@ -15,6 +15,7 @@ DimWhenInactive=false
 InvertSelectionColors=false
 Name=Transparent silverfox
 Parent=FALLBACK/
+ShowTerminalSizeHint=false
 TerminalCenter=false
 TerminalColumns=140
 TerminalRows=40

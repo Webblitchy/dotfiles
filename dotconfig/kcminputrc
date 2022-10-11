@@ -8,7 +8,8 @@ RepeatDelay=250
 
 [Mouse]
 X11LibInputXAccelProfileFlat=false
-XLbInptNaturalScroll=false
+XLbInptAccelProfileFlat=false
+XLbInptNaturalScroll=true
 XLbInptPointerAcceleration=0.2
 cursorSize=32
 cursorTheme=volantes_cursors

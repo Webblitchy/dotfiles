@@ -80,7 +80,7 @@ ToolButtonStyle=IconOnly
 
 [Open-with settings]
 CompletionMode=1
-History=kat,kate,vlc,vis,gwe,vl,code,inte,intell,visu,scri,scr,wir,gnu,dol
+History=kate,int,vis,fire,kat,vlc,gwe,vl,code,inte,intell,visu,scri,scr,wir
 
 [PreviewSettings]
 Plugins=appimagethumbnail,audiothumbnail,comicbookthumbnail,cursorthumbnail,djvuthumbnail,ebookthumbnail,exrthumbnail,fontthumbnail,imagethumbnail,jpegthumbnail,kraorathumbnail,windowsexethumbnail,windowsimagethumbnail,opendocumentthumbnail,svgthumbnail
