@@ -11,5 +11,6 @@
     "terminal.integrated.fontFamily": "MesloLGS NF",
     "telemetry.telemetryLevel": "off",
     "workbench.startupEditor": "none",
-    "javascript.updateImportsOnFileMove.enabled": "always"
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "explorer.confirmDelete": false
 }

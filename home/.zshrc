@@ -278,8 +278,8 @@ alias ip='ip -c -br'                                  # color and brief
 alias bat='bat --style header,header-filename,header-filesize,grid,snip'
 if [[ -f /usr/bin/rmtrash ]]; then
 # need rmtrash
-    alias rm='rmtrash'
-    alias rmdir='rmdirtrash'
+    # alias rm='rmtrash'
+    # alias rmdir='rmdirtrash'
 fi
 
 # new commands
@@ -294,4 +294,6 @@ alias wifi-connect='nmcli device wifi connect --ask'
 alias cdf='cd $(fzf)'
 alias vi='vim'
 alias btop='sudo btop'
+alias vpn='sudo openconnect --protocol=gp vpn.heig-vd.ch -u eliott.chytil@heig-vd.ch -b'
+alias pip-update='pip3 list --outdated | cut -f1 -d" " | tr " " "\n" | tail -n +3 | xargs pip3 install -U'
 

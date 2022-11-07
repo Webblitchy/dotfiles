@@ -55,6 +55,10 @@ sudo -u $SUDO_USER libinput-gestures-setup autostart
 gpasswd -a $user docker
 systemctl enable docker.service
 
+# virtualbox
+usermod -aG vboxusers $SUDO_USER
+
+
 # vim
 sudo -u $SUDO_USER mkdir -p ~/.vim/undodir 2>/dev/null
 sudo -u $SUDO_USER vim -c "PlugInstall" -c "PlugClean" -c "qa!"
@@ -95,6 +99,10 @@ sudo -u $SUDO_USER plasma-apply-wallpaperimage ~/Pictures/wallpapers/wallhaven-1
 cp ~/.dotfiles/sddm/theme.conf /usr/share/sddm/themes/breeze/
 cp ~/.dotfiles/sddm/theme.conf.user /usr/share/sddm/themes/breeze/
 cp ~/.dotfiles/wallpapers/sunset-in-the-mountains-illustration_3840x2160_xtrafondos.com.jpg /usr/share/sddm/themes/breeze/
+
+# transfer optimus-manager settings
+mkdir /etc/optimus-manager
+cp ~/.dotfiles/optimus-manager.conf /etc/optimus-manager/
 
 # Apply icon theme
 sudo -u $SUDO_USER /usr/lib/plasma-changeicons ~/.local/share/icons/kora

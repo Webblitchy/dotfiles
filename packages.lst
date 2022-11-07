@@ -20,7 +20,6 @@ kate
 kcalc
 kdeconnect
 konsole
-latte-dock-git
 neofetch
 nmap
 noto-fonts
@@ -71,3 +70,5 @@ tree
 autojump
 p7zip
 traceroute
+partitionmanager
+powertop
