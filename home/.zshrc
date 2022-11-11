@@ -296,4 +296,5 @@ alias vi='vim'
 alias btop='sudo btop'
 alias vpn='sudo openconnect --protocol=gp vpn.heig-vd.ch -u eliott.chytil@heig-vd.ch -b'
 alias pip-update='pip3 list --outdated | cut -f1 -d" " | tr " " "\n" | tail -n +3 | xargs pip3 install -U'
+alias fix='kwin_x11 --replace'
 

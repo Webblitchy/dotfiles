@@ -1,3 +1,5 @@
 [General]
+IgnoreImages=false
 MaxClipItems=10
-Version=5.23.4
+URLGrabberEnabled=true
+Version=5.26.3
