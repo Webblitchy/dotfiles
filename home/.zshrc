@@ -34,8 +34,6 @@ zstyle ':completion:*' cache-path ~/.zsh/cache
 HISTFILE=~/.zhistory
 HISTSIZE=10000
 SAVEHIST=10000
-#export EDITOR=/usr/bin/nano
-#export VISUAL=/usr/bin/nano
 WORDCHARS=${WORDCHARS//\/[&.;]}                                 # Don't consider certain characters part of the word
 
 
@@ -83,6 +81,14 @@ export LESS=-R
 
 
 ## Plugins section: Enable fish style features
+
+# Enable powerlevel10k theme
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# Load my p10k config
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
 # Use syntax highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # Use history substring search
@@ -94,11 +100,6 @@ bindkey "$terminfo[kcud1]" history-substring-search-down
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
-# Offer to install missing package if command is not found
-if [[ -r /usr/share/zsh/functions/command-not-found.zsh ]]; then
-    source /usr/share/zsh/functions/command-not-found.zsh
-    export PKGFILE_PROMPT_INSTALL_MISSING=1
-fi
 
 # Set terminal window and tab/icon title
 #
@@ -205,39 +206,7 @@ export LS_OPTIONS='--color=auto'
 eval "$(dircolors -b)"
 alias ls='ls $LS_OPTIONS'
 #######################################################################
-# BASIC PROMPT FROM MANJARO
-() {
-  emulate -L zsh
-
-# Customization
-  source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
-  source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-  # Determine terminal capabilities.
-  {
-    if ! zmodload zsh/langinfo zsh/terminfo ||
-       [[ $langinfo[CODESET] != (utf|UTF)(-|)8 || $TERM == (dumb|linux) ]] ||
-       (( terminfo[colors] < 256 )); then
-      # Don't use the powerline config. It won't work on this terminal.
-      local USE_POWERLINE=false
-      # Define alias `x` if our parent process is `login`.
-      local parent
-      if { parent=$(</proc/$PPID/comm) } && [[ ${parent:t} == login ]]; then
-        alias x='startx ~/.xinitrc'
-      fi
-    fi
-  } 2>/dev/null
-
-  if [[ $USE_POWERLINE == false ]]; then
-    # Use 8 colors and ASCII.
-    source /usr/share/zsh/p10k-portable.zsh
-    ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=black,bold'
-  else
-    # Use 256 colors and UNICODE.
-    ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=244'
-    [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-  fi
-}
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=244'
 
 # Apply fzf-gruvbox theme
 # https://github.com/base16-project/base16-fzf
@@ -278,8 +247,8 @@ alias ip='ip -c -br'                                  # color and brief
 alias bat='bat --style header,header-filename,header-filesize,grid,snip'
 if [[ -f /usr/bin/rmtrash ]]; then
 # need rmtrash
-    # alias rm='rmtrash'
-    # alias rmdir='rmdirtrash'
+     alias rm='rmtrash'
+     alias rmdir='rmdirtrash'
 fi
 
 # new commands
@@ -294,7 +263,6 @@ alias wifi-connect='nmcli device wifi connect --ask'
 alias cdf='cd $(fzf)'
 alias vi='vim'
 alias btop='sudo btop'
-alias vpn='sudo openconnect --protocol=gp vpn.heig-vd.ch -u eliott.chytil@heig-vd.ch -b'
 alias pip-update='pip3 list --outdated | cut -f1 -d" " | tr " " "\n" | tail -n +3 | xargs pip3 install -U'
 alias fix='kwin_x11 --replace'
 
