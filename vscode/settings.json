@@ -1,5 +1,5 @@
 {
-    "workbench.colorTheme": "Andromeda",
+    "workbench.colorTheme": "Atom One Dark",
     "editor.inlineSuggest.enabled": true,
     "window.zoomLevel": 3,
     "github.copilot.enable": {
@@ -12,5 +12,6 @@
     "telemetry.telemetryLevel": "off",
     "workbench.startupEditor": "none",
     "javascript.updateImportsOnFileMove.enabled": "always",
-    "explorer.confirmDelete": false
+    "explorer.confirmDelete": false,
+    "editor.unicodeHighlight.nonBasicASCII": false
 }

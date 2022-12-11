@@ -11,3 +11,6 @@
 	excludesfile = ~/.gitignore_global
 [alias]
 	graph = log --all --decorate --oneline --graph
+    poule = pull
+[init]
+	defaultBranch = main
