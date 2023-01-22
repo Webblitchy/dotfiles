@@ -5,9 +5,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# Use powerline
-USE_POWERLINE="true"
-
 ######################################################################
 # BASIC ZSH config (taken from manjaro)
 ## Options section
@@ -266,4 +263,4 @@ alias btop='sudo btop'
 alias pip-update='pip3 list --outdated | cut -f1 -d" " | tr " " "\n" | tail -n +3 | xargs pip3 install -U'
 alias fix='kwin_x11 --replace'
 alias spoti='spt' # for spotify-tui
-
+alias lf='vim $1 -c "set ff=unix" -c ":wq"' # replace CRLF by LF

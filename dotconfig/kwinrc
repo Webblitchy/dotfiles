@@ -24,6 +24,9 @@ BlurStrength=13
 [Effect-kwin4_effect_translucency]
 MoveResize=87
 
+[Effect-slide]
+SlideDocks=true
+
 [Effect-windowview]
 BorderActivateAll=9
 
