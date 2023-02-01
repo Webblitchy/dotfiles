@@ -6,12 +6,13 @@
         "*": true,
         "yaml": false,
         "plaintext": false,
-        "markdown": true
+        "markdown": false
     },
     "terminal.integrated.fontFamily": "MesloLGS NF",
     "telemetry.telemetryLevel": "off",
     "workbench.startupEditor": "none",
     "javascript.updateImportsOnFileMove.enabled": "always",
     "explorer.confirmDelete": false,
-    "editor.unicodeHighlight.nonBasicASCII": false
+    "editor.unicodeHighlight.nonBasicASCII": false,
+    "extensions.ignoreRecommendations": true
 }

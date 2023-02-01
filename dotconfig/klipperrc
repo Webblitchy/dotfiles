@@ -1,5 +1,7 @@
+[Actions]
+EnableMagicMimeActions=false
+
 [General]
 IgnoreImages=false
-MaxClipItems=10
-URLGrabberEnabled=true
-Version=5.26.3
+TimeoutForActionPopups=0
+Version=5.26.5

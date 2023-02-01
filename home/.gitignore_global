@@ -1,3 +1,4 @@
 # ignore jetbrains folder
 .idea
 .DS_Store
+.directory
