@@ -100,7 +100,6 @@ vim.o.breakindent = true
 
 -- Decrease update time
 vim.o.updatetime = 250
-vim.wo.signcolumn = 'yes'
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
@@ -156,18 +155,24 @@ vim.o.termguicolors = true
 vim.g.gruvbox_italic = 1 -- italic for comments
 vim.cmd [[colorscheme gruvbox]]
 
-
 -- colors
 vim.cmd [[highlight Normal guibg=NONE ctermbg=NONE]] -- transparent background
-vim.cmd [[highlight SignColumn ctermbg=NONE guibg=NONE]]  -- Sign column has same color as number column
-vim.cmd [[highlight CursorLineNr guifg=#fe8019]] -- current line in gruvbox light orange
-vim.cmd [[highlight IncSearch guifg=#b8bb26]] -- search in orange
+vim.cmd [[highlight SignColumn guibg=NONE]]  -- Sign column has same color as number column
+vim.cmd [[highlight CursorLineNr guifg=#fe8019 guibg=NONE]] -- current line in gruvbox light orange
+vim.cmd [[highlight IncSearch guifg=#b8bb26]] -- search in green
+
+vim.cmd [[highlight GitSignsAdd guibg=NONE guifg=#b4b926]] -- + in the margin for git
+vim.cmd [[highlight GitSignsChange guibg=NONE guifg=#8cbd7b]]
+vim.cmd [[highlight GitSignsDelete guibg=NONE guifg=#e44936]]
+
+vim.cmd [[highlight IndentBlanklineChar guifg=#413b35]] -- Indent line : very dark comments
 
 -- show line numbers and highlight cursor line number
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.cursorline = true
 vim.opt.cursorlineopt = "number"
+vim.wo.signcolumn = 'yes'
 
 -- set invisible chars
 vim.o.list = true
@@ -177,6 +182,8 @@ vim.opt.listchars = { extends = '→', precedes = '←', trail = '·' }
 
 vim.opt.spelllang = { "en", "fr" } -- dictionnary used for spell check
 
+-- [ AUTO CMD ]
+
 -- always have a 1/3 of the screen of margin
 vim.api.nvim_create_autocmd({"VimResized", "VimEnter", "WinEnter", "WinLeave"},{
     callback = function()
@@ -184,6 +191,16 @@ vim.api.nvim_create_autocmd({"VimResized", "VimEnter", "WinEnter", "WinLeave"},{
     end
 })
 
+-- Restore cursor position
+vim.api.nvim_create_autocmd({"BufReadPost", "BufNewFile"}, {
+    callback = function()
+        local currLine = vim.fn.line("'\"")
+        local lastLine = vim.fn.line("$")
+        if (currLine > 1 and currLine <= lastLine) then
+            vim.api.nvim_command("normal! g'\"")
+        end
+    end
+})
 --------------------------------------
 -- [[ Basic Keymaps ]]
 -- Set <space> as the leader key
@@ -215,10 +232,10 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- See `:help lualine.txt`
 require('lualine').setup {
   options = {
-    icons_enabled = false,
+    icons_enabled = true,
     theme = 'gruvbox',
-    component_separators = '|',
-    section_separators = '',
+    component_separators = { left = '', right = ''},
+    section_separators = { left = '', right = ''},
   },
 }
 
@@ -228,7 +245,7 @@ require('Comment').setup()
 -- Enable `lukas-reineke/indent-blankline.nvim`
 -- See `:help indent_blankline.txt`
 require('indent_blankline').setup {
-  char = '┊',
+  char = '┆',
   show_trailing_blankline_indent = false,
 }
 
@@ -277,8 +294,10 @@ vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { de
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
 
+
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
+-- (used for better selection with c-space)
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
   ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'help', 'vim' },
@@ -397,12 +416,18 @@ end
 --  Add any additional override configuration in the following tables. They will be passed to
 --  the `settings` field of the server config. You must look up that documentation yourself.
 local servers = {
-  -- clangd = {},
-  -- gopls = {},
-  -- pyright = {},
-  -- rust_analyzer = {},
-  -- tsserver = {},
-  --sumneko_lua = {},
+  clangd = {}, -- C/C++
+  pyright = {}, -- Python
+  rust_analyzer = {}, -- Rust
+  jdtls = {}, -- Java
+  tsserver = {}, -- Javascript / TS
+  marksman = {}, -- markdown
+  lua_ls = {}, -- Lua
+  bashls = {}, -- Bash
+  html = {}, -- HTML
+  jsonls = {}, -- json
+  yamlls = {}, -- YAML
+  lemminx = {}, -- XML
 }
 
 -- Setup neovim lua configuration
@@ -419,7 +444,7 @@ require('mason').setup()
 local mason_lspconfig = require 'mason-lspconfig'
 
 mason_lspconfig.setup {
-  ensure_installed = vim.tbl_keys(servers),
+  ensure_installed = vim.tbl_keys(servers), -- install the defined servers
 }
 
 mason_lspconfig.setup_handlers {
