@@ -221,7 +221,8 @@ command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 
 
 " ################ REMAPS / SHORTCUTS ################
-inoremap <silent> <Esc> <Esc>:echo "=> Use ctrl-c"<CR><Esc>:startinsert<CR>
+" To force me to use ctrl-c
+" inoremap <silent> <Esc> <Esc>:echo "=> Use ctrl-c"<CR><Esc>:startinsert<CR>
 
 " to make ctrl-c behave exactly like esc
 inoremap <C-c> <Esc>
@@ -364,3 +365,4 @@ let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
 " Display nicely document preview in fzf
 let $FZF_DEFAULT_OPTS="--ansi --preview-window 'right:60%' --margin=1,4 --preview 'bat --color=always --style=header,grid --line-range :300 {}'"
 "   -> INSTALL bat and add "export BAT_THEME="gruvbox-dark"" to .zshrc
+

@@ -10,6 +10,6 @@ RepeatDelay=250
 X11LibInputXAccelProfileFlat=false
 XLbInptAccelProfileFlat=false
 XLbInptNaturalScroll=true
-XLbInptPointerAcceleration=0.2
+XLbInptPointerAcceleration=0
 cursorSize=32
 cursorTheme=volantes_cursors
