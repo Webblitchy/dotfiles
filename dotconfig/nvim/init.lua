@@ -7,6 +7,7 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
   vim.cmd [[packadd packer.nvim]]
 end
 
+-- When adding new plugins : run ":PackerInstall"
 require('packer').startup(function(use)
   -- Package manager
   use 'wbthomason/packer.nvim'
@@ -48,8 +49,11 @@ require('packer').startup(function(use)
   use 'tpope/vim-rhubarb'
   use 'lewis6991/gitsigns.nvim'
 
-  use 'navarasu/onedark.nvim' -- Theme inspired by Atom
-  use 'nvim-lualine/lualine.nvim' -- Fancier statusline
+  use {
+    'nvim-lualine/lualine.nvim', -- Fancier statusline
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true } -- to add icons
+  }
+
   use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
   use 'numToStr/Comment.nvim' -- "gc" to comment visual regions/lines
   use 'tpope/vim-sleuth' -- Detect tabstop and shiftwidth automatically
@@ -134,10 +138,6 @@ vim.o.writebackup = false  -- Disable multiedition of a file
 vim.o.backup = false -- disable backups
 vim.o.swapfile = false -- disable the swapfile
 
-
--- Commands autocompletion (with tab)
-vim.o.wildmenu = true
-vim.o.wildmode = "list:longest"
 
 -- SEARCH
 vim.o.ignorecase = true  -- Case insensitive search
@@ -300,7 +300,7 @@ vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { de
 -- (used for better selection with c-space)
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'help', 'vim' },
+  ensure_installed = { 'c', 'cpp', 'lua', 'python', 'rust', 'typescript', 'help', 'vim' },
 
   highlight = { enable = true },
   indent = { enable = true, disable = { 'python' } },
