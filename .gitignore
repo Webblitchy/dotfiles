@@ -1,2 +1,8 @@
 dotlocal_share/plasma/containmentpreviews/
+dotconfig/nvim/undo/*
+!dotconfig/nvim/undo/.gitkeep
+dotconfig/nvim/swap/*
+!dotconfig/nvim/swap/.gitkeep
+dotconfig/nvim/backup/*
+!dotconfig/nvim/backup/.gitkeep
 

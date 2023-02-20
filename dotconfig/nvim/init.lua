@@ -49,8 +49,9 @@ require('packer').startup(function(use)
   use 'tpope/vim-rhubarb'
   use 'lewis6991/gitsigns.nvim'
 
+  -- Fancier statusline
   use {
-    'nvim-lualine/lualine.nvim', -- Fancier statusline
+    'nvim-lualine/lualine.nvim', 
     requires = { 'kyazdani42/nvim-web-devicons', opt = true } -- to add icons
   }
 
@@ -63,6 +64,20 @@ require('packer').startup(function(use)
 
   -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
+
+  use {
+    "folke/todo-comments.nvim",
+    requires = "nvim-lua/plenary.nvim",
+    config = function()
+      require("todo-comments").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    end
+  }
+  -- TODO : fds
+  -- FIX : fd
 
   -- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
   local has_plugins, plugins = pcall(require, 'custom.plugins')
@@ -96,28 +111,20 @@ vim.api.nvim_create_autocmd('BufWritePost', {
   pattern = vim.fn.expand '$MYVIMRC',
 })
 
--- [[ Setting options ]]
--- See `:help vim.o`
-
--- Enable break indent
-vim.o.breakindent = true
-
--- Decrease update time
-vim.o.updatetime = 250
-
--- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,noselect'
 
 --------------------------------------
--- My old vim settings
+-- Vim manual settings
 
 vim.o.backspace = [[indent,eol,start]] -- more powerful backspace (suppress in insert)
 vim.o.mouse = "" -- disable mouse
 vim.opt.confirm = true -- confirm to save changes before exiting modified buffer
+vim.o.completeopt = 'menuone,noselect' -- Set completeopt to have a better completion experience
+vim.opt.spelllang = { "en", "fr" } -- dictionnary used for spell check
 
 -- Indentation settings
 vim.o.autoindent = true -- always set autoindenting on
 vim.o.copyindent = true -- copy the previous indentation on autoindenting
+vim.o.breakindent = true -- Enable break indent
 vim.o.expandtab = true -- expand tabs to spaces 
 vim.o.shiftround = true -- use multiple of shiftwidth when indenting with '<' and '>'
 vim.o.shiftwidth = 4 -- number of spaces to use for autoindenting
@@ -127,23 +134,21 @@ vim.o.softtabstop = 4 -- when hitting <BS>, pretend like a tab is removed, even 
 vim.o.tabstop = 4 -- tabs are n spaces 
 
 -- History
-
--- Persistent undo
 vim.o.undofile = true
 vim.o.undolevels = 1000
 vim.o.undoreload = 10000
-
+vim.o.undodir = vim.fn.expand("~/.config/nvim/undo//") -- to have all undos in the same dir (expand for tilde)
 vim.o.history = 1000 -- Command history
-vim.o.writebackup = false  -- Disable multiedition of a file
-vim.o.backup = false -- disable backups
-vim.o.swapfile = false -- disable the swapfile
-
+vim.o.directory = vim.fn.expand("~/.config/nvim/swap//")
+vim.o.updatetime = 250 -- time before swap file is written on the disk
+vim.o.backupdir = vim.fn.expand("~/.config/nvim/backup//")
 
 -- SEARCH
 vim.o.ignorecase = true  -- Case insensitive search
 vim.o.smartcase = true  -- Sensible to capital letters
 vim.o.incsearch = true  -- Show search results as you type
 vim.o.hlsearch = false  -- Don't highlight all search results
+
 
 -- [[ UI settings ]]
 
@@ -179,19 +184,16 @@ vim.o.list = true
 vim.opt.listchars = { extends = '→', precedes = '←', trail = '·' }
 
 
-
-vim.opt.spelllang = { "en", "fr" } -- dictionnary used for spell check
-
 -- [ AUTO CMD ]
 
--- always have a 1/3 of the screen of margin
+-- always have a 1/3 of the screen of margin after / before the cursor
 vim.api.nvim_create_autocmd({"VimResized", "VimEnter", "WinEnter", "WinLeave"},{
     callback = function()
         vim.api.nvim_command(":set scrolloff=" .. math.ceil(vim.api.nvim_get_option("lines") / 3))
     end
 })
 
--- Restore cursor position
+-- Restore cursor position when opening a file
 vim.api.nvim_create_autocmd({"BufReadPost", "BufNewFile"}, {
     callback = function()
         local currLine = vim.fn.line("'\"")
@@ -202,6 +204,7 @@ vim.api.nvim_create_autocmd({"BufReadPost", "BufNewFile"}, {
     end
 })
 --------------------------------------
+
 -- [[ Basic Keymaps ]]
 -- Set <space> as the leader key
 -- See `:help mapleader`
@@ -241,6 +244,8 @@ require('lualine').setup {
 
 -- Enable Comment.nvim
 require('Comment').setup()
+vim.api.nvim_set_keymap('n', '', 'gcc', { silent = true }) -- ctrl + 7 for line comment
+vim.api.nvim_set_keymap('v', '', 'gc', { silent = true })
 
 -- Enable `lukas-reineke/indent-blankline.nvim`
 -- See `:help indent_blankline.txt`
@@ -359,7 +364,7 @@ require('nvim-treesitter.configs').setup {
   },
 }
 
--- Diagnostic keymaps
+-- Diagnostic keymaps (warnings and errors)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
@@ -382,8 +387,8 @@ local on_attach = function(_, bufnr)
     vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
   end
 
-  nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
-  nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
+  nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame') -- refactor as in IntelliJ
+  nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction') -- generate actions
 
   nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
   nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')

@@ -56,7 +56,7 @@ kwin4_effect_squashEnabled=false
 kwin4_effect_translucencyEnabled=true
 minimizeallEnabled=false
 screenedgeEnabled=false
-sticky-window-snappingEnabled=true
+sticky-window-snappingEnabled=false
 synchronizeskipswitcherEnabled=false
 videowallEnabled=false
 

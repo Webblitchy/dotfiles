@@ -2,7 +2,7 @@
 AntiAliasFonts=true
 BoldIntense=true
 ColorScheme=BreathSilverfox
-Font=MesloLGS NF,10,-1,5,50,0,0,0,0,0
+Font=JetBrains Mono,10,-1,5,50,0,0,0,0,0
 TabColor=24,25,29,0
 UseFontLineChararacters=true
 
@@ -18,6 +18,7 @@ Parent=FALLBACK/
 ShowTerminalSizeHint=false
 TerminalCenter=false
 TerminalColumns=140
+TerminalMargin=0
 TerminalRows=40
 
 [Interaction Options]
@@ -34,4 +35,5 @@ ScrollBarPosition=2
 
 [Terminal Features]
 BellMode=2
+BidiLineLTR=true
 BlinkingCursorEnabled=false
