@@ -14,5 +14,10 @@
     "javascript.updateImportsOnFileMove.enabled": "always",
     "explorer.confirmDelete": false,
     "editor.unicodeHighlight.nonBasicASCII": false,
-    "extensions.ignoreRecommendations": true
+    "extensions.ignoreRecommendations": true,
+    "files.watcherExclude": {
+        "**/.bloop": true,
+        "**/.metals": true,
+        "**/.ammonite": true
+    }
 }

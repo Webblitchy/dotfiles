@@ -1,4 +1,4 @@
--------------------------------
+-------------------------------------------------------------------------------------------
 -- [[ Vim manual settings ]] --
 
 vim.o.backspace = [[indent,eol,start]] -- more powerful backspace (suppress in insert)
@@ -13,11 +13,14 @@ vim.o.copyindent = true -- copy the previous indentation on autoindenting
 vim.o.breakindent = true -- Enable break indent
 vim.o.expandtab = true -- expand tabs to spaces 
 vim.o.shiftround = true -- use multiple of shiftwidth when indenting with '<' and '>'
-vim.o.shiftwidth = 4 -- number of spaces to use for autoindenting
 vim.o.smartindent = true
 vim.o.smarttab = true -- insert tabs on the start of a line according to shiftwidth, not tabstop
 vim.o.softtabstop = 4 -- when hitting <BS>, pretend like a tab is removed, even if spaces
-vim.o.tabstop = 4 -- tabs are n spaces 
+
+-- Automatically set by vim-sleuth:
+-- vim.o.shiftwidth = 4 -- number of spaces to use for autoindenting
+-- vim.o.tabstop = 4 -- tabs are n spaces 
+
 
 -- History
 vim.o.undofile = true
@@ -74,22 +77,24 @@ vim.opt.listchars = { extends = '→', precedes = '←', trail = '·' }
 
 -- always have a 1/3 of the screen of margin after / before the cursor
 vim.api.nvim_create_autocmd({"VimResized", "VimEnter", "WinEnter", "WinLeave"},{
-    callback = function()
-        vim.api.nvim_command(":set scrolloff=" .. math.ceil(vim.api.nvim_get_option("lines") / 3))
-    end
+  callback = function()
+    vim.api.nvim_command(":set scrolloff=" .. math.ceil(vim.api.nvim_get_option("lines") / 3))
+  end
 })
 
 -- Restore cursor position when opening a file
 vim.api.nvim_create_autocmd({"BufReadPost", "BufNewFile"}, {
-    callback = function()
-        local currLine = vim.fn.line("'\"")
-        local lastLine = vim.fn.line("$")
-        if (currLine > 1 and currLine <= lastLine) then
-            vim.api.nvim_command("normal! g'\"")
-        end
+  callback = function()
+    local currLine = vim.fn.line("'\"")
+    local lastLine = vim.fn.line("$")
+    if (currLine > 1 and currLine <= lastLine) then
+      vim.api.nvim_command("normal! g'\"")
     end
+  end
 })
---------------------------------------
+
+
+-----------------------------------------------------------------------------------------------
 -- [[ Basic Keymaps ]]
 
 -- Set <space> as the leader key
@@ -97,6 +102,8 @@ vim.api.nvim_create_autocmd({"BufReadPost", "BufNewFile"}, {
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
+
+vim.keymap.set('i', '', '<C-W>') -- ctrl backspace for removing a whole word
 
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
@@ -117,7 +124,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
------------------------------
+--------------------------------------------------------------------------------------------
 -- [[ PLUGINS INSTALLATION ]]
 -- Install packer
 local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
@@ -170,10 +177,13 @@ require('packer').startup(function(use)
   use 'tpope/vim-rhubarb'
   use 'lewis6991/gitsigns.nvim'
 
+  -- Nice icons (useful for many plugins)
+  use 'nvim-tree/nvim-web-devicons'
+
   -- Fancier statusline
   use {
     'nvim-lualine/lualine.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons', opt = true } -- to add icons
+    requires = { 'nvim-tree/nvim-web-devicons', opt = true } -- to add icons
   }
 
   use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
@@ -186,17 +196,37 @@ require('packer').startup(function(use)
   -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
 
+  -- Telescope acting like a finder
   use {
-    "folke/todo-comments.nvim",
+    "nvim-telescope/telescope-file-browser.nvim",
+    requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" , "nvim-tree/nvim-web-devicons"}
+  }
+
+
+  use {
+    "folke/g-comments.nvim",
     requires = "nvim-lua/plenary.nvim",
     config = function()
-      require("todo-comments").setup {
+      require("g-comments").setup {
         -- your configuration comes here
         -- or leave it empty to use the default settings
         -- refer to the configuration section below
       }
     end
   }
+  use 'lervag/vimtex' -- latex compilation
+
+  -- Startup menu for nvim
+  use {
+    "startup-nvim/startup.nvim",
+    requires = {"nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim"},
+    config = function()
+      require"startup".setup()
+    end
+  }
+
+  -- Metals (used for scala lsp)
+  use({'scalameta/nvim-metals', requires = { "nvim-lua/plenary.nvim" }})
 
   -- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
   local has_plugins, plugins = pcall(require, 'custom.plugins')
@@ -230,7 +260,7 @@ vim.api.nvim_create_autocmd('BufWritePost', {
   pattern = vim.fn.expand '$MYVIMRC',
 })
 
----------------------------------
+--------------------------------------------------------------------------------------------
 -- [[ PLUGINS CONFIGURATION ]] --
 
 -- Set lualine as statusline
@@ -242,12 +272,49 @@ require('lualine').setup {
     component_separators = { left = '', right = ''},
     section_separators = { left = '', right = ''},
   },
+  sections = {
+    lualine_a = {'mode'},
+    lualine_c = {
+      {
+        'filename',
+        color = {fg = '#fabd2f' },
+        path = 3 -- abs path
+      },
+    },
+    lualine_b = {
+      'branch', 'diff', 'diagnostics'
+      -- 
+      -- function()
+      --   local matches = vim.api.nvim_exec(":%s/TODO //gn", true)
+      --   vim.api.nvim_exec(":execute 'normal <C-O>'") -- replace the cursor
+      --   local nb = vim.split(matches, ' ')[1] -- arrays begin at 1
+      --   return "TODOs:" .. nb
+      -- end
+    },
+    lualine_x = {
+      {
+        'fileformat',
+        symbols = {
+          unix = " LF", -- e712
+          dos = " CRLF",  -- e70f
+          mac = " CR",  -- e711
+        }
+      },
+      function()
+        return " " .. vim.o.shiftwidth
+      end,
+      'filetype',
+    },
+    lualine_y = {'progress'},
+    lualine_z = {'location'}
+  },
 }
 
 -- Enable Comment.nvim
 require('Comment').setup()
 vim.api.nvim_set_keymap('n', '', 'gcc', { silent = true }) -- ctrl + 7 for line comment
 vim.api.nvim_set_keymap('v', '', 'gc', { silent = true })
+
 
 -- Enable `lukas-reineke/indent-blankline.nvim`
 -- See `:help indent_blankline.txt`
@@ -278,8 +345,17 @@ require('telescope').setup {
         ['<C-d>'] = false,
       },
     },
+    layout_config = { preview_width = 0.6 } -- width as a percentage
   },
 }
+-- To setup file_browser after telescope is configured
+require("telescope").load_extension "file_browser"
+vim.api.nvim_set_keymap(
+  "n",
+  "<leader>bf",
+  "<cmd>lua require 'telescope'.extensions.file_browser.file_browser()<CR>",
+  {noremap = true}
+)
 
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
@@ -301,6 +377,73 @@ vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { de
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
 
+
+-- [[ Configure nvim-web-devicons ]]
+require'nvim-web-devicons'.setup {
+  -- your personnal icons can go here (to override)
+  -- you can specify color or cterm_color instead of specifying both of them
+  -- DevIcon will be appended to `name`
+  override = {
+    zsh = {
+      icon = "",
+      color = "#428850",
+      cterm_color = "65",
+      name = "Zsh"
+    }
+  };
+  -- globally enable different highlight colors per icon (default to true)
+  -- if set to false all icons will have the default icon's color
+  color_icons = true;
+  -- globally enable default icons (default to false)
+  -- will get overriden by `get_icons` option
+  default = true;
+  -- globally enable "strict" selection of icons - icon will be looked up in
+  -- different tables, first by filename, and if not found by extension; this
+  -- prevents cases when file doesn't have any extension but still gets some icon
+  -- because its name happened to match some extension (default to false)
+  strict = true;
+  -- same as `override` but specifically for overrides by filename
+-- takes effect when `strict` is true
+  override_by_filename = {
+    [".gitignore"] = {
+      icon = "",
+      color = "#f1502f",
+      name = "Gitignore"
+    }
+  };
+  -- same as `override` but specifically for overrides by extension
+  -- takes effect when `strict` is true
+  override_by_extension = {
+    ["log"] = {
+      icon = "",
+      color = "#81e043",
+      name = "Log"
+    }
+  };
+}
+-- [[ Configure VimTex ]] (for Latex)
+vim.g.tex_flavor = 'latex'
+vim.g.vimtex_view_general_viewer = 'okular'
+vim.g.vimtex_view_general_options = "--unique file:@pdf\\#src:@line@tex"
+vim.g.vimtex_compiler_latexmk = {
+  build_dir = '',
+callback = 1,
+  continuous = 1,
+  executable = 'latexmk',
+  hooks = {},
+  options = {
+    '-pdf',
+    '-shell-escape', -- necessary for minted (but can be dangerous)
+    '-verbose',
+    '-halt-on-error',
+    '-file-line-error',
+    '-synctex=1',
+    '-interaction=nonstopmode',
+  },
+}
+
+-- Configure greathing menu on startup
+require("startup").setup(require("startup_nvim")) -- use the file startup_nvim.lua
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
@@ -417,6 +560,7 @@ local on_attach = function(_, bufnr)
   end, { desc = 'Format current buffer with LSP' })
 end
 
+
 -- Enable the following language servers
 --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
 --
@@ -435,6 +579,8 @@ local servers = {
   jsonls = {}, -- json
   yamlls = {}, -- YAML
   lemminx = {}, -- XML
+  ltex = {}, -- Latex
+  --metals = {}, -- Scala (install metals with `cs install metals`)
 }
 
 -- Setup neovim lua configuration

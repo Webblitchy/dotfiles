@@ -232,6 +232,9 @@ export DOCKER_GATEWAY_HOST=172.17.0.1
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 
+# To use coursier (for scala)
+export PATH="$PATH:/home/eliott/.local/share/coursier/bin"
+
 ### MY ALIASES ###
 
 # replacement aliases
@@ -248,19 +251,25 @@ if [[ -f /usr/bin/rmtrash ]]; then
      alias rmdir='rmdirtrash'
 fi
 
+# sudo commands
+
+alias btop='sudo btop'
+alias powertop='sudo powertop'
+
 # new commands
 alias ll='ls -Alho'
 alias open='xdg-open $1 2>&1 > /dev/null'
 alias vrc='vim ~/.vimrc'
-alias zrc='vim ~/.zshrc; source ~/.zshrc'
-alias cours='cd /home/eliott/kDrive/HEIG-VD/S5'
+alias nrc='nvim ~/.config/nvim/init.lua'
+alias zrc='nvim ~/.zshrc; source ~/.zshrc'
+alias cours='cd /home/eliott/kDrive/HEIG-VD/S6'
 alias hello="notify-send 'Hello world!' 'This is an example notification.' --icon=dialog-information"
 alias wifi-list='nmcli device wifi'
 alias wifi-connect='nmcli device wifi connect --ask'
 alias cdf='cd $(fzf)'
 alias vi='vim'
-alias btop='sudo btop'
-alias pip-update='pip3 list --outdated | cut -f1 -d" " | tr " " "\n" | tail -n +3 | xargs pip3 install -U'
 alias fix='kwin_x11 --replace'
 alias spoti='spt' # for spotify-tui
 alias lf='vim $1 -c "set ff=unix" -c ":wq"' # replace CRLF by LF
+alias pip-update='pip3 list --outdated | cut -f1 -d" " | tr " " "\n" | tail -n +3 | xargs pip3 install -U'
+
