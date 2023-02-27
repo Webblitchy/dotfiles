@@ -2,9 +2,12 @@
 AntiAliasFonts=true
 BoldIntense=true
 ColorScheme=BreathSilverfox
-Font=JetBrains Mono,10,-1,5,50,0,0,0,0,0
+Font=JetBrainsMono Nerd Font Mono,13,-1,5,50,0,0,0,0,0
+LineSpacing=0
 TabColor=24,25,29,0
 UseFontLineChararacters=true
+WordModeAscii=true
+WordModeAttr=false
 
 [Cursor Options]
 CursorShape=0
@@ -37,3 +40,4 @@ ScrollBarPosition=2
 BellMode=2
 BidiLineLTR=true
 BlinkingCursorEnabled=false
+VerticalLine=false

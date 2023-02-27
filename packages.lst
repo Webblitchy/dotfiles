@@ -10,6 +10,7 @@ docker-compose
 dolphin
 dolphin-plugins
 kdeplasma-addons
+kdegraphics-thumbnailers
 elisa
 flameshot
 gcc
@@ -73,9 +74,10 @@ traceroute
 partitionmanager
 powertop
 etcher-bin
-ttf-jetbrains-mono
 android-tools
 texlive-bin
 texlive-core
 texlive-latexextra
 texlive-science
+ttf-jetbrains-mono-nerd
+lsd

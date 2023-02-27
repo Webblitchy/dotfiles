@@ -11,7 +11,7 @@ vim.opt.spelllang = { "en", "fr" } -- dictionnary used for spell check
 vim.o.autoindent = true -- always set autoindenting on
 vim.o.copyindent = true -- copy the previous indentation on autoindenting
 vim.o.breakindent = true -- Enable break indent
-vim.o.expandtab = true -- expand tabs to spaces 
+vim.o.expandtab = true -- expand tabs to spaces
 vim.o.shiftround = true -- use multiple of shiftwidth when indenting with '<' and '>'
 vim.o.smartindent = true
 vim.o.smarttab = true -- insert tabs on the start of a line according to shiftwidth, not tabstop
@@ -19,7 +19,7 @@ vim.o.softtabstop = 4 -- when hitting <BS>, pretend like a tab is removed, even 
 
 -- Automatically set by vim-sleuth:
 -- vim.o.shiftwidth = 4 -- number of spaces to use for autoindenting
--- vim.o.tabstop = 4 -- tabs are n spaces 
+-- vim.o.tabstop = 4 -- tabs are n spaces
 
 
 -- History
@@ -33,16 +33,17 @@ vim.o.updatetime = 250 -- time before swap file is written on the disk
 vim.o.backupdir = vim.fn.expand("~/.config/nvim/backup//")
 
 -- SEARCH
-vim.o.ignorecase = true  -- Case insensitive search
-vim.o.smartcase = true  -- Sensible to capital letters
-vim.o.incsearch = true  -- Show search results as you type
-vim.o.hlsearch = false  -- Don't highlight all search results
+vim.o.ignorecase = true -- Case insensitive search
+vim.o.smartcase = true -- Sensible to capital letters
+vim.o.incsearch = true -- Show search results as you type
+vim.o.hlsearch = false -- Don't highlight all search results
 
 
 -- [ UI settings ]
 
 vim.o.shortmess = "I" -- disable start message
 vim.o.wrap = false -- by default disable wrap (can be individually enabled by language)
+vim.o.linebreak = true -- when wrap enabled, wrap at the end of the words
 
 -- theme
 vim.o.termguicolors = true
@@ -51,7 +52,7 @@ vim.cmd [[colorscheme gruvbox]]
 
 -- colors
 vim.cmd [[highlight Normal guibg=NONE ctermbg=NONE]] -- transparent background
-vim.cmd [[highlight SignColumn guibg=NONE]]  -- Sign column has same color as number column
+vim.cmd [[highlight SignColumn guibg=NONE]] -- Sign column has same color as number column
 vim.cmd [[highlight CursorLineNr guifg=#fe8019 guibg=NONE]] -- current line in gruvbox light orange
 vim.cmd [[highlight IncSearch guifg=#b8bb26]] -- search in green
 
@@ -76,14 +77,14 @@ vim.opt.listchars = { extends = '→', precedes = '←', trail = '·' }
 -- [ AUTO CMD ]
 
 -- always have a 1/3 of the screen of margin after / before the cursor
-vim.api.nvim_create_autocmd({"VimResized", "VimEnter", "WinEnter", "WinLeave"},{
+vim.api.nvim_create_autocmd({ "VimResized", "VimEnter", "WinEnter", "WinLeave" }, {
   callback = function()
     vim.api.nvim_command(":set scrolloff=" .. math.ceil(vim.api.nvim_get_option("lines") / 3))
   end
 })
 
 -- Restore cursor position when opening a file
-vim.api.nvim_create_autocmd({"BufReadPost", "BufNewFile"}, {
+vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
   callback = function()
     local currLine = vim.fn.line("'\"")
     local lastLine = vim.fn.line("$")
@@ -103,7 +104,11 @@ vim.api.nvim_create_autocmd({"BufReadPost", "BufNewFile"}, {
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
-vim.keymap.set('i', '', '<C-W>') -- ctrl backspace for removing a whole word
+-- Make ctrl-c work always as esc
+vim.keymap.set({ 'n', 'i', 'v' }, '<C-c>', '<Esc>')
+
+-- ctrl backspace for removing a whole word
+vim.keymap.set('i', '', '<C-W>')
 
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
@@ -199,15 +204,15 @@ require('packer').startup(function(use)
   -- Telescope acting like a finder
   use {
     "nvim-telescope/telescope-file-browser.nvim",
-    requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" , "nvim-tree/nvim-web-devicons"}
+    requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim", "nvim-tree/nvim-web-devicons" }
   }
 
 
   use {
-    "folke/g-comments.nvim",
+    "folke/todo-comments.nvim",
     requires = "nvim-lua/plenary.nvim",
     config = function()
-      require("g-comments").setup {
+      require("todo-comments").setup {
         -- your configuration comes here
         -- or leave it empty to use the default settings
         -- refer to the configuration section below
@@ -219,14 +224,14 @@ require('packer').startup(function(use)
   -- Startup menu for nvim
   use {
     "startup-nvim/startup.nvim",
-    requires = {"nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim"},
+    requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
     config = function()
-      require"startup".setup()
+      require "startup".setup()
     end
   }
 
   -- Metals (used for scala lsp)
-  use({'scalameta/nvim-metals', requires = { "nvim-lua/plenary.nvim" }})
+  use({ 'scalameta/nvim-metals', requires = { "nvim-lua/plenary.nvim" } })
 
   -- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
   local has_plugins, plugins = pcall(require, 'custom.plugins')
@@ -269,44 +274,58 @@ require('lualine').setup {
   options = {
     icons_enabled = true,
     theme = 'gruvbox',
-    component_separators = { left = '', right = ''},
-    section_separators = { left = '', right = ''},
+    component_separators = { left = '', right = '' },
+    section_separators = { left = '', right = '' },
   },
   sections = {
-    lualine_a = {'mode'},
+    lualine_a = { 'mode' },
     lualine_c = {
       {
         'filename',
-        color = {fg = '#fabd2f' },
+        color = { fg = '#fabd2f' },
         path = 3 -- abs path
       },
     },
     lualine_b = {
-      'branch', 'diff', 'diagnostics'
-      -- 
-      -- function()
-      --   local matches = vim.api.nvim_exec(":%s/TODO //gn", true)
-      --   vim.api.nvim_exec(":execute 'normal <C-O>'") -- replace the cursor
-      --   local nb = vim.split(matches, ' ')[1] -- arrays begin at 1
-      --   return "TODOs:" .. nb
-      -- end
+      'branch', 'diff', 'diagnostics',
+      {
+        function() -- print the todo count (in comments)
+          local comment = string.sub(vim.o.commentstring, 0, -4) -- get the comment pattern : "# %s" -> "#"
+          local todos = vim.fn.searchcount({ pattern = comment .. ".*TODO:", recompute = 1 }).total
+          if todos > 0 then
+            return " " .. todos
+          end
+          return ""
+        end,
+        color = { fg = "#add8e6" }
+      }
     },
     lualine_x = {
       {
         'fileformat',
         symbols = {
-          unix = " LF", -- e712
-          dos = " CRLF",  -- e70f
-          mac = " CR",  -- e711
+          unix = " LF", -- e712
+          dos = " CRLF", -- e70f
+          mac = " CR", -- e711
         }
       },
-      function()
+      function() -- wrapping
+        -- Wrapping 󰯟 󰖶 󰴏 󰴐 󱞱 󱞲 →   󰞘 󰜴
+        local wrapMode = ""
+        if (vim.o.wrap == true) then
+          wrapMode = wrapMode .. "󱞲"
+        else
+          wrapMode = wrapMode .. "󰞘"
+        end
+        return wrapMode
+      end,
+      function() -- tab size
         return " " .. vim.o.shiftwidth
       end,
       'filetype',
     },
-    lualine_y = {'progress'},
-    lualine_z = {'location'}
+    lualine_y = { 'progress' },
+    lualine_z = { 'location' }
   },
 }
 
@@ -319,7 +338,7 @@ vim.api.nvim_set_keymap('v', '', 'gc', { silent = true })
 -- Enable `lukas-reineke/indent-blankline.nvim`
 -- See `:help indent_blankline.txt`
 require('indent_blankline').setup {
-  char = '┆',
+  char = '┊', -- ┆ ⁞ ┊ ⸽ |
   show_trailing_blankline_indent = false,
 }
 
@@ -327,13 +346,14 @@ require('indent_blankline').setup {
 -- See `:help gitsigns.txt`
 require('gitsigns').setup {
   signs = {
-    add = { text = '+' },
-    change = { text = '~' },
-    delete = { text = '_' },
-    topdelete = { text = '‾' },
-    changedelete = { text = '~' },
+    add = { text = '' }, -- +  
+    change = { text = '󰥛' }, -- ~ 󱑺 󰣁 󰓦 󰜥 󱑼 
+    delete = { text = '⎽' }, -- _ 𛲖 ＿ ₋ ⎽
+    topdelete = { text = '‾' }, -- ⁻ ⎺
+    changedelete = { text = '󰥛' },
   },
 }
+
 
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
@@ -354,7 +374,7 @@ vim.api.nvim_set_keymap(
   "n",
   "<leader>bf",
   "<cmd>lua require 'telescope'.extensions.file_browser.file_browser()<CR>",
-  {noremap = true}
+  { noremap = true }
 )
 
 -- Enable telescope fzf native, if installed
@@ -379,7 +399,7 @@ vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { de
 
 
 -- [[ Configure nvim-web-devicons ]]
-require'nvim-web-devicons'.setup {
+require 'nvim-web-devicons'.setup {
   -- your personnal icons can go here (to override)
   -- you can specify color or cterm_color instead of specifying both of them
   -- DevIcon will be appended to `name`
@@ -390,27 +410,27 @@ require'nvim-web-devicons'.setup {
       cterm_color = "65",
       name = "Zsh"
     }
-  };
+  },
   -- globally enable different highlight colors per icon (default to true)
   -- if set to false all icons will have the default icon's color
-  color_icons = true;
+  color_icons = true,
   -- globally enable default icons (default to false)
   -- will get overriden by `get_icons` option
-  default = true;
+  default = true,
   -- globally enable "strict" selection of icons - icon will be looked up in
   -- different tables, first by filename, and if not found by extension; this
   -- prevents cases when file doesn't have any extension but still gets some icon
   -- because its name happened to match some extension (default to false)
-  strict = true;
+  strict = true,
   -- same as `override` but specifically for overrides by filename
--- takes effect when `strict` is true
+  -- takes effect when `strict` is true
   override_by_filename = {
     [".gitignore"] = {
       icon = "",
       color = "#f1502f",
       name = "Gitignore"
     }
-  };
+  },
   -- same as `override` but specifically for overrides by extension
   -- takes effect when `strict` is true
   override_by_extension = {
@@ -419,7 +439,7 @@ require'nvim-web-devicons'.setup {
       color = "#81e043",
       name = "Log"
     }
-  };
+  },
 }
 -- [[ Configure VimTex ]] (for Latex)
 vim.g.tex_flavor = 'latex'
@@ -427,7 +447,7 @@ vim.g.vimtex_view_general_viewer = 'okular'
 vim.g.vimtex_view_general_options = "--unique file:@pdf\\#src:@line@tex"
 vim.g.vimtex_compiler_latexmk = {
   build_dir = '',
-callback = 1,
+  callback = 1,
   continuous = 1,
   executable = 'latexmk',
   hooks = {},
@@ -450,7 +470,7 @@ require("startup").setup(require("startup_nvim")) -- use the file startup_nvim.l
 -- (used for better selection with c-space)
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'c', 'cpp', 'lua', 'python', 'rust', 'typescript', 'help', 'vim' },
+  ensure_installed = { 'c', 'cpp', 'lua', 'python', 'rust', 'typescript', 'help', 'vim', 'scala' },
 
   highlight = { enable = true },
   indent = { enable = true, disable = { 'python' } },
@@ -508,6 +528,13 @@ require('nvim-treesitter.configs').setup {
     },
   },
 }
+
+-- treesitter folding
+vim.wo.foldmethod = 'expr'
+vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'
+vim.api.nvim_create_autocmd({ "BufWinEnter" }, { -- to unfold all at the begining
+  command = "normal zR"
+})
 
 -- Diagnostic keymaps (warnings and errors)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
@@ -610,6 +637,110 @@ mason_lspconfig.setup_handlers {
   end,
 }
 
+-- Auto format file when saving file
+vim.api.nvim_create_autocmd("BufWritePre", {
+  callback = function()
+    if vim.lsp.buf.server_ready() then
+      vim.lsp.buf.format()
+    end
+  end,
+})
+-- Configure nvim-metals (for scala lsp)
+-- local metals_config = require("metals").bare_config()
+-- metals_config.settings = {
+--   showImplicitArguments = true,
+--   excludedPackages = { "akka.actor.typed.javadsl", "com.github.swagger.akka.javadsl" },
+-- }
+-- metals_config.init_options.statusBarProvider = "on"
+--
+-- -- Example if you are using cmp how to make sure the correct capabilities for snippets are set
+-- metals_config.capabilities = require("cmp_nvim_lsp").default_capabilities()
+-- metals_config = require'metals'.bare_config()
+-- metals_config.settings = {
+--   showImplicitArguments = true,
+--   excludedPackages = {
+--     "akka.actor.typed.javadsl",
+--     "com.github.swagger.akka.javadsl"
+--   }
+-- }
+--
+-- metals_config.on_attach = function()
+--   require'completion'.on_attach();
+-- end
+--
+-- metals_config.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+--   vim.lsp.diagnostic.on_publish_diagnostics, {
+--     virtual_text = {
+--       prefix = '',
+--     }
+--   }
+-- )
+
+
+-- vim.cmd([[autocmd FileType scala,sbt lua require("metals").initialize_or_attach({
+-- require'completion'.on_attach()
+-- })]])
+
+
+
+vim.opt_global.shortmess:remove("F") -- otherwise conflicts with metals
+local metals_config = require 'metals'.bare_config()
+metals_config.settings = {
+  showImplicitArguments = true,
+  showImplicitConversionsAndClasses = true,
+  showInferredType = true,
+  excludedPackages = {
+    "akka.actor.typed.javadsl",
+    "com.github.swagger.akka.javadsl"
+  },
+}
+
+metals_config.init_options.statusBarProvider = "on"
+metals_config.capabilities = capabilities
+
+-- metals_config.on_attach = function()
+--   require'completion'.on_attach();
+-- end
+local lsp_metals = vim.api.nvim_create_augroup("lsp", { clear = true })
+metals_config.on_attach = function(client, bufnr)
+  on_attach(client, bufnr)
+
+
+  -- A lot of the servers I use won't support document_highlight or codelens,
+  -- so we juse use them in Metals
+  vim.api.nvim_create_autocmd("CursorHold", {
+    callback = vim.lsp.buf.document_highlight,
+    buffer = bufnr,
+    group = lsp_metals,
+  })
+  vim.api.nvim_create_autocmd("CursorMoved", {
+    callback = vim.lsp.buf.clear_references,
+    buffer = bufnr,
+    group = lsp_metals,
+  })
+  vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost" }, {
+    callback = vim.lsp.codelens.refresh,
+    buffer = bufnr,
+    group = lsp_metals,
+  })
+end
+
+metals_config.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics, {
+  virtual_text = {
+    prefix = '',
+  }
+}
+)
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { 'scala', 'sbt', 'worksheet.sc' },
+  callback = function()
+    require("metals").initialize_or_attach({ metals_config })
+  end
+})
+
+---------------------------------
+
 -- Turn on lsp status information
 require('fidget').setup()
 
@@ -624,7 +755,7 @@ cmp.setup {
     end,
   },
   mapping = cmp.mapping.preset.insert {
-    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-d>'] = cmp.mapping.scroll_docs( -4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<CR>'] = cmp.mapping.confirm {
@@ -643,8 +774,8 @@ cmp.setup {
     ['<S-Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
-        luasnip.jump(-1)
+      elseif luasnip.jumpable( -1) then
+        luasnip.jump( -1)
       else
         fallback()
       end
@@ -658,4 +789,3 @@ cmp.setup {
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
-

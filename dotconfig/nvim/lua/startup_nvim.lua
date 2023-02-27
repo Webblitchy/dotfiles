@@ -1,3 +1,25 @@
+local title_shadow = {
+    " ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗",
+    " ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║",
+    " ██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║",
+    " ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║",
+    " ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║",
+    " ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝",
+}
+
+local title_sharp = {
+    [[                                                                       ]],
+    [[                                                                     ]],
+    [[       ████ ██████           █████      ██                     ]],
+    [[      ███████████             █████                             ]],
+    [[      █████████ ███████████████████ ███   ███████████   ]],
+    [[     █████████  ███    █████████████ █████ ██████████████   ]],
+    [[    █████████ ██████████ █████████ █████ █████ ████ █████   ]],
+    [[  ███████████ ███    ███ █████████ █████ █████ ████ █████  ]],
+    [[ ██████  █████████████████████ ████ █████ █████ ████ ██████ ]],
+    [[                                                                       ]],
+}
+
 local settings = {
     -- every line should be same width without escaped \
     header = {
@@ -7,14 +29,7 @@ local settings = {
         fold_section = false,
         title = "Header",
         margin = 5,
-        content = {
-            " ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗",
-            " ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║",
-            " ██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║",
-            " ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║",
-            " ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║",
-            " ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝",
-        },
+        content = title_sharp,
         highlight = "Statement",
         default_color = "",
         oldfiles_amount = 0,
@@ -28,11 +43,12 @@ local settings = {
         title = "Basic Commands",
         margin = 5,
         content = {
-            { " Recent Files", "Telescope oldfiles", "<leader>of" },
-            { " Browser", "Telescope file_browser", "<leader>fb" },
-            { " Find File", "Telescope find_files", "<leader>ff" },
+            { " Recent Files", "Telescope oldfiles",              "<leader>of" },
+            { " Browser",      "Telescope file_browser",          "<leader>fb" },
+            { " Find File",    "Telescope find_files",            "<leader>ff" },
             --{ " Find Word", "Telescope live_grep", "<leader>lg" },
-            { " New File", "lua require'startup'.new_file()", "<leader>nf" },
+            { " New File",     "lua require'startup'.new_file()", "<leader>nf" },
+            { " Quit",         ":q",                              "ZQ" },
         },
         highlight = "String",
         default_color = "",
@@ -66,9 +82,8 @@ local settings = {
         default_color = "",
         oldfiles_amount = 0,
     },
-
     options = {
-        mapping_keys = true,
+        mapping_keys = false, -- to show the mapping
         cursor_column = 0.5, -- center the cursor
         empty_lines_between_mappings = true,
         disable_statuslines = true,

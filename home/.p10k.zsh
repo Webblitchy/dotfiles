@@ -113,6 +113,7 @@
   )
 
   # Defines character set used by powerlevel10k. It's best to let `p10k configure` set it for you.
+  # typeset -g POWERLEVEL9K_MODE=nerdfont-complete
   typeset -g POWERLEVEL9K_MODE=nerdfont-complete
   # When set to `moderate`, some icons will have an extra space after them. This is meant to avoid
   # icon overlap when using non-monospace fonts. When set to `none`, spaces are not added.
@@ -187,8 +188,8 @@
   # OS identifier color.
   typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=255
   # Custom icon.
-  #typeset -g POWERLEVEL9K_OS_ICON_CONTENT_EXPANSION=$'\uF303' # Arch linux logo
-  typeset -g POWERLEVEL9K_OS_ICON_CONTENT_EXPANSION=$'\uF135' # Rocket logo
+  typeset -g POWERLEVEL9K_OS_ICON_CONTENT_EXPANSION='' # Rocket logo   
+  # Cool icons :      󰀝 󰢚 󰫲 󰬌 󰀸 󰣇 󰞦 󰄋 󰄛 󰮂 󰮇 󰣘 󰇄 󰈸 󰉁 󱐋 󰽥 󰟟 󱎓 󰝴 󱅾 󰨑 󱓞 󱍿 󰯙 󰖌   ⚡
 
   ################################[ prompt_char: prompt symbol ]################################
   # Transparent background.
@@ -198,7 +199,7 @@
   # Red prompt symbol if the last command failed.
   typeset -g POWERLEVEL9K_PROMPT_CHAR_ERROR_{VIINS,VICMD,VIVIS,VIOWR}_FOREGROUND=196
   # Default prompt symbol.
-  typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VIINS_CONTENT_EXPANSION='❯'
+  typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VIINS_CONTENT_EXPANSION='❯' # ❯    󰅂 󰥭   
   # Prompt symbol in command vi mode.
   typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VICMD_CONTENT_EXPANSION='❮'
   # Prompt symbol in visual vi mode.

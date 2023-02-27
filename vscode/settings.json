@@ -3,7 +3,7 @@
     "editor.inlineSuggest.enabled": true,
     "window.zoomLevel": 1,
     "github.copilot.enable": {
-        "*": true,
+        "*": false,
         "yaml": false,
         "plaintext": false,
         "markdown": false
@@ -19,5 +19,8 @@
         "**/.bloop": true,
         "**/.metals": true,
         "**/.ammonite": true
-    }
+    },
+    "editor.fontFamily": "JetBrainsMono Nerd Font",
+    "editor.fontLigatures": true,
+
 }

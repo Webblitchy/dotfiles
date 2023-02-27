@@ -137,7 +137,7 @@ ForegroundVisited=155,89,182
 
 [DirSelect Dialog]
 DirSelectDialog Size=801,612
-History Items[$e]=file:$HOME/Virtual Machines/Shared,file:$HOME/Virtual Machines,file:$HOME/Virtual Machines/Shared,file:$HOME/Virtual Machines/Shared,file:$HOME/Virtual Machines/Shared,file:$HOME/Virtual Machines/Shared,file:$HOME/kDrive/HEIG-VD/E2,file:$HOME/VM Shared,file:$HOME/Pictures,file:$HOME/VirtualBox VMs/reds2021-09/Shared,file:$HOME/OwnCloud,file:$HOME
+History Items[$e]=file:$HOME/Virtual Machines/Shared,file:$HOME/Virtual Machines/Shared,file:$HOME/Virtual Machines,file:$HOME/Virtual Machines/Shared,file:$HOME/Virtual Machines/Shared,file:$HOME/Virtual Machines/Shared,file:$HOME/Virtual Machines/Shared,file:$HOME/kDrive/HEIG-VD/E2,file:$HOME/VM Shared,file:$HOME/Pictures,file:$HOME/VirtualBox VMs/reds2021-09/Shared,file:$HOME/OwnCloud,file:$HOME
 
 [General]
 AccentColor=0,87,152
@@ -146,10 +146,10 @@ ColorSchemeHash=78952f1103f6f2c59b78c6ed5fa382c3f5ec18e7
 Name=Breeze Dark
 UseSystemBell=true
 XftAntialias=true
-XftHintStyle=hintmedium
+XftHintStyle=hintslight
 XftSubPixel=rgb
 accentColorFromWallpaper=false
-fixed=Clarity City,10,-1,5,50,0,0,0,0,0
+fixed=JetBrainsMono Nerd Font Mono,10,-1,5,50,0,0,0,0,0
 font=Clarity City,10,-1,5,50,0,0,0,0,0
 menuFont=Clarity City,10,-1,5,50,0,0,0,0,0
 shadeSortColumn=true

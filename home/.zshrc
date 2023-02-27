@@ -201,7 +201,7 @@ add-zsh-hook preexec mzc_termsupport_preexec
 # File and Dir colors for ls and other outputs
 export LS_OPTIONS='--color=auto'
 eval "$(dircolors -b)"
-alias ls='ls $LS_OPTIONS'
+alias ls='ls --group-directories-first $LS_OPTIONS'
 #######################################################################
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=244'
 
@@ -257,7 +257,7 @@ alias btop='sudo btop'
 alias powertop='sudo powertop'
 
 # new commands
-alias ll='ls -Alho'
+alias ll='lsd -Alh' # ls -Alho
 alias open='xdg-open $1 2>&1 > /dev/null'
 alias vrc='vim ~/.vimrc'
 alias nrc='nvim ~/.config/nvim/init.lua'
@@ -272,4 +272,5 @@ alias fix='kwin_x11 --replace'
 alias spoti='spt' # for spotify-tui
 alias lf='vim $1 -c "set ff=unix" -c ":wq"' # replace CRLF by LF
 alias pip-update='pip3 list --outdated | cut -f1 -d" " | tr " " "\n" | tail -n +3 | xargs pip3 install -U'
+alias addpkg='f(){ echo "$1" >> ~/.dotfiles/packages.lst;  unset -f f; }; f'
 
