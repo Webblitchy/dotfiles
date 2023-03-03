@@ -461,6 +461,11 @@ vim.g.vimtex_compiler_latexmk = {
     '-interaction=nonstopmode',
   },
 }
+-- vim.api.nvim_create_autocmd({require("vimtex-events").VimtexEventQuit},{
+--
+-- })
+-- TODO: Not working yet
+-- fdsjkl vim.cmd [[autocmd! User VimtexEventQuit call vimtex#latexmk#clean(0)]]
 
 -- Configure greathing menu on startup
 require("startup").setup(require("startup_nvim")) -- use the file startup_nvim.lua
