@@ -257,7 +257,7 @@ alias btop='sudo btop'
 alias powertop='sudo powertop'
 
 # new commands
-alias ll='lsd -Alh' # ls -Alho
+alias ll='lsd -Al --date +"%e %h %Y|%R" --blocks permission,size,date,name --group-dirs first'
 alias open='xdg-open $1 2>&1 > /dev/null'
 alias vrc='vim ~/.vimrc'
 alias nrc='nvim ~/.config/nvim/init.lua'

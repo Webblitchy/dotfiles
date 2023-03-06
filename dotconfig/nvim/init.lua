@@ -393,16 +393,14 @@ end, { desc = '[/] Fuzzily search in current buffer]' })
 
 vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
 vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
-vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
-vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
+-- vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
+-- vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
 
 
 -- [[ Configure nvim-web-devicons ]]
 require 'nvim-web-devicons'.setup {
   -- your personnal icons can go here (to override)
-  -- you can specify color or cterm_color instead of specifying both of them
-  -- DevIcon will be appended to `name`
   override = {
     zsh = {
       icon = "",
@@ -459,13 +457,11 @@ vim.g.vimtex_compiler_latexmk = {
     '-file-line-error',
     '-synctex=1',
     '-interaction=nonstopmode',
+    '-bibtex',
   },
 }
--- vim.api.nvim_create_autocmd({require("vimtex-events").VimtexEventQuit},{
---
--- })
--- TODO: Not working yet
--- fdsjkl vim.cmd [[autocmd! User VimtexEventQuit call vimtex#latexmk#clean(0)]]
+-- Clean latex output files when exiting
+vim.cmd [[autocmd! User VimtexEventQuit call vimtex#compiler#clean(0)]]
 
 -- Configure greathing menu on startup
 require("startup").setup(require("startup_nvim")) -- use the file startup_nvim.lua
@@ -650,6 +646,10 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     end
   end,
 })
+
+-- Preview markdown in okular with :MD
+vim.cmd [[command! -complete=shellcmd -nargs=1 -bang Silent execute ':silent !' . (<bang>0 ? 'nohup ' . <q-args> . '</dev/null >/dev/null 2>&1 &' : <q-args>) | execute ':redraw!']]
+vim.cmd [[command! MD Silent! okular %:S]]
 -- Configure nvim-metals (for scala lsp)
 -- local metals_config = require("metals").bare_config()
 -- metals_config.settings = {

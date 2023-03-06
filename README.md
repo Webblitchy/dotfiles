@@ -12,7 +12,7 @@ cat ~/.ssh/id_rsa.pub
 echo "  ->  Add the key here : https://github.com/settings/keys"
 ```
 
-Install the programms and configs
+Install the programs and configs
 ```bash
 mkdir ~/.dotfiles
 cd ~/.dotfiles

@@ -2,7 +2,7 @@
 AntiAliasFonts=true
 BoldIntense=true
 ColorScheme=BreathSilverfox
-Font=JetBrainsMono Nerd Font Mono,13,-1,5,50,0,0,0,0,0
+Font=JetBrainsMono Nerd Font Mono,11,-1,5,50,0,0,0,0,0
 LineSpacing=0
 TabColor=24,25,29,0
 UseFontLineChararacters=true
@@ -20,9 +20,9 @@ Name=Transparent silverfox
 Parent=FALLBACK/
 ShowTerminalSizeHint=false
 TerminalCenter=false
-TerminalColumns=140
+TerminalColumns=105
 TerminalMargin=0
-TerminalRows=40
+TerminalRows=25
 
 [Interaction Options]
 TextEditorCmd=0

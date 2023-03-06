@@ -28,9 +28,6 @@ eDP-1 Width 1920x1080 eDP-1=435
 [PlasmaViews][Panel 11][Defaults]
 thickness=27
 
-[PlasmaViews][Panel 11][Horizontal2560]
-thickness=27
-
 [PlasmaViews][Panel 2]
 alignment=1
 panelVisibility=1
@@ -38,25 +35,10 @@ panelVisibility=1
 [PlasmaViews][Panel 2][Defaults]
 thickness=27
 
-[PlasmaViews][Panel 2][Horizontal1920]
-thickness=27
-
-[PlasmaViews][Panel 2][Horizontal2560]
-thickness=27
-
-[PlasmaViews][Panel 2][Vertical1080]
-thickness=44
-
 [PlasmaViews][Panel 22][Defaults]
 thickness=44
 
-[PlasmaViews][Panel 22][Horizontal1920]
-thickness=44
-
 [PlasmaViews][Panel 25][Defaults]
-thickness=34
-
-[PlasmaViews][Panel 25][Horizontal1920]
 thickness=34
 
 [PlasmaViews][Panel 26][Defaults]
@@ -67,7 +49,6 @@ thickness=32
 [PlasmaViews][Panel 26][Horizontal1920]
 maxLength=1920
 minLength=1896
-thickness=32
 
 [PlasmaViews][Panel 28]
 alignment=1
@@ -75,9 +56,6 @@ floating=0
 panelOpacity=0
 
 [PlasmaViews][Panel 28][Defaults]
-thickness=28
-
-[PlasmaViews][Panel 28][Horizontal1920]
 thickness=28
 
 [PlasmaViews][Panel 39]
@@ -88,25 +66,18 @@ panelVisibility=0
 
 [PlasmaViews][Panel 39][Defaults]
 maxLength=2560
-minLength=1936
-thickness=30
+minLength=2560
+thickness=32
 
 [PlasmaViews][Panel 39][Horizontal1920]
 maxLength=1920
-minLength=1901
-thickness=30
+minLength=1920
 
 [PlasmaViews][Panel 39][Horizontal2560]
 maxLength=2560
-minLength=1936
+minLength=2560
 
 [PlasmaViews][Panel 4][Defaults]
-thickness=27
-
-[PlasmaViews][Panel 4][Horizontal1920]
-thickness=27
-
-[PlasmaViews][Panel 4][Horizontal2560]
 thickness=27
 
 [PlasmaViews][Panel 56]
@@ -122,29 +93,21 @@ thickness=56
 [PlasmaViews][Panel 56][Horizontal1920]
 maxLength=1218
 minLength=1062
-thickness=56
 
 [PlasmaViews][Panel 80]
 alignment=132
 floating=1
-panelOpacity=1
+panelOpacity=2
 panelVisibility=1
 
 [PlasmaViews][Panel 80][Defaults]
-maxLength=1890
-minLength=88
-thickness=66
+maxLength=1920
+minLength=80
+thickness=62
 
 [PlasmaViews][Panel 80][Horizontal1920]
-maxLength=1890
-minLength=88
-thickness=66
-
-[PlasmaViews][Panel 80][Horizontal2560]
-thickness=66
-
-[PlasmaViews][Panel 80][Vertical1080]
-thickness=28
+maxLength=1920
+minLength=80
 
 [PlasmaViews][Panel 85]
 alignment=132
@@ -157,22 +120,12 @@ maxLength=2560
 minLength=624
 thickness=66
 
-[PlasmaViews][Panel 85][Horizontal1920]
-thickness=66
-
 [PlasmaViews][Panel 85][Horizontal2560]
 maxLength=2560
 minLength=624
-thickness=66
 
 [PlasmaViews][Panel 86][Defaults]
-thickness=28
-
-[PlasmaViews][Panel 86][Horizontal1920]
-thickness=28
-
-[PlasmaViews][Panel 86][Horizontal2560]
-thickness=28
+thickness=32
 
 [ScreenConnectors]
 0=eDP-1
@@ -181,4 +134,4 @@ thickness=28
 3=DP-1-3
 
 [Updates]
-performed=/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/containmentactions_middlebutton.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/obsolete_kickoffrc.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/move_desktop_layout_config.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/klipper_clear_config.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/systemloadviewer_systemmonitor.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/unlock_widgets.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/digitalclock_rename_timezonedisplay_key.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/maintain_existing_desktop_icon_sizes.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/no_middle_click_paste_on_panels.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/keyboardlayout_migrateiconsetting.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/digitalclock_migrate_font_settings.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/keyboardlayout_remove_shortcut.js
+performed=/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/containmentactions_middlebutton.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/obsolete_kickoffrc.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/move_desktop_layout_config.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/klipper_clear_config.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/systemloadviewer_systemmonitor.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/unlock_widgets.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/digitalclock_rename_timezonedisplay_key.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/maintain_existing_desktop_icon_sizes.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/no_middle_click_paste_on_panels.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/keyboardlayout_migrateiconsetting.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/digitalclock_migrate_font_settings.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/keyboardlayout_remove_shortcut.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/mediaframe_migrate_useBackground_setting.js
