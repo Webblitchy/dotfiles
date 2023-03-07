@@ -45,7 +45,7 @@ function startMenuEnterPressed() -- must be global
     -- require("startup.utils").set_buf_options() -- restore startup parameters (not working here)
 end
 
-local settings = {
+require("startup").setup {
     -- every line should be same width without escaped \
     header = {
         type = "text",
@@ -150,4 +150,3 @@ local settings = {
         -- "footer"
     },
 }
-return settings
