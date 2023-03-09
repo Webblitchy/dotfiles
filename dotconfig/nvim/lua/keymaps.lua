@@ -33,6 +33,29 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
+-- Open terminal
+vim.keymap.set("n", "<leader>t", ":terminal<CR>")
+
+-- Execute file on leader x
+vim.keymap.set("n", "<leader>x", function()
+  vim.api.nvim_command("write")
+  local fileName = vim.api.nvim_buf_get_name(0)
+  local fileType = vim.bo.filetype
+  local workspaceFolder = vim.lsp.buf.list_workspace_folders()[1]
+
+  local function executeFile(command)
+    vim.api.nvim_command("term cd " .. workspaceFolder .. " && " .. command)
+  end
+
+  if fileType == "python" then
+    -- vim.api.nvim_command("term python " .. fileName)
+    executeFile("python " .. fileName)
+  elseif fileType == "rust" then
+    -- vim.api.nvim_command("term cd " .. workspaceFolder .. " && cargo run " .. fileName)
+    executeFile("cargo run")
+  end
+end)
+
 -- Diagnostic keymaps (warnings and errors)
 -- TODO: useful ?
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)

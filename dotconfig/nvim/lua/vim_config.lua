@@ -47,7 +47,7 @@ vim.o.wrap = false -- by default disable wrap (can be individually enabled by la
 vim.o.linebreak = true -- when wrap enabled, wrap at the end of the words
 
 -- theme
-vim.o.termguicolors = true
+vim.o.termguicolors = true -- add more color
 vim.g.gruvbox_italic = 1 -- italic for comments
 vim.cmd [[colorscheme gruvbox]]
 
@@ -84,6 +84,9 @@ vim.api.nvim_create_autocmd({ "VimResized", "VimEnter", "WinEnter", "WinLeave" }
     end
 })
 
+local hideBordersCommand = "set nonumber | set norelativenumber | set signcolumn=no"
+local showBordersCommand = "set number | set relativenumber | set signcolumn=yes"
+
 -- Restore cursor position when opening a file
 vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
     callback = function()
@@ -95,15 +98,30 @@ vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
     end
 })
 
+-- replace term in new tab default behavior
+vim.api.nvim_create_autocmd("TermOpen", {
+    callback = function()
+        local termBuf = vim.api.nvim_get_current_buf() -- save term buffer
+        vim.api.nvim_command("b#") -- go to previous buffer
+        vim.api.nvim_command("botright new") -- create a splitwindow
+        vim.api.nvim_input('<C-w>j<CR>') -- go to new window
+        vim.api.nvim_command("res 10") -- resize terminal
+        vim.api.nvim_command("b " .. termBuf) -- reopen the term buffer
+        vim.api.nvim_command("" .. hideBordersCommand)
+        vim.api.nvim_input('a') -- interactive mode
+    end
+})
+
+
 -- [ NEW USER COMMANDS ]
 vim.api.nvim_create_user_command(
     'Hide', -- must start with uppercase
-    'set nonumber | set norelativenumber | set signcolumn=no | IndentBlanklineDisable ',
+    hideBordersCommand .. "IndentBlanklineDisable",
     {}
 )
 
 vim.api.nvim_create_user_command(
     'Unhide', -- must start with uppercase
-    'set number | set relativenumber | set signcolumn=yes | IndentBlanklineEnable ',
+    showBordersCommand .. "IndentBlanklineEnable",
     {}
 )

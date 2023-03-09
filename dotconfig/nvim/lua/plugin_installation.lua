@@ -78,16 +78,12 @@ require('packer').startup(function(use)
     requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim", "nvim-tree/nvim-web-devicons" }
   }
 
-
+  -- Highlight todo in the file
   use {
     "folke/todo-comments.nvim",
     requires = "nvim-lua/plenary.nvim",
     config = function()
-      require("todo-comments").setup {
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
-      }
+      require("todo-comments").setup {}
     end
   }
   use 'lervag/vimtex' -- latex compilation
@@ -97,12 +93,14 @@ require('packer').startup(function(use)
     "startup-nvim/startup.nvim",
     requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
     config = function()
-      require "startup".setup()
+      require "startup".setup {}
     end
   }
 
   -- Metals (used for scala lsp)
   use({ 'scalameta/nvim-metals', requires = { "nvim-lua/plenary.nvim" } })
+
+  use "jose-elias-alvarez/null-ls.nvim"
 
   -- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
   local has_plugins, plugins = pcall(require, 'custom.plugins')

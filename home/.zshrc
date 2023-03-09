@@ -233,7 +233,10 @@ export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 
 # To use coursier (for scala)
-export PATH="$PATH:/home/eliott/.local/share/coursier/bin"
+export PATH="$PATH:$HOME/.local/share/coursier/bin"
+
+# To use local bin programs as in bin
+export PATH="$PATH:$HOME/.local/bin"
 
 ### MY ALIASES ###
 
@@ -260,7 +263,7 @@ alias powertop='sudo powertop'
 alias ll='lsd -Al --date +"%e %h %Y|%R" --blocks permission,size,date,name --group-dirs first'
 alias open='xdg-open $1 2>&1 > /dev/null'
 alias vrc='vim ~/.vimrc'
-alias nrc='nvim ~/.config/nvim/init.lua'
+alias nrc='cd ~/.config/nvim/lua'
 alias zrc='nvim ~/.zshrc; source ~/.zshrc'
 alias cours='cd /home/eliott/kDrive/HEIG-VD/S6'
 alias hello="notify-send 'Hello world!' 'This is an example notification.' --icon=dialog-information"

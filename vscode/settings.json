@@ -22,5 +22,8 @@
     },
     "editor.fontFamily": "JetBrainsMono Nerd Font",
     "editor.fontLigatures": true,
+    "workbench.editorAssociations": {
+        "*.pdf": "pdf.preview"
+    },
 
 }

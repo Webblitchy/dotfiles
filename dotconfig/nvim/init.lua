@@ -20,3 +20,4 @@ require("plugins.startup") -- to add a nice welcome screen
 require("plugins.nvim_treesitter") -- better highlighting and object selection
 require("plugins.lsp") -- handle language server protocols
 require("plugins.nvim_cmp") -- handle autocompletion
+require("plugins.null-ls") -- handle external formatter and linter
