@@ -97,10 +97,22 @@ require('packer').startup(function(use)
     end
   }
 
+  -- Tree to find files
+  use {
+    'nvim-tree/nvim-tree.lua',
+    requires = {
+      'nvim-tree/nvim-web-devicons', -- optional, for file icons
+    },
+  }
+
   -- Metals (used for scala lsp)
   use({ 'scalameta/nvim-metals', requires = { "nvim-lua/plenary.nvim" } })
 
+  -- Use formatter when not available in lsp
   use "jose-elias-alvarez/null-ls.nvim"
+
+  -- Save with sudo
+  use "lambdalisue/suda.vim"
 
   -- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
   local has_plugins, plugins = pcall(require, 'custom.plugins')

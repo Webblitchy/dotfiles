@@ -6,7 +6,8 @@
         "*": true,
         "yaml": false,
         "plaintext": false,
-        "markdown": false
+        "markdown": false,
+        "scala": true
     },
     "terminal.integrated.fontFamily": "MesloLGS NF",
     "telemetry.telemetryLevel": "off",

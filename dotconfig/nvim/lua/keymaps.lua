@@ -36,6 +36,9 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- Open terminal
 vim.keymap.set("n", "<leader>t", ":terminal<CR>")
 
+-- Hide
+vim.keymap.set("n", "<leader>b", ":Bar<CR>")
+
 -- Execute file on leader x
 vim.keymap.set("n", "<leader>x", function()
   vim.api.nvim_command("write")
@@ -48,10 +51,8 @@ vim.keymap.set("n", "<leader>x", function()
   end
 
   if fileType == "python" then
-    -- vim.api.nvim_command("term python " .. fileName)
     executeFile("python " .. fileName)
   elseif fileType == "rust" then
-    -- vim.api.nvim_command("term cd " .. workspaceFolder .. " && cargo run " .. fileName)
     executeFile("cargo run")
   end
 end)
@@ -62,3 +63,6 @@ vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
+
+-- Terminal remaps
+vim.api.nvim_command("tnoremap <C-W> <C-\\><C-N><C-W>") -- move to other window as usual
