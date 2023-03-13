@@ -62,9 +62,16 @@ require('packer').startup(function(use)
     requires = { 'nvim-tree/nvim-web-devicons', opt = true } -- to add icons
   }
 
+  -- Theme
+  use("ellisonleao/gruvbox.nvim")
+
   use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
   use 'numToStr/Comment.nvim' -- "gc" to comment visual regions/lines
-  use 'tpope/vim-sleuth' -- Detect tabstop and shiftwidth automatically
+  -- using packer.nvim
+  use { -- Detect indentation for existing files
+    'nmac427/guess-indent.nvim',
+    config = function() require('guess-indent').setup {} end,
+  }
 
   -- Fuzzy Finder (files, lsp, etc)
   use { 'nvim-telescope/telescope.nvim', branch = '0.1.x', requires = { 'nvim-lua/plenary.nvim' } }
@@ -110,9 +117,13 @@ require('packer').startup(function(use)
 
   -- Use formatter when not available in lsp
   use "jose-elias-alvarez/null-ls.nvim"
+  use("jay-babu/mason-null-ls.nvim") -- use mason to install formatters
 
   -- Save with sudo
   use "lambdalisue/suda.vim"
+
+  -- change and add surroundings (", ', (, [, html tags...)
+  use "tpope/vim-surround"
 
   -- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
   local has_plugins, plugins = pcall(require, 'custom.plugins')
@@ -138,10 +149,9 @@ if is_bootstrap then
   return
 end
 
--- Automatically source and re-compile packer whenever you save this init.lua
-local packer_group = vim.api.nvim_create_augroup('Packer', { clear = true })
+-- Automatically source and re-compile packer whenever you save this file
 vim.api.nvim_create_autocmd('BufWritePost', {
-  command = 'source <afile> | silent! LspStop | silent! LspStart | PackerCompile',
-  group = packer_group,
-  pattern = vim.fn.expand '$MYVIMRC',
+  command = 'source <afile> | PackerSync',
+  group = vim.api.nvim_create_augroup('Packer', { clear = true }),
+  pattern = "plugin_installation.lua" --vim.fn.expand("%:p"), -- current file
 })

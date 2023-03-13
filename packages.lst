@@ -30,9 +30,8 @@ okular
 openssh
 pinta
 qbittorrent
-vim
-vim-spell-en
-vim-spell-fr
+neovim
+xclip
 virtualbox
 virtualbox-host-modules-arch
 wget
@@ -50,7 +49,6 @@ onlyoffice-bin
 spotify
 simplenote-electron-bin
 telegram-desktop-bin
-vim-gruvbox-git
 virtualbox-ext-oracle
 visual-studio-code-bin
 libinput-gestures

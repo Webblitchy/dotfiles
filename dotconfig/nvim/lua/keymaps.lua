@@ -2,6 +2,8 @@
 -- Keymaps Settings
 -------------------------------------------------------------------------------------------
 
+local map = vim.keymap.set -- local alias for conciseness
+
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
@@ -9,18 +11,18 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Make ctrl-c work always as esc
-vim.keymap.set({ 'n', 'i', 'v' }, '<C-c>', '<Esc>')
+map({ 'n', 'i', 'v' }, '<C-c>', '<Esc>')
 
 -- ctrl backspace for removing a whole word
-vim.keymap.set("i", "", "<C-W>")
+map("i", "", "<C-W>")
 
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
-vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+map({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 -- Remap for dealing with word wrap
-vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+map('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+map('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
@@ -34,13 +36,13 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 -- Open terminal
-vim.keymap.set("n", "<leader>t", ":terminal<CR>")
+map("n", "<leader>t", ":terminal<CR>", { silent = true })
 
 -- Hide
-vim.keymap.set("n", "<leader>b", ":Bar<CR>")
+map("n", "<leader>b", ":Bar<CR>", { silent = true, nowait = true })
 
 -- Execute file on leader x
-vim.keymap.set("n", "<leader>x", function()
+map("n", "<leader>x", function()
   vim.api.nvim_command("write")
   local fileName = vim.api.nvim_buf_get_name(0)
   local fileType = vim.bo.filetype
@@ -54,15 +56,17 @@ vim.keymap.set("n", "<leader>x", function()
     executeFile("python " .. fileName)
   elseif fileType == "rust" then
     executeFile("cargo run")
+  elseif fileType == "sh" then
+    executeFile("bash < " .. fileName)
   end
 end)
 
 -- Diagnostic keymaps (warnings and errors)
 -- TODO: useful ?
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
+map('n', '[d', vim.diagnostic.goto_prev)
+map('n', ']d', vim.diagnostic.goto_next)
+map('n', '<leader>e', vim.diagnostic.open_float)
+map('n', '<leader>q', vim.diagnostic.setloclist)
 
 -- Terminal remaps
-vim.api.nvim_command("tnoremap <C-W> <C-\\><C-N><C-W>") -- move to other window as usual
+map("t", "<C-W>", "<C-\\><C-N><C-W>") -- move to other window as usual

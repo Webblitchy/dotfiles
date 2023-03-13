@@ -104,6 +104,17 @@ _G.packer_plugins = {
     path = "/home/eliott/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
   },
+  ["gruvbox.nvim"] = {
+    loaded = true,
+    path = "/home/eliott/.local/share/nvim/site/pack/packer/start/gruvbox.nvim",
+    url = "https://github.com/ellisonleao/gruvbox.nvim"
+  },
+  ["guess-indent.nvim"] = {
+    config = { "\27LJ\2\n>\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\17guess-indent\frequire\0" },
+    loaded = true,
+    path = "/home/eliott/.local/share/nvim/site/pack/packer/start/guess-indent.nvim",
+    url = "https://github.com/nmac427/guess-indent.nvim"
+  },
   ["indent-blankline.nvim"] = {
     loaded = true,
     path = "/home/eliott/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
@@ -118,6 +129,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/eliott/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
     url = "https://github.com/williamboman/mason-lspconfig.nvim"
+  },
+  ["mason-null-ls.nvim"] = {
+    loaded = true,
+    path = "/home/eliott/.local/share/nvim/site/pack/packer/start/mason-null-ls.nvim",
+    url = "https://github.com/jay-babu/mason-null-ls.nvim"
   },
   ["mason.nvim"] = {
     loaded = true,
@@ -226,10 +242,10 @@ _G.packer_plugins = {
     path = "/home/eliott/.local/share/nvim/site/pack/packer/start/vim-rhubarb",
     url = "https://github.com/tpope/vim-rhubarb"
   },
-  ["vim-sleuth"] = {
+  ["vim-surround"] = {
     loaded = true,
-    path = "/home/eliott/.local/share/nvim/site/pack/packer/start/vim-sleuth",
-    url = "https://github.com/tpope/vim-sleuth"
+    path = "/home/eliott/.local/share/nvim/site/pack/packer/start/vim-surround",
+    url = "https://github.com/tpope/vim-surround"
   },
   vimtex = {
     loaded = true,
@@ -239,14 +255,18 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: todo-comments.nvim
-time([[Config for todo-comments.nvim]], true)
-try_loadstring("\27LJ\2\n?\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\18todo-comments\frequire\0", "config", "todo-comments.nvim")
-time([[Config for todo-comments.nvim]], false)
+-- Config for: guess-indent.nvim
+time([[Config for guess-indent.nvim]], true)
+try_loadstring("\27LJ\2\n>\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\17guess-indent\frequire\0", "config", "guess-indent.nvim")
+time([[Config for guess-indent.nvim]], false)
 -- Config for: startup.nvim
 time([[Config for startup.nvim]], true)
 try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\fstartup\frequire\0", "config", "startup.nvim")
 time([[Config for startup.nvim]], false)
+-- Config for: todo-comments.nvim
+time([[Config for todo-comments.nvim]], true)
+try_loadstring("\27LJ\2\n?\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\18todo-comments\frequire\0", "config", "todo-comments.nvim")
+time([[Config for todo-comments.nvim]], false)
 -- Conditional loads
 time([[Conditional loading of telescope-fzf-native.nvim]], true)
   require("packer.load")({"telescope-fzf-native.nvim"}, {}, _G.packer_plugins)

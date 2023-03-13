@@ -48,7 +48,7 @@ end
 --
 --  Add any additional override configuration in the following tables. They will be passed to
 --  the `settings` field of the server config. You must look up that documentation yourself.
-local servers = {
+local lsp_servers = {
   clangd = {}, -- C/C++
   pyright = {}, -- Python
   rust_analyzer = {}, -- Rust
@@ -72,14 +72,15 @@ require('neodev').setup()
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
--- Setup mason so it can manage external tooling
+
+-- [[ MASON ]]
 require('mason').setup()
 
 -- Ensure the servers above are installed
 local mason_lspconfig = require 'mason-lspconfig'
 
 mason_lspconfig.setup {
-  ensure_installed = vim.tbl_keys(servers), -- install the defined servers
+  ensure_installed = vim.tbl_keys(lsp_servers), -- install the defined servers
 }
 
 mason_lspconfig.setup_handlers {
@@ -87,10 +88,37 @@ mason_lspconfig.setup_handlers {
     require('lspconfig')[server_name].setup {
       capabilities = capabilities,
       on_attach = on_attach,
-      settings = servers[server_name],
+      settings = lsp_servers[server_name],
     }
   end,
 }
+
+-- [ NULL-LS ]
+local null_ls_status_ok, null_ls = pcall(require, "null-ls")
+if not null_ls_status_ok then
+  return
+end
+
+local formatting = null_ls.builtins.formatting
+local diagnostics = null_ls.builtins.diagnostics
+
+null_ls.setup({
+  debug = false,
+  sources = {
+    formatting.black, -- python formatting
+    -- diagnostics.flake8
+    formatting.shfmt, -- bash formatting
+
+  },
+})
+
+-- Auto Download Null-LS sources
+require("mason-null-ls").setup({
+  ensure_installed = nil,
+  automatic_installation = true, -- auto install formatters defined in null-ls
+  automatic_setup = false,
+})
+
 
 -- Auto format file when saving file
 vim.api.nvim_create_autocmd("BufWritePre", {
@@ -105,6 +133,8 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 vim.cmd [[command! -complete=shellcmd -nargs=1 -bang Silent execute ':silent !' . (<bang>0 ? 'nohup ' . <q-args> . '</dev/null >/dev/null 2>&1 &' : <q-args>) | execute ':redraw!']]
 vim.cmd [[command! MD Silent! okular %:S]]
 
+
+-- [ NVIM METALS ]
 -- Configure nvim-metals (for scala lsp)
 --
 vim.opt_global.shortmess:remove("F") -- otherwise conflicts with metals

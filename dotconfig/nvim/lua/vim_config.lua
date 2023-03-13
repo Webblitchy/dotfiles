@@ -7,20 +7,18 @@ vim.o.mouse = "" -- disable mouse
 vim.opt.confirm = true -- confirm to save changes before exiting modified buffer
 vim.o.completeopt = 'menuone,noselect' -- Set completeopt to have a better completion experience
 vim.opt.spelllang = { "en", "fr" } -- dictionnary used for spell check
+vim.opt.clipboard = "unnamedplus" -- use OS clipboard (require xclip on X11)
 
 -- Indentation settings
-vim.o.autoindent = true -- always set autoindenting on
 vim.o.copyindent = true -- copy the previous indentation on autoindenting
 vim.o.breakindent = true -- Enable break indent
-vim.o.expandtab = true -- expand tabs to spaces
 vim.o.shiftround = true -- use multiple of shiftwidth when indenting with '<' and '>'
 vim.o.smartindent = true
-vim.o.smarttab = true -- insert tabs on the start of a line according to shiftwidth, not tabstop
-vim.o.softtabstop = 4 -- when hitting <BS>, pretend like a tab is removed, even if spaces
-
--- Automatically set by vim-sleuth:
--- vim.o.shiftwidth = 4 -- number of spaces to use for autoindenting
--- vim.o.tabstop = 4 -- tabs are n spaces
+vim.o.tabstop = 3 -- visual size of tabs (when no expandtab)
+vim.o.shiftwidth = 4 -- default number of spaces to use for autoindenting
+vim.o.softtabstop = vim.o.shiftwidth -- when hitting <BS>, pretend like a tab is removed, even if spaces
+vim.o.expandtab = true -- expand tabs to spaces
+--> guess-indent can change these settings when reading existing file
 
 
 -- History
@@ -46,22 +44,6 @@ vim.o.shortmess = "I" -- disable start message
 vim.o.wrap = false -- by default disable wrap (can be individually enabled by language)
 vim.o.linebreak = true -- when wrap enabled, wrap at the end of the words
 
--- theme
-vim.o.termguicolors = true -- add more color
-vim.g.gruvbox_italic = 1 -- italic for comments
-vim.cmd [[colorscheme gruvbox]]
-
--- colors
-vim.cmd [[highlight Normal guibg=NONE ctermbg=NONE]] -- transparent background
-vim.cmd [[highlight SignColumn guibg=NONE]] -- Sign column has same color as number column
-vim.cmd [[highlight CursorLineNr guifg=#fe8019 guibg=NONE]] -- current line in gruvbox light orange
-vim.cmd [[highlight IncSearch guifg=#b8bb26]] -- search in green
-
-vim.cmd [[highlight GitSignsAdd guibg=NONE guifg=#b4b926]] -- + in the margin for git
-vim.cmd [[highlight GitSignsChange guibg=NONE guifg=#8cbd7b]]
-vim.cmd [[highlight GitSignsDelete guibg=NONE guifg=#e44936]]
-
-vim.cmd [[highlight IndentBlanklineChar guifg=#413b35]] -- Indent line : very dark comments
 
 -- show line numbers and highlight cursor line number
 vim.opt.number = true
@@ -72,4 +54,9 @@ vim.wo.signcolumn = 'yes'
 
 -- set invisible chars
 vim.o.list = true
-vim.opt.listchars = { extends = '→', precedes = '←', trail = '·' }
+vim.opt.listchars = {
+  extends = '→',
+  precedes = '←',
+  trail = '·',
+  tab = "  ", -- Needs between 2-3 chars : ⊦ ┄╞ ▸ ⊳
+}

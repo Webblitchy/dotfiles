@@ -3,7 +3,8 @@
 -- always have a 1/4 of the screen of margin after / before the cursor
 vim.api.nvim_create_autocmd({ "VimResized", "VimEnter", "WinEnter", "WinLeave" }, {
   callback = function()
-    vim.api.nvim_command(":set scrolloff=" .. math.ceil(vim.api.nvim_get_option("lines") / 4))
+    -- vim.api.nvim_command(":set scrolloff=" .. math.ceil(vim.api.nvim_get_option("lines") / 4))
+    vim.wo.scrolloff = math.ceil(vim.api.nvim_win_get_height(0) / 4)
   end
 })
 
@@ -26,13 +27,14 @@ local showBordersCommand = "set number | set relativenumber | set signcolumn=yes
 vim.api.nvim_create_autocmd("TermOpen", {
   callback = function()
     local termBuf = vim.api.nvim_get_current_buf() -- save term buffer
+    local termSize = math.ceil(vim.api.nvim_win_get_height(0) / 3)
     vim.api.nvim_command("b#") -- go to previous buffer
     vim.api.nvim_command("botright new") -- create a splitwindow
     vim.api.nvim_input('<C-w>j<CR>') -- go to new window
-    vim.api.nvim_command("res 10") -- resize terminal
+    vim.api.nvim_command("res " .. termSize) -- resize terminal
     vim.api.nvim_command("b " .. termBuf) -- reopen the term buffer
     vim.api.nvim_command("" .. hideBordersCommand)
-    vim.opt_local.laststatus = 0 -- disable statusline (lualine in my case)
+    -- vim.opt_local.laststatus = 0 -- disable statusline (lualine in my case)
     vim.opt_local.showmode = false
     vim.opt_local.shortmess:append({ F = true })
     vim.api.nvim_input('a') -- interactive mode
@@ -41,7 +43,8 @@ vim.api.nvim_create_autocmd("TermOpen", {
 
 vim.api.nvim_create_autocmd("TermClose", {
   callback = function()
-    vim.opt_local.laststatus = 2 -- reenable statusline
+    -- vim.opt_local.laststatus = 2 -- reenable statusline
+    -- vim.api.nvim_input("<C-Y>") -- scroll up (directly quit terminal without status)
   end
 })
 

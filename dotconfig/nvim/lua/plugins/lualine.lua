@@ -51,7 +51,12 @@ require('lualine').setup {
         return wrapMode
       end,
       function() -- tab size
-        return " " .. vim.o.shiftwidth
+        if vim.o.expandtab then -- if use space for tab
+          return " " .. vim.o.shiftwidth
+        else
+          return " TAB"
+        end
+        --
       end,
       'filetype',
     },
