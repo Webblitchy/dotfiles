@@ -49,7 +49,30 @@ vim.api.nvim_create_autocmd("TermClose", {
 })
 
 
+-- Add missing filetypes
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  callback = function()
+    vim.opt_local.filetype = "sage"
+  end,
+  pattern = "*.sage"
+})
 
+
+-- Auto format file when saving file
+-- vim.api.nvim_create_autocmd("QuitPre", {
+--   callback = function()
+--     IsQuitting = true
+--   end
+-- })
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+  callback = function()
+    FormatOnSave()
+  end
+})
+
+-- vim.cmd [[cabbrev wq lua FormatOnSave() vim.api.nvim_input("ZZ")]]
+--
 
 -- [ NEW USER COMMANDS ]
 
@@ -85,3 +108,8 @@ vim.api.nvim_create_user_command(
   "SudaRead",
   {}
 )
+
+
+-- Preview markdown in okular with :MD
+vim.cmd [[command! -complete=shellcmd -nargs=1 -bang Silent execute ':silent !' . (<bang>0 ? 'nohup ' . <q-args> . '</dev/null >/dev/null 2>&1 &' : <q-args>) | execute ':redraw!']]
+vim.cmd [[command! MD w | Silent! okular %:S]]

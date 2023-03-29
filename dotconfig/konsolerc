@@ -23,6 +23,16 @@ ConfigVersion=1
 RememberWindowSize=false
 
 [MainWindow]
+1344x840 screen: XPosition=330
+1344x840 screen: YPosition=115
+1536x864 screen: Height=425
+1536x864 screen: Width=735
+1536x864 screen: XPosition=295
+1536x864 screen: YPosition=194
+2 screens: Height=525
+2 screens: Width=945
+2 screens: XPosition=504
+2 screens: YPosition=243
 DP-3 Height 2048x1152=511
 DP-3 Height 2048x1152 DP-3=602
 DP-3 Height 2560x1440=511

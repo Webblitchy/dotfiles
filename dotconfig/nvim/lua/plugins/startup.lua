@@ -20,24 +20,13 @@ local title_sharp = {
     [[                                                                       ]],
 }
 
-local function file_exists(name)
-    -- function taken from real source code
-    local f = io.open(name, "r")
-    if f ~= nil then
-        io.close(f)
-        return true
-    else
-        return false
-    end
-end
-
 -- open file under cursor
 function startMenuEnterPressed() -- must be global
     local filename = vim.trim(vim.api.nvim_get_current_line())
     filename = string.gsub(filename, "%[%d%] (.+)", "%1")
     filename = vim.fn.fnamemodify(filename, ":p")
-    vim.cmd [[:source ~/.config/nvim/init.lua]] -- restore default parameters
-    if file_exists(filename) then
+    -- vim.cmd [[:source ~/.config/nvim/init.lua]] -- restore default parameters
+    if File_exists(filename) then
         vim.cmd("e " .. filename) -- quit menu and open file
     else
         require("startup").check_line() -- execute_command
@@ -124,7 +113,7 @@ require("startup").setup {
             require("startup").create_mappings({ ["<CR>"] = "<cmd>lua startMenuEnterPressed()<CR>" })
         end,
         mapping_keys = false, -- to show the mapping
-        cursor_column = 0.5, -- center the cursor
+        cursor_column = 0, -- 0.5 to center the cursor
         empty_lines_between_mappings = true,
         disable_statuslines = true,
         paddings = { 1, 3, 3, 0 },

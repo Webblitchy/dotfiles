@@ -13,8 +13,8 @@ vim.opt_local.cursorlineopt = "line"
 vim.opt_local.ruler = false
 
 -- Hide cursor
-vim.cmd [[hi Cursor blend=100]]
-vim.cmd [[set guicursor+=a:Cursor/lCursor]]
+-- vim.cmd [[hi Cursor blend=100]]
+-- vim.cmd [[set guicursor+=a:Cursor/lCursor]]
 
 -- Hide numbers
 vim.opt_local.number = false

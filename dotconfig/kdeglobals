@@ -153,7 +153,7 @@ fixed=JetBrainsMono Nerd Font Mono,10,-1,5,50,0,0,0,0,0
 font=Clarity City,10,-1,5,50,0,0,0,0,0
 menuFont=Clarity City,10,-1,5,50,0,0,0,0,0
 shadeSortColumn=true
-smallestReadableFont=Clarity City,8,-1,5,50,0,0,0,0,0
+smallestReadableFont=Clarity City,9,-1,5,50,0,0,0,0,0
 toolBarFont=Clarity City,10,-1,5,50,0,0,0,0,0
 widgetStyle=Breeze
 

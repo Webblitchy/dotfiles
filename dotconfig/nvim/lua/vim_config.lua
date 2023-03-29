@@ -2,7 +2,6 @@
 -- Basic vim settings
 -------------------------------------------------------------------------------------------
 
-vim.o.backspace = [[indent,eol,start]] -- more powerful backspace (suppress in insert)
 vim.o.mouse = "" -- disable mouse
 vim.opt.confirm = true -- confirm to save changes before exiting modified buffer
 vim.o.completeopt = 'menuone,noselect' -- Set completeopt to have a better completion experience
@@ -23,10 +22,8 @@ vim.o.expandtab = true -- expand tabs to spaces
 
 -- History
 vim.o.undofile = true
-vim.o.undolevels = 1000
 vim.o.undoreload = 10000
 vim.o.undodir = vim.fn.expand("~/.config/nvim/undo//") -- to have all undos in the same dir (expand for tilde)
-vim.o.history = 1000 -- Command history
 vim.o.directory = vim.fn.expand("~/.config/nvim/swap//")
 vim.o.updatetime = 250 -- time before swap file is written on the disk
 vim.o.backupdir = vim.fn.expand("~/.config/nvim/backup//")
@@ -34,8 +31,10 @@ vim.o.backupdir = vim.fn.expand("~/.config/nvim/backup//")
 -- SEARCH
 vim.o.ignorecase = true -- Case insensitive search
 vim.o.smartcase = true -- Sensible to capital letters
-vim.o.incsearch = true -- Show search results as you type
 vim.o.hlsearch = false -- Don't highlight all search results
+
+-- Language settings
+vim.g.c_syntax_for_h = true -- set filetype to c for h files
 
 
 -- [ UI settings ]

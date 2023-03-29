@@ -1,7 +1,6 @@
 {
     "workbench.colorTheme": "Atom One Dark",
     "editor.inlineSuggest.enabled": true,
-    "window.zoomLevel": 1,
     "github.copilot.enable": {
         "*": true,
         "yaml": false,
@@ -26,5 +25,6 @@
     "workbench.editorAssociations": {
         "*.pdf": "pdf.preview"
     },
+    "window.zoomLevel": 1,
 
 }

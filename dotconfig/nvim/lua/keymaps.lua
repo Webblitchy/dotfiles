@@ -44,21 +44,7 @@ map("n", "<leader>b", ":Bar<CR>", { silent = true, nowait = true })
 -- Execute file on leader x
 map("n", "<leader>x", function()
   vim.api.nvim_command("write")
-  local fileName = vim.api.nvim_buf_get_name(0)
-  local fileType = vim.bo.filetype
-  local workspaceFolder = vim.lsp.buf.list_workspace_folders()[1]
-
-  local function executeFile(command)
-    vim.api.nvim_command("term cd " .. workspaceFolder .. " && " .. command)
-  end
-
-  if fileType == "python" then
-    executeFile("python " .. fileName)
-  elseif fileType == "rust" then
-    executeFile("cargo run")
-  elseif fileType == "sh" then
-    executeFile("bash < " .. fileName)
-  end
+  AutoCompile()
 end)
 
 -- Diagnostic keymaps (warnings and errors)

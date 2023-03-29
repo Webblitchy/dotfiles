@@ -1,6 +1,7 @@
 -------------------------------------------------------------------------------------------
 -- Require the different config files
 -------------------------------------------------------------------------------------------
+require("myFunctions") -- utility functions and personnal ones
 
 require("vim_config") -- set basic vim settings
 

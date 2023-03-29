@@ -49,7 +49,9 @@ end
 --  Add any additional override configuration in the following tables. They will be passed to
 --  the `settings` field of the server config. You must look up that documentation yourself.
 local lsp_servers = {
-  clangd = {}, -- C/C++
+  clangd = {
+    AllowShortFunctionsOnASingleLine = false,
+  }, -- C/C++
   pyright = {}, -- Python
   rust_analyzer = {}, -- Rust
   jdtls = {}, -- Java
@@ -63,6 +65,7 @@ local lsp_servers = {
   lemminx = {}, -- XML
   ltex = {}, -- Latex
   --metals = {}, -- Scala (install metals with `cs install metals`)
+  cssls = {}, -- CSS
 }
 
 -- Setup neovim lua configuration
@@ -88,10 +91,17 @@ mason_lspconfig.setup_handlers {
     require('lspconfig')[server_name].setup {
       capabilities = capabilities,
       on_attach = on_attach,
-      settings = lsp_servers[server_name],
+      settings = lsp_servers[server_name], -- defined in the curly brackets
     }
   end,
 }
+
+-- [[ Specific lsp settings ]]
+
+-- to disable small functions as one-liners (with LLVM style)
+table.insert(require("lspconfig")["clangd"].cmd, "--fallback-style=Chromium")
+
+
 
 -- [ NULL-LS ]
 local null_ls_status_ok, null_ls = pcall(require, "null-ls")
@@ -106,7 +116,6 @@ null_ls.setup({
   debug = false,
   sources = {
     formatting.black, -- python formatting
-    -- diagnostics.flake8
     formatting.shfmt, -- bash formatting
 
   },
@@ -119,19 +128,6 @@ require("mason-null-ls").setup({
   automatic_setup = false,
 })
 
-
--- Auto format file when saving file
-vim.api.nvim_create_autocmd("BufWritePre", {
-  callback = function()
-    if vim.lsp.buf.server_ready() then
-      vim.lsp.buf.format()
-    end
-  end,
-})
-
--- Preview markdown in okular with :MD
-vim.cmd [[command! -complete=shellcmd -nargs=1 -bang Silent execute ':silent !' . (<bang>0 ? 'nohup ' . <q-args> . '</dev/null >/dev/null 2>&1 &' : <q-args>) | execute ':redraw!']]
-vim.cmd [[command! MD Silent! okular %:S]]
 
 
 -- [ NVIM METALS ]

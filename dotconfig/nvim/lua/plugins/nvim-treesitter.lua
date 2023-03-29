@@ -65,6 +65,7 @@ require('nvim-treesitter.configs').setup {
 -- treesitter folding
 vim.wo.foldmethod = 'expr'
 vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'
-vim.api.nvim_create_autocmd({ "BufWinEnter" }, { -- to unfold all at the begining
-  command = "normal zR"
-})
+vim.opt.foldenable = false
+-- vim.api.nvim_create_autocmd({ "BufWinEnter" }, { -- to unfold all at the begining
+--   command = "normal zR"
+-- })

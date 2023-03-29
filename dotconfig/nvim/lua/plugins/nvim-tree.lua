@@ -37,4 +37,4 @@ require("nvim-tree").setup({
 })
 
 -- to toggle nvim tree
-vim.keymap.set("n", "<C-T>", ":NvimTreeToggle<CR>")
+vim.keymap.set("n", "<C-T>", ":NvimTreeToggle<CR>", { silent = true })

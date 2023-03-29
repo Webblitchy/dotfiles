@@ -79,9 +79,15 @@ DesktopMode=0
 LayoutName=thumbnail_grid
 
 [Tiling]
-padding=0
+padding=4
 
 [Tiling][213a9620-187e-58a6-b80b-85d8fb95dfce]
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
+[Tiling][264a7a24-9cad-51f8-9548-9cdd8bd3e35d]
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
+[Tiling][7403fb8c-04df-5478-9694-081869276d8b]
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
 [Tiling][f49f5611-f396-5d3f-8a10-2e5f12cfe345]

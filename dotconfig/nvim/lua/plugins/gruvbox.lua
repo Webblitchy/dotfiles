@@ -4,7 +4,12 @@ require("gruvbox").setup({
   undercurl = true,
   underline = true,
   bold = true,
-  italic = true,
+  italic = {
+    comments = true,
+    strings = false,
+    operators = false,
+    folds = true
+  },
   strikethrough = true,
   invert_selection = true,
   invert_signs = false,
@@ -16,7 +21,7 @@ require("gruvbox").setup({
   overrides = {
     CursorLineNr = { fg = palette.bright_orange, bg = "NONE" }, -- current line
     IncSearch = { fg = palette.bright_green }, -- search selection
-    String = { italic = false }
+    -- String = { italic = false }
   },
   dim_inactive = false,
   transparent_mode = true,
