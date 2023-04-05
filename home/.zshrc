@@ -77,7 +77,7 @@ export LESS_TERMCAP_us=$'\E[01;36m'
 export LESS=-R
 
 
-## Plugins section: Enable fish style features
+## [[ Plugins ]]
 
 # Enable powerlevel10k theme
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
@@ -202,8 +202,18 @@ add-zsh-hook preexec mzc_termsupport_preexec
 export LS_OPTIONS='--color=auto'
 eval "$(dircolors -b)"
 alias ls='ls --group-directories-first $LS_OPTIONS'
+
+# Kitty Blur {{{
+if [[ $(ps --no-header -p $PPID -o comm) =~ '^yakuake|kitty$' ]]; then
+  for wid in $(xdotool search --pid $PPID); do
+    xprop -f _KDE_NET_WM_BLUR_BEHIND_REGION 32c -set _KDE_NET_WM_BLUR_BEHIND_REGION 0 -id $wid; done
+fi
+# }}}
+
 #######################################################################
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=244'
+
+export EDITOR="nvim"
 
 # Apply fzf-gruvbox theme
 # https://github.com/base16-project/base16-fzf
@@ -260,7 +270,7 @@ alias btop='sudo btop'
 alias powertop='sudo powertop'
 
 # new commands
-alias ll='lsd -Al --date +"%e %h %Y|%R" --blocks permission,size,date,name --group-dirs first'
+alias ll='lsd -Al --date +"%e %h %Y|%R" --blocks permission,size,date,name --group-dirs first -I .directory'
 alias open='xdg-open $1 2>&1 > /dev/null'
 alias vrc='vim ~/.vimrc'
 alias nrc='cd ~/.config/nvim/lua'

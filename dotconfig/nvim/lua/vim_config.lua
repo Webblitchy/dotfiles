@@ -7,6 +7,7 @@ vim.opt.confirm = true -- confirm to save changes before exiting modified buffer
 vim.o.completeopt = 'menuone,noselect' -- Set completeopt to have a better completion experience
 vim.opt.spelllang = { "en", "fr" } -- dictionnary used for spell check
 vim.opt.clipboard = "unnamedplus" -- use OS clipboard (require xclip on X11)
+vim.opt.nrformats = { "bin", "hex", "alpha" } -- increment with ^a also for letters
 
 -- Indentation settings
 vim.o.copyindent = true -- copy the previous indentation on autoindenting

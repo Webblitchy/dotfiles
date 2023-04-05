@@ -3,7 +3,6 @@
 -- always have a 1/4 of the screen of margin after / before the cursor
 vim.api.nvim_create_autocmd({ "VimResized", "VimEnter", "WinEnter", "WinLeave" }, {
   callback = function()
-    -- vim.api.nvim_command(":set scrolloff=" .. math.ceil(vim.api.nvim_get_option("lines") / 4))
     vim.wo.scrolloff = math.ceil(vim.api.nvim_win_get_height(0) / 4)
   end
 })
@@ -28,11 +27,11 @@ vim.api.nvim_create_autocmd("TermOpen", {
   callback = function()
     local termBuf = vim.api.nvim_get_current_buf() -- save term buffer
     local termSize = math.ceil(vim.api.nvim_win_get_height(0) / 3)
-    vim.api.nvim_command("b#") -- go to previous buffer
-    vim.api.nvim_command("botright new") -- create a splitwindow
-    vim.api.nvim_input('<C-w>j<CR>') -- go to new window
-    vim.api.nvim_command("res " .. termSize) -- resize terminal
-    vim.api.nvim_command("b " .. termBuf) -- reopen the term buffer
+    vim.api.nvim_command("b#")                     -- go to previous buffer
+    vim.api.nvim_command("botright new")           -- create a splitwindow
+    vim.api.nvim_input('<C-w>j<CR>')               -- go to new window
+    vim.api.nvim_command("res " .. termSize)       -- resize terminal
+    vim.api.nvim_command("b " .. termBuf)          -- reopen the term buffer
     vim.api.nvim_command("" .. hideBordersCommand)
     -- vim.opt_local.laststatus = 0 -- disable statusline (lualine in my case)
     vim.opt_local.showmode = false
@@ -49,7 +48,14 @@ vim.api.nvim_create_autocmd("TermClose", {
 })
 
 
--- Add missing filetypes
+vim.api.nvim_create_autocmd("BufNewFile", {
+  callback = function()
+    vim.api.nvim_input('i#!/bin/bash<CR><BS><ESC>') -- insert bin bash
+  end,
+  pattern = "*.sh"
+})
+
+-- [[ Add missing filetypes ]]
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   callback = function()
     vim.opt_local.filetype = "sage"
@@ -57,13 +63,20 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   pattern = "*.sage"
 })
 
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  callback = function()
+    vim.opt_local.filetype = "config"
+  end,
+  pattern = { "*.conf", "*.config" }
+})
 
--- Auto format file when saving file
--- vim.api.nvim_create_autocmd("QuitPre", {
---   callback = function()
---     IsQuitting = true
---   end
--- })
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  callback = function()
+    vim.opt_local.filetype = "sh"
+  end,
+  pattern = { "*.zsh" }
+})
+
 
 vim.api.nvim_create_autocmd("BufWritePre", {
   callback = function()
@@ -71,8 +84,15 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   end
 })
 
--- vim.cmd [[cabbrev wq lua FormatOnSave() vim.api.nvim_input("ZZ")]]
---
+-- Disable caps lock when leaving insert mode
+vim.api.nvim_create_autocmd("InsertLeave", {
+  callback = function()
+    local capState = vim.fn.matchstr(vim.fn.system('xset -q'), '00: Caps Lock:\\s\\+\\zs\\(on\\|off\\)\\ze')
+    if capState == "on" then
+      vim.api.nvim_exec("silent! execute ':!xdotool key Caps_Lock'", false) -- toggle capslock
+    end
+  end
+})
 
 -- [ NEW USER COMMANDS ]
 

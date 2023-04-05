@@ -66,9 +66,9 @@ require('packer').startup(function(use)
   use("ellisonleao/gruvbox.nvim")
 
   use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
-  use 'numToStr/Comment.nvim' -- "gc" to comment visual regions/lines
+  use 'numToStr/Comment.nvim'               -- "gc" to comment visual regions/lines
   -- using packer.nvim
-  use { -- Detect indentation for existing files
+  use {                                     -- Detect indentation for existing files
     'nmac427/guess-indent.nvim',
     config = function() require('guess-indent').setup {} end,
   }
@@ -124,6 +124,10 @@ require('packer').startup(function(use)
 
   -- change and add surroundings (", ', (, [, html tags...)
   use "tpope/vim-surround"
+
+  -- color hex codes
+  use "norcalli/nvim-colorizer.lua"
+
 
   -- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
   local has_plugins, plugins = pcall(require, 'custom.plugins')

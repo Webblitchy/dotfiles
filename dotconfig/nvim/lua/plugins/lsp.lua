@@ -1,13 +1,7 @@
 -- LSP settings.
 --  This function gets run when an LSP connects to a particular buffer.
 local on_attach = function(_, bufnr)
-  -- NOTE: Remember that lua is a real programming language, and as such it is possible
-  -- to define small helper and utility functions so you don't have to repeat yourself
-  -- many times.
-  --
-  -- In this case, we create a function that lets us more easily define mappings specific
-  -- for LSP related items. It sets the mode, buffer and description for us each time.
-  local nmap = function(keys, func, desc)
+  local nmap = function(keys, func, desc) -- just to simplify mapping
     if desc then
       desc = 'LSP: ' .. desc
     end
@@ -15,7 +9,7 @@ local on_attach = function(_, bufnr)
     vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
   end
 
-  nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame') -- refactor as in IntelliJ
+  nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')           -- refactor as in IntelliJ
   nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction') -- generate actions
 
   nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
@@ -44,28 +38,33 @@ local on_attach = function(_, bufnr)
 end
 
 -- Enable the following language servers
---  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
---
---  Add any additional override configuration in the following tables. They will be passed to
---  the `settings` field of the server config. You must look up that documentation yourself.
 local lsp_servers = {
-  clangd = {
-    AllowShortFunctionsOnASingleLine = false,
-  }, -- C/C++
-  pyright = {}, -- Python
+  clangd = {},        -- C/C++
+  pyright = {},       -- Python
   rust_analyzer = {}, -- Rust
-  jdtls = {}, -- Java
-  tsserver = {}, -- Javascript / TS
-  marksman = {}, -- markdown
-  lua_ls = {}, -- Lua
-  bashls = {}, -- Bash
-  html = {}, -- HTML
-  jsonls = {}, -- json
-  yamlls = {}, -- YAML
+  jdtls = {},         -- Java
+  tsserver = {},      -- Javascript / TS
+  marksman = {},      -- markdown
+  lua_ls = {
+    Lua = {
+      workspace = {
+        -- Make the server aware of Neovim runtime files
+        checkThirdParty = false, -- to stop asking for third party in nvim
+      },
+      -- Do not send telemetry data containing a randomized but unique identifier
+      telemetry = {
+        enable = false,
+      },
+    }
+  },            -- Lua
+  bashls = {},  -- Bash
+  html = {},    -- HTML
+  jsonls = {},  -- json
+  yamlls = {},  -- YAML
   lemminx = {}, -- XML
-  ltex = {}, -- Latex
+  ltex = {},    -- Latex
   --metals = {}, -- Scala (install metals with `cs install metals`)
-  cssls = {}, -- CSS
+  cssls = {},   -- CSS
 }
 
 -- Setup neovim lua configuration
@@ -100,7 +99,6 @@ mason_lspconfig.setup_handlers {
 
 -- to disable small functions as one-liners (with LLVM style)
 table.insert(require("lspconfig")["clangd"].cmd, "--fallback-style=Chromium")
-
 
 
 -- [ NULL-LS ]
@@ -177,10 +175,10 @@ end
 
 metals_config.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
-  virtual_text = {
-    prefix = '',
+    virtual_text = {
+      prefix = '',
+    }
   }
-}
 )
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { 'scala', 'sbt', 'worksheet.sc' },

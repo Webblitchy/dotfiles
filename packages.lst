@@ -81,3 +81,6 @@ ttf-jetbrains-mono-nerd
 lsd
 foliate
 nm-connection-editor
+
+appmenu-gtk-module
+kitty

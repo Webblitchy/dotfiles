@@ -14,7 +14,11 @@ vim.g.maplocalleader = ' '
 map({ 'n', 'i', 'v' }, '<C-c>', '<Esc>')
 
 -- ctrl backspace for removing a whole word
-map("i", "", "<C-W>")
+if vim.env.TERM == "xterm-256color" then
+  map("i", "", "<C-W>")
+elseif vim.env.TERM == "xterm-kitty" then
+  map("i", "<C-BS>", "<C-W>")
+end
 
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
@@ -56,3 +60,15 @@ map('n', '<leader>q', vim.diagnostic.setloclist)
 
 -- Terminal remaps
 map("t", "<C-W>", "<C-\\><C-N><C-W>") -- move to other window as usual
+
+
+-- PLUGINS
+
+-- ctrl + 7 for commenting code
+if vim.env.TERM == "xterm-256color" then
+  vim.api.nvim_set_keymap('n', '', 'gcc', { silent = true })
+  vim.api.nvim_set_keymap('v', '', 'gc', { silent = true })
+elseif vim.env.TERM == "xterm-kitty" then
+  vim.api.nvim_set_keymap('n', '<C-7>', 'gcc', { silent = true })
+  vim.api.nvim_set_keymap('v', '<C-7>', 'gc', { silent = true })
+end
