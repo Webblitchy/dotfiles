@@ -76,6 +76,16 @@ export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;36m'
 export LESS=-R
 
+# Color stderr in red
+color_stderr_red() {
+    local stderr_red_esc_code=$'\e[38;2;253;47;47m' # 38;2;R;G;B
+    while IFS= read -r line; do
+        echo -e "${stderr_red_esc_code}${line}\e[0m" >&2
+    done
+}
+# Redirect stderr to color_stderr_red function.
+exec 2> >(color_stderr_red)
+
 
 ## [[ Plugins ]]
 
@@ -203,12 +213,16 @@ export LS_OPTIONS='--color=auto'
 eval "$(dircolors -b)"
 alias ls='ls --group-directories-first $LS_OPTIONS'
 
-# Kitty Blur {{{
-if [[ $(ps --no-header -p $PPID -o comm) =~ '^yakuake|kitty$' ]]; then
+# Kitty Settings
+if [[ $(ps --no-header -p $PPID -o comm) =~ '^kitty$' ]]; then
+  # Blur
   for wid in $(xdotool search --pid $PPID); do
-    xprop -f _KDE_NET_WM_BLUR_BEHIND_REGION 32c -set _KDE_NET_WM_BLUR_BEHIND_REGION 0 -id $wid; done
+    xprop -f _KDE_NET_WM_BLUR_BEHIND_REGION 32c -set _KDE_NET_WM_BLUR_BEHIND_REGION 0 -id $wid
+  done
+
+  # ssh integration
+  alias ssh='kitty +kitten ssh'
 fi
-# }}}
 
 #######################################################################
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=244'
@@ -284,6 +298,6 @@ alias vi='vim'
 alias fix='kwin_x11 --replace'
 alias spoti='spt' # for spotify-tui
 alias lf='vim $1 -c "set ff=unix" -c ":wq"' # replace CRLF by LF
-alias pip-update='pip3 list --outdated | cut -f1 -d" " | tr " " "\n" | tail -n +3 | xargs pip3 install -U'
+alias pip-update='echo Updating pip... && pip3 list --outdated | cut -f1 -d" " | tr " " "\n" | tail -n +3 | xargs pip3 install -U'
 alias addpkg='f(){ echo "$1" >> ~/.dotfiles/packages.lst;  unset -f f; }; f'
 
