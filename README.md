@@ -4,7 +4,7 @@ My dotfiles
 ## Commands to make it work
 
 Generate git ssh key
-```bash 
+```bash
 git config --global user.name Webblitchy
 git config --global user.email 55515713+Webblitchy@users.noreply.github.com
 ssh-keygen -o -t rsa -C "55515713+Webblitchy@users.noreply.github.com"

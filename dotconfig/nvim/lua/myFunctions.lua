@@ -9,16 +9,24 @@ function File_exists(name)
   end
 end
 
+function ClearCommandLine()
+  vim.api.nvim_input(":<BS>")
+end
+
+function GetConfigFolder()
+  return vim.fn.fnamemodify(vim.env.MYVIMRC, ":p:h")
+end
+
 function AutoCompile()
-  local filePath = vim.api.nvim_buf_get_name(0)
+  local filePath = vim.api.nvim_buf_get_name(0) -- 0 for current buffer
   local fileType = vim.bo.filetype
 
-  local workspacePath = vim.lsp.buf.list_workspace_folders()[1]
+  local workspacePath = nil --vim.lsp.buf.list_workspace_folders()[1] -- Not working
   if workspacePath == nil then
-    workspacePath = vim.api.nvim_command_output("echo expand('%:p:h')")
+    workspacePath = vim.fn.fnamemodify(filePath, ":p:h")
   end
 
-  local parentFolderName = vim.api.nvim_command_output("echo expand('%:p:h:t')")
+  local parentFolderName = vim.fn.fnamemodify(filePath, ":p:h:t")
 
   -- if there is space
   workspacePath = '"' .. workspacePath .. '"'
@@ -41,12 +49,11 @@ function AutoCompile()
   elseif fileType == "javascript" then
     executeFile("node " .. filePath)
   elseif fileType == "c" then
-    local compile = "clang -c *.c && clang *.o -lm -o " .. parentFolderName .. " ; rm *.o"
     -- (always link math lib for simplicity)
+    local compile = "clang -c *.c && clang *.o -lm -o " .. parentFolderName .. " ; rm *.o"
     executeFile(compile .. " && ./" .. parentFolderName)
   elseif fileType == "cpp" then
     local compile = "clang++ -c *.cpp && clang++ *.o -o " .. parentFolderName .. " ; rm *.o"
-    -- (always link math lib for simplicity)
     executeFile(compile .. " && ./" .. parentFolderName)
   end
 end
@@ -76,14 +83,14 @@ function FormatOnSave()
 
   if vim.lsp.get_active_clients()[1].server_capabilities.documentFormattingProvider then -- can format with LSP
     local lspState = vim.lsp.util.get_progress_messages()[1]
-    if lspState ~= nil then -- if has progress messages
-      if not lspState.done then -- saying the server isn't ready
+    if lspState ~= nil then                                                              -- if has progress messages
+      if not lspState.done then                                                          -- saying the server isn't ready
         return
       end
     end
-    vim.lsp.buf.format({ async = false }) -- is async so it can save before quitting
+    vim.lsp.buf.format({ async = false })                                                                           -- is async so it can save before quitting
   elseif #require("null-ls.sources").get_available(vim.bo.filetype, require("null-ls").methods.FORMATTING) > 0 then -- can format with null ls
-    vim.lsp.buf.format({ async = false }) -- is async so it can save before quitting
+    vim.lsp.buf.format({ async = false })                                                                           -- is async so it can save before quitting
   end
   -- when saving with :wq
   -- if vim.lsp.buf.server_ready()

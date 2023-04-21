@@ -20,6 +20,17 @@ elseif vim.env.TERM == "xterm-kitty" then
   map("i", "<C-BS>", "<C-W>")
 end
 
+-- Easier switch between buffers
+map("n", "<C-B>", ":bn<CR>", { silent = true })
+map("n", "<C-Q>", ":bd<CR>", { silent = true })
+
+-- Make more use of H and L
+map("n", "<S-H>", "{")
+map("n", "<S-L>", "}")
+
+
+
+
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
 map({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
@@ -40,23 +51,23 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 -- Open terminal
-map("n", "<leader>t", ":terminal<CR>", { silent = true })
-
--- Hide
-map("n", "<leader>b", ":Bar<CR>", { silent = true, nowait = true })
+map("n", "<leader>t", ":terminal<CR>", { silent = true, desc = "Open a terminal sub window" })
 
 -- Execute file on leader x
-map("n", "<leader>x", function()
-  vim.api.nvim_command("write")
-  AutoCompile()
-end)
+map("n", "<leader>x",
+  function()
+    vim.api.nvim_command("write")
+    AutoCompile()
+  end,
+  { desc = "Execute code" }
+)
 
 -- Diagnostic keymaps (warnings and errors)
 -- TODO: useful ?
 map('n', '[d', vim.diagnostic.goto_prev)
 map('n', ']d', vim.diagnostic.goto_next)
-map('n', '<leader>e', vim.diagnostic.open_float)
-map('n', '<leader>q', vim.diagnostic.setloclist)
+map('n', '<leader>e', vim.diagnostic.open_float, { desc = "Diagnostic popup" })
+map('n', '<leader>q', vim.diagnostic.setloclist, { desc = "Diagnostic sub window" })
 
 -- Terminal remaps
 map("t", "<C-W>", "<C-\\><C-N><C-W>") -- move to other window as usual
@@ -72,3 +83,14 @@ elseif vim.env.TERM == "xterm-kitty" then
   vim.api.nvim_set_keymap('n', '<C-7>', 'gcc', { silent = true })
   vim.api.nvim_set_keymap('v', '<C-7>', 'gc', { silent = true })
 end
+
+-- Git
+map("n", "<leader>g", ":Git<CR>")         -- git status
+map("n", "<leader>d", ":Gvdiffsplit<CR>") -- git diff view
+
+-- Dap
+map("n", "<leader>b", ":lua require('dap').toggle_breakpoint()<CR>", { silent = true })
+map("n", "<leader>B", ":lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", { silent = true })
+map("n", "<F1>", ":lua require('dap').continue()<CR>", { silent = true })
+map("n", "<F2>", ":lua require('dap').step_over()<CR>", { silent = true })
+map("n", "<F3>", ":lua require('dap').step_into()<CR>", { silent = true })

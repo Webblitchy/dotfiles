@@ -10,17 +10,14 @@ require('lualine').setup {
   },
   sections = {
     lualine_a = { 'mode' },
-    lualine_c = {
-      {
-        'filename',
-        color = { fg = '#fabd2f' },
-        path = 3 -- abs path
-      },
-    },
     lualine_b = {
-      'branch', 'diff', 'diagnostics',
+      'branch',
+      'diff'
+    },
+    lualine_c = {
+      'diagnostics',
       {
-        function() -- print the todo count (in comments)
+        function()                                               -- print the todo count (in comments)
           local comment = string.sub(vim.o.commentstring, 0, -4) -- get the comment pattern : "# %s" -> "#"
           local todos = vim.fn.searchcount({ pattern = comment .. ".*TODO:", recompute = 1 }).total
           if todos > 0 then
@@ -31,6 +28,13 @@ require('lualine').setup {
         color = { fg = "#add8e6" }
       }
     },
+    -- lualine_c = {
+    --   {
+    --     'filename',
+    --     color = { fg = '#fabd2f' },
+    --     path = 3 -- abs path
+    --   },
+    -- },
     lualine_x = {
       {
         'fileformat',
@@ -50,7 +54,7 @@ require('lualine').setup {
         end
         return wrapMode
       end,
-      function() -- tab size
+      function()                -- tab size
         if vim.o.expandtab then -- if use space for tab
           return " " .. vim.o.shiftwidth
         else
@@ -60,7 +64,7 @@ require('lualine').setup {
       end,
       'filetype',
     },
-    lualine_y = { 'progress' },
-    lualine_z = { 'location' }
+    lualine_y = { 'progress' }, -- percentage in file
+    lualine_z = { 'location' }  -- line, character
   },
 }

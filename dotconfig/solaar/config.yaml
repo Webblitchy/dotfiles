@@ -1,8 +1,8 @@
-- 1.1.6
+- 1.1.9
 - _NAME: MX Master 3 Wireless Mouse
   _absent: [hi-res-scroll, lowres-scroll-mode, onboard_profiles, report_rate, pointer_speed, speed-change, backlight, backlight-timed, fn-swap, persistent-remappable-keys,
-    disable-keyboard-keys, divert-crown, crown-smooth, divert-gkeys, m-key-leds, mr-key-led, multiplatform, gesture2-gestures, gesture2-divert, gesture2-params,
-    sidetone, equalizer]
+    disable-keyboard-keys, crown-smooth, divert-crown, divert-gkeys, m-key-leds, mr-key-led, multiplatform, gesture2-gestures, gesture2-divert, gesture2-params,
+    sidetone, equalizer, adc_power_management]
   _battery: 4096
   _modelId: B02340820000
   _sensitive: {change-host: false, divert-keys: false, dpi: false, dpi-sliding: false, hires-scroll-mode: false, hires-smooth-invert: true, mouse-gestures: true,
@@ -22,9 +22,9 @@
   thumb-scroll-invert: false
   thumb-scroll-mode: false
 - _NAME: MX Keys Keyboard
-  _absent: [hi-res-scroll, lowres-scroll-mode, hires-smooth-invert, hires-smooth-resolution, hires-scroll-mode, smart-shift, thumb-scroll-mode, thumb-scroll-invert,
-    onboard_profiles, report_rate, pointer_speed, dpi, dpi-sliding, speed-change, mouse-gestures, backlight-timed, reprogrammable-keys, persistent-remappable-keys,
-    divert-crown, crown-smooth, divert-gkeys, m-key-leds, mr-key-led, gesture2-gestures, gesture2-divert, gesture2-params, sidetone, equalizer, scroll-ratchet]
+  _absent: [hi-res-scroll, lowres-scroll-mode, hires-smooth-invert, hires-smooth-resolution, hires-scroll-mode, scroll-ratchet, smart-shift, thumb-scroll-invert,
+    thumb-scroll-mode, onboard_profiles, report_rate, pointer_speed, dpi, speed-change, backlight-timed, reprogrammable-keys, persistent-remappable-keys,
+    crown-smooth, divert-crown, divert-gkeys, m-key-leds, mr-key-led, gesture2-gestures, gesture2-divert, gesture2-params, sidetone, equalizer, adc_power_management]
   _battery: 4096
   _modelId: B35B408A0000
   _sensitive: {multiplatform: false}
@@ -38,12 +38,13 @@
     233: 0, 234: 0, 235: 0, 236: 0}
   fn-swap: true
   multiplatform: 0
-- {_NAME: MX Keys Keyboard, _serial: 6E1E91F0, _wpid: 408A}
+- _NAME: MX Keys Keyboard
+  _sensitive: {hires-scroll-mode: ignore, hires-smooth-invert: ignore, hires-smooth-resolution: ignore}
+  _serial: 6E1E91F0
+  _wpid: 408A
 - _NAME: MX Master 3 Wireless Mouse
-  _absent: [hi-res-scroll, lowres-scroll-mode, onboard_profiles, report_rate, pointer_speed, speed-change, backlight, backlight-timed, fn-swap, persistent-remappable-keys,
-    disable-keyboard-keys, crown-smooth, divert-crown, divert-gkeys, m-key-leds, mr-key-led, multiplatform, gesture2-gestures, gesture2-divert, gesture2-params,
-    sidetone, equalizer]
   _modelId: B02340820000
+  _sensitive: {hires-scroll-mode: ignore, hires-smooth-invert: ignore, hires-smooth-resolution: ignore}
   _unitId: 2A81D98A
   change-host: null
   divert-keys: {82: 0, 83: 0, 86: 0, 195: 1, 196: 0}
@@ -55,12 +56,12 @@
   smart-shift: 10
   thumb-scroll-invert: true
   thumb-scroll-mode: false
-- {_NAME: MX Master 3 Wireless Mouse, _serial: 2A81D98A, _wpid: '4082'}
+- _NAME: MX Master 3 Wireless Mouse
+  _sensitive: {hires-scroll-mode: ignore, hires-smooth-invert: ignore, hires-smooth-resolution: ignore}
+  _serial: 2A81D98A
+  _wpid: '4082'
 - _NAME: Wireless Mouse M185 new
-  _absent: [hi-res-scroll, hires-smooth-invert, hires-smooth-resolution, hires-scroll-mode, scroll-ratchet, smart-shift, thumb-scroll-invert, thumb-scroll-mode,
-    onboard_profiles, report_rate, dpi, speed-change, backlight, backlight-timed, fn-swap, persistent-remappable-keys, disable-keyboard-keys, crown-smooth,
-    divert-crown, divert-gkeys, m-key-leds, mr-key-led, multiplatform, change-host, gesture2-gestures, gesture2-divert, gesture2-params, sidetone, equalizer]
-  _battery: 0
+  _sensitive: {hires-scroll-mode: ignore, hires-smooth-invert: ignore, hires-smooth-resolution: ignore}
   _serial: 235D1B73
   _wpid: '4054'
   divert-keys: {82: 0}
@@ -68,11 +69,8 @@
   pointer_speed: 256
   reprogrammable-keys: {80: 80, 81: 81, 82: 82}
 - _NAME: Wireless Mouse Pebble M350
-  _absent: [hi-res-scroll, hires-smooth-invert, hires-smooth-resolution, hires-scroll-mode, scroll-ratchet, smart-shift, thumb-scroll-invert, thumb-scroll-mode,
-    onboard_profiles, report_rate, pointer_speed, speed-change, backlight, backlight-timed, fn-swap, persistent-remappable-keys, disable-keyboard-keys,
-    crown-smooth, divert-crown, divert-gkeys, m-key-leds, mr-key-led, multiplatform, gesture2-gestures, gesture2-divert, gesture2-params, sidetone, equalizer]
-  _battery: 4096
   _modelId: B02140800000
+  _sensitive: {hires-scroll-mode: ignore, hires-smooth-invert: ignore, hires-smooth-resolution: ignore}
   _serial: DE5C2B8E
   _unitId: 960CC1FB
   _wpid: '4080'
@@ -81,3 +79,22 @@
   dpi: 1000
   lowres-scroll-mode: false
   reprogrammable-keys: {80: 80, 81: 81, 82: 82}
+- _NAME: MX Master 3 Wireless Mouse
+  _absent: [hi-res-scroll, lowres-scroll-mode, onboard_profiles, report_rate, pointer_speed, speed-change, backlight, backlight-timed, fn-swap, persistent-remappable-keys,
+    disable-keyboard-keys, crown-smooth, divert-crown, divert-gkeys, m-key-leds, mr-key-led, multiplatform, gesture2-gestures, gesture2-divert, gesture2-params,
+    sidetone, equalizer, adc_power_management]
+  _battery: 4096
+  _modelId: MX Master 3 Wireless Mouse
+  _sensitive: {hires-scroll-mode: ignore, hires-smooth-invert: ignore, hires-smooth-resolution: ignore}
+  _unitId: '00000000'
+  change-host: null
+  divert-keys: {82: 0, 83: 0, 86: 0, 195: 1, 196: 0}
+  dpi: 1000
+  hires-scroll-mode: false
+  hires-smooth-invert: false
+  hires-smooth-resolution: true
+  reprogrammable-keys: {80: 80, 81: 81, 82: 82, 83: 83, 86: 86, 195: 195, 196: 196}
+  scroll-ratchet: 2
+  smart-shift: 10
+  thumb-scroll-invert: false
+  thumb-scroll-mode: false

@@ -1,8 +1,8 @@
 #!/bin/bash
 
-if (( $EUID != 0 )); then
-    echo "Please run as root"
-    exit 1
+if (($EUID != 0)); then
+	echo "Please run as root"
+	exit 1
 fi
 
 cd ~/.dotfiles
@@ -10,7 +10,7 @@ cd ~/.dotfiles
 # Install packages
 pacman -Syu --noconfirm paru
 paru -Rns --noconfirm firefox
-cat packages.lst | xargs paru -Syu --needed --noconfirm
+cat packages.lst | grep -v "#" | xargs paru -Syu --needed --noconfirm
 
 # to copy dolphin layout files
 sudo -u $SUDO_USER mkdir ~/.local/share/kxmlgui5 2>/dev/null
@@ -21,28 +21,28 @@ rm -r ~/Public 2>/dev/null
 
 # Copy config files (add links)
 cd home
-for file in .*; do 
-    if [[ "$file" == "." ]] || [[ "$file" == ".." ]]; then
-        continue
-    fi
-    sudo -u $SUDO_USER ln -sf ~/.dotfiles/home/$file ~/$file
+for file in .*; do
+	if [[ "$file" == "." ]] || [[ "$file" == ".." ]]; then
+		continue
+	fi
+	sudo -u $SUDO_USER ln -sf ~/.dotfiles/home/$file ~/$file
 done
 cd ..
 
 for dotDir in */; do
-    if [[ $dotDir != dot* ]]; then
-        continue
-    fi
-    for dir in $dotDir*; do
-        unescapedDir=$(echo $dir | sed "s/dot/./g" | sed "s/_/\//g")
-        rm -rf ~/$unescapedDir 2>/dev/null
-        sudo -u $SUDO_USER ln -sf ~/.dotfiles/$dir ~/$unescapedDir 2>/dev/null \
-          || echo "$dir cannot be transfered" # message when error
-    done
+	if [[ $dotDir != dot* ]]; then
+		continue
+	fi
+	for dir in $dotDir*; do
+		unescapedDir=$(echo $dir | sed "s/dot/./g" | sed "s/_/\//g")
+		rm -rf ~/$unescapedDir 2>/dev/null
+		sudo -u $SUDO_USER ln -sf ~/.dotfiles/$dir ~/$unescapedDir 2>/dev/null ||
+			echo "$dir cannot be transfered" # message when error
+	done
 done
 
 for file in $(ls myscripts); do
-    ln -sf ~/.dotfiles/myscripts/$file /usr/local/bin/$file
+	ln -sf ~/.dotfiles/myscripts/$file /usr/local/bin/$file
 done
 
 # Copy specifc settings
@@ -58,7 +58,6 @@ systemctl enable docker.service
 # virtualbox
 usermod -aG vboxusers $SUDO_USER
 
-
 # vim
 sudo -u $SUDO_USER mkdir -p ~/.vim/undodir 2>/dev/null
 sudo -u $SUDO_USER vim -c "PlugInstall" -c "PlugClean" -c "qa!"
@@ -73,16 +72,16 @@ sudo -u $SUDO_USER ln -sf ~/.dotfiles/vscode/settings.json ~/.config/Code/User/s
 # jetbrains settings
 programs=("clion" "intellij" "pycharm")
 for nickname in ${programs[@]}; do
-    timeout 1s /bin/$nickname* # open the app to create the config folder
-    program=$(ls ~/.config/JetBrains | grep -i $nickname)
-    sudo -u $SUDO_USER mkdir -p ~/.config/JetBrains/$program/options 2>/dev/null
-    for file in $(ls ~/.dotfiles/jetbrains/); do
-        sudo -u $SUDO_USER ln -sf ~/.dotfiles/jetbrains/$file ~/.config/JetBrains/$program/options/$file
-    done
+	timeout 1s /bin/$nickname* # open the app to create the config folder
+	program=$(ls ~/.config/JetBrains | grep -i $nickname)
+	sudo -u $SUDO_USER mkdir -p ~/.config/JetBrains/$program/options 2>/dev/null
+	for file in $(ls ~/.dotfiles/jetbrains/); do
+		sudo -u $SUDO_USER ln -sf ~/.dotfiles/jetbrains/$file ~/.config/JetBrains/$program/options/$file
+	done
 done
 
 # install rust
-sudo -u $SUDO_USER curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sudo -u $SUDO_USER sh -s  -- -y
+sudo -u $SUDO_USER curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sudo -u $SUDO_USER sh -s -- -y
 
 # add zsh plugins
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /usr/share/zsh/plugins/zsh-syntax-highlighting/
@@ -108,40 +107,39 @@ cp ~/.dotfiles/optimus-manager.conf /etc/optimus-manager/
 sudo -u $SUDO_USER /usr/lib/plasma-changeicons ~/.local/share/icons/kora
 
 # Make fonts available on system (p.ex filename in Dolphin)
-ln -sf ~/.dotfiles/local.conf  /etc/fonts/local.conf
+ln -sf ~/.dotfiles/local.conf /etc/fonts/local.conf
 
 # save firefox settings
-saveFirefoxData () {
-    # if too big, clear cache before
-    oldPath=$(pwd)
-    cd ~/
-    sudo -u $SUDO_USER tar -jcvf dotmozilla.tar.bz2 .mozilla
-    sudo -u $SUDO_USER mv dotmozilla.tar.bz2 ~/.dotfiles/
-    cd ~/.dotfiles
-    read -sp "You will have to enter the key to encrypt Firefox profile [Enter]"
-    echo
-    sudo -u $SUDO_USER gpg -c dotmozilla.tar.bz2
-    rm dotmozilla.tar.bz2
-    cd $oldPath
+saveFirefoxData() {
+	# if too big, clear cache before
+	oldPath=$(pwd)
+	cd ~/
+	sudo -u $SUDO_USER tar -jcvf dotmozilla.tar.bz2 .mozilla
+	sudo -u $SUDO_USER mv dotmozilla.tar.bz2 ~/.dotfiles/
+	cd ~/.dotfiles
+	read -sp "You will have to enter the key to encrypt Firefox profile [Enter]"
+	echo
+	sudo -u $SUDO_USER gpg -c dotmozilla.tar.bz2
+	rm dotmozilla.tar.bz2
+	cd $oldPath
 }
 
 # transfer firefox options
-restoreFirefoxData () {
-    oldPath=$(pwd)
-    cd ~
-    rm -rf ~/.mozilla 2>/dev/null
-    read -sp "You will have to enter the key to decrypt Firefox profile [Enter]"
-    echo
-    sudo -u $SUDO_USER gpg ~/.dotfiles/dotmozilla.tar.bz2.gpg
-    sudo -u $SUDO_USER mv ~/.dotfiles/dotmozilla.tar.bz2 ./
-    sudo -u $SUDO_USER tar -xvf ~/dotmozilla.tar.bz2
-    rm ~/dotmozilla.tar.bz2
-    cd $oldPath
+restoreFirefoxData() {
+	oldPath=$(pwd)
+	cd ~
+	rm -rf ~/.mozilla 2>/dev/null
+	read -sp "You will have to enter the key to decrypt Firefox profile [Enter]"
+	echo
+	sudo -u $SUDO_USER gpg ~/.dotfiles/dotmozilla.tar.bz2.gpg
+	sudo -u $SUDO_USER mv ~/.dotfiles/dotmozilla.tar.bz2 ./
+	sudo -u $SUDO_USER tar -xvf ~/dotmozilla.tar.bz2
+	rm ~/dotmozilla.tar.bz2
+	cd $oldPath
 }
 
 # Smooth scroll firefox
 sudo -u $SUDO_USER echo export MOZ_USE_XINPUT2=1 | sudo tee /etc/profile.d/use-xinput2.sh
-
 
 # Set too many errors password time to 10s
 sed -i '45 a\unlock_time = 10' /etc/security/faillock.conf
@@ -169,6 +167,5 @@ sudo -u $SUDO_USER pip check
 echo Everything is done !
 read -p "Do you want to reboot to apply config ?[y/n]: " userEntry
 if [[ "$userEntry" == "y" ]]; then
-    shutdown -r now
+	shutdown -r now
 fi
-

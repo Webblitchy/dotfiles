@@ -1,0 +1,3 @@
+[submodule "dotlocal_share/plasma/plasmoids/ddcci-plasmoid"]
+	path = dotlocal_share/plasma/plasmoids/ddcci-plasmoid
+	url = https://github.com/davidhi7/ddcci-plasmoid

@@ -15,7 +15,6 @@ require("plugin_installation") -- commands to install the plugins (with Packer)
 -- Plugin config files
 require("plugins.gruvbox")           -- set theme
 require("plugins.lualine")           -- to change the status line
-require("plugins.comment")           -- to toggle comments
 require("plugins.indent-blankline")  -- to show indentation as line
 require("plugins.gitsigns")          -- to show git line status in left bar
 require("plugins.telescope")         -- fuzzy finder with a nice popup interface
@@ -26,4 +25,5 @@ require("plugins.nvim-treesitter")   -- better highlighting and object selection
 require("plugins.lsp")               -- handle language server protocols
 require("plugins.nvim-cmp")          -- handle autocompletion
 require("plugins.nvim-tree")         -- file tree
-require("plugins.nvim-colorizer")
+require("plugins.bufferline")        -- buffer status line
+require("plugins.dap")               -- set debugger

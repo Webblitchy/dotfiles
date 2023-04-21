@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE xbel>
-<xbel xmlns:kdepriv="http://www.kde.org/kdepriv" xmlns:bookmark="http://www.freedesktop.org/standards/desktop-bookmarks" xmlns:mime="http://www.freedesktop.org/standards/shared-mime-info">
+<xbel xmlns:bookmark="http://www.freedesktop.org/standards/desktop-bookmarks" xmlns:mime="http://www.freedesktop.org/standards/shared-mime-info" xmlns:kdepriv="http://www.kde.org/kdepriv">
  <info>
   <metadata owner="http://www.kde.org">
    <kde_places_version>4</kde_places_version>
@@ -8,7 +8,7 @@
    <GroupState-Remote-IsHidden>false</GroupState-Remote-IsHidden>
    <GroupState-Devices-IsHidden>false</GroupState-Devices-IsHidden>
    <GroupState-RemovableDevices-IsHidden>false</GroupState-RemovableDevices-IsHidden>
-   <GroupState-Tags-IsHidden>true</GroupState-Tags-IsHidden>
+   <GroupState-Tags-IsHidden>false</GroupState-Tags-IsHidden>
    <withRecentlyUsed>true</withRecentlyUsed>
    <GroupState-RecentlySaved-IsHidden>false</GroupState-RecentlySaved-IsHidden>
    <withBaloo>true</withBaloo>
@@ -382,6 +382,7 @@
    <metadata owner="http://www.kde.org">
     <ID>1651133063/27</ID>
     <isSystemItem>true</isSystemItem>
+    <IsHidden>true</IsHidden>
    </metadata>
   </info>
  </bookmark>
@@ -436,6 +437,17 @@
     <ID>1663622775/0</ID>
     <tag>A voir</tag>
     <isSystemItem>true</isSystemItem>
+   </metadata>
+  </info>
+ </bookmark>
+ <bookmark href="kdeconnect://480c8f05c7f5b6f6/">
+  <title>OnePlus 6</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="kdeconnect"/>
+   </metadata>
+   <metadata owner="http://www.kde.org">
+    <ID>1682085220/2</ID>
    </metadata>
   </info>
  </bookmark>

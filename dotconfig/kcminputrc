@@ -7,7 +7,7 @@ NumLock=0
 RepeatDelay=250
 
 [Mouse]
-X11LibInputXAccelProfileFlat=false
+X11LibInputXAccelProfileFlat=true
 XLbInptAccelProfileFlat=false
 XLbInptNaturalScroll=true
 XLbInptPointerAcceleration=0
