@@ -3,7 +3,7 @@
 require('lualine').setup {
   options = {
     icons_enabled = true,
-    theme = 'gruvbox',
+    theme = "auto",                                -- use nvim theme
     disabled_filetypes = { 'packer', 'NvimTree' }, -- disable statusline on these files
     component_separators = { left = '', right = '' },
     section_separators = { left = '', right = '' },
@@ -45,7 +45,7 @@ require('lualine').setup {
         }
       },
       function() -- wrapping
-        -- Wrapping 󰯟 󰖶 󰴏 󰴐 󱞱 󱞲 →   󰞘 󰜴
+        -- Wrapping 󰯟  󰖶  󰴏  󰴐 󱞱 󱞲 →   󰞘 󰜴
         local wrapMode = ""
         if (vim.o.wrap == true) then
           wrapMode = wrapMode .. "󱞲"

@@ -228,7 +228,7 @@ _k_friendly_name=NormCap
 _launch=Shift+Print,none,NormCap
 
 [org.flameshot.Flameshot.desktop]
-Capture=Print,none,Take screenshot
+Capture=none,none,Take screenshot
 Configure=none,none,Configure
 Launcher=none,none,Open launcher
 _k_friendly_name=Flameshot
@@ -265,7 +265,7 @@ OpenWithoutScreenshot=none,none,Launch Spectacle without capturing
 RectangularRegionScreenShot=Meta+Shift+Print,Meta+Shift+Print,Capture Rectangular Region
 WindowUnderCursorScreenShot=Meta+Ctrl+Print,Meta+Ctrl+Print,Capture Window Under Cursor
 _k_friendly_name=Spectacle
-_launch=none,Print,Launch Spectacle
+_launch=Print,Print,Launch Spectacle
 
 [org_kde_powerdevil]
 Decrease Keyboard Brightness=Keyboard Brightness Down,Keyboard Brightness Down,Decrease Keyboard Brightness

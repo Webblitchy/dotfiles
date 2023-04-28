@@ -36,14 +36,13 @@ dap.configurations.cpp = {
     name = "Launch file",
     type = "cppdbg",
     request = "launch",
-    program = "${workspaceFolder}/" .. parentFolderName,
-    cwd = "${workspaceFolder}",
-    -- stopAtEntry = true, -- better for debugging
-    __call = function(config)
+    program = function()
       -- Compile with debug symbols (with -g)
       vim.fn.system("clang++ -g -c *.cpp && clang++ -g *.o -o " .. parentFolderName .. " ; rm *.o")
-      return config
-    end
+      return "${workspaceFolder}/" .. parentFolderName
+    end,
+    cwd = "${workspaceFolder}",
+    -- stopAtEntry = true, -- better for debugging
   },
 }
 
@@ -52,16 +51,31 @@ dap.configurations.c = {
     name = "Launch file",
     type = "cppdbg",
     request = "launch",
-    program = "${workspaceFolder}/" .. parentFolderName,
-    cwd = "${workspaceFolder}",
-    -- stopAtEntry = true, -- better for debugging
-    __call = function(config)
+    program = function()
       -- Compile with debug symbols (with -g)
       vim.fn.system("clang -g -c *.c && clang *.o -lm -g -o " .. parentFolderName .. " ; rm *.o")
-      return config
-    end
+      return "${workspaceFolder}/" .. parentFolderName
+    end,
+    cwd = "${workspaceFolder}",
+    -- stopAtEntry = true, -- better for debugging
   },
 }
+
+
+dap.configurations.rust = {
+  {
+    name = "Launch file",
+    type = "cppdbg",
+    request = "launch",
+    program = function()
+      vim.fn.system("cargo build") -- compile program first
+      return vim.fn.system("find ../target/debug -maxdepth 1 -type f -executable")
+    end,
+    cwd = "${workspaceFolder}",
+    -- stopAtEntry = true, -- better for debugging
+  },
+}
+
 -- nice ui for debugging
 local dapui = require("dapui")
 dapui.setup({

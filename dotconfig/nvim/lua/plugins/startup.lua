@@ -27,7 +27,7 @@ function startMenuEnterPressed() -- must be global
     filename = vim.fn.fnamemodify(filename, ":p")
     -- vim.cmd [[:source ~/.config/nvim/init.lua]] -- restore default parameters
     if File_exists(filename) then
-        vim.cmd("e " .. filename) -- quit menu and open file
+        vim.cmd("e " .. filename)       -- quit menu and open file
     else
         require("startup").check_line() -- execute_command
     end
@@ -44,7 +44,7 @@ require("startup").setup {
         title = "Header",
         margin = 5,
         content = title_sharp,
-        highlight = "Statement",
+        highlight = "@class", -- blue
         default_color = "",
         oldfiles_amount = 0,
     },
@@ -64,7 +64,7 @@ require("startup").setup {
             { " New File",     "lua require'startup'.new_file()", "<leader>nf" },
             { " Quit",         ":q",                              "ZQ" },
         },
-        highlight = "String",
+        highlight = "@conditional",
         default_color = "",
         oldfiles_amount = 0,
     },
@@ -76,8 +76,7 @@ require("startup").setup {
         title = "Oldfiles of Directory",
         margin = 5,
         content = {},
-        highlight = "String",
-        default_color = "#FFFFFF",
+        highlight = "@character",
         oldfiles_amount = 5,
     },
     clock = {
@@ -113,7 +112,7 @@ require("startup").setup {
             require("startup").create_mappings({ ["<CR>"] = "<cmd>lua startMenuEnterPressed()<CR>" })
         end,
         mapping_keys = false, -- to show the mapping
-        cursor_column = 0, -- 0.5 to center the cursor
+        cursor_column = 0,    -- 0.5 to center the cursor
         empty_lines_between_mappings = true,
         disable_statuslines = true,
         paddings = { 1, 3, 3, 0 },
@@ -121,7 +120,7 @@ require("startup").setup {
     mappings = {
         -- cannot be execute_command and open_file the same (so I made startMenuEnterPressed)
         execute_command = "e", -- UNUSED
-        open_file = "o", -- UNUSED
+        open_file = "o",       -- UNUSED
         open_file_split = "<c-o>",
         open_section = "<TAB>",
         open_help = "?",

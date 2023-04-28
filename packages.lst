@@ -3,7 +3,6 @@ audacity
 bitwarden
 btop
 discord
-flameshot
 gimp
 kitty
 qbittorrent
@@ -42,6 +41,7 @@ konsole
 partitionmanager
 okular
 pinta
+spectacle
 
 # KDE Components
 dolphin-plugins

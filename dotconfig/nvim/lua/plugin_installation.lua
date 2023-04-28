@@ -23,7 +23,7 @@ require("packer").startup(function(use)
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
 
-      -- Useful status updates for LSP
+      -- LSP status at bottom right
       "j-hui/fidget.nvim",
 
       -- Additional lua configuration, makes nvim stuff amazing
@@ -65,18 +65,21 @@ require("packer").startup(function(use)
     requires = { "nvim-tree/nvim-web-devicons", opt = true } -- to add icons
   }
 
-  -- Bufferline
-  use {
-    "akinsho/bufferline.nvim",
-    tag = "v3.*",
-    requires = "nvim-tree/nvim-web-devicons"
-  }
+  -- Bufferline (using cokeline)
+  use({
+    'willothy/nvim-cokeline',
+    requires = 'kyazdani42/nvim-web-devicons', -- If you want devicons
+  })
 
   -- Theme
   use("ellisonleao/gruvbox.nvim")
+  use("folke/tokyonight.nvim")
+  use { "catppuccin/nvim", as = "catppuccin" }
 
   use "lukas-reineke/indent-blankline.nvim" -- Add indentation guides even on blank lines
-  use {                                     -- "gc" to comment visual regions/lines
+
+  -- "gc" to comment visual regions/lines
+  use {
     "numToStr/Comment.nvim",
     config = function()
       require("Comment").setup()

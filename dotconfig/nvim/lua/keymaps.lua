@@ -88,6 +88,10 @@ end
 map("n", "<leader>g", ":Git<CR>")         -- git status
 map("n", "<leader>d", ":Gvdiffsplit<CR>") -- git diff view
 
+
+-- NvimTree
+map("n", "<C-T>", ":NvimTreeToggle<CR>", { silent = false })
+
 -- Dap
 map("n", "<leader>b", ":lua require('dap').toggle_breakpoint()<CR>", { silent = true })
 map("n", "<leader>B", ":lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", { silent = true })

@@ -1,7 +1,9 @@
 -- [ AUTO CMD ]
 
+local autocmd = vim.api.nvim_create_autocmd
+
 -- always have a 1/4 of the screen of margin after / before the cursor
-vim.api.nvim_create_autocmd({ "VimResized", "VimEnter", "WinLeave" }, {
+autocmd({ "VimResized", "VimEnter", "WinLeave" }, {
   callback = function()
     vim.wo.scrolloff = math.ceil(vim.api.nvim_win_get_height(0) / 4)
   end
@@ -9,7 +11,7 @@ vim.api.nvim_create_autocmd({ "VimResized", "VimEnter", "WinLeave" }, {
 
 
 -- Restore cursor position when opening a file
-vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
+autocmd({ "BufReadPost", "BufNewFile" }, {
   callback = function()
     local currLine = vim.fn.line("'\"")
     local lastLine = vim.fn.line("$")
@@ -23,24 +25,24 @@ vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
 local hideBordersCommand = "set nonumber | set norelativenumber | set signcolumn=no"
 local showBordersCommand = "set number | set relativenumber | set signcolumn=yes"
 
--- vim.api.nvim_create_autocmd("TermOpen", {
-  -- callback = function()
-  --   local termSize = math.ceil(vim.api.nvim_win_get_height(0) / 3)
-  --   vim.api.nvim_command("sp #") -- reopen textfile above
-  --
-  --   -- must be input mode (to be executed when terminal is opened):
-  --   vim.api.nvim_input(":res " .. termSize .. "<CR>")
-  --   vim.api.nvim_input(":" .. hideBordersCommand .. "<CR>")
-  --   ClearCommandLine()
-  --
-  --   -- vim.opt_local.laststatus = 0 -- disable statusline (lualine in my case)
-  --   vim.opt_local.showmode = false
-  --   vim.opt_local.shortmess:append({ F = true })
-  --   vim.api.nvim_input('a') -- interactive mode
-  -- end
+-- autocmd("TermOpen", {
+-- callback = function()
+--   local termSize = math.ceil(vim.api.nvim_win_get_height(0) / 3)
+--   vim.api.nvim_command("sp #") -- reopen textfile above
+--
+--   -- must be input mode (to be executed when terminal is opened):
+--   vim.api.nvim_input(":res " .. termSize .. "<CR>")
+--   vim.api.nvim_input(":" .. hideBordersCommand .. "<CR>")
+--   ClearCommandLine()
+--
+--   -- vim.opt_local.laststatus = 0 -- disable statusline (lualine in my case)
+--   vim.opt_local.showmode = false
+--   vim.opt_local.shortmess:append({ F = true })
+--   vim.api.nvim_input('a') -- interactive mode
+-- end
 -- })
 
-vim.api.nvim_create_autocmd("TermClose", {
+autocmd("TermClose", {
   callback = function()
     -- vim.opt_local.laststatus = 2 -- reenable statusline
     -- vim.api.nvim_input("<C-Y>") -- scroll up (directly quit terminal without status)
@@ -56,7 +58,7 @@ local templates = {
 }
 
 for language, askConfirmation in pairs(templates) do
-  vim.api.nvim_create_autocmd("BufNewFile", {
+  autocmd("BufNewFile", {
     callback = function()
       if askConfirmation then
         local res = vim.fn.input("Do you want to fill new file with template ? [y/N] : ")
@@ -81,7 +83,7 @@ local filetypes = {
 }
 
 for ft, pattern in pairs(filetypes) do
-  vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  autocmd({ "BufRead", "BufNewFile" }, {
     callback = function()
       vim.opt_local.filetype = ft
     end,
@@ -92,14 +94,14 @@ end
 
 
 -- autoformat on save
-vim.api.nvim_create_autocmd("BufWritePre", {
+autocmd("BufWritePre", {
   callback = function()
     FormatOnSave()
   end
 })
 
 -- Disable caps lock when leaving insert mode
-vim.api.nvim_create_autocmd("InsertLeave", {
+autocmd("InsertLeave", {
   callback = function()
     local capState = vim.fn.matchstr(vim.fn.system('xset -q'), '00: Caps Lock:\\s\\+\\zs\\(on\\|off\\)\\ze')
     if capState == "on" then
@@ -110,7 +112,7 @@ vim.api.nvim_create_autocmd("InsertLeave", {
 
 
 -- Auto open nvim-tree when opening a folder
-vim.api.nvim_create_autocmd({ "VimEnter" }, {
+autocmd({ "VimEnter" }, {
   callback = function(data)
     -- buffer is not a directory
     if vim.fn.isdirectory(data.file) ~= 1 then
@@ -124,7 +126,7 @@ vim.api.nvim_create_autocmd({ "VimEnter" }, {
 
 
 -- Auto source files in nvim config
-vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+autocmd({ "BufWritePost" }, {
   callback = function(data)
     -- local configFolder = vim.fn.stdpath("config") -- don't give .dotconfig path
     local configFolder = GetConfigFolder()
@@ -138,6 +140,7 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
   end,
   pattern = "*.lua"
 })
+
 
 -- [ NEW USER COMMANDS ]
 
