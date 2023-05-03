@@ -1,14 +1,6 @@
 -- [[ Configure nvim-web-devicons ]]
 require 'nvim-web-devicons'.setup {
-  -- your personnal icons can go here (to override)
-  override = {
-    zsh = {
-      icon = "",
-      color = "#428850",
-      cterm_color = "65",
-      name = "Zsh"
-    }
-  },
+
   -- globally enable different highlight colors per icon (default to true)
   -- if set to false all icons will have the default icon's color
   color_icons = true,
@@ -36,6 +28,9 @@ require 'nvim-web-devicons'.setup {
       icon = "",
       color = "#81e043",
       name = "Log"
-    }
+    },
+    tex = {
+      icon = ""
+    },
   },
 }

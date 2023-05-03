@@ -2,11 +2,12 @@
     "workbench.colorTheme": "Atom One Dark",
     "editor.inlineSuggest.enabled": true,
     "github.copilot.enable": {
-        "*": true,
-        "yaml": false,
+        "*": false,
         "plaintext": false,
         "markdown": false,
-        "scala": true
+        "scminput": false,
+        "yaml": false,
+        "scala": false
     },
     "terminal.integrated.fontFamily": "MesloLGS NF",
     "telemetry.telemetryLevel": "off",

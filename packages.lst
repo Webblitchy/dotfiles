@@ -70,6 +70,7 @@ texlive-science
 p7zip
 neovim
 zsh-theme-powerlevel10k-bin-git
+termscp-bin
 
 # Fonts
 noto-fonts
@@ -91,3 +92,5 @@ libinput-gestures
 xdotool
 xclip
 wmctrl
+xdg-desktop-portal
+npm

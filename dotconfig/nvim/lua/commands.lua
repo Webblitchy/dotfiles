@@ -25,22 +25,26 @@ autocmd({ "BufReadPost", "BufNewFile" }, {
 local hideBordersCommand = "set nonumber | set norelativenumber | set signcolumn=no"
 local showBordersCommand = "set number | set relativenumber | set signcolumn=yes"
 
--- autocmd("TermOpen", {
--- callback = function()
---   local termSize = math.ceil(vim.api.nvim_win_get_height(0) / 3)
---   vim.api.nvim_command("sp #") -- reopen textfile above
---
---   -- must be input mode (to be executed when terminal is opened):
---   vim.api.nvim_input(":res " .. termSize .. "<CR>")
---   vim.api.nvim_input(":" .. hideBordersCommand .. "<CR>")
---   ClearCommandLine()
---
---   -- vim.opt_local.laststatus = 0 -- disable statusline (lualine in my case)
---   vim.opt_local.showmode = false
---   vim.opt_local.shortmess:append({ F = true })
---   vim.api.nvim_input('a') -- interactive mode
--- end
--- })
+autocmd("TermOpen", {
+  callback = function()
+    local buffname = vim.api.nvim_buf_get_name(0)
+    if not string.find(buffname, "term:") then
+      return -- to disable behavior with debugger (dap-terminal)
+    end
+    local termSize = math.ceil(vim.api.nvim_win_get_height(0) / 3)
+    vim.api.nvim_command("sp #") -- reopen textfile above
+
+    -- must be input mode (to be executed when terminal is opened):
+    vim.api.nvim_input(":res " .. termSize .. "<CR>")
+    vim.api.nvim_input(":" .. hideBordersCommand .. "<CR>")
+    ClearCommandLine()
+
+    -- vim.opt_local.laststatus = 0 -- disable statusline (lualine in my case)
+    vim.opt_local.showmode = false
+    vim.opt_local.shortmess:append({ F = true })
+    vim.api.nvim_input('a') -- interactive mode
+  end
+})
 
 autocmd("TermClose", {
   callback = function()

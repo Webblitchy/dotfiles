@@ -2,7 +2,7 @@
 AntiAliasFonts=true
 BoldIntense=true
 ColorScheme=BreathSilverfox
-Font=JetBrainsMono Nerd Font Mono,11,-1,5,50,0,0,0,0,0
+Font=JetBrainsMono Nerd Font,11,-1,5,50,0,0,0,0,0
 LineSpacing=0
 TabColor=24,25,29,0
 UseFontLineChararacters=true

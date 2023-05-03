@@ -110,3 +110,18 @@ function FormatOnSave()
   --   end))
   -- end
 end
+
+-- returns a dictionnary of all added words (with zg)
+function CustomDictionnary()
+  local path = vim.go.spellfile -- already contains full path
+  local words = {}
+
+
+  if vim.fn.filereadable(path) ~= 0 then -- if file exists
+    for word in io.open(path, "r"):lines() do
+      table.insert(words, word)
+    end
+  end
+
+  return words
+end

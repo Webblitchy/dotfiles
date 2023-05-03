@@ -1,6 +1,6 @@
 <?xml version='1.0'?>
 <!DOCTYPE gui SYSTEM 'kpartgui.dtd'>
-<gui version="14" name="konsolepart" translationDomain="konsole">
+<gui version="14" translationDomain="konsole" name="konsolepart">
  <Menu name="session-popup-menu">
   <Action name="edit_copy_contextmenu"/>
   <Action name="edit_paste"/>
@@ -12,12 +12,12 @@
   <Action name="edit_find"/>
   <Menu name="history">
    <text>S&amp;crollback</text>
-   <Action name="file_save_as" group="session-history-operations"/>
+   <Action group="session-history-operations" name="file_save_as"/>
    <Separator group="session-history-operations"/>
-   <Action name="adjust-history" group="session-history-operations"/>
+   <Action group="session-history-operations" name="adjust-history"/>
    <Separator group="session-history-operations"/>
-   <Action name="clear-history" group="session-history-operations"/>
-   <Action name="clear-history-and-reset" group="session-history-operations"/>
+   <Action group="session-history-operations" name="clear-history"/>
+   <Action group="session-history-operations" name="clear-history-and-reset"/>
   </Menu>
   <Separator/>
   <Action name="view-readonly"/>

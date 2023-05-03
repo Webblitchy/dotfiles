@@ -55,7 +55,7 @@
    <Action name="stop"/>
    <Separator/>
    <Action name="panels"/>
-   <Menu name="location_bar" icon="edit-select-text">
+   <Menu icon="edit-select-text" name="location_bar">
     <text context="@title:menu">Location Bar</text>
     <Action name="editable_location"/>
     <Action name="replace_location"/>
@@ -76,9 +76,9 @@
    <Action name="change_remote_encoding"/>
   </Menu>
  </MenuBar>
- <ToolBar name="mainToolBar" noMerge="1" alreadyVisited="1">
+ <ToolBar noMerge="1" name="mainToolBar" alreadyVisited="1">
   <Action name="go_back"/>
-  <text translationDomain="dolphin" context="@title:menu">Main Toolbar</text>
+  <text context="@title:menu" translationDomain="dolphin">Main Toolbar</text>
   <Action name="go_forward"/>
   <Separator name="separator_0"/>
   <Action name="go_up"/>
@@ -125,7 +125,7 @@
   <Action name="edit_copy" priority="0"/>
   <Action shortcut="Ctrl+X" name="edit_cut" priority="0"/>
   <Action name="edit_paste" priority="0"/>
-  <Action name="go_back" icon="stock_left" priority="0"/>
+  <Action icon="stock_left" name="go_back" priority="0"/>
   <Action name="go_forward" priority="0"/>
   <Action name="go_home" priority="0"/>
   <Action name="go_up" priority="0"/>
@@ -138,6 +138,7 @@
   <Action name="view_zoom_in" priority="0"/>
   <Action name="view_zoom_out" priority="0"/>
   <Action name="view_zoom_reset" priority="0"/>
+  <Action shortcut="F5; Ctrl+R" name="view_redisplay"/>
   <Action shortcut="" name="toggle_selection_mode"/>
  </ActionProperties>
 </gui>

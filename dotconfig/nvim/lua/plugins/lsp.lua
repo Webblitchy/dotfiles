@@ -62,9 +62,21 @@ local lsp_servers = {
   jsonls = {},  -- json
   yamlls = {},  -- YAML
   lemminx = {}, -- XML
-  ltex = {},    -- Latex
+  ltex = {
+    ltex = {
+      language = { "fr", "en" },
+      disabledRules = {
+        ['en'] = { 'PROFANITY' },
+        ['fr'] = { 'PROFANITY' },
+      },
+      dictionary = {
+        ['en'] = CustomDictionnary(),
+        ['fr'] = CustomDictionnary(),
+      },
+    },
+  },          -- Latex
   --metals = {}, -- Scala (install metals with `cs install metals`)
-  cssls = {},   -- CSS
+  cssls = {}, -- CSS
 }
 
 -- Setup neovim lua configuration
