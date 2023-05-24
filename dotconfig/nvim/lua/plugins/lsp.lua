@@ -198,7 +198,3 @@ vim.api.nvim_create_autocmd("FileType", {
   end
 })
 
----------------------------------
-
--- Turn on lsp status information
-require('fidget').setup()

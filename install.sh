@@ -10,7 +10,9 @@ cd ~/.dotfiles
 # Install packages
 pacman -Syu --noconfirm paru
 paru -Rns --noconfirm firefox
-cat packages.lst | grep -v "#" | xargs paru -Syu --needed --noconfirm
+cat packages.lst |
+	grep -o '^[^#]*' | # select only non-comments
+	xargs paru -Syu --needed --noconfirm
 
 # to copy dolphin layout files
 sudo -u $SUDO_USER mkdir ~/.local/share/kxmlgui5 2>/dev/null

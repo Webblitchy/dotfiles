@@ -25,9 +25,6 @@ require("packer").startup(function(use)
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
 
-      -- LSP status at bottom right
-      "j-hui/fidget.nvim",
-
       -- Additional lua configuration, makes nvim stuff amazing
       "folke/neodev.nvim",
     },
@@ -36,9 +33,14 @@ require("packer").startup(function(use)
     }
   }
 
-  use { -- Autocompletion
+  use { -- Autocompletion (with menu)
     "hrsh7th/nvim-cmp",
-    requires = { "hrsh7th/cmp-nvim-lsp", "L3MON4D3/LuaSnip", "saadparwaiz1/cmp_luasnip" },
+    requires = {
+      "hrsh7th/cmp-nvim-lsp",
+      "L3MON4D3/LuaSnip",
+      "saadparwaiz1/cmp_luasnip",
+      "onsails/lspkind.nvim", -- add fancy icons
+    },
   }
 
   use { -- Highlight, edit, and navigate code
@@ -64,7 +66,12 @@ require("packer").startup(function(use)
   -- Fancier statusline
   use {
     "nvim-lualine/lualine.nvim",
-    requires = { "nvim-tree/nvim-web-devicons", opt = true } -- to add icons
+    requires = {
+      "nvim-tree/nvim-web-devicons", -- to add icons
+      -- "arkav/lualine-lsp-progress",  -- LSP status in lualine
+      'linrongbin16/lsp-progress.nvim',
+      opt = true
+    }
   }
 
   -- Bufferline (using cokeline)
@@ -141,6 +148,7 @@ require("packer").startup(function(use)
       require("which-key").setup {}
     end
   }
+
 
   -- Metals (used for scala lsp)
   use({ "scalameta/nvim-metals", requires = { "nvim-lua/plenary.nvim" } })

@@ -4,6 +4,8 @@
 
 vim.o.mouse = ""                              -- disable mouse
 vim.opt.confirm = true                        -- confirm to save changes before exiting modified buffer
+vim.opt.showmode = false                      -- hide mode (shown with lualine)
+vim.opt.showcmd = false                       -- hide keypressed entered
 vim.o.completeopt = 'menuone,noselect'        -- Set completeopt to have a better completion experience
 vim.opt.spelllang = { "en", "fr" }            -- dictionnary used for spell check
 vim.opt.spellfile = vim.fn.stdpath("config") ..

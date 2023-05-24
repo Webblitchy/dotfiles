@@ -93,9 +93,6 @@ History=kate,aud,auda,vis,kat,intel,inte,int,fire,vlc,gwe,vl,code,intell,visu
 [PreviewSettings]
 Plugins=appimagethumbnail,audiothumbnail,comicbookthumbnail,cursorthumbnail,djvuthumbnail,ebookthumbnail,exrthumbnail,fontthumbnail,imagethumbnail,jpegthumbnail,kraorathumbnail,windowsexethumbnail,windowsimagethumbnail,opendocumentthumbnail,gsthumbnail,svgthumbnail
 
-[Search]
-Location=Everywhere
-
 [Toolbar mainToolBar]
 ToolButtonStyle=IconOnly
 

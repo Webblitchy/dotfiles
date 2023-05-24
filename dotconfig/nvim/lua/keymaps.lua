@@ -21,7 +21,13 @@ elseif vim.env.TERM == "xterm-kitty" then
 end
 
 -- Easier switch between buffers
-map("n", "<C-B>", ":bn<CR>", { silent = true })
+--
+-- Standard buffers
+-- map("n", "<C-B>", ":bn<CR>", { silent = true })
+
+-- use cokeline (avoid hidden buffers)
+map("n", "<C-B>", '<Plug>(cokeline-focus-next)', { silent = true })
+
 map("n", "<C-Q>", ":bd<CR>", { silent = true })
 
 -- Make more use of H and L

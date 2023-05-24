@@ -8,7 +8,6 @@ fi
 ######################################################################
 # BASIC ZSH config (taken from manjaro)
 ## Options section
-setopt correct                                                  # Auto correct mistakes
 setopt extendedglob                                             # Extended globbing. Allows using regular expressions with *
 setopt nocaseglob                                               # Case insensitive globbing
 setopt rcexpandparam                                            # Array expension with parameters
@@ -20,6 +19,8 @@ setopt histignorealldups                                        # If a new comma
 setopt autocd                                                   # if only directory path is entered, cd there.
 setopt inc_append_history                                       # save commands are added to the history immediately, otherwise only when shell exits.
 setopt histignorespace                                          # Don't save commands that start with space
+setopt interactivecomments                                      # Enable comments inside for inline commands
+# setopt correct                                                # Auto correct mistakes
 
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'       # Case insensitive tab completion
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"         # Colored completion (different colors for dirs/files/etc)
@@ -126,7 +127,7 @@ function title {
   : ${2=$1}
 
   case "$TERM" in
-    xterm*|putty*|rxvt*|konsole*|ansi|mlterm*|alacritty|st*)
+    xterm*|putty*|rxvt*|konsole*|ansi|mlterm*|alacritty|st*|kitty*)
       print -Pn "\e]2;${2:q}\a" # set window name
       print -Pn "\e]1;${1:q}\a" # set tab name
       ;;
@@ -214,7 +215,7 @@ eval "$(dircolors -b)"
 alias ls='ls --group-directories-first $LS_OPTIONS'
 
 # Kitty Settings
-if [[ $(ps --no-header -p $PPID -o comm) =~ '^kitty$' ]]; then
+if [[ $(ps --no-header -p $PPID -o comm) =~ '^kitty$|^nvim$' ]]; then
   # Blur
   for wid in $(xdotool search --pid $PPID); do
     xprop -f _KDE_NET_WM_BLUR_BEHIND_REGION 32c -set _KDE_NET_WM_BLUR_BEHIND_REGION 0 -id $wid
@@ -238,15 +239,6 @@ export BAT_THEME="gruvbox-dark"
 export FZF_DEFAULT_COMMAND="find -L"
 source ~/.vim/plug-plugins/fzf/shell/completion.zsh # enable ** to open fzf
 
-#Disable autocorrect
-unsetopt correct_all
-unsetopt correct
-DISABLE_CORRECTION="true" 
-#Enable comments inside for inline commands
-setopt interactivecomments
-
-# Enable autojump
-source /etc/profile.d/autojump.zsh
 
 # To use docker constant like on mac or windows
 export DOCKER_GATEWAY_HOST=172.17.0.1

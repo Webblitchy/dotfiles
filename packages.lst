@@ -93,4 +93,11 @@ xdotool
 xclip
 wmctrl
 xdg-desktop-portal
-npm
+npm # for neovim
+ripgrep # for telescope.nvim
+
+# Maybe needed ?
+# zsh-completions
+# zsh-autosuggestions
+# zsh-syntax-highlighting
+# zsh-history-substring-search

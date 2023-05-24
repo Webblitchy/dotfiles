@@ -142,7 +142,7 @@ History Items[$e]=file:$HOME/Pictures/Screenshots,file:$HOME/Virtual Machines/Sh
 [General]
 AccentColor=0,87,152
 BrowserApplication=userapp-Firefox-0RUJT1.desktop
-ColorSchemeHash=7e27a66e6ec46638e4fb9d9f6caa72c4f044c338
+ColorSchemeHash=01662607e36cd33eacc7d7d7189f69c26b9a2cc8
 Name=Breeze Dark
 TerminalApplication=kitty
 TerminalService=kitty.desktop
@@ -167,7 +167,7 @@ AnimationDurationFactor=0.5
 ColorScheme=BreezeDark
 LookAndFeelPackage=org.kde.breezedark.desktop
 ShowDeleteCommand=false
-SingleClick=false
+SingleClick=true
 contrast=4
 widgetStyle=Lightly
 

@@ -7,7 +7,7 @@
         "markdown": false,
         "scminput": false,
         "yaml": false,
-        "scala": false
+        "scala": true
     },
     "terminal.integrated.fontFamily": "MesloLGS NF",
     "telemetry.telemetryLevel": "off",

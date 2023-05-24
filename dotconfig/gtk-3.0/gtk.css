@@ -6,6 +6,6 @@ headerbar button.titlebutton image, .titlebar button.titlebutton image {
 headerbar button.titlebutton, .titlebar button.titlebutton {
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 16px 16px;
-  padding : 1px 1px;
+  background-size: 11px 11px;
+  padding: 1px 3px 1px 5px;
 }

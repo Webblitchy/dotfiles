@@ -35,8 +35,7 @@ require("catppuccin").setup({
     gitsigns = true,
     nvimtree = true,
     telescope = true,
-    notify = false,
-    mini = false,
+
     -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
   },
 })
@@ -118,12 +117,12 @@ local white      = catppuccin_palette.text     -- #CDD6F4
 
 
 -- git sign colors
-vim.cmd("highlight GitSignsAdd guibg=NONE guifg=" .. green)
-vim.cmd("highlight GitSignsChange guibg=NONE guifg=" .. lightBlue)
-vim.cmd("highlight GitSignsChangeDelete guibg=NONE guifg=" .. lightBlue)
-vim.cmd("highlight GitSignsDelete guibg=NONE guifg=" .. red)
-vim.cmd("highlight GitSignsTopDelete guibg=NONE guifg=" .. red)
-vim.cmd("highlight GitSignsUntracked guibg=NONE guifg=" .. orange)
+-- vim.cmd("highlight GitSignsAdd guibg=NONE guifg=" .. green)
+-- vim.cmd("highlight GitSignsChange guibg=NONE guifg=" .. lightBlue)
+-- vim.cmd("highlight GitSignsChangeDelete guibg=NONE guifg=" .. lightBlue)
+-- vim.cmd("highlight GitSignsDelete guibg=NONE guifg=" .. red)
+-- vim.cmd("highlight GitSignsTopDelete guibg=NONE guifg=" .. red)
+-- vim.cmd("highlight GitSignsUntracked guibg=NONE guifg=" .. orange)
 
 -- lsp colors
 vim.cmd("highlight DiagnosticVirtualTextError guibg=NONE")
@@ -132,7 +131,8 @@ vim.cmd("highlight DiagnosticVirtualTextInfo guibg=NONE")
 vim.cmd("highlight DiagnosticVirtualTextHint guibg=NONE")
 
 -- Indent signs
-vim.cmd("highlight IndentBlanklineChar guifg=" .. darkGray) -- Indent line : very dark comments
+vim.cmd("highlight IndentBlanklineChar guifg=" .. darkGray)    -- Indent line : very dark comments
+vim.cmd("highlight IndentBlanklineContextChar guifg=" .. gray) -- Current indent line
 
 -- Dap
 vim.api.nvim_set_hl(0, 'DapBreakpoint', { ctermbg = 0, fg = red, bg = '' })

@@ -1,5 +1,9 @@
 -- Set lualine as statusline
 -- See `:help lualine.txt`
+--
+--
+--
+
 require('lualine').setup {
   options = {
     icons_enabled = true,
@@ -26,15 +30,27 @@ require('lualine').setup {
           return ""
         end,
         color = { fg = "#add8e6" }
-      }
+      },
+      function()
+        return require("lsp-progress").progress({
+          format = function(messages)
+            if #messages > 0 then
+              return "󰲼 LSP " .. messages[#messages]
+            end
+            local clients = vim.lsp.get_active_clients()
+            if clients == nil then
+              return nil
+            end
+
+            local lsps = {}
+            for i, client in ipairs(vim.lsp.get_active_clients()) do
+              lsps[i] = client.name
+            end
+            return "󰦕 LSP [" .. table.concat(lsps, " | ") .. "]"
+          end
+        })
+      end
     },
-    -- lualine_c = {
-    --   {
-    --     'filename',
-    --     color = { fg = '#fabd2f' },
-    --     path = 3 -- abs path
-    --   },
-    -- },
     lualine_x = {
       {
         'fileformat',
@@ -60,11 +76,30 @@ require('lualine').setup {
         else
           return " TAB"
         end
-        --
       end,
       'filetype',
     },
     lualine_y = { 'progress' }, -- percentage in file
-    lualine_z = { 'location' }  -- line, character
+    lualine_z = { 'location' }  -- line : character
   },
 }
+
+-- refresh lualine for lsp status
+vim.cmd([[
+augroup lualine_augroup
+    autocmd!
+    autocmd User LspProgressStatusUpdated lua require("lualine").refresh()
+augroup END
+]])
+
+
+require("lsp-progress").setup({
+  spinner = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" },
+  -- spinner = { "◜", "◠", "◝", "◞", "◡", "◟", },
+  spin_update_time = 150,
+  client_format = function(client_name, spinner, series_messages) -- show only last message
+    return #series_messages > 0
+        and ("[" .. client_name .. "] " .. spinner .. " " .. series_messages[#series_messages])
+        or ""
+  end,
+})

@@ -53,6 +53,13 @@ local components = {
 }
 
 require('cokeline').setup({
+  buffers = {
+    filter_valid = function(buffer)
+      -- get buffertype with ":echo &buftype"
+      return buffer.type ~= "terminal" -- hide terminal type
+          and buffer.type ~= "quickfix" -- quickfix list
+    end
+  },
   rendering = {
     max_buffer_width = 30,
   },

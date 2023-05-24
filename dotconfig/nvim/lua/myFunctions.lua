@@ -31,6 +31,7 @@ function AutoCompile()
   -- if there is space
   workspacePath = '"' .. workspacePath .. '"'
   parentFolderName = '"' .. parentFolderName .. '"'
+  filePath = '"' .. filePath .. '"'
 
   local function executeFile(command)
     vim.api.nvim_command("term cd " .. workspacePath .. " && " .. command)

@@ -101,11 +101,6 @@ Item {
 		    onSourceRemoved: {
 			      disconnectSource(source)
 		    }
-
-        onDataChanged: {
-            Logic.updateInhibitions(batterywidget, pmSource)
-        }
-
 	  }
 
 

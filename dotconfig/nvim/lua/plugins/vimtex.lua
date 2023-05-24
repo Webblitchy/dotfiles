@@ -2,6 +2,12 @@
 vim.g.tex_flavor = 'latex'
 vim.g.vimtex_view_general_viewer = 'okular'
 vim.g.vimtex_view_general_options = "--unique file:@pdf\\#src:@line@tex"
+
+vim.g.vimtex_quickfix_enabled = 1
+vim.g.vimtex_quickfix_open_on_warning = 0
+vim.g.vimtex_quickfix_mode = 1  -- auto open and go into
+vim.g.vimtex_quickfix_autoclose_after_keystrokes = 1
+
 vim.g.vimtex_compiler_latexmk = {
   build_dir = '',
   callback = 1,

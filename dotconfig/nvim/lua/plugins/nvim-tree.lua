@@ -74,7 +74,11 @@ require("nvim-tree").setup({
     enable = true,
   },
   filters = {
-    dotfiles = true,
+    dotfiles = false, -- show dotfiles
+    custom = {
+      -- hidden files (regex)
+      "\\.directory",
+    }
   },
   actions = {
     open_file = {

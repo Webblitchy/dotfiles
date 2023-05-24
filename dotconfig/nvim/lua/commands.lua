@@ -53,6 +53,26 @@ autocmd("TermClose", {
   end
 })
 
+
+
+-- Hide ":" commands after 2 seconds
+autocmd("CmdlineLeave", {
+  callback = function()
+    -- vim.fn.timer_start(2000, function()
+    --   local cmdLine = vim.fn.getcmdline()
+    -- print("echo " .. cmdLine)
+    -- vim.fn.input("info: " .. cmdLine)
+    -- end)
+    --   local lastMsg = vim.api.nvim_exec2("1messages", { output = true }).output
+    --   local cmdLine = vim.fn.getcmdline()
+    --   vim.fn.input("content" .. cmdLine)
+    --   if vim.fn.match(lastMsg, "E\\d\\d") == -1 then -- no errors
+    --     -- vim.fn.input("LASTMSG:" .. lastMsg)
+    --     vim.fn.timer_start(2000, function() vim.api.nvim_command("echo 'ok'") end)
+    --   end
+  end
+})
+
 -- insert bin bash for new shell files
 local templates = {
   -- file extention: ask confirmation
