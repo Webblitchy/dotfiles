@@ -7,8 +7,8 @@
 require('lualine').setup {
   options = {
     icons_enabled = true,
-    theme = "auto",                                -- use nvim theme
-    disabled_filetypes = { 'packer', 'NvimTree' }, -- disable statusline on these files
+    theme = "auto",                               -- use nvim theme
+    disabled_filetypes = { 'alpha', 'NvimTree' }, -- disable statusline on these files
     component_separators = { left = '', right = '' },
     section_separators = { left = '', right = '' },
   },
@@ -31,19 +31,20 @@ require('lualine').setup {
         end,
         color = { fg = "#add8e6" }
       },
+      -- LSP status
       function()
         return require("lsp-progress").progress({
-          format = function(messages)
+          format = function(messages)                -- messages variable format is defined in .setup fn (bottom)
             if #messages > 0 then
-              return "󰲼 LSP " .. messages[#messages]
+              return "󰲼 LSP " .. messages[#messages] -- show last message
             end
-            local clients = vim.lsp.get_active_clients()
-            if clients == nil then
-              return nil
+            local clients = GetBufferLSPs()
+            if #clients == 0 then
+              return ""
             end
 
             local lsps = {}
-            for i, client in ipairs(vim.lsp.get_active_clients()) do
+            for i, client in ipairs(clients) do
               lsps[i] = client.name
             end
             return "󰦕 LSP [" .. table.concat(lsps, " | ") .. "]"
@@ -97,9 +98,16 @@ require("lsp-progress").setup({
   spinner = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" },
   -- spinner = { "◜", "◠", "◝", "◞", "◡", "◟", },
   spin_update_time = 150,
-  client_format = function(client_name, spinner, series_messages) -- show only last message
-    return #series_messages > 0
-        and ("[" .. client_name .. "] " .. spinner .. " " .. series_messages[#series_messages])
-        or ""
+  client_format = function(client_name, spinner, series_messages)
+    -- shown when lsp is messaging
+    if #series_messages > 0 then
+      for _, act_client in ipairs(GetBufferLSPs()) do
+        if act_client.name == client_name then
+          local lastMsg = series_messages[#series_messages]
+          return "[" .. client_name .. "] " .. spinner .. " " .. lastMsg
+        end
+      end
+    end
+    return ""
   end,
 })

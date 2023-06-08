@@ -30,6 +30,7 @@ dap.adapters.cppdbg = {
 }
 
 local parentFolderName = vim.fn.fnamemodify("${fileDirname}", ":p:h:t")
+local parentFolderPath = vim.fn.fnamemodify("${fileDirname}", ":p:h")
 
 dap.configurations.cpp = {
   {
@@ -68,10 +69,11 @@ dap.configurations.rust = {
     type = "cppdbg",
     request = "launch",
     program = function()
+      print(vim.fn.getcwd())
       vim.fn.system("cargo build") -- compile program first
-      return vim.fn.system("find ../target/debug -maxdepth 1 -type f -executable")
+      return vim.fn.system("find " .. parentFolderPath .. "/target/debug -maxdepth 1 -type f -executable")
     end,
-    cwd = "${workspaceFolder}",
+    cwd = "${fileDirname}",
     -- stopAtEntry = true, -- better for debugging
   },
 }

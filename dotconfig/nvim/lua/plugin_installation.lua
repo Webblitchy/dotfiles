@@ -2,169 +2,201 @@
 -- Plugin Installation
 -------------------------------------------------------------------------------------------
 
--- Install packer
-local install_path = vim.fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
-local is_bootstrap = false
-if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-  is_bootstrap = true
-  vim.fn.system { "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path }
-  vim.cmd [[packadd packer.nvim]]
+-- Install lazy.nvim (plugin manager)
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
 end
+vim.opt.rtp:prepend(lazypath)
 
--- When adding new plugins : run ":PackerInstall"
-require("packer").startup(function(use)
-  -- Package manager
-  use "wbthomason/packer.nvim"
+-- When adding new plugins : Lazy
+require("lazy").setup({
 
-  use "williamboman/mason.nvim"
+  "williamboman/mason.nvim",
 
-  use { -- LSP Configuration & Plugins
+  {
+    -- LSP Configuration & Plugins
     "neovim/nvim-lspconfig",
-    requires = {
+    dependencies = {
       -- Automatically install LSPs to stdpath for neovim
-      "williamboman/mason.nvim",
-      "williamboman/mason-lspconfig.nvim",
+      { 'williamboman/mason.nvim', config = true },
+      'williamboman/mason-lspconfig.nvim',
 
       -- Additional lua configuration, makes nvim stuff amazing
       "folke/neodev.nvim",
     },
-    config = {
-      require('mason').setup()
-    }
-  }
+  },
 
-  use { -- Autocompletion (with menu)
+  {
+    -- Autocompletion (with menu)
     "hrsh7th/nvim-cmp",
-    requires = {
+    dependencies = {
       "hrsh7th/cmp-nvim-lsp",
       "L3MON4D3/LuaSnip",
       "saadparwaiz1/cmp_luasnip",
       "onsails/lspkind.nvim", -- add fancy icons
     },
-  }
+  },
 
-  use { -- Highlight, edit, and navigate code
-    "nvim-treesitter/nvim-treesitter",
-    run = function()
-      pcall(require("nvim-treesitter.install").update { with_sync = true })
-    end,
-  }
+  {
+    -- Highlight, edit, and navigate code
+    'nvim-treesitter/nvim-treesitter',
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter-textobjects',
+    },
+    build = ':TSUpdate',
+  },
 
-  use { -- Additional text objects via treesitter
-    "nvim-treesitter/nvim-treesitter-textobjects",
-    after = "nvim-treesitter",
-  }
 
   -- Git related plugins
-  use "tpope/vim-fugitive"
-  use "tpope/vim-rhubarb"
-  use "lewis6991/gitsigns.nvim"
+  "tpope/vim-fugitive",
+  "tpope/vim-rhubarb",
+  "lewis6991/gitsigns.nvim",
 
   -- Nice icons (useful for many plugins)
-  use "nvim-tree/nvim-web-devicons"
+  "nvim-tree/nvim-web-devicons",
 
   -- Fancier statusline
-  use {
+  {
     "nvim-lualine/lualine.nvim",
-    requires = {
-      "nvim-tree/nvim-web-devicons", -- to add icons
+    dependencies = {
       -- "arkav/lualine-lsp-progress",  -- LSP status in lualine
       'linrongbin16/lsp-progress.nvim',
-      opt = true
-    }
-  }
+    },
+    lazy = false
+  },
 
   -- Bufferline (using cokeline)
-  use({
+  {
     'willothy/nvim-cokeline',
-    requires = 'kyazdani42/nvim-web-devicons', -- If you want devicons
-  })
+    lazy = false
+  },
 
   -- Theme
-  use("ellisonleao/gruvbox.nvim")
-  use("folke/tokyonight.nvim")
-  use { "catppuccin/nvim", as = "catppuccin" }
+  -- "ellisonleao/gruvbox.nvim",
+  -- "folke/tokyonight.nvim",
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    lazy = false,    -- make sure we load this during startup if it is your main colorscheme
+    priority = 1000, -- make sure to load this before all the other start plugins
+  },
 
-  use "lukas-reineke/indent-blankline.nvim" -- Add indentation guides even on blank lines
+
+  "lukas-reineke/indent-blankline.nvim", -- Add indentation guides even on blank lines
 
   -- "gc" to comment visual regions/lines
-  use {
+  {
     "numToStr/Comment.nvim",
     config = function()
       require("Comment").setup()
     end
-  }
+  },
   -- using packer.nvim
-  use { -- Detect indentation for existing files
+  {
+    -- Detect indentation for existing files
     "nmac427/guess-indent.nvim",
     config = function() require("guess-indent").setup {} end,
-  }
+  },
 
   -- Fuzzy Finder (files, lsp, etc)
-  use { "nvim-telescope/telescope.nvim", branch = "0.1.x", requires = { "nvim-lua/plenary.nvim" } }
+  {
+    "nvim-telescope/telescope.nvim",
+    branch = "0.1.x",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    lazy = true,
+  },
 
-  -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
-  use { "nvim-telescope/telescope-fzf-native.nvim", run = "make", cond = vim.fn.executable "make" == 1 }
+  -- Fuzzy Finder Algorithm which dependencies local dependencies to be built. Only load if `make` is available
+  {
+    "nvim-telescope/telescope-fzf-native.nvim",
+    build = "make",
+    cond = vim.fn.executable "make" == 1
+  },
 
   -- Telescope acting like a finder
-  use {
+  {
     "nvim-telescope/telescope-file-browser.nvim",
-    requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim", "nvim-tree/nvim-web-devicons" }
-  }
+    dependencies = {
+      "nvim-telescope/telescope.nvim",
+      "nvim-lua/plenary.nvim"
+    }
+  },
 
   -- Highlight todo in the file
-  use {
+  {
     "folke/todo-comments.nvim",
-    requires = "nvim-lua/plenary.nvim",
+    dependencies = "nvim-lua/plenary.nvim",
     config = function()
       require("todo-comments").setup {}
     end
-  }
-  use "lervag/vimtex" -- latex compilation
+  },
+  "lervag/vimtex", -- latex compilation
 
   -- Startup menu for nvim
-  use {
-    "startup-nvim/startup.nvim",
-    requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+  -- {
+  --   "startup-nvim/startup.nvim",
+  --   dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+  --   config = function()
+  --     require "startup".setup {}
+  --   end,
+  --   lazy = true,
+  -- },
+  {
+    'goolord/alpha-nvim',
+    requires = { 'nvim-tree/nvim-web-devicons' },
     config = function()
-      require "startup".setup {}
-    end
-  }
+      require 'alpha'.setup(require 'alpha.themes.startify'.config)
+    end,
+    lazy = true,
+  },
 
   -- Tree to find files
-  use {
+  {
     "nvim-tree/nvim-tree.lua",
-    requires = {
+    dependencies = {
       "nvim-tree/nvim-web-devicons", -- optional, for file icons
     },
-  }
+    lazy = true,
+  },
 
   -- show the mappings
-  use {
+  {
     "folke/which-key.nvim",
-    config = function()
+    init = function()
       vim.o.timeout = true
       vim.o.timeoutlen = 600
-      require("which-key").setup {}
-    end
-  }
+    end,
+    opts = {},
+    event = "VeryLazy"
+  },
 
 
   -- Metals (used for scala lsp)
-  use({ "scalameta/nvim-metals", requires = { "nvim-lua/plenary.nvim" } })
+  {
+    "scalameta/nvim-metals",
+    dependencies = { "nvim-lua/plenary.nvim" }
+  },
 
   -- Use formatter when not available in lsp
-  use "jose-elias-alvarez/null-ls.nvim"
-  use("jay-babu/mason-null-ls.nvim") -- use mason to install formatters
+  "jose-elias-alvarez/null-ls.nvim",
+  "jay-babu/mason-null-ls.nvim", -- use mason to install formatters
 
   -- Save with sudo
-  use "lambdalisue/suda.vim"
+  "lambdalisue/suda.vim",
 
   -- change and add surroundings (", ', (, [, html tags...)
-  use "tpope/vim-surround"
+  "tpope/vim-surround",
 
   -- color hex codes
-  use {
+  {
     "norcalli/nvim-colorizer.lua",
     config = function()
       require 'colorizer'.setup {
@@ -172,47 +204,17 @@ require("packer").startup(function(use)
         -- '!vim' -- except
       }
     end
-  }
+  },
 
 
   -- [[ Debugging ]]
-  use 'mfussenegger/nvim-dap'
-  use "jay-babu/mason-nvim-dap.nvim" -- autoinstall debug clients (not dap clients)
+  'mfussenegger/nvim-dap',
+  "jay-babu/mason-nvim-dap.nvim", -- autoinstall debug clients (not dap clients)
   -- UI
-  use "theHamsta/nvim-dap-virtual-text"
-  use "rcarriga/nvim-dap-ui"
-  use "nvim-telescope/telescope-dap.nvim"
+  "theHamsta/nvim-dap-virtual-text",
+  "rcarriga/nvim-dap-ui",
+  "nvim-telescope/telescope-dap.nvim",
   -- language adapters
-  use "mfussenegger/nvim-dap-python"
+  "mfussenegger/nvim-dap-python",
 
-
-  -- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
-  local has_plugins, plugins = pcall(require, "custom.plugins")
-  if has_plugins then
-    plugins(use)
-  end
-
-  if is_bootstrap then
-    require("packer").sync()
-  end
-end)
-
--- When we are bootstrapping a configuration, it doesn"t
--- make sense to execute the rest of the init.lua.
---
--- You"ll need to restart nvim, and then it will work.
-if is_bootstrap then
-  print "=================================="
-  print "    Plugins are being installed"
-  print "    Wait until Packer completes,"
-  print "       then restart nvim"
-  print "=================================="
-  return
-end
-
--- Automatically source and re-compile packer whenever you save this file
-vim.api.nvim_create_autocmd("BufWritePost", {
-  command = "source <afile> | PackerSync",
-  group = vim.api.nvim_create_augroup("Packer", { clear = true }),
-  pattern = "plugin_installation.lua"
 })

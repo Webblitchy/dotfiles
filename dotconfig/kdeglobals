@@ -136,8 +136,8 @@ ForegroundPositive=39,174,96
 ForegroundVisited=155,89,182
 
 [DirSelect Dialog]
-DirSelectDialog Size=801,612
-History Items[$e]=file:$HOME/Pictures/Screenshots,file:$HOME/Virtual Machines/Shared,file:$HOME/Virtual Machines/Shared,file:$HOME/Virtual Machines,file:$HOME/Virtual Machines/Shared,file:$HOME/Virtual Machines/Shared,file:$HOME/Virtual Machines/Shared,file:$HOME/Virtual Machines/Shared,file:$HOME/kDrive/HEIG-VD/E2,file:$HOME/VM Shared,file:$HOME/Pictures,file:$HOME/VirtualBox VMs/reds2021-09/Shared,file:$HOME/OwnCloud,file:$HOME
+DirSelectDialog Size=813,612
+History Items[$e]=file:$HOME/Desktop/TokioStreetWallpaper,file:$HOME/Pictures/wallpapers/TokioStreetWallpaper,file:$HOME/Pictures/Screenshots,file:$HOME/Virtual Machines/Shared,file:$HOME/Virtual Machines/Shared,file:$HOME/Virtual Machines,file:$HOME/Virtual Machines/Shared,file:$HOME/Virtual Machines/Shared,file:$HOME/Virtual Machines/Shared,file:$HOME/Virtual Machines/Shared,file:$HOME/kDrive/HEIG-VD/E2,file:$HOME/VM Shared,file:$HOME/Pictures,file:$HOME/VirtualBox VMs/reds2021-09/Shared,file:$HOME/OwnCloud,file:$HOME
 
 [General]
 AccentColor=0,87,152
@@ -184,10 +184,10 @@ Show Inline Previews=true
 Show Preview=false
 Show Speedbar=true
 Show hidden files=false
-Sort by=Name
+Sort by=Date
 Sort directories first=true
 Sort hidden files last=false
-Sort reversed=false
+Sort reversed=true
 Speedbar Width=138
 View Style=Detail
 

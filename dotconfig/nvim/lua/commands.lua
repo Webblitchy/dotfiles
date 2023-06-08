@@ -9,16 +9,46 @@ autocmd({ "VimResized", "VimEnter", "WinLeave" }, {
   end
 })
 
-
 -- Restore cursor position when opening a file
 autocmd({ "BufReadPost", "BufNewFile" }, {
   callback = function()
-    local currLine = vim.fn.line("'\"")
+    local oldLine = vim.fn.line("'\"")
     local lastLine = vim.fn.line("$")
-    if (currLine > 1 and currLine <= lastLine) then
+    if (oldLine > 1 and oldLine <= lastLine) then
       vim.api.nvim_command("normal! g'\"")
     end
   end
+})
+
+
+-- Keep space at the bottom of a file
+autocmd({ "CursorMoved" }, {
+  callback = function()
+    if vim.bo.buftype ~= "" then -- normal buffer (not terminal or prompt)
+      return
+    end
+
+    local windowLines = vim.api.nvim_win_get_height(0)
+    local currLine = vim.fn.line(".")
+    local lastLine = vim.fn.line("$")
+
+    -- if file smaller than window
+    local bottom = 0
+    if windowLines > lastLine then
+      bottom = windowLines
+    else
+      bottom = lastLine
+    end
+
+    local marginBottom = currLine + vim.o.scrolloff - bottom
+    if marginBottom == 0 then
+      vim.api.nvim_input("zb")                    -- align cursor with bottom of file
+    elseif marginBottom > 0 then
+      vim.api.nvim_input("zb")                    -- align cursor with bottom of file
+      vim.api.nvim_input(marginBottom .. "<C-E>") -- scroll down
+    end
+  end,
+  pattern = "*"
 })
 
 -- replace term in new tab default behavior
@@ -54,24 +84,6 @@ autocmd("TermClose", {
 })
 
 
-
--- Hide ":" commands after 2 seconds
-autocmd("CmdlineLeave", {
-  callback = function()
-    -- vim.fn.timer_start(2000, function()
-    --   local cmdLine = vim.fn.getcmdline()
-    -- print("echo " .. cmdLine)
-    -- vim.fn.input("info: " .. cmdLine)
-    -- end)
-    --   local lastMsg = vim.api.nvim_exec2("1messages", { output = true }).output
-    --   local cmdLine = vim.fn.getcmdline()
-    --   vim.fn.input("content" .. cmdLine)
-    --   if vim.fn.match(lastMsg, "E\\d\\d") == -1 then -- no errors
-    --     -- vim.fn.input("LASTMSG:" .. lastMsg)
-    --     vim.fn.timer_start(2000, function() vim.api.nvim_command("echo 'ok'") end)
-    --   end
-  end
-})
 
 -- insert bin bash for new shell files
 local templates = {
@@ -168,21 +180,21 @@ autocmd({ "BufWritePost" }, {
 
 -- [ NEW USER COMMANDS ]
 
--- Handle side bar
-BarHidden = false
-function ToggleHide()
-  if BarHidden then
-    BarHidden = false
-    vim.api.nvim_command(showBordersCommand .. " | IndentBlanklineEnable")
+function ToggleMouse()
+  if vim.go.mouse == "" then
+    vim.o.mouse = "nvi"
+    print("Mouse enabled")
+    ClearCmdIn2secs()
   else
-    BarHidden = true
-    vim.api.nvim_command(hideBordersCommand .. " | IndentBlanklineDisable")
+    vim.o.mouse = ""
+    print("Mouse disabled")
+    ClearCmdIn2secs()
   end
 end
 
 vim.api.nvim_create_user_command(
-  'Bar', -- must start with uppercase
-  "lua ToggleHide()",
+  "M",
+  "lua ToggleMouse()",
   {}
 )
 
@@ -204,7 +216,7 @@ vim.api.nvim_create_user_command(
 -- Update all mason packages
 vim.api.nvim_create_user_command(
   "MasonUpdateAll",
-  'exec "normal :Mason\\<CR>" | sleep 500ms | normal U', -- exec to use <CR>
+  'exec "normal :Mason\\<CR>" | sleep 1000ms | normal U', -- exec to use <CR>
   {}
 )
 

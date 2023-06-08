@@ -13,8 +13,18 @@ function ClearCommandLine()
   vim.api.nvim_input(":<BS>")
 end
 
+function ClearCmdIn2secs()
+  vim.fn.timer_start(2000, function()
+    vim.api.nvim_command("echo ''")
+  end)
+end
+
 function GetConfigFolder()
   return vim.fn.fnamemodify(vim.env.MYVIMRC, ":p:h")
+end
+
+function GetBufferLSPs()
+  return vim.lsp.get_active_clients({ bufnr = vim.api.nvim_get_current_buf() })
 end
 
 function AutoCompile()

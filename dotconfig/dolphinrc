@@ -31,6 +31,8 @@ Places Icons Static Size=22
 [KPropertiesDialog]
 1536x864 screen: Height=575
 1536x864 screen: Width=403
+2 screens: Height=496
+2 screens: Width=356
 eDP-1 DP-3 Height 1536x864=619
 eDP-1 DP-3 Height 2048x1152=619
 eDP-1 DP-3 Height 2560x1440=647

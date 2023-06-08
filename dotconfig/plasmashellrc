@@ -13,8 +13,8 @@ eDP-1 DP-3 Width 1920x1080=1300
 Number of Actions=0
 
 [KFileDialog Settings]
-Recent Files[$e]=abstergo-transparent-small.png,file:$HOME/Pictures/abstergo-transparent-small.png
-Recent URLs[$e]=file:$HOME/Downloads/,file:$HOME/Pictures/,file:$HOME/,file:$HOME/Documents/,file:$HOME/kDrive/
+Recent Files[$e]=abstergo-transparent-small.png,file:$HOME/Pictures/wallpapers/wallpaper.avif,file:$HOME/Desktop/TokioStreetWallpaper/wallpaper.avif,file:$HOME/Downloads/test1.avif,file:$HOME/Downloads/rickroll_animated_Ihzk3rqVN.avif,file:$HOME/Downloads/1-day.avif,file:$HOME/Downloads/1-day [MConverter.eu].avif,file:$HOME/Pictures/abstergo-transparent-small.png
+Recent URLs[$e]=file:$HOME/Downloads/,file:$HOME/Pictures/,file:$HOME/,file:$HOME/Documents/,file:$HOME/kDrive/,file:$HOME/Desktop/TokioStreetWallpaper/,file:$HOME/Pictures/wallpapers/
 detailViewIconSize=16
 
 [KPropertiesDialog]

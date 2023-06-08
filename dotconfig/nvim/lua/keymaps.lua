@@ -20,6 +20,9 @@ elseif vim.env.TERM == "xterm-kitty" then
   map("i", "<C-BS>", "<C-W>")
 end
 
+map("n", "<CR>", "ciw") -- enter to change word in normal mode
+
+
 -- Easier switch between buffers
 --
 -- Standard buffers

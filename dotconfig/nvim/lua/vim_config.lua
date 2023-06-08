@@ -12,13 +12,14 @@ vim.opt.spellfile = vim.fn.stdpath("config") ..
     "/spell/custom.utf-8.add"                 -- custom dictionnary used (for all languages) : in .nvim/spell/
 vim.opt.clipboard = "unnamedplus"             -- use OS clipboard (require xclip on X11)
 vim.opt.nrformats = { "bin", "hex", "alpha" } -- increment with ^a also for letters
+vim.opt.termguicolors = true
 
 -- Indentation settings
 vim.o.copyindent = true              -- copy the previous indentation on autoindenting
 vim.o.breakindent = true             -- Enable break indent
 vim.o.shiftround = true              -- use multiple of shiftwidth when indenting with '<' and '>'
 vim.o.smartindent = true
-vim.o.tabstop = 3                    -- visual size of tabs (when no expandtab)
+vim.o.tabstop = 4                    -- visual size of tabs (when no expandtab)
 vim.o.shiftwidth = 4                 -- default number of spaces to use for autoindenting
 vim.o.softtabstop = vim.o.shiftwidth -- when hitting <BS>, pretend like a tab is removed, even if spaces
 vim.o.expandtab = true               -- expand tabs to spaces
@@ -62,5 +63,5 @@ vim.opt.listchars = {
     extends = '→',
     precedes = '←',
     trail = '·',
-    tab = "  ", -- Needs between 2-3 chars : ⊦ ┄╞ ▸ ⊳
+    tab = "   ", -- Needs between 2-3 chars : ⊦ ┄╞ ▸ ⊳
 }

@@ -118,14 +118,14 @@
   <Spacer name="spacer_0"/>
   <Action name="page_number"/>
   <Spacer name="spacer_1"/>
+  <Action name="view_auto_fit"/>
   <Action name="view_zoom_out"/>
   <Action name="zoom_to"/>
   <Action name="view_zoom_in"/>
-  <Action name="view_auto_fit"/>
   <Separator name="separator_1"/>
   <Action name="color_mode_inverted"/>
  </ToolBar>
- <ToolBar newline="true" name="annotationToolBar" hidden="true" iconText="icononly" noMerge="1">
+ <ToolBar name="annotationToolBar" newline="true" hidden="true" iconText="icononly" noMerge="1">
   <text translationDomain="okular">Annotation Toolbar</text>
   <Action name="annotation_highlighter"/>
   <Action name="annotation_typewriter"/>
@@ -144,15 +144,15 @@
   <Spacer name="spacer_0"/>
   <Action name="hide_annotation_toolbar"/>
  </ToolBar>
- <ToolBar newline="true" iconSize="32" position="right" name="quickAnnotationToolBar" hidden="true" iconText="icononly">
+ <ToolBar position="right" name="quickAnnotationToolBar" newline="true" iconSize="32" hidden="true" iconText="icononly">
   <text translationDomain="okular">Quick Annotation Toolbar</text>
   <Action name="quick_annotation_action_bar"/>
  </ToolBar>
  <ActionProperties scheme="Default">
-  <Action priority="0" name="view_zoom_out"/>
-  <Action priority="0" name="view_zoom_in"/>
-  <Action icon="insert-text-frame" name="annotation_typewriter"/>
-  <Action priority="0" name="show_leftpanel"/>
+  <Action name="view_zoom_out" priority="0"/>
+  <Action name="view_zoom_in" priority="0"/>
+  <Action name="annotation_typewriter" icon="insert-text-frame"/>
+  <Action name="show_leftpanel" priority="0"/>
   <Action name="view_orientation_rotate_cw" iconText="Rotate"/>
  </ActionProperties>
 </gui>

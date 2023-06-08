@@ -1,6 +1,6 @@
 <?xml version='1.0'?>
 <!DOCTYPE gui SYSTEM 'kpartgui.dtd'>
-<gui version="38" name="dolphin">
+<gui name="dolphin" version="38">
  <MenuBar>
   <Menu name="file">
    <Action name="new_menu"/>
@@ -55,7 +55,7 @@
    <Action name="stop"/>
    <Separator/>
    <Action name="panels"/>
-   <Menu icon="edit-select-text" name="location_bar">
+   <Menu name="location_bar" icon="edit-select-text">
     <text context="@title:menu">Location Bar</text>
     <Action name="editable_location"/>
     <Action name="replace_location"/>
@@ -76,7 +76,7 @@
    <Action name="change_remote_encoding"/>
   </Menu>
  </MenuBar>
- <ToolBar noMerge="1" name="mainToolBar" alreadyVisited="1">
+ <ToolBar name="mainToolBar" alreadyVisited="1" noMerge="1">
   <Action name="go_back"/>
   <text context="@title:menu" translationDomain="dolphin">Main Toolbar</text>
   <Action name="go_forward"/>
@@ -120,25 +120,26 @@
  </State>
  <ActionProperties scheme="Default">
   <Action name="compact" priority="0"/>
-  <Action shortcut="Ctrl+Shift+N" name="create_dir"/>
+  <Action name="create_dir" shortcut="Ctrl+Shift+N"/>
   <Action name="details" priority="0"/>
   <Action name="edit_copy" priority="0"/>
-  <Action shortcut="Ctrl+X" name="edit_cut" priority="0"/>
+  <Action name="edit_cut" priority="0" shortcut="Ctrl+X"/>
   <Action name="edit_paste" priority="0"/>
-  <Action icon="stock_left" name="go_back" priority="0"/>
+  <Action name="go_back" icon="stock_left" priority="0"/>
   <Action name="go_forward" priority="0"/>
   <Action name="go_home" priority="0"/>
   <Action name="go_up" priority="0"/>
   <Action name="icons" priority="0"/>
-  <Action shortcut="Ctrl+T; " name="new_tab"/>
-  <Action shortcut="Space" name="show_information_panel"/>
+  <Action name="new_tab" shortcut="Ctrl+T; "/>
+  <Action name="show_information_panel" shortcut="Space"/>
   <Action name="stop" priority="0"/>
   <Action name="toggle_filter" priority="0"/>
   <Action name="toggle_search" priority="0"/>
   <Action name="view_zoom_in" priority="0"/>
   <Action name="view_zoom_out" priority="0"/>
   <Action name="view_zoom_reset" priority="0"/>
-  <Action shortcut="F5; Ctrl+R" name="view_redisplay"/>
-  <Action shortcut="" name="toggle_selection_mode"/>
+  <Action name="view_redisplay" shortcut="F5; Ctrl+R"/>
+  <Action name="toggle_selection_mode" shortcut=""/>
+  <Action name="renamefile" shortcut="F2; Return"/>
  </ActionProperties>
 </gui>

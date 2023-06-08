@@ -77,15 +77,6 @@ export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;36m'
 export LESS=-R
 
-# Color stderr in red
-color_stderr_red() {
-    local stderr_red_esc_code=$'\e[38;2;253;47;47m' # 38;2;R;G;B
-    while IFS= read -r line; do
-        echo -e "${stderr_red_esc_code}${line}\e[0m" >&2
-    done
-}
-# Redirect stderr to color_stderr_red function.
-exec 2> >(color_stderr_red)
 
 
 ## [[ Plugins ]]
@@ -228,6 +219,20 @@ fi
 #######################################################################
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=244'
 
+
+
+# Color stderr in red
+color_stderr_red() {
+    local stderr_red_esc_code=$'\e[38;2;253;47;47m' # 38;2;R;G;B
+    while IFS= read -r line; do
+        echo -e "${stderr_red_esc_code}${line}\e[0m" >&2
+    done
+}
+
+# Redirect stderr to color_stderr_red function.
+exec 2> >(color_stderr_red)
+
+
 export EDITOR="nvim"
 
 # Apply fzf-gruvbox theme
@@ -235,18 +240,9 @@ export EDITOR="nvim"
 source ~/.config/fzf-gruvbox.config
 export BAT_THEME="gruvbox-dark"
 
-# Include dotfiles in searches
-export FZF_DEFAULT_COMMAND="find -L"
-source ~/.vim/plug-plugins/fzf/shell/completion.zsh # enable ** to open fzf
-
-
 # To use docker constant like on mac or windows
 export DOCKER_GATEWAY_HOST=172.17.0.1
 
-
-# To use volta (nvm)
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
 
 # To use coursier (for scala)
 export PATH="$PATH:$HOME/.local/share/coursier/bin"
@@ -271,7 +267,6 @@ if [[ -f /usr/bin/rmtrash ]]; then
 fi
 
 # sudo commands
-
 alias btop='sudo btop'
 alias powertop='sudo powertop'
 
