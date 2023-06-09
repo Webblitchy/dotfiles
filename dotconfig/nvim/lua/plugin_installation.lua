@@ -89,8 +89,8 @@ require("lazy").setup({
     priority = 1000, -- make sure to load this before all the other start plugins
   },
 
-
-  "lukas-reineke/indent-blankline.nvim", -- Add indentation guides even on blank lines
+  -- Add indentation guides even on blank lines
+  "lukas-reineke/indent-blankline.nvim",
 
   -- "gc" to comment visual regions/lines
   {
@@ -138,20 +138,13 @@ require("lazy").setup({
       require("todo-comments").setup {}
     end
   },
+
   "lervag/vimtex", -- latex compilation
 
   -- Startup menu for nvim
-  -- {
-  --   "startup-nvim/startup.nvim",
-  --   dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
-  --   config = function()
-  --     require "startup".setup {}
-  --   end,
-  --   lazy = true,
-  -- },
   {
     'goolord/alpha-nvim',
-    requires = { 'nvim-tree/nvim-web-devicons' },
+    dependencies = 'nvim-tree/nvim-web-devicons',
     config = function()
       require 'alpha'.setup(require 'alpha.themes.startify'.config)
     end,

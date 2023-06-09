@@ -5,4 +5,4 @@ dotconfig/nvim/swap/*
 !dotconfig/nvim/swap/.gitkeep
 dotconfig/nvim/backup/*
 !dotconfig/nvim/backup/.gitkeep
-
+dotconfig/nvim/lazy-lock.json

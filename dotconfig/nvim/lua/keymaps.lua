@@ -15,9 +15,9 @@ map({ 'n', 'i', 'v' }, '<C-c>', '<Esc>')
 
 -- ctrl backspace for removing a whole word
 if vim.env.TERM == "xterm-256color" then
-  map("i", "", "<C-W>")
+  map({ "i", "c" }, "", "<C-W>")
 elseif vim.env.TERM == "xterm-kitty" then
-  map("i", "<C-BS>", "<C-W>")
+  map({ "i", "c" }, "<C-BS>", "<C-W>")
 end
 
 map("n", "<CR>", "ciw") -- enter to change word in normal mode

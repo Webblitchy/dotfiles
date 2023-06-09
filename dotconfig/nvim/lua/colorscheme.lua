@@ -31,10 +31,17 @@ require("catppuccin").setup({
   color_overrides = {},
   custom_highlights = {},
   integrations = {
+    alpha = true,
     cmp = true,
     gitsigns = true,
     nvimtree = true,
     telescope = true,
+    indent_blankline = {
+      enabled = true,
+      colored_indent_levels = false,
+    },
+    mason = true,
+    which_key = true,
 
     -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
   },
@@ -128,8 +135,10 @@ vim.cmd("highlight DiagnosticVirtualTextInfo guibg=NONE")
 vim.cmd("highlight DiagnosticVirtualTextHint guibg=NONE")
 
 -- Indent signs
-vim.cmd("highlight IndentBlanklineChar guifg=" .. darkGray)    -- Indent line : very dark comments
-vim.cmd("highlight IndentBlanklineContextChar guifg=" .. gray) -- Current indent line
+vim.cmd("highlight IndentBlanklineChar guifg=" .. darkGray)               -- Indent line : very dark comments
+vim.cmd("highlight IndentBlanklineContextChar guifg=" .. gray)            -- Current indent line
+vim.cmd("highlight IndentBlanklineSpaceChar guifg=" .. lightGray1)        -- space
+vim.cmd("highlight IndentBlanklineContextSpaceChar guifg=" .. lightGray1) -- space
 
 -- Dap
 vim.api.nvim_set_hl(0, 'DapBreakpoint', { ctermbg = 0, fg = red, bg = '' })

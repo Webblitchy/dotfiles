@@ -24,7 +24,8 @@ autocmd({ "BufReadPost", "BufNewFile" }, {
 -- Keep space at the bottom of a file
 autocmd({ "CursorMoved" }, {
   callback = function()
-    if vim.bo.buftype ~= "" then -- normal buffer (not terminal or prompt)
+    -- normal buffer (not terminal or prompt)
+    if vim.bo.buftype ~= "" then
       return
     end
 
@@ -32,7 +33,7 @@ autocmd({ "CursorMoved" }, {
     local currLine = vim.fn.line(".")
     local lastLine = vim.fn.line("$")
 
-    -- if file smaller than window
+    -- to handle a file smaller than window
     local bottom = 0
     if windowLines > lastLine then
       bottom = windowLines
@@ -48,7 +49,6 @@ autocmd({ "CursorMoved" }, {
       vim.api.nvim_input(marginBottom .. "<C-E>") -- scroll down
     end
   end,
-  pattern = "*"
 })
 
 -- replace term in new tab default behavior
