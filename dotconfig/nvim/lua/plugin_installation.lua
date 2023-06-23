@@ -71,15 +71,13 @@ require("lazy").setup({
     lazy = false
   },
 
-  -- Bufferline (using cokeline)
+  -- Bufferline
   {
-    'willothy/nvim-cokeline',
+    "willothy/nvim-cokeline",
     lazy = false
   },
 
   -- Theme
-  -- "ellisonleao/gruvbox.nvim",
-  -- "folke/tokyonight.nvim",
   {
     "catppuccin/nvim",
     name = "catppuccin",
@@ -90,16 +88,17 @@ require("lazy").setup({
   -- Add indentation guides even on blank lines
   "lukas-reineke/indent-blankline.nvim",
 
-  -- "gc" to comment visual regions/lines
+  -- Comment visual regions/lines
   {
     "numToStr/Comment.nvim",
     config = function()
       require("Comment").setup()
     end
   },
-  -- using packer.nvim
+
+
+  -- Detect indentation for existing files
   {
-    -- Detect indentation for existing files
     "nmac427/guess-indent.nvim",
     config = function() require("guess-indent").setup {} end,
   },
