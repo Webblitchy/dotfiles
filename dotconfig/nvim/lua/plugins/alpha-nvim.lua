@@ -55,6 +55,11 @@ end
 
 local dashboard = require("alpha.themes.dashboard")
 
+-- Add padding
+table.insert(dashboard.config.layout, 1, {})
+dashboard.config.layout[1].type = "padding"
+dashboard.config.layout[1].val = 1
+
 dashboard.section.header.val = title_sharp
 dashboard.section.buttons.val = {
     dashboard.button("e", "  New file", ":ene <BAR> startinsert | echo '' <CR>"),
@@ -76,14 +81,14 @@ dashboard.section.footer.val = footer()
 
 -- Add padding
 table.insert(dashboard.config.layout, {})
-dashboard.config.layout[6].type = "padding"
-dashboard.config.layout[6].val = 1
+dashboard.config.layout[7].type = "padding"
+dashboard.config.layout[7].val = 0
 
 -- Add Tip
 table.insert(dashboard.config.layout, {})
-dashboard.config.layout[7].type = "text"
-dashboard.config.layout[7].val = tips()
-dashboard.config.layout[7].opts = {
+dashboard.config.layout[8].type = "text"
+dashboard.config.layout[8].val = tips()
+dashboard.config.layout[8].opts = {
     position = "center",
     hl = "@parameter" -- orange italic
 }

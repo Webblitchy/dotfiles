@@ -1,16 +1,18 @@
 [user]
-	 name = Webblitchy
-	 email = 55515713+Webblitchy@users.noreply.github.com
-	 signingkey = D82D12852AFC900A2FC3CB91680A3F4FA50253B3
+    name = Webblitchy
+    email = 55515713+Webblitchy@users.noreply.github.com
+    signingkey = D82D12852AFC900A2FC3CB91680A3F4FA50253B3
 [commit]
-	 gpgsign = true
+    gpgsign = true
 [pull]
-	 rebase = false
+    rebase = false
 [core]
-	 editor = nvim
-	 excludesfile = ~/.gitignore_global
+    editor = nvim
+    excludesfile = ~/.gitignore_global
 [alias]
-	 graph = log --all --decorate --oneline --graph
-	 poule = pull
+    graph = log --all --decorate --oneline --graph
+    poule = pull
 [init]
-	 defaultBranch = main
+    defaultBranch = main
+[advice]
+    addIgnoredFile = false
