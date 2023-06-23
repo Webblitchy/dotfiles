@@ -3,7 +3,7 @@
 -- (used for better selection with c-space)
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'c', 'cpp', 'lua', 'python', 'rust', 'typescript', 'vimdoc', 'vim', 'scala' },
+  ensure_installed = { 'c', 'cpp', 'lua', 'python', 'rust', 'typescript', 'vimdoc', 'vim', },
 
   highlight = { enable = true },
   indent = { enable = true, disable = { 'python' } },

@@ -63,5 +63,6 @@ vim.opt.listchars = {
     extends = '→',
     precedes = '←',
     trail = '·',
-    tab = "   ", -- Needs between 2-3 chars : ⊦ ┄╞ ▸ ⊳
+    tab = "   ",                  -- Needs between 2-3 chars : ⊦ ┄╞ ▸ ⊳
 }
+vim.opt.fillchars:append('eob: ') -- hide ~ at the end of buffer

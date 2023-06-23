@@ -4,7 +4,7 @@ local catppuccin_palette = require("catppuccin.palettes.mocha")
 
 require("catppuccin").setup({
   flavour = "mocha",          -- latte, frappe, macchiato, mocha
-  transparent_background = false,
+  transparent_background = true,
   show_end_of_buffer = false, -- show the '~' characters after the end of buffers
   term_colors = false,
   dim_inactive = {
@@ -14,6 +14,7 @@ require("catppuccin").setup({
   },
   no_italic = false, -- Force no italic
   no_bold = false,   -- Force no bold
+  no_underline = false,
   styles = {
     comments = { "italic" },
     conditionals = { "italic" },
@@ -81,8 +82,7 @@ require("catppuccin").setup({
 -- enable theme
 
 -- vim.cmd("colorscheme gruvbox")
-vim.cmd("colorscheme catppuccin")
-
+vim.cmd.colorscheme("catppuccin")
 -- color variables
 -- GRUVBOX
 -- local green = gruvbox_palette.bright_green    -- #b8bb26

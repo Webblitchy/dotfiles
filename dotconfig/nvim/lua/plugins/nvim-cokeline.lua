@@ -56,7 +56,7 @@ require('cokeline').setup({
   buffers = {
     filter_valid = function(buffer)
       -- get buffertype with ":echo &buftype"
-      return buffer.type ~= "terminal" -- hide terminal type
+      return buffer.type ~= "terminal"  -- hide terminal type
           and buffer.type ~= "quickfix" -- quickfix list
     end
   },
@@ -71,7 +71,7 @@ require('cokeline').setup({
           or get_hex('Comment', 'fg')
     end,
     bg = function(buffer)
-      return get_hex('lualine_c_normal', 'bg')
+      return require("catppuccin.palettes.mocha").mantle -- same color as the rest of the bar
     end,
   },
   components = {

@@ -3,6 +3,15 @@
 --
 --
 --
+--
+local function min_window_width(width)
+  return function() return vim.fn.winwidth(0) > width end
+end
+
+local get_hex = require('cokeline/utils').get_hex
+
+local lightGray = get_hex("Comment", "fg")
+local blackColor = get_hex("CursorColumn", "bg")
 
 require('lualine').setup {
   options = {
@@ -15,7 +24,7 @@ require('lualine').setup {
   sections = {
     lualine_a = { 'mode' },
     lualine_b = {
-      'branch',
+      { 'branch', cond = min_window_width(90) },
       'diff'
     },
     lualine_c = {
@@ -29,7 +38,7 @@ require('lualine').setup {
           end
           return ""
         end,
-        color = { fg = "#add8e6" }
+        color = { fg = "#add8e6" },
       },
       -- LSP status
       function()
@@ -38,6 +47,8 @@ require('lualine').setup {
             if #messages > 0 then
               return "󰲼 LSP " .. messages[#messages] -- show last message
             end
+
+            -- No current messages :
             local clients = GetBufferLSPs()
             if #clients == 0 then
               return ""
@@ -45,43 +56,91 @@ require('lualine').setup {
 
             local lsps = {}
             for i, client in ipairs(clients) do
-              lsps[i] = client.name
+              local lsp = client.name
+              if lsp == "null-ls" then
+                lsp = GetNullLsps()
+              end
+              lsps[i] = lsp
             end
-            return "󰦕 LSP [" .. table.concat(lsps, " | ") .. "]"
+            local runningLsp = "󰦕 LSP [" .. table.concat(lsps, " | ") .. "]"
+            if #runningLsp + 65 > vim.fn.winwidth(0) then
+              runningLsp = "󰦕 LSP"
+            end
+            return runningLsp
           end
         })
       end
     },
     lualine_x = {
       {
+        function() return '' end,
+        separator = "",
+        padding = { left = 1, right = 0 },
+        color = { fg = blackColor }
+      },
+      {
+        'filetype',
+        color = { bg = blackColor }
+      },
+      {
+        function()
+          -- tab size
+          if vim.o.expandtab then -- if use space for tab
+            return " " .. vim.o.shiftwidth
+          else
+            return " TAB"
+          end
+        end,
+        color = { bg = blackColor, fg = lightGray }
+      },
+      {
         'fileformat',
         symbols = {
           unix = " LF", -- e712
           dos = " CRLF", -- e70f
           mac = " CR", -- e711
-        }
+        },
+        color = { bg = blackColor, fg = lightGray }
       },
-      function() -- wrapping
-        -- Wrapping 󰯟  󰖶  󰴏  󰴐 󱞱 󱞲 →   󰞘 󰜴
-        local wrapMode = ""
-        if (vim.o.wrap == true) then
-          wrapMode = wrapMode .. "󱞲"
-        else
-          wrapMode = wrapMode .. "󰞘"
-        end
-        return wrapMode
-      end,
-      function()                -- tab size
-        if vim.o.expandtab then -- if use space for tab
-          return " " .. vim.o.shiftwidth
-        else
-          return " TAB"
-        end
-      end,
-      'filetype',
+      --[[
+      {
+        -- wrapping
+        function()
+          -- Wrapping 󰯟  󰖶  󰴏  󰴐 󱞱 󱞲 →   󰞘 󰜴
+          if (vim.o.wrap == true) then
+            return "󱞲"
+          else
+            return "󰞘"
+          end
+        end,
+        color = { bg = blackColor, fg = lightGray }
+      },
+      ]]
+      {
+        function() return '' end,
+        padding = { left = 0, right = 1 },
+        color = { fg = blackColor }
+      },
     },
-    lualine_y = { 'progress' }, -- percentage in file
-    lualine_z = { 'location' }  -- line : character
+    lualine_y = { {
+      function()
+        -- just to disable "Top" and "Bot"
+        if vim.fn.line("w0") == 1 and vim.fn.line("$") <= vim.api.nvim_win_get_height(0) then -- all text is visible
+          return ""
+        end
+        return " " ..
+            math.floor(vim.fn.line(".") / vim.fn.line("$") * 100) ..
+            "%%" -- double percent because of string.format() used by lualine
+      end,
+    } },
+    -- lualine_y = { 'progress' }, -- percentage in file
+    lualine_z = { {
+      function()
+        return "󱎦" .. vim.fn.line(".") .. "󰫰" .. vim.fn.virtcol('.')
+      end,
+      padding = { left = 0, right = 1 }
+    } }
+    -- lualine_z = { 'location' }  -- line : character
   },
 }
 
@@ -97,12 +156,15 @@ augroup END
 require("lsp-progress").setup({
   spinner = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" },
   -- spinner = { "◜", "◠", "◝", "◞", "◡", "◟", },
-  spin_update_time = 150,
+  spin_update_time = 100,
   client_format = function(client_name, spinner, series_messages)
     -- shown when lsp is messaging
     if #series_messages > 0 then
       for _, act_client in ipairs(GetBufferLSPs()) do
         if act_client.name == client_name then
+          if client_name == "null-ls" then
+            client_name = GetNullLsps()
+          end
           local lastMsg = series_messages[#series_messages]
           return "[" .. client_name .. "] " .. spinner .. " " .. lastMsg
         end

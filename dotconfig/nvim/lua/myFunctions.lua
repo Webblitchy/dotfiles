@@ -27,6 +27,14 @@ function GetBufferLSPs()
   return vim.lsp.get_active_clients({ bufnr = vim.api.nvim_get_current_buf() })
 end
 
+function GetNullLsps()
+  local nullLsps = {}
+  for j, nullLsp in ipairs(require("null-ls").get_source({ filetype = vim.bo.filetype })) do
+    nullLsps[j] = nullLsp.name
+  end
+  return table.concat(nullLsps, " | ")
+end
+
 function AutoCompile()
   local filePath = vim.api.nvim_buf_get_name(0) -- 0 for current buffer
   local fileType = vim.bo.filetype

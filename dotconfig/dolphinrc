@@ -29,8 +29,8 @@ Places Icons Auto-resize=false
 Places Icons Static Size=22
 
 [KPropertiesDialog]
-1536x864 screen: Height=575
-1536x864 screen: Width=403
+1536x864 screen: Height=496
+1536x864 screen: Width=384
 2 screens: Height=496
 2 screens: Width=356
 eDP-1 DP-3 Height 1536x864=619

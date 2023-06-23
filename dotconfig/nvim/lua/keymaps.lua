@@ -22,6 +22,9 @@ end
 
 map("n", "<CR>", "ciw") -- enter to change word in normal mode
 
+-- disable weird vim feature to "copy and paste" when p
+map("v", "p", "\"_dP")
+
 
 -- Easier switch between buffers
 --

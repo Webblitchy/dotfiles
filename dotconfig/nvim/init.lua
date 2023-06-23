@@ -14,6 +14,7 @@ require("plugin_installation") -- commands to install the plugins (with Lazy-nvi
 require("colorscheme")         -- Set theme
 
 
+
 -- Plugin config files
 require("plugins.lazy-nvim")         -- option of lazy (package manager)
 require("plugins.lualine")           -- to change the status line
@@ -29,3 +30,7 @@ require("plugins.lsp")               -- handle language server protocols
 require("plugins.nvim-cmp")          -- handle autocompletion
 require("plugins.nvim-tree")         -- file tree
 require("plugins.dap")               -- set debugger (after colorscheme)
+
+
+-- Source zsh config (apply blur when directly starting neovim)
+vim.fn.system("source ~/.zshrc")

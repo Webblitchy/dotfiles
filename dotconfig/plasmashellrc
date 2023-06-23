@@ -18,6 +18,8 @@ Recent URLs[$e]=file:$HOME/Downloads/,file:$HOME/Pictures/,file:$HOME/,file:$HOM
 detailViewIconSize=16
 
 [KPropertiesDialog]
+1920x1080 screen: Height=598
+1920x1080 screen: Width=435
 2 screens: Height=598
 2 screens: Width=435
 eDP-1 DP-3 Height 1920x1080=545

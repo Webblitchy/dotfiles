@@ -19,8 +19,6 @@ vim.opt.rtp:prepend(lazypath)
 -- When adding new plugins : Lazy
 require("lazy").setup({
 
-  "williamboman/mason.nvim",
-
   {
     -- LSP Configuration & Plugins
     "neovim/nvim-lspconfig",
@@ -29,7 +27,7 @@ require("lazy").setup({
       { 'williamboman/mason.nvim', config = true },
       'williamboman/mason-lspconfig.nvim',
 
-      -- Additional lua configuration, makes nvim stuff amazing
+      -- Additional lua neovim configuration
       "folke/neodev.nvim",
     },
   },
@@ -172,12 +170,6 @@ require("lazy").setup({
   },
 
 
-  -- Metals (used for scala lsp)
-  {
-    "scalameta/nvim-metals",
-    dependencies = { "nvim-lua/plenary.nvim" }
-  },
-
   -- Use formatter when not available in lsp
   "jose-elias-alvarez/null-ls.nvim",
   "jay-babu/mason-null-ls.nvim", -- use mason to install formatters
@@ -192,13 +184,12 @@ require("lazy").setup({
   {
     "norcalli/nvim-colorizer.lua",
     config = function()
-      require 'colorizer'.setup {
+      require('colorizer').setup {
         '*', -- all
         -- '!vim' -- except
       }
     end
   },
-
 
   -- [[ Debugging ]]
   'mfussenegger/nvim-dap',

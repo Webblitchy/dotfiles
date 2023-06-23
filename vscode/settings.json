@@ -1,7 +1,7 @@
 {
     "editor.inlineSuggest.enabled": true,
     "github.copilot.enable": {
-        "*": true,
+        "*": false,
         "plaintext": false,
         "markdown": false,
         "scminput": false,
@@ -26,5 +26,6 @@
         "*.pdf": "pdf.preview"
     },
     "window.zoomLevel": 1,
+    "update.showReleaseNotes": false,
 
 }

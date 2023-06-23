@@ -105,6 +105,11 @@ cp ~/.dotfiles/wallpapers/sunset-in-the-mountains-illustration_3840x2160_xtrafon
 mkdir /etc/optimus-manager
 cp ~/.dotfiles/optimus-manager.conf /etc/optimus-manager/
 
+# resolve XPS15 screen issues
+if [[ $(sudo -u $SUDO_USER dmidecode | grep -A2 '^System Information' | xargs | cut -d " " --f 8,9,10) = "XPS 15 9570" ]]; then
+	sudo -u $SUDO_USER echo "options i915 enable_fbc=1 disable_power_well=0 fastboot=1 enable_psr=0" >/etc/modprobe.d/i915.conf
+fi
+
 # Apply icon theme
 sudo -u $SUDO_USER /usr/lib/plasma-changeicons ~/.local/share/icons/kora
 

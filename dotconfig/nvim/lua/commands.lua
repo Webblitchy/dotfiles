@@ -2,10 +2,14 @@
 
 local autocmd = vim.api.nvim_create_autocmd
 
+local goodScrollOff = math.ceil(vim.api.nvim_win_get_height(0) / 4)
+
+-- [[ CURSOR AUTO COMMANDS ]]
+--
 -- always have a 1/4 of the screen of margin after / before the cursor
-autocmd({ "VimResized", "VimEnter", "WinLeave" }, {
+autocmd({ "VimResized", "VimEnter", "WinEnter", "WinLeave" }, {
   callback = function()
-    vim.wo.scrolloff = math.ceil(vim.api.nvim_win_get_height(0) / 4)
+    vim.wo.scrolloff = goodScrollOff
   end
 })
 
@@ -51,6 +55,10 @@ autocmd({ "CursorMoved" }, {
   end,
 })
 
+--------------------------------------------------------
+--
+-- [[ TERMINAL AUTO COMMANDS ]]
+
 -- replace term in new tab default behavior
 local hideBordersCommand = "set nonumber | set norelativenumber | set signcolumn=no"
 local showBordersCommand = "set number | set relativenumber | set signcolumn=yes"
@@ -84,8 +92,9 @@ autocmd("TermClose", {
 })
 
 
+-----------------------------------------------------------
 
--- insert bin bash for new shell files
+-- create templates for files types
 local templates = {
   -- file extention: ask confirmation
   sh = false,
@@ -110,14 +119,8 @@ for language, askConfirmation in pairs(templates) do
 end
 
 
--- [[ Add missing filetypes ]]
-local filetypes = {
-  scala = "*.worksheet.sc",
-  sage = "*.sage",
-  config = { "*.conf", "*.config" },
-  sh = { "*.zsh" }
-}
-
+-- [[ Add missing filetypes association ]]
+local filetypes = require("filetype_association")
 for ft, pattern in pairs(filetypes) do
   autocmd({ "BufRead", "BufNewFile" }, {
     callback = function()
@@ -178,6 +181,17 @@ autocmd({ "BufWritePost" }, {
 })
 
 
+-- Open help in a new buffer
+autocmd("BufEnter", {
+  callback = function()
+    if vim.bo.buftype == "help" then
+      vim.bo.buflisted = true -- can be in the bufferlist
+      vim.cmd.only()          -- quit all window (not buffer) except the current one
+    end
+  end,
+})
+
+-----------------------------------------
 -- [ NEW USER COMMANDS ]
 
 function ToggleMouse()

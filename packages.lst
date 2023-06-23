@@ -12,22 +12,22 @@ virtualbox-ext-oracle
 wireshark-qt
 firefox-appmenu-bin
 joplin-appimage
-solaar
-normcap
+solaar # logitech device manager
+normcap # ocr
 notion-app
 onlyoffice-bin
 spotify
 simplenote-electron-bin
 telegram-desktop-bin
 visual-studio-code-bin
-lightly-qt
+lightly-qt # theme for KDE
 thunderbird-bin
 pycharm-community-edition
 intellij-idea-ultimate-edition
 clion
 kdrive-bin
-etcher-bin
-foliate
+etcher-bin # flash SD card
+foliate # Epub reader
 
 # KDE Apps
 ark
@@ -63,14 +63,15 @@ rmtrash
 wget
 docker
 docker-compose
+
+# Latex
 texlive-bin
-texlive-core
+texlive-basic
 texlive-latexextra
-texlive-science
-p7zip
-neovim
-zsh-theme-powerlevel10k-bin-git
-termscp-bin
+texlive-mathscience
+texlive-binextra # to install latexmk
+texlive-langfrench
+texlive-langenglish
 
 # Fonts
 noto-fonts
@@ -80,9 +81,22 @@ adobe-base-14-fonts
 ttf-jetbrains-mono-nerd
 ttf-clarity-city
 
-# Required components
+# Neovim
+neovim
+npm # for neovim
+ripgrep # for telescope.nvim
+
+# Zsh
 zsh
+zsh-theme-powerlevel10k-bin-git
+stderred-git # errors output in red
+# zsh-completions
+# zsh-autosuggestions
+# zsh-syntax-highlighting
+# zsh-history-substring-search
+# Required components
 gcc
+
 optimus-manager
 optimus-manager-qt
 gnupg
@@ -93,11 +107,6 @@ xdotool
 xclip
 wmctrl
 xdg-desktop-portal
-npm # for neovim
-ripgrep # for telescope.nvim
+p7zip
+termscp-bin
 
-# Maybe needed ?
-# zsh-completions
-# zsh-autosuggestions
-# zsh-syntax-highlighting
-# zsh-history-substring-search
