@@ -7,23 +7,59 @@ local map = vim.keymap.set -- local alias for conciseness
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
+-- [[ remaps ]]
 -- Make ctrl-c work always as esc
-map({ 'n', 'i', 'v' }, '<C-c>', '<Esc>')
+map({ 'n', 'i', 'v' }, '<C-c>', '<Esc>', { remap = true }) -- recursive mapping
+
+-- disable weird vim feature to "cut and paste" with "delete and paste"
+map("v", "p", "\"_dP")
+
+-- disable copy when using x
+map({ "n", "v" }, "x", "\"_x")
 
 -- ctrl backspace for removing a whole word
-if vim.env.TERM == "xterm-256color" then
-  map({ "i", "c" }, "", "<C-W>")
-elseif vim.env.TERM == "xterm-kitty" then
-  map({ "i", "c" }, "<C-BS>", "<C-W>")
-end
+map({ "i", "c" }, "", "<C-W>")
+-- Works with wezterm and Konsole (use <C-BS> for kitty)
+
+-- Remap for dealing with word wrap
+map('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+map('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+
+
+-- hide messages on Esc (and also ctrl-c)
+map("n", "<Esc>", "<Esc>:echo ''<CR>", { silent = true })
+
+
+-- Disable space in normal mode (better for leader key)
+map({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+
 
 map("n", "<CR>", "ciw") -- enter to change word in normal mode
 
--- disable weird vim feature to "copy and paste" when p
-map("v", "p", "\"_dP")
+
+-- Add a message when restartingSearch
+map("n", "n",
+  function()
+    local restartingSearch = false
+    if vim.b.searchStartPos == 0 then -- if was a new search
+      vim.b.searchStartPos = vim.fn.searchcount().current
+    else
+      if GetNextSearchCount() == vim.b.searchStartPos then
+        restartingSearch = true
+      end
+    end
+
+    local searchWord = vim.fn.histget("search", -1)
+    vim.api.nvim_input("/" .. searchWord .. "<CR>")
+
+    if restartingSearch then
+      vim.api.nvim_input(":echohl WarningMsg | echo '/" .. searchWord .. "   󰑐 Restarting search'<CR>")
+    end
+  end
+)
 
 
 -- Easier switch between buffers
@@ -33,7 +69,8 @@ map("v", "p", "\"_dP")
 
 -- use cokeline (avoid hidden buffers)
 map("n", "<C-B>", '<Plug>(cokeline-focus-next)', { silent = true })
-
+map("n", "<C-Right>", '<Plug>(cokeline-focus-next)', { silent = true })
+map("n", "<C-Left>", '<Plug>(cokeline-focus-prev)', { silent = true })
 map("n", "<C-Q>", ":bd<CR>", { silent = true })
 
 -- Make more use of H and L
@@ -42,29 +79,10 @@ map("n", "<S-L>", "}")
 
 
 
-
--- Keymaps for better default experience
--- See `:help vim.keymap.set()`
-map({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
-
--- Remap for dealing with word wrap
-map('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-map('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-
--- [[ Highlight on yank ]]
--- See `:help vim.highlight.on_yank()`
-local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
-vim.api.nvim_create_autocmd('TextYankPost', {
-  callback = function()
-    vim.highlight.on_yank()
-  end,
-  group = highlight_group,
-  pattern = '*',
-})
-
 -- Open terminal
 map("n", "<leader>t", ":terminal<CR>", { silent = true, desc = "Open a terminal sub window" })
 
+-- [[ USER COMMANDS ]]
 -- Execute file on leader x
 map("n", "<leader>x",
   function()
@@ -74,27 +92,27 @@ map("n", "<leader>x",
   { desc = "Execute code" }
 )
 
+-- marks
+map("n", "mm", ToggleGlobalMark)
+map("n", "md", "<Plug>(Marks-deleteline)")
+
 -- Diagnostic keymaps (warnings and errors)
 -- TODO: useful ?
-map('n', '[d', vim.diagnostic.goto_prev)
-map('n', ']d', vim.diagnostic.goto_next)
+map('n', '[d', vim.diagnostic.goto_prev, { desc = "Goto previous diagnostic" })
+map('n', ']d', vim.diagnostic.goto_next, { desc = "Goto next diagnostic" })
 map('n', '<leader>e', vim.diagnostic.open_float, { desc = "Diagnostic popup" })
-map('n', '<leader>q', vim.diagnostic.setloclist, { desc = "Diagnostic sub window" })
+map('n', '<leader>q', vim.diagnostic.setqflist, { desc = "Diagnostic sub window" })
 
 -- Terminal remaps
 map("t", "<C-W>", "<C-\\><C-N><C-W>") -- move to other window as usual
 
 
--- PLUGINS
+-- [[ PLUGINS ]]
 
 -- ctrl + 7 for commenting code
-if vim.env.TERM == "xterm-256color" then
-  vim.api.nvim_set_keymap('n', '', 'gcc', { silent = true })
-  vim.api.nvim_set_keymap('v', '', 'gc', { silent = true })
-elseif vim.env.TERM == "xterm-kitty" then
-  vim.api.nvim_set_keymap('n', '<C-7>', 'gcc', { silent = true })
-  vim.api.nvim_set_keymap('v', '<C-7>', 'gc', { silent = true })
-end
+map('n', '<C-7>', '<Plug>(comment_toggle_linewise_current)')
+map('v', '<C-7>', '<Plug>(comment_toggle_linewise_visual)')
+-- Works with kitty and wezterm (use  for Konsole)
 
 -- Git
 map("n", "<leader>g", ":Git<CR>")         -- git status
@@ -102,11 +120,36 @@ map("n", "<leader>d", ":Gvdiffsplit<CR>") -- git diff view
 
 
 -- NvimTree
-map("n", "<C-T>", ":NvimTreeToggle<CR>", { silent = false })
+map("n", "<C-T>", ":NvimTreeToggle<CR>", { silent = true, desc = "Toggle NvimTree" })
 
 -- Dap
-map("n", "<leader>b", ":lua require('dap').toggle_breakpoint()<CR>", { silent = true })
-map("n", "<leader>B", ":lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", { silent = true })
-map("n", "<F1>", ":lua require('dap').continue()<CR>", { silent = true })
-map("n", "<F2>", ":lua require('dap').step_over()<CR>", { silent = true })
-map("n", "<F3>", ":lua require('dap').step_into()<CR>", { silent = true })
+map(
+  "n",
+  "<leader>b",
+  ":lua require('dap').toggle_breakpoint()<CR>",
+  { silent = true, desc = "DAP: Toggle breakpoint" }
+)
+map(
+  "n",
+  "<leader>B",
+  ":lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>",
+  { silent = true, desc = "DAP: Toggle conditinal breakpoint" }
+)
+map(
+  "n",
+  "<F1>",
+  ":lua require('dap').continue()<CR>",
+  { silent = true, desc = "DAP: Continue" }
+)
+map(
+  "n",
+  "<F2>",
+  ":lua require('dap').step_over()<CR>",
+  { silent = true, desc = "DAP: Step over" }
+)
+map(
+  "n",
+  "<F3>",
+  ":lua require('dap').step_into()<CR>",
+  { silent = true, desc = "DAP: Step into" }
+)

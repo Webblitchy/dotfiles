@@ -6,7 +6,7 @@
   _battery: 4096
   _modelId: B02340820000
   _sensitive: {change-host: false, divert-keys: false, dpi: false, dpi-sliding: false, hires-scroll-mode: false, hires-smooth-invert: true, mouse-gestures: true,
-    thumb-scroll-invert: true, thumb-scroll-mode: false}
+    smart-shift: false, thumb-scroll-invert: true, thumb-scroll-mode: false}
   _serial: 2A81D98A
   _unitId: 2A81D98A
   _wpid: '4082'
@@ -27,7 +27,7 @@
     crown-smooth, divert-crown, divert-gkeys, m-key-leds, mr-key-led, gesture2-gestures, gesture2-divert, gesture2-params, sidetone, equalizer, adc_power_management]
   _battery: 4096
   _modelId: B35B408A0000
-  _sensitive: {multiplatform: false}
+  _sensitive: {change-host: false, multiplatform: false}
   _serial: 6E1E91F0
   _unitId: 6E1E91F0
   _wpid: 408A
@@ -117,3 +117,4 @@
   smart-shift: 10
   thumb-scroll-invert: false
   thumb-scroll-mode: false
+- {_NAME: MX Master 3 Wireless Mouse, _battery: 4096, _modelId: MX Master 3 Wireless Mouse, _unitId: '14000000'}

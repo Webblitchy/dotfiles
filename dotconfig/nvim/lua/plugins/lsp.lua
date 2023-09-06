@@ -9,13 +9,13 @@ local on_attach = function(_, bufnr)
     vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
   end
 
-  nmap("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")           -- refactor as in IntelliJ
-  nmap("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction") -- Apply fix
+  nmap("<leader>r", vim.lsp.buf.rename, "[R]ename")           -- refactor as in IntelliJ
+  nmap("<leader>a", vim.lsp.buf.code_action, "code [A]ction") -- Apply fix
 
   nmap("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
   nmap("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
   nmap("gI", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
-  nmap("<leader>D", vim.lsp.buf.type_definition, "Type [D]efinition")
+  nmap("gt", vim.lsp.buf.type_definition, "[G]oto [T]ype Definition")
 
   -- useless
   -- nmap("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
@@ -140,7 +140,7 @@ require("mason-null-ls").setup({
 
 
 -- Edit lsp diagnostics signs (in margin)
-local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = "󰋽 " }
+local signs = require("../icons").lspSigns
 for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })

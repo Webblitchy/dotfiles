@@ -1,13 +1,15 @@
 MenuBar=Disabled
 
 [$Version]
-update_info=dolphin_detailsmodesettings.upd:rename-leading-padding
+update_info=dolphin_detailsmodesettings.upd:rename-leading-padding,dolphin_detailsmodesettings.upd:move-content-display
+
+[ContentDisplay]
+DirectorySizeCount=false
 
 [ContextMenu]
 ShowAddToPlaces=false
 
 [DetailsMode]
-DirectorySizeCount=false
 ExpandableFolders=false
 
 [General]
@@ -31,8 +33,8 @@ Places Icons Static Size=22
 [KPropertiesDialog]
 1536x864 screen: Height=496
 1536x864 screen: Width=384
-2 screens: Height=496
-2 screens: Width=356
+2 screens: Height=575
+2 screens: Width=403
 eDP-1 DP-3 Height 1536x864=619
 eDP-1 DP-3 Height 2048x1152=619
 eDP-1 DP-3 Height 2560x1440=647
@@ -93,7 +95,7 @@ CompletionMode=1
 History=kate,aud,auda,vis,kat,intel,inte,int,fire,vlc,gwe,vl,code,intell,visu
 
 [PreviewSettings]
-Plugins=appimagethumbnail,audiothumbnail,comicbookthumbnail,cursorthumbnail,djvuthumbnail,ebookthumbnail,exrthumbnail,fontthumbnail,imagethumbnail,jpegthumbnail,kraorathumbnail,windowsexethumbnail,windowsimagethumbnail,opendocumentthumbnail,gsthumbnail,svgthumbnail
+Plugins=appimagethumbnail,audiothumbnail,comicbookthumbnail,cursorthumbnail,djvuthumbnail,ebookthumbnail,exrthumbnail,fontthumbnail,imagethumbnail,jpegthumbnail,kraorathumbnail,windowsexethumbnail,windowsimagethumbnail,opendocumentthumbnail,gsthumbnail,svgthumbnail,ffmpegthumbs
 
 [Toolbar mainToolBar]
 ToolButtonStyle=IconOnly

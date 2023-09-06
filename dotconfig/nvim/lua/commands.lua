@@ -55,6 +55,34 @@ autocmd({ "CursorMoved" }, {
   end,
 })
 
+
+-- [[ Highlight on yank ]]
+-- See `:help vim.highlight.on_yank()`
+local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
+vim.api.nvim_create_autocmd('TextYankPost', {
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+  group = highlight_group,
+  pattern = '*',
+})
+
+
+-- Info when search made a full circle (use a keymap with n)
+vim.b.currentSearch = ""
+autocmd("CmdlineLeave", {
+  callback = function()
+    if vim.v.event.cmdtype == "/" and vim.fn.getcmdline() ~= vim.b.currentSearch then
+      vim.b.searchStartPos = 0
+      vim.b.currentSearch = vim.fn.getcmdline()
+      -- Maybe useful
+    end
+    if vim.v.event.cmdtype == "/" then
+      -- vim.api.nvim_input(":echo '" .. vim.fn.getcmdline() .. "' <CR>")
+    end
+  end
+})
+
 --------------------------------------------------------
 --
 -- [[ TERMINAL AUTO COMMANDS ]]
@@ -133,11 +161,27 @@ end
 
 
 -- autoformat on save
-autocmd("BufWritePre", {
-  callback = function()
-    FormatOnSave()
+vim.b.autoformat = false -- false by default
+autocmd("LspAttach", {
+  callback = function(args)
+    -- local bufnr = args.buf
+    -- local client = vim.lsp.get_client_by_id(args.data.client_id)
+    -- print("lsp attached " .. client.name)
+    if CanFormat() then
+      vim.b.autoformat = true
+    end
   end
 })
+
+autocmd("BufWritePre", {
+  callback = function()
+    if vim.b.autoformat then
+      FormatOnSave()
+    end
+  end
+})
+
+
 
 -- Disable caps lock when leaving insert mode
 autocmd("InsertLeave", {
@@ -165,6 +209,7 @@ autocmd({ "VimEnter" }, {
 
 
 -- Auto source files in nvim config
+--[[
 autocmd({ "BufWritePost" }, {
   callback = function(data)
     -- local configFolder = vim.fn.stdpath("config") -- don't give .dotconfig path
@@ -179,6 +224,7 @@ autocmd({ "BufWritePost" }, {
   end,
   pattern = "*.lua"
 })
+]]
 
 
 -- Open help in a new buffer
@@ -189,6 +235,15 @@ autocmd("BufEnter", {
       vim.cmd.only()          -- quit all window (not buffer) except the current one
     end
   end,
+})
+
+
+-- Go to error from quickfix
+autocmd("FileType", {
+  pattern = { "qf" },
+  callback = function()
+    vim.keymap.set("n", "<CR>", ":.cc<CR>", { silent = true, buffer = true })
+  end
 })
 
 -----------------------------------------
@@ -212,6 +267,28 @@ vim.api.nvim_create_user_command(
   {}
 )
 
+function ToggleAutoFormat()
+  if not CanFormat() then
+    print("No formatter defined")
+    ClearCmdIn2secs()
+    return
+  end
+
+  if vim.b.autoformat then
+    print("Autoformat disabled")
+  else
+    print("Autoformat enabled")
+  end
+  ClearCmdIn2secs()
+  vim.b.autoformat = not vim.b.autoformat
+end
+
+vim.api.nvim_create_user_command(
+  "ToggleAutoFormat",
+  "lua ToggleAutoFormat()",
+  {}
+)
+
 
 -- Save with sudo (requires Suda plugin)
 vim.api.nvim_create_user_command(
@@ -231,6 +308,13 @@ vim.api.nvim_create_user_command(
 vim.api.nvim_create_user_command(
   "MasonUpdateAll",
   'exec "normal :Mason\\<CR>" | sleep 1000ms | normal U', -- exec to use <CR>
+  {}
+)
+
+-- Show filepath
+vim.api.nvim_create_user_command(
+  "PWD",
+  "lua print(vim.api.nvim_buf_get_name(0))",
   {}
 )
 

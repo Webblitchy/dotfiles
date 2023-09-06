@@ -77,6 +77,10 @@ require("lazy").setup({
     lazy = false
   },
 
+  -- Scroll bar
+  -- { "dstein64/nvim-scrollview", },
+  -- { "petertriho/nvim-scrollbar", },
+
   -- Theme
   {
     "catppuccin/nvim",
@@ -133,10 +137,13 @@ require("lazy").setup({
     dependencies = "nvim-lua/plenary.nvim",
     config = function()
       require("todo-comments").setup {}
-    end
+    end,
   },
 
-  "lervag/vimtex", -- latex compilation
+  {
+    "lervag/vimtex", -- latex compilation
+    ft = "tex"
+  },
 
   -- Startup menu for nvim
   {
@@ -177,27 +184,50 @@ require("lazy").setup({
   "lambdalisue/suda.vim",
 
   -- change and add surroundings (", ', (, [, html tags...)
-  "tpope/vim-surround",
-
+  {
+    "kylechui/nvim-surround",
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+  },
   -- color hex codes
   {
     "norcalli/nvim-colorizer.lua",
     config = function()
-      require('colorizer').setup {
-        '*', -- all
-        -- '!vim' -- except
-      }
+      require('colorizer').setup({
+          '*', -- all
+          -- '!vim' -- except
+        },
+        {
+          RGB = false,
+          names = false,
+          RRGGBBAA = true,
+        })
+    end
+  },
+
+  -- show marks in margin
+  {
+    'chentoast/marks.nvim',
+    config = function()
+      require('marks').setup({
+        force_write_shada = true, -- otherwise marks are not deleted
+      })
     end
   },
 
   -- [[ Debugging ]]
   'mfussenegger/nvim-dap',
   "jay-babu/mason-nvim-dap.nvim", -- autoinstall debug clients (not dap clients)
+
   -- UI
   "theHamsta/nvim-dap-virtual-text",
   "rcarriga/nvim-dap-ui",
   "nvim-telescope/telescope-dap.nvim",
+
   -- language adapters
-  "mfussenegger/nvim-dap-python",
+  {
+    "mfussenegger/nvim-dap-python",
+    ft = "python"
+  }
 
 })

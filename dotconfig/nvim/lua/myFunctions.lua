@@ -23,8 +23,16 @@ function GetConfigFolder()
   return vim.fn.fnamemodify(vim.env.MYVIMRC, ":p:h")
 end
 
-function GetBufferLSPs()
-  return vim.lsp.get_active_clients({ bufnr = vim.api.nvim_get_current_buf() })
+function GetBufferLSPs(bufNbr)
+  bufNbr = bufNbr or vim.api.nvim_get_current_buf() -- default is current buf
+
+  local lsps = vim.lsp.get_active_clients({ bufnr = bufNbr })
+  -- resolve a bug for lsp at index 2
+  local lspsReindexed = {}
+  for _, v in pairs(lsps) do
+    lspsReindexed[#lspsReindexed + 1] = v
+  end
+  return lspsReindexed
 end
 
 function GetNullLsps()
@@ -95,15 +103,30 @@ function ConvertFileFormat(format)
   vim.cmd.write()
 end
 
+function CanFormat()
+  local bufNbr = vim.api.nvim_get_current_buf()
+
+  if not vim.lsp.buf.server_ready() then -- only on current buffer
+    return false
+  end
+
+  local bufFiletype = vim.api.nvim_buf_get_option(bufNbr, "filetype")
+  if GetBufferLSPs(bufNbr)[1].server_capabilities.documentFormattingProvider                                    -- can format with LSP
+      or #require("null-ls.sources").get_available(bufFiletype, require("null-ls").methods.FORMATTING) > 0 then -- can format with null ls
+    return true
+  end
+  return false
+end
+
 function FormatOnSave()
-  if not vim.lsp.buf.server_ready() then
+  if not CanFormat() then
     return
   end
 
-  if vim.lsp.get_active_clients()[1].server_capabilities.documentFormattingProvider then -- can format with LSP
+  if GetBufferLSPs()[1].server_capabilities.documentFormattingProvider then -- can format with LSP
     local lspState = vim.lsp.util.get_progress_messages()[1]
-    if lspState ~= nil then                                                              -- if has progress messages
-      if not lspState.done then                                                          -- saying the server isn't ready
+    if lspState ~= nil then                                                 -- if has progress messages
+      if not lspState.done then                                             -- saying the server isn't ready
         return
       end
     end
@@ -143,4 +166,70 @@ function CustomDictionnary()
   end
 
   return words
+end
+
+function ToggleGlobalMark()
+  local globalMarks = {}
+  for _, v in ipairs(vim.fn.getmarklist()) do
+    local buf, line, _, _ = unpack(v.pos)
+    local mark = string.sub(v.mark, 2, 3)
+
+    -- disable mark if found
+    if buf == vim.api.nvim_get_current_buf() -- on current buffer
+        and line == vim.fn.line(".")         -- on current line
+        and mark:match("%u") then            -- select only uppercase characters
+      vim.api.nvim_del_mark(mark)
+      return
+    end
+
+    globalMarks[mark] = true
+  end
+
+  local smallestUpper = "A"
+  while smallestUpper ~= "[" do -- char after "Z"
+    if globalMarks[smallestUpper] ~= true then
+      vim.api.nvim_buf_set_mark(vim.api.nvim_get_current_buf(), smallestUpper, vim.fn.line("."), vim.fn.virtcol("."), {})
+      return
+    end
+    smallestUpper = string.char(smallestUpper:byte() + 1)
+  end
+  print("There is not more Global Mark available")
+end
+
+function DeleteMark()
+  local marklist = vim.fn.extend(vim.fn.getmarklist(), vim.fn.getmarklist(vim.api.nvim_get_current_buf()))
+  for _, v in ipairs(marklist) do
+    local buf, line, _, _ = unpack(v.pos)
+    local mark = string.sub(v.mark, 2, 3)
+
+    -- disable mark if found
+    if buf == vim.api.nvim_get_current_buf()
+        and line == vim.fn.line(".")
+        and mark:match("%a") then -- select only letters
+      vim.api.nvim_buf_set_mark(vim.api.nvim_get_current_buf(), mark, 0, 0, {})
+      return
+    end
+  end
+end
+
+function GetNextSearchCount()
+  local next = vim.fn.searchcount().current + 1
+  if next > vim.fn.searchcount().total then
+    return 1
+  else
+    return next
+  end
+end
+
+-- Maybe usefull (timer)
+function Timer()
+  local timer = vim.loop.new_timer()
+  local i = 0
+  -- Waits 3000ms, then repeats every 1000ms until timer:close().
+  timer:start(3000, 1000, function()
+    if i > 30 then -- try max during 30s
+      timer:close()
+    end
+    i = i + 1
+  end)
 end

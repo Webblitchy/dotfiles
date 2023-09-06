@@ -44,6 +44,8 @@ end
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+local icons = require("../icons")
+
 require("nvim-tree").setup({
   on_attach = on_attach,
   sort_by = "name",
@@ -66,12 +68,18 @@ require("nvim-tree").setup({
     group_empty = true,
     icons = {
       glyphs = {
-        modified = "󰛄"
+        modified = icons.modified
       }
     }
   },
   diagnostics = {
     enable = true,
+    icons = {
+      hint = icons.lspSigns.Hint,
+      info = icons.lspSigns.Info,
+      warning = icons.lspSigns.Warn,
+      error = icons.lspSigns.Error,
+    }
   },
   filters = {
     dotfiles = false, -- show dotfiles

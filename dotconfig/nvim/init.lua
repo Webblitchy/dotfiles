@@ -30,6 +30,8 @@ require("plugins.lsp")               -- handle language server protocols
 require("plugins.nvim-cmp")          -- handle autocompletion
 require("plugins.nvim-tree")         -- file tree
 require("plugins.dap")               -- set debugger (after colorscheme)
+-- require("plugins.nvim-scrollview")   -- Add a scrollbar
+require("plugins.nvim-surround")     -- Add a surrounding action (with s)
 
 
 -- Source zsh config (apply blur when directly starting neovim)

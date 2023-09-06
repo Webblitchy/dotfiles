@@ -32,7 +32,7 @@ local components = {
           or nil
     end,
     fg = function(buffer)
-      return buffer.diagnostics.errors ~= 0 and get_hex("DiagnosticError", "fg")
+      return buffer.is_focused and buffer.diagnostics.errors ~= 0 and get_hex("DiagnosticError", "fg")
           or nil
     end,
     truncation = {
@@ -42,7 +42,7 @@ local components = {
   },
   unsaved = {
     text = function(buffer)
-      return buffer.is_modified and '󰛄'
+      return buffer.is_modified and require("../icons").modified
           or " "
     end,
     fg = function(buffer)
@@ -58,7 +58,7 @@ require('cokeline').setup({
       -- get buffertype with ":echo &buftype"
       return buffer.type ~= "terminal"  -- hide terminal type
           and buffer.type ~= "quickfix" -- quickfix list
-    end
+    end,
   },
   rendering = {
     max_buffer_width = 30,

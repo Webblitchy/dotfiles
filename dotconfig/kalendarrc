@@ -2,6 +2,7 @@
 lastUsedEventCollection=-5973
 
 [General]
+forceCollapsedMainDrawer=true
 lastOpenedView=MonthView
 
 [GeneralView]

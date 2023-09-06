@@ -45,10 +45,12 @@ vim.g.c_syntax_for_h = true -- set filetype to c for h files
 
 -- [ UI settings ]
 
-vim.o.shortmess = "I"  -- disable start message
 vim.o.wrap = false     -- by default disable wrap (can be individually enabled by language)
 vim.o.linebreak = true -- when wrap enabled, wrap at the end of the words
 
+-- shortmess (https://neovim.io/doc/user/options.html#'shortmess')
+vim.opt.shortmess:append("I") -- disable start message
+vim.opt.shortmess:append("s") -- disable W shown when search first item
 
 -- show line numbers and highlight cursor line number
 vim.opt.number = true

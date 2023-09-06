@@ -206,7 +206,7 @@ eval "$(dircolors -b)"
 alias ls='ls --group-directories-first $LS_OPTIONS'
 
 # Kitty Settings
-if [[ $(ps --no-header -p $PPID -o comm) =~ '^kitty$|^nvim$' ]]; then
+if [[ $(ps --no-header -p $PPID -o comm) =~ '^kitty$' ]]; then
   # Blur
   # for wid in $(xdotool search --pid $PPID); do
   for wid in $(xdotool search --class kitty); do # to work when starting nvim from .desktop
@@ -214,8 +214,9 @@ if [[ $(ps --no-header -p $PPID -o comm) =~ '^kitty$|^nvim$' ]]; then
   done
 
   # ssh integration
-  alias ssh='kitty +kitten ssh'
+  # alias ssh='kitty +kitten ssh'
 fi
+
 
 #######################################################################
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=244'
@@ -249,11 +250,11 @@ export BAT_THEME="gruvbox-dark"
 export DOCKER_GATEWAY_HOST=172.17.0.1
 
 
-# To use coursier (for scala)
-export PATH="$PATH:$HOME/.local/share/coursier/bin"
-
 # To use local bin programs as in bin
 export PATH="$PATH:$HOME/.local/bin"
+
+# Autojump
+[[ -s /etc/profile.d/autojump.sh ]] && source /etc/profile.d/autojump.sh
 
 ### MY ALIASES ###
 
@@ -281,7 +282,7 @@ alias open='xdg-open $1 2>&1 > /dev/null'
 alias vrc='vim ~/.vimrc'
 alias nrc='cd ~/.config/nvim/lua'
 alias zrc='nvim ~/.zshrc; source ~/.zshrc'
-alias cours='cd /home/eliott/kDrive/HEIG-VD/S6'
+alias tb='cd /home/eliott/kDrive/HEIG-VD/S6/TB'
 alias hello="notify-send 'Hello world!' 'This is an example notification.' --icon=dialog-information"
 alias wifi-list='nmcli device wifi'
 alias wifi-connect='nmcli device wifi connect --ask'
@@ -293,11 +294,12 @@ alias pip-update='echo Updating pip... && pip3 list --outdated | cut -f1 -d" " |
 alias addpkg='f(){ echo "$1" >> ~/.dotfiles/packages.lst;  unset -f f; }; f'
 
 # docker
-alias dockerps='docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Status}}" -a'
+alias dockerps='docker ps --format "table {{.Names}}\t{{.Image}}\t{{.Status}}" -a'
 alias dockerkillall='docker ps -qa | xargs docker kill'
 
 # venv
 alias venv-add='python3 -m venv .venv'
 alias venv-activate='source .venv/bin/activate'
 
-
+# pacman
+alias pacman-orphans='pacman -Qtdq | sudo pacman -Rns -'

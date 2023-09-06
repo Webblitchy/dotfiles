@@ -12,6 +12,11 @@ local get_hex = require('cokeline/utils').get_hex
 
 local lightGray = get_hex("Comment", "fg")
 local blackColor = get_hex("CursorColumn", "bg")
+local green = get_hex("DiagnosticOk", "fg")
+local red = get_hex("Error", "fg")
+
+local icons = require("../icons").lspSigns
+local autoFormatIcon = "AF" -- 󰽎 󰷲 󰁨       󰉩 󰃢
 
 require('lualine').setup {
   options = {
@@ -28,7 +33,10 @@ require('lualine').setup {
       'diff'
     },
     lualine_c = {
-      'diagnostics',
+      {
+        'diagnostics',
+        symbols = { error = icons.Error, warn = icons.Warn, info = icons.Info, hint = icons.Hint },
+      },
       {
         function()                                               -- print the todo count (in comments)
           local comment = string.sub(vim.o.commentstring, 0, -4) -- get the comment pattern : "# %s" -> "#"
@@ -38,7 +46,7 @@ require('lualine').setup {
           end
           return ""
         end,
-        color = { fg = "#add8e6" },
+        color = { fg = "#89dceb" },
       },
       -- LSP status
       function()
@@ -72,6 +80,30 @@ require('lualine').setup {
       end
     },
     lualine_x = {
+      {
+        -- autoformat enabled
+        function()
+          if vim.b.autoformat then
+            return autoFormatIcon
+          else
+            return ""
+          end
+        end,
+        separator = "",
+        color = { fg = green }
+      },
+      {
+        -- autoformat disabled
+        function()
+          if vim.b.autoformat then
+            return ""
+          else
+            return autoFormatIcon
+          end
+        end,
+        separator = "",
+        color = { fg = red }
+      },
       {
         function() return '' end,
         separator = "",
@@ -123,8 +155,9 @@ require('lualine').setup {
       },
     },
     lualine_y = { {
+      --[[
+      -- Manual "progress" in file just to disable "Top" and "Bot"
       function()
-        -- just to disable "Top" and "Bot"
         if vim.fn.line("w0") == 1 and vim.fn.line("$") <= vim.api.nvim_win_get_height(0) then -- all text is visible
           return ""
         end
@@ -132,8 +165,11 @@ require('lualine').setup {
             math.floor(vim.fn.line(".") / vim.fn.line("$") * 100) ..
             "%%" -- double percent because of string.format() used by lualine
       end,
+      ]]
+      function()
+        return "󰉸 " .. vim.fn.line("$") --󰉸  󰦪 󰉠 󰦨 ≡ 󰍜  k
+      end,
     } },
-    -- lualine_y = { 'progress' }, -- percentage in file
     lualine_z = { {
       function()
         return "󱎦" .. vim.fn.line(".") .. "󰫰" .. vim.fn.virtcol('.')

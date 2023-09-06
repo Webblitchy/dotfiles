@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE xbel>
-<xbel xmlns:mime="http://www.freedesktop.org/standards/shared-mime-info" xmlns:kdepriv="http://www.kde.org/kdepriv" xmlns:bookmark="http://www.freedesktop.org/standards/desktop-bookmarks">
+<xbel xmlns:kdepriv="http://www.kde.org/kdepriv" xmlns:mime="http://www.freedesktop.org/standards/shared-mime-info" xmlns:bookmark="http://www.freedesktop.org/standards/desktop-bookmarks">
  <info>
   <metadata owner="http://www.kde.org">
    <kde_places_version>4</kde_places_version>
@@ -131,17 +131,14 @@
    </metadata>
   </info>
  </bookmark>
- <bookmark href="file:///home/eliott/kDrive/HEIG-VD/S6/">
-  <title>cours</title>
+ <bookmark href="file:///home/eliott/kDrive/HEIG-VD/S6/TB">
+  <title>TB</title>
   <info>
    <metadata owner="http://freedesktop.org">
     <bookmark:icon name="folder-books"/>
    </metadata>
    <metadata owner="http://www.kde.org">
-    <ID>1649083935/0</ID>
-    <isSystemItem>false</isSystemItem>
-    <IsHidden>false</IsHidden>
-    <OnlyInApp/>
+    <ID>1688634726/0</ID>
    </metadata>
   </info>
  </bookmark>
@@ -438,6 +435,30 @@
    </metadata>
   </info>
  </bookmark>
+ <separator>
+  <info>
+   <metadata owner="http://www.kde.org">
+    <UDI>/org/freedesktop/UDisks2/block_devices/mmcblk0p3</UDI>
+    <isSystemItem>true</isSystemItem>
+   </metadata>
+  </info>
+ </separator>
+ <separator>
+  <info>
+   <metadata owner="http://www.kde.org">
+    <UDI>/org/freedesktop/UDisks2/block_devices/mmcblk0p1</UDI>
+    <isSystemItem>true</isSystemItem>
+   </metadata>
+  </info>
+ </separator>
+ <separator>
+  <info>
+   <metadata owner="http://www.kde.org">
+    <UDI>/org/freedesktop/UDisks2/block_devices/mmcblk0p2</UDI>
+    <isSystemItem>true</isSystemItem>
+   </metadata>
+  </info>
+ </separator>
  <bookmark href="kdeconnect://480c8f05c7f5b6f6/">
   <title>OnePlus 6</title>
   <info>
@@ -445,7 +466,7 @@
     <bookmark:icon name="kdeconnect"/>
    </metadata>
    <metadata owner="http://www.kde.org">
-    <ID>1687509330/8</ID>
+    <ID>1694025926/2</ID>
    </metadata>
   </info>
  </bookmark>

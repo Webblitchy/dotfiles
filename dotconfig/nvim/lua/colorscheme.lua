@@ -128,6 +128,9 @@ local white      = catppuccin_palette.text     -- #CDD6F4
 -- vim.cmd("highlight GitSignsTopDelete guibg=NONE guifg=" .. red)
 -- vim.cmd("highlight GitSignsUntracked guibg=NONE guifg=" .. orange)
 
+-- Make :%s more visible by inverting fg and bg
+vim.cmd.highlight("Substitute guibg=" .. pink .. " guifg=" .. gray)
+
 -- lsp colors
 vim.cmd("highlight DiagnosticVirtualTextError guibg=NONE")
 vim.cmd("highlight DiagnosticVirtualTextWarn guibg=NONE")
@@ -188,8 +191,8 @@ vim.cmd("highlight DapUIScope guifg=" .. lightBlue)
 vim.cmd("highlight DapUIType guifg=" .. purple)
 vim.cmd("highlight DapUIStop guifg=" .. red)
 
--- NVIM Tree
--- vim.cmd("highlight NvimTreeCursorLine guifg=" .. red)
+-- Marks
+vim.cmd("highlight MarkSignHL gui=bold guifg=" .. yellow)
 
 
 -- Transparency handled by theme

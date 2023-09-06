@@ -86,7 +86,7 @@ dapui.setup({
 
 
 vim.fn.sign_define('DapBreakpoint', {
-  text = '',
+  text = '',
   texthl = 'DapBreakpoint',
   linehl = 'DapBreakpoint',
   numhl = 'DapBreakpoint'
