@@ -176,6 +176,7 @@
   # Default background color.
   typeset -g POWERLEVEL9K_BACKGROUND=234
 
+  # Tails
   # Separator between same-color segments on the left.
   typeset -g POWERLEVEL9K_LEFT_SUBSEGMENT_SEPARATOR='%242F\u2571'
   # Separator between same-color segments on the right.
@@ -185,13 +186,13 @@
   # Separator between different-color segments on the right.
   typeset -g POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR='\uE0BA'
   # The right end of left prompt.
-  typeset -g POWERLEVEL9K_LEFT_PROMPT_LAST_SEGMENT_END_SYMBOL='\uE0BC'
+  typeset -g POWERLEVEL9K_LEFT_PROMPT_LAST_SEGMENT_END_SYMBOL='\uE0BC' # 
   # The left end of right prompt.
-  typeset -g POWERLEVEL9K_RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL='\uE0BA'
+  typeset -g POWERLEVEL9K_RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL='\uE0BA' # 
   # The left end of left prompt.
-  typeset -g POWERLEVEL9K_LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL=''
+  typeset -g POWERLEVEL9K_LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL=''
   # The right end of right prompt.
-  typeset -g POWERLEVEL9K_RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL=''
+  typeset -g POWERLEVEL9K_RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL=''
   # Left prompt terminator for lines without any segments.
   typeset -g POWERLEVEL9K_EMPTY_LINE_LEFT_PROMPT_LAST_SEGMENT_END_SYMBOL=
 
@@ -200,7 +201,7 @@
   typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=255
   # Custom icon.
   typeset -g POWERLEVEL9K_OS_ICON_CONTENT_EXPANSION='' # Rocket logo   
-  # Cool icons :      󰀝 󰢚 󰫲 󰬌 󰀸 󰣇 󰞦 󰄋 󰄛 󰮂 󰮇 󰣘 󰇄 󰈸 󰉁 󱐋 󰽥 󰟟 󱎓 󰝴 󱅾 󰨑 󱓞 󱍿 󰯙 󰖌   ⚡
+  # Cool icons :      󰀝 󰢚 󰫲 󰬌 󰀸 󰣇 󰞦 󰄋 󰄛 󰮂 󰮇 󰣘 󰇄 󰈸 󰉁 󱐋 󰽥  󰟟 󱎓 󰝴 󱅾 󰨑 󱓞 󱍿 󰯙 󰖌   ⚡
 
   ################################[ prompt_char: prompt symbol ]################################
   # Transparent background.
@@ -210,7 +211,7 @@
   # Red prompt symbol if the last command failed.
   typeset -g POWERLEVEL9K_PROMPT_CHAR_ERROR_{VIINS,VICMD,VIVIS,VIOWR}_FOREGROUND=$TERM_RED #196
   # Default prompt symbol.
-  typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VIINS_CONTENT_EXPANSION='❯' # ❯    󰅂 󰥭   
+  typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VIINS_CONTENT_EXPANSION=' ' # ❭ ❯ ❱ ❯ ›❯   󰚺    󰼛   󰅂 󰥭   
   # Prompt symbol in command vi mode.
   typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VICMD_CONTENT_EXPANSION='❮'
   # Prompt symbol in visual vi mode.

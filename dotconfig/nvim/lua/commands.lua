@@ -167,6 +167,14 @@ autocmd("LspAttach", {
     -- local bufnr = args.buf
     -- local client = vim.lsp.get_client_by_id(args.data.client_id)
     -- print("lsp attached " .. client.name)
+
+    -- Disabled autoFormat by default
+    local bufNbr = vim.api.nvim_get_current_buf()
+    local bufFiletype = vim.api.nvim_buf_get_option(bufNbr, "filetype")
+    if bufFiletype == "html" then
+      return
+    end
+
     if CanFormat() then
       vim.b.autoformat = true
     end

@@ -205,37 +205,10 @@ export LS_OPTIONS='--color=auto'
 eval "$(dircolors -b)"
 alias ls='ls --group-directories-first $LS_OPTIONS'
 
-# Kitty Settings
-if [[ $(ps --no-header -p $PPID -o comm) =~ '^kitty$' ]]; then
-  # Blur
-  # for wid in $(xdotool search --pid $PPID); do
-  for wid in $(xdotool search --class kitty); do # to work when starting nvim from .desktop
-    xprop -f _KDE_NET_WM_BLUR_BEHIND_REGION 32c -set _KDE_NET_WM_BLUR_BEHIND_REGION 0 -id $wid
-  done
-
-  # ssh integration
-  # alias ssh='kitty +kitten ssh'
-fi
-
 
 #######################################################################
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=244'
 
-
-
-# Color stderr in red (errors)
-# color_stderr_red() {
-#     local stderr_red_esc_code=$'\e[38;2;253;47;47m' # 38;2;R;G;B
-#     while IFS= read -r line; do
-#         echo -e "${stderr_red_esc_code}${line}\e[0m" >&2
-#     done
-# }
-#
-# # Redirect stderr to color_stderr_red function.
-# exec 2> >(color_stderr_red)
-
-# stderr in red (requires stderred)
-export LD_PRELOAD="/usr/lib/libstderred.so${LD_PRELOAD:+:$LD_PRELOAD}"
 
 
 export EDITOR="nvim"
@@ -288,9 +261,7 @@ alias wifi-list='nmcli device wifi'
 alias wifi-connect='nmcli device wifi connect --ask'
 alias cdf='cd $(fzf)'
 alias fix='kwin_x11 --replace'
-alias spoti='spt' # for spotify-tui
 alias lf='nvim $1 -c "set ff=unix" -c ":wq"' # replace CRLF by LF
-alias pip-update='echo Updating pip... && pip3 list --outdated | cut -f1 -d" " | tr " " "\n" | tail -n +3 | xargs pip3 install -U'
 alias addpkg='f(){ echo "$1" >> ~/.dotfiles/packages.lst;  unset -f f; }; f'
 
 # docker
@@ -303,3 +274,6 @@ alias venv-activate='source .venv/bin/activate'
 
 # pacman
 alias pacman-orphans='pacman -Qtdq | sudo pacman -Rns -'
+
+#Wezterm show image
+alias show="wezterm imgcat"

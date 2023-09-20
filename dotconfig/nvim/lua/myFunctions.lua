@@ -111,6 +111,8 @@ function CanFormat()
   end
 
   local bufFiletype = vim.api.nvim_buf_get_option(bufNbr, "filetype")
+
+
   if GetBufferLSPs(bufNbr)[1].server_capabilities.documentFormattingProvider                                    -- can format with LSP
       or #require("null-ls.sources").get_available(bufFiletype, require("null-ls").methods.FORMATTING) > 0 then -- can format with null ls
     return true

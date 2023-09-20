@@ -117,4 +117,8 @@
   smart-shift: 10
   thumb-scroll-invert: false
   thumb-scroll-mode: false
-- {_NAME: MX Master 3 Wireless Mouse, _battery: 4096, _modelId: MX Master 3 Wireless Mouse, _unitId: '14000000'}
+- _NAME: MX Master 3 Wireless Mouse
+  _battery: 4096
+  _modelId: MX Master 3 Wireless Mouse
+  _sensitive: {hires-scroll-mode: ignore, hires-smooth-invert: ignore, hires-smooth-resolution: ignore}
+  _unitId: '14000000'

@@ -18,6 +18,29 @@ local red = get_hex("Error", "fg")
 local icons = require("../icons").lspSigns
 local autoFormatIcon = "AF" -- 󰽎 󰷲 󰁨       󰉩 󰃢
 
+-- Mode
+local mode_map = {
+  ['NORMAL'] = "N",
+  ['O-PENDING'] = 'N?',
+  ['INSERT'] = 'I',
+  ['VISUAL'] = 'V',
+  ['V-BLOCK'] = 'VB',
+  ['V-LINE'] = 'VL',
+  ['V-REPLACE'] = 'VR',
+  ['REPLACE'] = 'R',
+  ['COMMAND'] = '!',
+  ['SHELL'] = 'SH',
+  ['TERMINAL'] = 'T',
+  ['EX'] = 'X',
+  ['S-BLOCK'] = 'SB',
+  ['S-LINE'] = 'SL',
+  ['SELECT'] = 'S',
+  ['CONFIRM'] = 'Y?',
+  ['MORE'] = 'M',
+}
+
+
+
 require('lualine').setup {
   options = {
     icons_enabled = true,
@@ -27,7 +50,8 @@ require('lualine').setup {
     section_separators = { left = '', right = '' },
   },
   sections = {
-    lualine_a = { 'mode' },
+    -- lualine_a = { 'mode' },
+    lualine_a = { { 'mode', fmt = function(s) return mode_map[s] or s end } },
     lualine_b = {
       { 'branch', cond = min_window_width(90) },
       'diff'
@@ -51,7 +75,7 @@ require('lualine').setup {
       -- LSP status
       function()
         return require("lsp-progress").progress({
-          format = function(messages)                -- messages variable format is defined in .setup fn (bottom)
+          format = function(messages) -- messages variable format is defined in .setup fn (bottom)
             if #messages > 0 then
               return "󰲼 LSP " .. messages[#messages] -- show last message
             end

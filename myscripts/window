@@ -1,8 +1,0 @@
-#!/bin/bash
-
-# Script pour renommer la fenêtre du terminal
-if [[ -z "$@" ]]; then
-	echo "Enter the name of the window !"
-	exit
-fi
-echo $'\033]30;' $@ $'\007'

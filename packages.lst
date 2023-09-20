@@ -1,18 +1,17 @@
 # Base apps
 audacity
 bitwarden
-btop
 discord
 gimp
-kitty
-qbittorrent
+# qbittorrent
+transmission-qt
 virtualbox-bin
 virtualbox-host-modules-arch
 virtualbox-ext-oracle
 wireshark-qt
-firefox-appmenu-bin
+firefox-bin
 joplin-appimage
-solaar # logitech device manager
+solaar  # logitech device manager
 normcap # ocr
 notion-app
 onlyoffice-bin
@@ -22,12 +21,18 @@ telegram-desktop-bin
 visual-studio-code-bin
 lightly-qt # theme for KDE
 thunderbird-bin
-pycharm-community-edition
-intellij-idea-ultimate-edition
-clion
+anydesk
+chrominum
+# pycharm-community-edition
+# intellij-idea-ultimate-edition
+# clion
 kdrive-bin
 etcher-bin # flash SD card
-foliate # Epub reader
+foliate    # Epub reader
+peek       # Screen recorder
+wezterm    # Terminal emulator
+minecraft-launcher
+morgen-bin # calendar
 
 # KDE Apps
 ark
@@ -37,7 +42,7 @@ kate
 elisa
 kcalc
 kdeconnect
-konsole
+# konsole
 partitionmanager
 okular
 pinta
@@ -47,7 +52,7 @@ spectacle
 dolphin-plugins
 kdeplasma-addons
 kdegraphics-thumbnailers # pdf thumbnails
-ffmpegthumbs # video thumbnails
+ffmpegthumbs             # video thumbnails
 nm-connection-editor
 appmenu-gtk-module
 
@@ -64,6 +69,8 @@ rmtrash
 wget
 docker
 docker-compose
+btop
+firewalld
 
 # Latex
 texlive-bin
@@ -84,20 +91,20 @@ gnu-free-fonts
 
 # Neovim
 neovim
-npm # for neovim
+npm     # for neovim
 ripgrep # for telescope.nvim
 
 # Zsh
 zsh
 zsh-theme-powerlevel10k-bin-git
-stderred-git # errors output in red
-# zsh-completions
-# zsh-autosuggestions
-# zsh-syntax-highlighting
-# zsh-history-substring-search
+zsh-completions
+zsh-autosuggestions
+zsh-syntax-highlighting
+zsh-history-substring-search
+
 # Required components
 gcc
-
+clang
 optimus-manager
 optimus-manager-qt
 gnupg
@@ -105,9 +112,8 @@ openssh
 cmake
 libinput-gestures
 xdotool
-xclip
+xclip # to handle shared clipbord in NVIM
 wmctrl
 xdg-desktop-portal
 p7zip
 termscp-bin
-

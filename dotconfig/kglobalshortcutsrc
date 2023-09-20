@@ -227,13 +227,6 @@ stopmedia=Media Stop,Media Stop,Stop media playback
 _k_friendly_name=NormCap
 _launch=Shift+Print,none,NormCap
 
-[org.flameshot.Flameshot.desktop]
-Capture=none,none,Take screenshot
-Configure=none,none,Configure
-Launcher=none,none,Open launcher
-_k_friendly_name=Flameshot
-_launch=none,none,Flameshot
-
 [org.kde.dolphin.desktop]
 _k_friendly_name=Dolphin
 _launch=none,Meta+E,Dolphin

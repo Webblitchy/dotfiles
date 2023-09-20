@@ -10,6 +10,8 @@ if wezterm.config_builder then
   config = wezterm.config_builder()
 end
 
+-- [[ BEHAVIOUR ]]
+-- window_close_confirmation = "NeverPrompt"
 
 -- [[ APPEARANCE ]]
 
@@ -41,18 +43,36 @@ config.tab_max_width = 25
 config.initial_cols = 100
 config.initial_rows = 25
 
--- [[ CURSOR ]]
-config.default_cursor_style = 'BlinkingBar'
 
-config.cursor_blink_rate = 500
+config.window_padding = {
+  left = '3cell',
+  right = '3cell',
+  top = '1cell',
+  bottom = '1cell',
+}
+
+-- [[ CURSOR ]]
+config.default_cursor_style = 'SteadyBlock'
+-- config.animation_fps = 100
+-- config.cursor_blink_rate = 300
 
 -- disable animation
-config.cursor_blink_ease_in = "Constant"
-config.cursor_blink_ease_out = "Constant"
+-- config.cursor_blink_ease_in = "Constant"
+-- config.cursor_blink_ease_out = "Constant"
 
 
 -- [[ Global config ]]
 config.scrollback_lines = 10000
+-- config.adjust_window_size_when_changing_font_size = false  -- bad with p10k
+
+-- [[ Key binds ]]
+config.keys = {
+  {
+    key = '=',
+    mods = 'CTRL|SHIFT',
+    action = wezterm.action.ResetFontSize,
+  },
+}
 
 -- and finally, return the configuration to wezterm
 return config
