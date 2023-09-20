@@ -58,11 +58,6 @@ require("nvim-tree").setup({
   view = {
     width = "25%",
     side = "right",
-    mappings = {
-      list = {
-        { key = "<C-T>", action = "close" }, -- to close the same way I open it
-      },
-    },
   },
   renderer = {
     group_empty = true,

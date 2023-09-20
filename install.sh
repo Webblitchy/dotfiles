@@ -97,6 +97,9 @@ if [[ $(sudo -u $SUDO_USER dmidecode | grep -A2 '^System Information' | xargs | 
 	sudo -u $SUDO_USER echo "options i915 enable_fbc=1 disable_power_well=0 fastboot=1 enable_psr=0" >/etc/modprobe.d/i915.conf
 fi
 
+# Fix Wezterm focus window bug
+echo "StartupNotify=true" >>/usr/share/applications/org.wezfurlong.wezterm.desktop
+
 # Apply icon theme
 sudo -u $SUDO_USER /usr/lib/plasma-changeicons ~/.local/share/icons/kora
 

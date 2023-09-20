@@ -27,9 +27,8 @@ local components = {
     text = function(buffer)
       return buffer.unique_prefix .. buffer.filename
     end,
-    style = function(buffer)
-      return (buffer.is_focused and 'bold')
-          or nil
+    bold = function(buffer)
+      return buffer.is_focused
     end,
     fg = function(buffer)
       return buffer.is_focused and buffer.diagnostics.errors ~= 0 and get_hex("DiagnosticError", "fg")
@@ -73,6 +72,19 @@ require('cokeline').setup({
     bg = function(buffer)
       return require("catppuccin.palettes.mocha").mantle -- same color as the rest of the bar
     end,
+  },
+  sidebar = {
+    filetype = 'NvimTree',
+    components = {
+      {
+        text = function(buf)
+          return buf.filetype
+        end,
+        fg = get_hex('Boolean', 'fg'),
+        bg = function() return get_hex('NvimTreeNormal', 'bg') end,
+        bold = true,
+      },
+    }
   },
   components = {
     components.space,

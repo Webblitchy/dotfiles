@@ -32,7 +32,8 @@ foliate    # Epub reader
 peek       # Screen recorder
 wezterm    # Terminal emulator
 minecraft-launcher
-morgen-bin # calendar
+morgen-bin   # calendar
+qdirstat-bin # win dir stat
 
 # KDE Apps
 ark
