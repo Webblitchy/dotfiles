@@ -10,7 +10,7 @@ cd ~/.dotfiles
 # Install packages
 cat packages.lst |
 	grep -o '^[^#]*' | # select only non-comments
-	xargs yay -Syu --needed --noconfirm
+	xargs pacman -Syu --needed --noconfirm
 
 # to copy dolphin layout files
 sudo -u $SUDO_USER mkdir ~/.local/share/kxmlgui5 2>/dev/null
