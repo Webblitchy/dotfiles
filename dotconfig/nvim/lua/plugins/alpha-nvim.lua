@@ -16,9 +16,13 @@ local title_sharp = {
     [[     █████████  ███    █████████████ █████ ██████████████   ]],
     [[    █████████ ██████████ █████████ █████ █████ ████ █████   ]],
     [[  ███████████ ███    ███ █████████ █████ █████ ████ █████  ]],
-    [[ ██████  █████████████████████ ████ █████ █████ ████ ██████ ]],
-    [[                                                                       ]],
+    [[ ██████  █████████████████████ ████ █████ █████ ████ ██████ ]],
 }
+
+local shadow = {
+    [[ ██████   ███████████ ███████   ██ █████████████████ ]],
+}
+
 
 
 local status_ok, alpha = pcall(require, "alpha")
@@ -55,12 +59,29 @@ end
 
 local dashboard = require("alpha.themes.dashboard")
 
--- Add padding
-table.insert(dashboard.config.layout, 1, {})
-dashboard.config.layout[1].type = "padding"
-dashboard.config.layout[1].val = 1
+-- Add padding at top
+table.insert(dashboard.config.layout, 1, {
+    type = "padding",
+    val = 1
+})
 
 dashboard.section.header.val = title_sharp
+dashboard.section.header.opts = {
+    hl = "@function", -- blue
+    position = "center"
+}
+
+
+-- Add shadow under header
+table.insert(dashboard.config.layout, #dashboard.config.layout - 2, {
+    type = "text",
+    val = shadow,
+    opts = {
+        hl = "DapUIBreakpointsDisabledLine", -- gray
+        position = "center"
+    }
+})
+
 dashboard.section.buttons.val = {
     dashboard.button("e", "  New file", ":ene <BAR> startinsert | echo '' <CR>"),
     dashboard.button("f", "  Find file", ":Telescope find_files <CR>"),
@@ -78,25 +99,29 @@ end
 
 
 dashboard.section.footer.val = footer()
-
--- Add padding
-table.insert(dashboard.config.layout, {})
-dashboard.config.layout[7].type = "padding"
-dashboard.config.layout[7].val = 0
-
--- Add Tip
-table.insert(dashboard.config.layout, {})
-dashboard.config.layout[8].type = "text"
-dashboard.config.layout[8].val = tips()
-dashboard.config.layout[8].opts = {
-    position = "center",
-    hl = "@parameter" -- orange italic
+dashboard.section.footer.opts = {
+    hl = "Type", -- yellow
+    position = "center"
 }
 
+-- Add padding
+table.insert(dashboard.config.layout, {
+    type = "padding",
+    val = 0
+})
 
-dashboard.section.footer.opts.hl = "Type"      -- yellow
-dashboard.section.header.opts.hl = "@function" -- blue
-dashboard.section.buttons.opts.hl = "Keyword"  -- white
+-- Add Tip
+table.insert(dashboard.config.layout, {
+    type = "text",
+    val = tips(),
+    opts = {
+        position = "center",
+        hl = "@parameter" -- orange italic
+    }
+})
+
+
+dashboard.section.buttons.opts.hl = "Keyword" -- white
 
 dashboard.config.opts.noautocmd = true
 alpha.setup(dashboard.config)

@@ -6,3 +6,5 @@ dotconfig/nvim/swap/*
 dotconfig/nvim/backup/*
 !dotconfig/nvim/backup/.gitkeep
 dotconfig/nvim/lazy-lock.json
+dotconfig/qBittorrent
+!dotconfig/qBittorrent/qBittorrent.conf
