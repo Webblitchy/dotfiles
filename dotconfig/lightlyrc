@@ -1,0 +1,6 @@
+[Common]
+CornerRadius=5
+
+[Style]
+DolphinSidebarOpacity=70
+MenuOpacity=70

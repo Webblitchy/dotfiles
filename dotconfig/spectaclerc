@@ -1,0 +1,26 @@
+[$Version]
+update_info=spectacle_clipboard.upd:clipboard-settings-change,spectacle_rememberregion.upd:spectacle-migrate-rememberregion
+
+[Annotations]
+annotationToolType=2
+rectangleShadow=false
+rectangleStrokeColor=170,0,0
+
+[General]
+onLaunchAction=UseLastUsedCapturemode
+showMagnifier=true
+
+[GuiConfig]
+captureMode=0
+quitAfterSaveCopyExport=true
+window-position=406,358
+
+[KFileDialog Settings]
+Recent Files[$e]=file:$HOME/Desktop/neovim2.png,file:$HOME/Desktop/neovim2.png
+Recent URLs[$e]=file:$HOME/Desktop/,file:$HOME/,file:$HOME/Documents/
+detailViewIconSize=16
+
+[Save]
+defaultSaveLocation=file:///home/eliott/Pictures/Screenshots
+lastSaveAsLocation=file:///home/eliott/Desktop/neovim2.png
+lastSaveLocation=file:///home/eliott/Pictures/Screenshots/Screenshot_20230911_170503.png
