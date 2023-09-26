@@ -19,7 +19,8 @@ spotify
 simplenote-electron-bin
 telegram-desktop-bin
 visual-studio-code-bin
-lightly-qt # theme for KDE
+# lightly-qt # theme for KDE
+lightly-boehs-git
 thunderbird-bin
 anydesk
 chromium

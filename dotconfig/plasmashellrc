@@ -6,6 +6,8 @@ eDP-1 Height 1920x1080 eDP-1=480
 eDP-1 Width 1920x1080 eDP-1=645
 
 [FileDialogSize]
+2 screens: Height=770
+2 screens: Width=1300
 eDP-1 DP-3 Height 1920x1080=772
 eDP-1 DP-3 Width 1920x1080=1300
 
@@ -13,15 +15,15 @@ eDP-1 DP-3 Width 1920x1080=1300
 Number of Actions=0
 
 [KFileDialog Settings]
-Recent Files[$e]=abstergo-transparent-small.png,file:$HOME/Desktop/1-GhCRXeBJy-transformed.jpeg,file:$HOME/Pictures/wallpapers/wallpaper.avif,file:$HOME/Pictures/abstergo-transparent-small.png
-Recent URLs[$e]=file:$HOME/Downloads/,file:$HOME/Pictures/,file:$HOME/,file:$HOME/Documents/,file:$HOME/kDrive/,file:$HOME/Desktop/TokioStreetWallpaper/,file:$HOME/Pictures/wallpapers/,file:$HOME/Desktop/
+Recent Files[$e]=abstergo-transparent-small.png,file:$HOME/Pictures/TokioStreetWallpaper/1.jpg,file:$HOME/Pictures/wallpapers/wallpaper.avif,file:$HOME/Pictures/abstergo-transparent-small.png
+Recent URLs[$e]=file:$HOME/Downloads/,file:$HOME/Pictures/,file:$HOME/,file:$HOME/Documents/,file:$HOME/kDrive/,file:$HOME/Pictures/wallpapers/,file:$HOME/Desktop/,file:$HOME/Pictures/TokioStreetWallpaper/
 detailViewIconSize=16
 
 [KPropertiesDialog]
 1920x1080 screen: Height=598
 1920x1080 screen: Width=435
-2 screens: Height=598
-2 screens: Width=454
+2 screens: Height=506
+2 screens: Width=426
 eDP-1 DP-3 Height 1920x1080=545
 eDP-1 DP-3 Height 2560x1440=584
 eDP-1 DP-3 Width 1920x1080=345

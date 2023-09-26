@@ -100,6 +100,9 @@ fi
 # Fix Wezterm focus window bug
 echo "StartupNotify=true" >>/usr/share/applications/org.wezfurlong.wezterm.desktop
 
+# To define terminal used by EOS Welcome app
+echo 'EOS_YAD_TERMINAL="wezterm"' >>/etc/eos-script-lib-yad.conf
+
 # Apply icon theme
 sudo -u $SUDO_USER /usr/lib/plasma-changeicons ~/.local/share/icons/kora
 

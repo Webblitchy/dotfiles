@@ -1,4 +1,4 @@
-- 1.1.9
+- 1.1.10
 - _NAME: MX Master 3 Wireless Mouse
   _absent: [hi-res-scroll, lowres-scroll-mode, onboard_profiles, report_rate, pointer_speed, speed-change, backlight, backlight-timed, fn-swap, persistent-remappable-keys,
     disable-keyboard-keys, crown-smooth, divert-crown, divert-gkeys, m-key-leds, mr-key-led, multiplatform, gesture2-gestures, gesture2-divert, gesture2-params,
@@ -80,10 +80,6 @@
   lowres-scroll-mode: false
   reprogrammable-keys: {80: 80, 81: 81, 82: 82}
 - _NAME: MX Master 3 Wireless Mouse
-  _absent: [hi-res-scroll, lowres-scroll-mode, onboard_profiles, report_rate, pointer_speed, speed-change, backlight, backlight-timed, fn-swap, persistent-remappable-keys,
-    disable-keyboard-keys, crown-smooth, divert-crown, divert-gkeys, m-key-leds, mr-key-led, multiplatform, gesture2-gestures, gesture2-divert, gesture2-params,
-    sidetone, equalizer, adc_power_management]
-  _battery: 4096
   _modelId: MX Master 3 Wireless Mouse
   _sensitive: {hires-scroll-mode: ignore, hires-smooth-invert: ignore, hires-smooth-resolution: ignore}
   _unitId: '00000000'
@@ -99,10 +95,6 @@
   thumb-scroll-invert: false
   thumb-scroll-mode: false
 - _NAME: MX Master 3 Wireless Mouse
-  _absent: [hi-res-scroll, lowres-scroll-mode, onboard_profiles, report_rate, pointer_speed, speed-change, backlight, backlight-timed, fn-swap, persistent-remappable-keys,
-    disable-keyboard-keys, crown-smooth, divert-crown, divert-gkeys, m-key-leds, mr-key-led, multiplatform, gesture2-gestures, gesture2-divert, gesture2-params,
-    sidetone, equalizer, adc_power_management]
-  _battery: 4096
   _modelId: MX Master 3 Wireless Mouse
   _sensitive: {hires-scroll-mode: ignore, hires-smooth-invert: ignore, hires-smooth-resolution: ignore}
   _unitId: '32000000'
@@ -118,7 +110,6 @@
   thumb-scroll-invert: false
   thumb-scroll-mode: false
 - _NAME: MX Master 3 Wireless Mouse
-  _battery: 4096
   _modelId: MX Master 3 Wireless Mouse
   _sensitive: {hires-scroll-mode: ignore, hires-smooth-invert: ignore, hires-smooth-resolution: ignore}
   _unitId: '14000000'

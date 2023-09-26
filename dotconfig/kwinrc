@@ -58,7 +58,7 @@ alwaysopenonactivescreenEnabled=true
 blurEnabled=true
 contrastEnabled=true
 desktopchangeosdEnabled=false
-forceblurEnabled=true
+forceblurEnabled=false
 keepjetbrainsaboveEnabled=true
 kwin4_effect_translucencyEnabled=true
 minimizeallEnabled=false
@@ -71,7 +71,7 @@ videowallEnabled=false
 TextOnly=true
 
 [Script-forceblur]
-patterns=dolphin\nspotify
+patterns=dolphin
 
 [TabBox]
 BorderActivate=9

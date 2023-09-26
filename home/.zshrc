@@ -226,6 +226,7 @@ export DOCKER_GATEWAY_HOST=172.17.0.1
 # To use local bin programs as in bin
 export PATH="$PATH:$HOME/.local/bin"
 
+
 # Autojump
 [[ -s /etc/profile.d/autojump.sh ]] && source /etc/profile.d/autojump.sh
 

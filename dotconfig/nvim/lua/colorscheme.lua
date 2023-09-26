@@ -128,8 +128,13 @@ local white      = catppuccin_palette.text     -- #CDD6F4
 -- vim.cmd("highlight GitSignsTopDelete guibg=NONE guifg=" .. red)
 -- vim.cmd("highlight GitSignsUntracked guibg=NONE guifg=" .. orange)
 
--- Make :%s more visible by inverting fg and bg
+-- Make :%s more visible
 vim.cmd.highlight("Substitute guibg=" .. pink .. " guifg=" .. gray)
+
+-- Lighter colors for transparent window
+vim.cmd.highlight("LineNr guibg=NONE guifg=" .. lightGray1)
+vim.cmd.highlight("Comment guibg=NONE guifg=" .. pink) --lightGray3
+
 
 -- lsp colors
 vim.cmd("highlight DiagnosticVirtualTextError guibg=NONE")

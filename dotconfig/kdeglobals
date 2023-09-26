@@ -142,7 +142,7 @@ History Items[$e]=file:$HOME/Documents,file:$HOME/kDrive/HEIG-VD/TB,file:$HOME/D
 [General]
 AccentColor=8,69,116
 BrowserApplication=firefox.desktop
-ColorScheme=BreezeDark
+ColorScheme=breezeV2
 ColorSchemeHash=01662607e36cd33eacc7d7d7189f69c26b9a2cc8
 LastUsedCustomAccentColor=8,69,116
 Name=Breeze Dark
