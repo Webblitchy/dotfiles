@@ -114,8 +114,8 @@ autocmd("TermOpen", {
 
 autocmd("TermClose", {
   callback = function()
-    -- vim.opt_local.laststatus = 2 -- reenable statusline
-    -- vim.api.nvim_input("<C-Y>") -- scroll up (directly quit terminal without status)
+    vim.api.nvim_input("<C-Y>") -- scroll up (directly quit terminal without status)
+    vim.api.nvim_input("zz")    -- center cursor
   end
 })
 
