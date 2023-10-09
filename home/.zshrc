@@ -264,6 +264,7 @@ alias cdf='cd $(fzf)'
 alias fix='kwin_x11 --replace'
 alias lf='nvim $1 -c "set ff=unix" -c ":wq"' # replace CRLF by LF
 alias addpkg='f(){ echo "$1" >> ~/.dotfiles/packages.lst;  unset -f f; }; f'
+alias gpu='glxinfo|grep -E "OpenGL renderer"'
 
 # docker
 alias dockerps='docker ps --format "table {{.Names}}\t{{.Image}}\t{{.Status}}" -a'

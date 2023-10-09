@@ -159,7 +159,11 @@ gpasswd -a $user docker
 systemctl enable docker.service
 
 # Enable bluetooth
-systemctl enable bluetooth
+systemctl enable bluetooth.service
+
+# Set locale
+cp ~/.dotfiles/locale.conf /etc/locale.conf
+# localectl set-locale LANG=en_US.UTF-8 # if error with locale defaults
 
 # change shell for zsh
 sudo -u $SUDO_USER chsh -s /bin/zsh

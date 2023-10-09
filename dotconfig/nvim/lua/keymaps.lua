@@ -153,3 +153,9 @@ map(
   ":lua require('dap').step_into()<CR>",
   { silent = true, desc = "DAP: Step into" }
 )
+map(
+  "n",
+  "<F4>",
+  ":lua require('dap').terminate()<CR>",
+  { silent = true, desc = "DAP: Terminate" }
+)

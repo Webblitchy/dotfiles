@@ -79,7 +79,7 @@ require("lazy").setup({
 
   -- Scroll bar
   -- { "dstein64/nvim-scrollview", },
-  -- { "petertriho/nvim-scrollbar", },
+  { "petertriho/nvim-scrollbar", },
 
   -- Theme
   {
@@ -90,7 +90,7 @@ require("lazy").setup({
   },
 
   -- Add indentation guides even on blank lines
-  "lukas-reineke/indent-blankline.nvim",
+  { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
 
   -- Comment visual regions/lines
   {

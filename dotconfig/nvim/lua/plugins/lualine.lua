@@ -8,12 +8,12 @@ local function min_window_width(width)
   return function() return vim.fn.winwidth(0) > width end
 end
 
-local get_hex = require('cokeline/utils').get_hex
 
-local lightGray = get_hex("Comment", "fg")
-local blackColor = get_hex("CursorColumn", "bg")
-local green = get_hex("DiagnosticOk", "fg")
-local red = get_hex("Error", "fg")
+local lightGray = GetHex("Comment", "fg")
+local blackColor = GetHex("CursorColumn", "bg")
+local green = GetHex("DiagnosticOk", "fg")
+local red = GetHex("Error", "fg")
+local orange = GetHex("Constant", "fg")
 
 local icons = require("../icons").lspSigns
 local autoFormatIcon = "AF" -- 󰽎 󰷲 󰁨       󰉩 󰃢
@@ -50,11 +50,21 @@ require('lualine').setup {
     section_separators = { left = '', right = '' },
   },
   sections = {
-    -- lualine_a = { 'mode' },
     lualine_a = { { 'mode', fmt = function(s) return mode_map[s] or s end } },
     lualine_b = {
       { 'branch', cond = min_window_width(90) },
-      'diff'
+      'diff',
+      {
+        function()
+          local buf = vim.api.nvim_win_get_buf(0)
+          if vim.bo[buf].readonly then
+            return "READONLY"
+          else
+            return ""
+          end
+        end,
+        color = { fg = orange },
+      }
     },
     lualine_c = {
       {

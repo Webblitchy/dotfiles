@@ -1,5 +1,4 @@
-local get_hex = require('cokeline/utils').get_hex
-local unselected_color = get_hex("Comment", "fg")
+local unselected_color = GetHex("Comment", "fg")
 
 local components = {
   space = {
@@ -31,7 +30,7 @@ local components = {
       return buffer.is_focused
     end,
     fg = function(buffer)
-      return buffer.is_focused and buffer.diagnostics.errors ~= 0 and get_hex("DiagnosticError", "fg")
+      return buffer.is_focused and buffer.diagnostics.errors ~= 0 and GetHex("DiagnosticError", "fg")
           or nil
     end,
     truncation = {
@@ -66,11 +65,11 @@ require('cokeline').setup({
     fg = function(buffer)
       return
           buffer.is_focused
-          and get_hex('Normal', 'fg')
-          or get_hex('Comment', 'fg')
+          and GetHex('Normal', 'fg')
+          or unselected_color
     end,
     bg = function(buffer)
-      return require("catppuccin.palettes.mocha").mantle -- same color as the rest of the bar
+      return GetHex("CursorColumn", "bg") -- same color as the rest of the bar
     end,
   },
   sidebar = {
@@ -80,8 +79,8 @@ require('cokeline').setup({
         text = function(buf)
           return buf.filetype
         end,
-        fg = get_hex('Boolean', 'fg'),
-        bg = function() return get_hex('NvimTreeNormal', 'bg') end,
+        fg = GetHex('Boolean', 'fg'), -- orange
+        bg = "none",
         bold = true,
       },
     }

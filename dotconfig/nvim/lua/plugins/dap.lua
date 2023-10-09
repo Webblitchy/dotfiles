@@ -4,7 +4,7 @@ require("mason-nvim-dap").setup({
   -- debugger list
   ensure_installed = {
     "python",
-    "cppdbg", -- C / C++
+    "codelldb", -- C / C++ / Rust
   },
   automatic_installation = true,
 })
@@ -23,60 +23,48 @@ dap.configurations.python = {
 }
 
 -- C / C++ / Rust
-dap.adapters.cppdbg = {
-  id = 'cppdbg',
-  type = 'executable',
-  command = vim.fn.stdpath("data") .. '/mason/packages/cpptools/extension/debugAdapters/bin/OpenDebugAD7',
-}
+--
+-- Available variables
+-- ${workspaceFolder} : current folder when opening neovim
+-- ${fileDirname} : same
+--
 
-local parentFolderName = vim.fn.fnamemodify("${fileDirname}", ":p:h:t")
-local parentFolderPath = vim.fn.fnamemodify("${fileDirname}", ":p:h")
-
-dap.configurations.cpp = {
-  {
-    name = "Launch file",
-    type = "cppdbg",
-    request = "launch",
-    program = function()
-      -- Compile with debug symbols (with -g)
-      vim.fn.system("clang++ -g -c *.cpp && clang++ -g *.o -o " .. parentFolderName .. " ; rm *.o")
-      return "${workspaceFolder}/" .. parentFolderName
-    end,
-    cwd = "${workspaceFolder}",
-    -- stopAtEntry = true, -- better for debugging
-  },
-}
-
-dap.configurations.c = {
-  {
-    name = "Launch file",
-    type = "cppdbg",
-    request = "launch",
-    program = function()
-      -- Compile with debug symbols (with -g)
-      vim.fn.system("clang -g -c *.c && clang *.o -lm -g -o " .. parentFolderName .. " ; rm *.o")
-      return "${workspaceFolder}/" .. parentFolderName
-    end,
-    cwd = "${workspaceFolder}",
-    -- stopAtEntry = true, -- better for debugging
+dap.adapters.codelldb = {
+  type = 'server',
+  port = "${port}",
+  executable = {
+    command = vim.fn.stdpath("data") .. "/mason/packages/codelldb/codelldb",
+    args = { "--port", "${port}" },
   },
 }
 
 
-dap.configurations.rust = {
-  {
-    name = "Launch file",
-    type = "cppdbg",
-    request = "launch",
-    program = function()
-      print(vim.fn.getcwd())
-      vim.fn.system("cargo build") -- compile program first
-      return vim.fn.system("find " .. parentFolderPath .. "/target/debug -maxdepth 1 -type f -executable")
-    end,
-    cwd = "${fileDirname}",
-    -- stopAtEntry = true, -- better for debugging
-  },
+local codelldbConfig = {
+  name = "Launch file",
+  type = "codelldb",
+  request = "launch",
+  program = function()
+    -- because vim.bo.filetype doesn't work here
+    local fileName = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ":p:t")
+    local fileType = vim.filetype.match { filename = fileName }
+
+    AutoCompile(true)
+    -- Return executable path
+    if fileType == "cpp"
+        or fileType == "c" then
+      return GetParentFolderPath() .. "/" .. GetParentFolderName()
+    elseif fileType == "rust" then
+      return vim.fn.system("find '" .. GetParentFolderPath() .. "/target/debug' -maxdepth 1 -type f -executable")
+    end
+  end,
+  cwd = GetParentFolderPath()
+  -- stopAtEntry = true, -- breakpoint at function start
 }
+
+-- Apply the config for all types
+dap.configurations.cpp = { codelldbConfig }
+dap.configurations.c = { codelldbConfig }
+dap.configurations.rust = { codelldbConfig }
 
 -- nice ui for debugging
 local dapui = require("dapui")

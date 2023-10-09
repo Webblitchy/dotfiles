@@ -64,6 +64,7 @@ config.default_cursor_style = 'SteadyBlock'
 -- [[ Global config ]]
 config.scrollback_lines = 10000
 -- config.adjust_window_size_when_changing_font_size = false  -- bad with p10k
+config.warn_about_missing_glyphs = false -- error when displaying binary
 
 -- [[ Key binds ]]
 config.keys = {

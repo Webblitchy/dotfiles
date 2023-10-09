@@ -1,3 +1,14 @@
+-- [[ UTILS ]]
+
+function IsIn(element, table)
+  for _, value in ipairs(table) do
+    if value == element then
+      return true
+    end
+  end
+  return false
+end
+
 function File_exists(name)
   -- function taken from real source code
   local f = io.open(name, "r")
@@ -43,24 +54,58 @@ function GetNullLsps()
   return table.concat(nullLsps, " | ")
 end
 
-function AutoCompile()
-  local filePath = vim.api.nvim_buf_get_name(0) -- 0 for current buffer
+function GetParentFolderPath()
+  return vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ":p:h")
+end
+
+function GetParentFolderName()
+  return vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ":p:h:t")
+end
+
+-- Maybe usefull (timer)
+function Timer()
+  local timer = vim.loop.new_timer()
+  local i = 0
+  -- Waits 3000ms, then repeats every 1000ms until timer:close().
+  timer:start(3000, 1000, function()
+    if i > 30 then -- try max during 30s
+      timer:close()
+    end
+    i = i + 1
+  end)
+end
+
+function GetHex(hl, fgOrBg)
+  local rgb = vim.api.nvim_get_hl(0, { name = hl })[fgOrBg]
+
+  local band, lsr = bit.band, bit.rshift
+
+  local r = lsr(band(rgb, 0xff0000), 16)
+  local g = lsr(band(rgb, 0x00ff00), 8)
+  local b = band(rgb, 0x0000ff)
+
+  local res = ("#%02x%02x%02x"):format(r, g, b)
+  return res
+end
+
+-- [[ Big functions ]]
+
+function AutoCompile(debugMode)
+  local filePath = '"' .. vim.api.nvim_buf_get_name(0) .. '"'
   local fileType = vim.bo.filetype
 
-  local workspacePath = nil --vim.lsp.buf.list_workspace_folders()[1] -- Not working
-  if workspacePath == nil then
-    workspacePath = vim.fn.fnamemodify(filePath, ":p:h")
-  end
-
-  local parentFolderName = vim.fn.fnamemodify(filePath, ":p:h:t")
-
-  -- if there is space
-  workspacePath = '"' .. workspacePath .. '"'
-  parentFolderName = '"' .. parentFolderName .. '"'
-  filePath = '"' .. filePath .. '"'
+  local parentFolderPath = GetParentFolderPath()
+  local parentFolderName = GetParentFolderName()
 
   local function executeFile(command)
-    vim.api.nvim_command("term cd " .. workspacePath .. " && " .. command)
+    local fullCommand = "cd '" .. parentFolderPath .. "' && " .. command
+    if debugMode then
+      -- do in the background
+      vim.fn.system(fullCommand)
+    else
+      -- do in the foreground to show result in terminal
+      vim.api.nvim_command("term " .. fullCommand)
+    end
   end
 
   if fileType == "python"
@@ -70,18 +115,32 @@ function AutoCompile()
       or fileType == "sage" then
     executeFile(fileType .. " " .. filePath)
   elseif fileType == "rust" then
-    executeFile("cargo run")
+    if debugMode then
+      executeFile("cargo build") -- maybe change
+    else
+      executeFile("cargo run")
+    end
   elseif fileType == "sh" then
     executeFile("bash < " .. filePath)
   elseif fileType == "javascript" then
     executeFile("node " .. filePath)
   elseif fileType == "c" then
     -- (always link math lib for simplicity)
-    local compile = "clang -c *.c && clang *.o -lm -o " .. parentFolderName .. " ; rm *.o"
-    executeFile(compile .. " && ./" .. parentFolderName)
+    local compile = "clang "
+    if debugMode then
+      -- Compile with debug symbols (with -g)
+      compile = compile .. "-g "
+    end
+    compile = compile .. "-c *.c && clang *.o -lm -g -o '" .. parentFolderName .. "' ; rm *.o"
+    executeFile(compile .. " && './" .. parentFolderName .. "'")
   elseif fileType == "cpp" then
-    local compile = "clang++ -c *.cpp && clang++ *.o -o " .. parentFolderName .. " ; rm *.o"
-    executeFile(compile .. " && ./" .. parentFolderName)
+    local compile = "clang++ "
+    if debugMode then
+      -- Compile with debug symbols (with -g)
+      compile = compile .. "-g "
+    end
+    compile = compile .. "-c *.cpp && clang++ *.o -o '" .. parentFolderName .. "' ; rm *.o"
+    executeFile(compile .. " && './" .. parentFolderName .. "'")
   end
 end
 
@@ -221,17 +280,4 @@ function GetNextSearchCount()
   else
     return next
   end
-end
-
--- Maybe usefull (timer)
-function Timer()
-  local timer = vim.loop.new_timer()
-  local i = 0
-  -- Waits 3000ms, then repeats every 1000ms until timer:close().
-  timer:start(3000, 1000, function()
-    if i > 30 then -- try max during 30s
-      timer:close()
-    end
-    i = i + 1
-  end)
 end

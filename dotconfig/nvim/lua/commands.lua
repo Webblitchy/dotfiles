@@ -114,8 +114,10 @@ autocmd("TermOpen", {
 
 autocmd("TermClose", {
   callback = function()
-    vim.api.nvim_input("<C-Y>") -- scroll up (directly quit terminal without status)
-    vim.api.nvim_input("zz")    -- center cursor
+    -- Auto close terminal (hide result of ^x)
+
+    -- vim.api.nvim_input("<C-Y>") -- scroll up (directly quit terminal without status)
+    -- vim.api.nvim_input("zz")    -- center cursor
   end
 })
 
@@ -160,6 +162,10 @@ end
 ------------------------
 
 
+local disabledAFByDefault = {
+  "html"
+}
+
 -- autoformat on save
 vim.b.autoformat = false -- false by default
 autocmd("LspAttach", {
@@ -171,7 +177,7 @@ autocmd("LspAttach", {
     -- Disabled autoFormat by default
     local bufNbr = vim.api.nvim_get_current_buf()
     local bufFiletype = vim.api.nvim_buf_get_option(bufNbr, "filetype")
-    if bufFiletype == "html" then
+    if IsIn(bufFiletype, disabledAFByDefault) then
       return
     end
 
@@ -254,6 +260,16 @@ autocmd("FileType", {
   end
 })
 
+-- Handle ScrollBar display
+autocmd({ "BufEnter", "OptionSet" }, {
+  callback = function()
+    if vim.wo.wrap then
+      require("scrollbar.utils").hide()
+    else
+      require("scrollbar.utils").show()
+    end
+  end
+})
 -----------------------------------------
 -- [ NEW USER COMMANDS ]
 

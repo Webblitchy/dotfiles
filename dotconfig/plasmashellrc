@@ -32,7 +32,7 @@ eDP-1 Height 1920x1080 eDP-1=598
 eDP-1 Width 1920x1080 eDP-1=435
 
 [PlasmaTransientsConfig]
-PreloadWeight=34
+PreloadWeight=26
 
 [PlasmaViews][Panel 11][Defaults]
 thickness=27

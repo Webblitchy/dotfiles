@@ -28,6 +28,9 @@ ViewPropsTimestamp=2021,12,28,12,46,57.213
 [IconsMode]
 PreviewSize=208
 
+[InformationPanel]
+dateFormat=ShortFormat
+
 [KFileDialog Settings]
 Places Icons Auto-resize=false
 Places Icons Static Size=22
@@ -35,6 +38,8 @@ Places Icons Static Size=22
 [KPropertiesDialog]
 1536x864 screen: Height=496
 1536x864 screen: Width=384
+1920x1080 screen: Height=647
+1920x1080 screen: Width=689
 2 screens: Height=504
 2 screens: Width=400
 eDP-1 DP-3 Height 1536x864=619
