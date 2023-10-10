@@ -89,7 +89,16 @@ capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 
 -- [[ MASON ]]
-
+require("mason").setup({
+  ui = {
+    border = "rounded",
+    icons = {
+      package_installed = "✓",
+      package_pending = "➜",
+      package_uninstalled = "✗"
+    },
+  },
+})
 -- Ensure the servers above are installed
 local mason_lspconfig = require("mason-lspconfig")
 

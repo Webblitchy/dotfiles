@@ -279,19 +279,23 @@ autocmd({ "BufEnter", "OptionSet" }, {
 
 
 -- Hide cursor for NvimTree
-local old_guicursor = nil
+local default_guicursor = vim.go.guicursor
+-- local default_cursorlineopt = vim.go.cursorlineopt
 vim.api.nvim_create_autocmd({ "BufEnter", "UIEnter" }, {
   callback = function()
-    if vim.bo.filetype ~= "NvimTree" and
-        old_guicursor ~= nil then
-      vim.go.guicursor = old_guicursor
-      old_guicursor = nil
-    else
-      old_guicursor = vim.go.guicursor
+    if vim.bo.filetype == "NvimTree" then
       vim.go.guicursor = "a:HiddenCursor"
+      -- elseif vim.bo.filetype == "alpha" then
+      -- not working
+      --   vim.go.guicursor = "a:HiddenCursor"
+      --   vim.go.cursorlineopt = "line"
+    else
+      vim.go.guicursor = default_guicursor
+      -- vim.go.cursorlineopt = default_cursorlineopt
     end
   end
 })
+
 
 -----------------------------------------
 -- [ NEW USER COMMANDS ]

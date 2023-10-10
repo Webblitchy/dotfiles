@@ -92,7 +92,7 @@ dashboard.section.buttons.val = {
     dashboard.button("q", "  Quit Neovim", ":qa<CR>"),
 }
 for _, v in pairs(dashboard.section.buttons.val) do
-    v.opts.cursor = 0
+    v.opts.cursor = 0 -- cursor on first line
     v.val = "   " .. v.val
 end
 
