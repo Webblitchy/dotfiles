@@ -9,6 +9,11 @@ local goodScrollOff = math.ceil(vim.api.nvim_win_get_height(0) / 4)
 -- always have a 1/4 of the screen of margin after / before the cursor
 autocmd({ "VimResized", "VimEnter", "WinEnter", "WinLeave" }, {
   callback = function()
+    -- normal buffer (not terminal or prompt or NvimTree)
+    if vim.bo.buftype ~= "" then
+      return
+    end
+
     vim.wo.scrolloff = goodScrollOff
   end
 })
@@ -27,11 +32,12 @@ autocmd({ "BufReadPost", "BufNewFile" }, {
 
 -- Keep space at the bottom of a file
 autocmd({ "CursorMoved" }, {
-  callback = function()
-    -- normal buffer (not terminal or prompt)
+  callback = function(args)
+    -- normal buffer (not terminal or prompt or NvimTree)
     if vim.bo.buftype ~= "" then
       return
     end
+
 
     local windowLines = vim.api.nvim_win_get_height(0)
     local currLine = vim.fn.line(".")
@@ -270,6 +276,23 @@ autocmd({ "BufEnter", "OptionSet" }, {
     end
   end
 })
+
+
+-- Hide cursor for NvimTree
+local old_guicursor = nil
+vim.api.nvim_create_autocmd({ "BufEnter", "UIEnter" }, {
+  callback = function()
+    if vim.bo.filetype ~= "NvimTree" and
+        old_guicursor ~= nil then
+      vim.go.guicursor = old_guicursor
+      old_guicursor = nil
+    else
+      old_guicursor = vim.go.guicursor
+      vim.go.guicursor = "a:HiddenCursor"
+    end
+  end
+})
+
 -----------------------------------------
 -- [ NEW USER COMMANDS ]
 

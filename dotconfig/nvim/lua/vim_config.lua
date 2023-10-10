@@ -68,3 +68,6 @@ vim.opt.listchars = {
     tab = "   ",                  -- Needs between 2-3 chars : ⊦ ┄╞ ▸ ⊳
 }
 vim.opt.fillchars:append('eob: ') -- hide ~ at the end of buffer
+
+-- create hl for an invisible cursor
+vim.api.nvim_set_hl(0, "HiddenCursor", { reverse = true, blend = 100 })

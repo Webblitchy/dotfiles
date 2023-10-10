@@ -589,7 +589,7 @@ immutability=1
 plugin=org.kde.plasma.digitalclock
 
 [Containments][86][Applets][109][Configuration]
-PreloadWeight=82
+PreloadWeight=87
 popupHeight=450
 popupWidth=396
 
@@ -843,7 +843,7 @@ immutability=1
 plugin=org.kde.plasma.bluetooth
 
 [Containments][94][Applets][108][Configuration]
-PreloadWeight=92
+PreloadWeight=100
 
 [Containments][94][Applets][115]
 immutability=1

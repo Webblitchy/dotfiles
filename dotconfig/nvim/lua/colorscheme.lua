@@ -134,6 +134,7 @@ vim.cmd.highlight("Substitute guibg=" .. pink .. " guifg=" .. gray)
 -- Lighter colors for transparent window
 vim.cmd.highlight("LineNr guibg=NONE guifg=" .. lightGray1)
 vim.cmd.highlight("Comment guibg=NONE guifg=" .. pink) --lightGray3
+vim.cmd.highlight("Visual guibg=" .. lightGray1)
 
 
 -- lsp colors

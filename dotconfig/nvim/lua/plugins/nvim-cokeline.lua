@@ -1,4 +1,4 @@
-local unselected_color = GetHex("Comment", "fg")
+local unselected_color = GetHex("LineNr", "fg") -- gray color
 
 local components = {
   space = {
@@ -77,7 +77,10 @@ require('cokeline').setup({
     components = {
       {
         text = function(buf)
-          return buf.filetype
+          local title = buf.filetype -- NvimTree
+          local borderLen = math.floor((vim.fn.winwidth(0) - #title) / 2) - 1
+          local margin = string.rep("—", borderLen)
+          return margin .. " " .. title .. " " .. margin
         end,
         fg = GetHex('Boolean', 'fg'), -- orange
         bg = "none",
