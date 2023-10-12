@@ -11,7 +11,7 @@ cd ~/.dotfiles
 # EOS
 eos-rankmirrors
 # Arch
-reflector --country Switzerland --sort rate --protocol https --latest 5 --save /etc/pacman.d/mirrorlist
+reflector --sort rate --protocol https --latest 5 --save /etc/pacman.d/mirrorlist
 
 # Install packages
 cat packages.lst |
