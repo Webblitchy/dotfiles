@@ -9,19 +9,19 @@ virtualbox-bin
 virtualbox-host-modules-arch
 virtualbox-ext-oracle
 wireshark-qt
-firefox-bin
-joplin-appimage
+firefox
+joplin
 solaar  # logitech device manager
 normcap # ocr
 notion-app
 onlyoffice-bin
 spotify
 simplenote-electron-bin
-telegram-desktop-bin
+telegram-desktop
 visual-studio-code-bin
 lightly-boehs-git
-thunderbird-bin
-anydesk
+thunderbird
+anydesk # teamviewer alternative
 chromium
 # pycharm-community-edition
 # intellij-idea-ultimate-edition
