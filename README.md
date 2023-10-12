@@ -7,8 +7,10 @@ Generate git ssh key
 ```bash
 git config --global user.name Webblitchy
 git config --global user.email 55515713+Webblitchy@users.noreply.github.com
-ssh-keygen -o -t rsa -C "55515713+Webblitchy@users.noreply.github.com"
+ssh-keygen -o -t rsa -C "55515713+Webblitchy@users.noreply.github.com" -q
+echo "---------------------------------"
 cat ~/.ssh/id_rsa.pub
+echo "---------------------------------"
 echo "  ->  Add the key here : https://github.com/settings/keys"
 ```
 
