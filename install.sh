@@ -7,10 +7,13 @@ fi
 
 cd ~/.dotfiles
 
+# Get the best mirror before installing packages
+eos-rankmirrors
+
 # Install packages
 cat packages.lst |
-	grep -o '^[^#]*' |                                     # select only non-comments
-	xargs sudo -u $SUDO_USER yay -Syu --needed --noconfirm # yay cannot be run as root
+	grep -o '^[^#]*' |                                                # select only non-comments
+	xargs sudo -u $SUDO_USER yay -Syu --needed --noconfirm --sudoloop # yay cannot be run as root
 
 # to copy dolphin layout files
 sudo -u $SUDO_USER mkdir ~/.local/share/kxmlgui5 2>/dev/null
@@ -166,7 +169,7 @@ cp ~/.dotfiles/locale.conf /etc/locale.conf
 # localectl set-locale LANG=en_US.UTF-8 # if error with locale defaults
 
 # change shell for zsh
-sudo -u $SUDO_USER chsh -s /bin/zsh
+chsh -s /bin/zsh $SUDO_USER
 
 # restoreFirefoxData
 
