@@ -47,10 +47,6 @@ for dotDir in */; do
 	done
 done
 
-for file in $(ls myscripts); do
-	ln -sf ~/.dotfiles/myscripts/$file /usr/local/bin/$file
-done
-
 # Copy specifc settings
 
 # libinput gestures
@@ -84,6 +80,7 @@ sudo -u $SUDO_USER curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | s
 # git clone https://github.com/zsh-users/zsh-autosuggestions.git /usr/share/zsh/plugins/zsh-autosuggestions/
 
 # transfer wallpapers
+sudo -u $SUDO_USER mkdir ~/Pictures/wallpapers 2>/dev/null
 sudo -u $SUDO_USER ln -sf ~/.dotfiles/wallpapers ~/Pictures/wallpapers
 sudo -u $SUDO_USER ln -sf ~/.dotfiles/media/abstergo-transparent-small.png ~/Pictures/abstergo-transparent-small.png
 sudo -u $SUDO_USER plasma-apply-wallpaperimage ~/Pictures/wallpapers/wallhaven-136m9w.png
@@ -95,12 +92,12 @@ cp ~/.dotfiles/sddm/theme.conf.user /usr/share/sddm/themes/breeze/
 cp ~/.dotfiles/wallpapers/sunset-in-the-mountains-illustration_3840x2160_xtrafondos.com.jpg /usr/share/sddm/themes/breeze/
 
 # transfer optimus-manager settings
-mkdir /etc/optimus-manager
+mkdir /etc/optimus-manager 2>/dev/null
 cp ~/.dotfiles/optimus-manager.conf /etc/optimus-manager/
 
 # resolve XPS15 screen issues
-if [[ $(sudo -u $SUDO_USER dmidecode | grep -A2 '^System Information' | xargs | cut -d " " --f 8,9,10) = "XPS 15 9570" ]]; then
-	sudo -u $SUDO_USER echo "options i915 enable_fbc=1 disable_power_well=0 fastboot=1 enable_psr=0" >/etc/modprobe.d/i915.conf
+if [[ $(dmidecode | grep -A2 '^System Information' | xargs | cut -d " " --f 8,9,10) = "XPS 15 9570" ]]; then
+	echo "options i915 enable_fbc=1 disable_power_well=0 fastboot=1 enable_psr=0" >/etc/modprobe.d/i915.conf
 fi
 
 # Fix Wezterm focus window bug
@@ -110,7 +107,8 @@ echo "StartupNotify=true" >>/usr/share/applications/org.wezfurlong.wezterm.deskt
 echo 'EOS_YAD_TERMINAL="wezterm"' >>/etc/eos-script-lib-yad.conf
 
 # Apply icon theme
-sudo -u $SUDO_USER /usr/lib/plasma-changeicons ~/.local/share/icons/kora
+# sudo -u $SUDO_USER /usr/lib/plasma-changeicons ~/.local/share/icons/kora
+# (already applied)
 
 # Make fonts available on system (p.ex filename in Dolphin)
 ln -sf ~/.dotfiles/local.conf /etc/fonts/local.conf
@@ -151,7 +149,7 @@ sudo -u $SUDO_USER echo export MOZ_USE_XINPUT2=1 | sudo tee /etc/profile.d/use-x
 sed -i '45 a\unlock_time = 10' /etc/security/faillock.conf
 
 # set grub chose time to 0 seconds
-vim /etc/default/grub -u NONE -c "/GRUB_TIMEOUT" -c "s/[0-9]\+/0" -c "wq"
+sed -i -E "/GRUB_TIMEOUT/s/[0-9]+/0" /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
 
 # Configure wireshark
@@ -161,7 +159,7 @@ chmod +x /usr/bin/dumpcap
 systemctl enable optimus-manager.service
 
 # docker
-gpasswd -a $user docker
+gpasswd -a $SUDO_USER docker
 systemctl enable docker.service
 
 # Enable bluetooth
@@ -169,7 +167,7 @@ systemctl enable bluetooth.service
 
 # Set locale
 cp ~/.dotfiles/locale.conf /etc/locale.conf
-# localectl set-locale LANG=en_US.UTF-8 # if error with locale defaults
+localectl set-locale LANG=en_US.UTF-8 # if error with locale defaults
 
 # change shell for zsh
 chsh -s /bin/zsh $SUDO_USER
