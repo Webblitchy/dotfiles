@@ -6,7 +6,6 @@ gimp
 # qbittorrent
 transmission-qt
 virtualbox-bin
-virtualbox-host-modules-arch
 virtualbox-ext-oracle
 wireshark-qt
 firefox
@@ -38,7 +37,7 @@ qdirstat-bin # win dir stat
 # KDE Apps
 ark
 dolphin
-kalendar
+# kalendar
 kate
 elisa
 kcalc
