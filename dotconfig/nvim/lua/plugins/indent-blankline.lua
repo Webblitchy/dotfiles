@@ -5,6 +5,7 @@ require('ibl').setup {
     char = '┊', -- ┆ ⁞ ┊ ⸽ |
   },
   scope = {
-    show_start = false -- disable underline start of scope
+    show_start = false, -- disable underline start of scope
+    show_end = false
   }
 }

@@ -12,7 +12,7 @@ vim.g.maplocalleader = " "
 
 -- [[ remaps ]]
 -- Make ctrl-c work always as esc
-map({ 'n', 'i', 'v' }, '<C-c>', '<Esc>', { remap = true }) -- recursive mapping
+map("", '<C-c>', '<Esc>', { remap = true }) -- recursive mapping
 
 -- disable weird vim feature to "cut and paste" with "delete and paste"
 map("v", "p", "\"_dP")

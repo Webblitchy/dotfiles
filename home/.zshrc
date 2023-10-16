@@ -230,52 +230,6 @@ export PATH="$PATH:$HOME/.local/bin"
 # Autojump
 [[ -s /etc/profile.d/autojump.sh ]] && source /etc/profile.d/autojump.sh
 
-### MY ALIASES ###
+# Add aliases
+[[ -f ~/.dotfiles/home/.zsh-aliases ]] && source ~/.dotfiles/home/.zsh-aliases
 
-# replacement aliases
-alias cp='cp -i'                                      # Confirm before overwriting something
-alias df='df -h'                                      # Human-readable sizes
-alias free='free -m'                                  # Show sizes in MB
-alias mv='mv -i'
-alias grep='grep --color=auto'
-alias ip='ip -c -br'                                  # color and brief
-alias bat='bat --style header,header-filename,header-filesize,grid,snip'
-if [[ -f /usr/bin/rmtrash ]]; then
-# need rmtrash
-     alias rm='rmtrash'
-     alias rmdir='rmdirtrash'
-fi
-
-# sudo commands
-alias btop='sudo btop'
-alias powertop='sudo powertop'
-
-# new commands
-alias ll='lsd -Al --date +"%e %h %Y|%R" --blocks permission,size,date,name --group-dirs first -I .directory'
-alias open='xdg-open $1 2>&1 > /dev/null'
-alias vrc='vim ~/.vimrc'
-alias nrc='cd ~/.config/nvim/lua'
-alias zrc='nvim ~/.zshrc; source ~/.zshrc'
-alias tb='cd /home/eliott/kDrive/HEIG-VD/S6/TB'
-alias hello="notify-send 'Hello world!' 'This is an example notification.' --icon=dialog-information"
-alias wifi-list='nmcli device wifi'
-alias wifi-connect='nmcli device wifi connect --ask'
-alias cdf='cd $(fzf)'
-alias fix='kwin_x11 --replace'
-alias lf='nvim $1 -c "set ff=unix" -c ":wq"' # replace CRLF by LF
-alias addpkg='f(){ echo "$1" >> ~/.dotfiles/packages.lst;  unset -f f; }; f'
-alias gpu='glxinfo|grep -E "OpenGL renderer"'
-
-# docker
-alias dockerps='docker ps --format "table {{.Names}}\t{{.Image}}\t{{.Status}}" -a'
-alias dockerkillall='docker ps -qa | xargs docker kill'
-
-# venv
-alias venv-add='python3 -m venv .venv'
-alias venv-activate='source .venv/bin/activate'
-
-# pacman
-alias pacman-orphans='pacman -Qtdq | sudo pacman -Rns -'
-
-#Wezterm show image
-alias show="wezterm imgcat"
