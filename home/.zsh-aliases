@@ -20,7 +20,7 @@ alias powertop='sudo powertop'
 
 # new commands
 alias ll='lsd -Al --date +"%e %h %Y|%R" --blocks permission,size,date,name --group-dirs first -I .directory'
-alias open='xdg-open $1 2>&1 > /dev/null'
+alias open='xdg-open $1 &>/dev/null'
 alias vrc='vim ~/.vimrc'
 alias nrc='cd ~/.config/nvim/lua'
 alias zrc='nvim ~/.zshrc; source ~/.zshrc'
