@@ -84,7 +84,7 @@ sudo -u $SUDO_USER ln -sf ~/.dotfiles/manual/cargo-config.toml ~/.cargo/config.t
 
 # transfer wallpapers
 sudo -u $SUDO_USER mkdir ~/Pictures/wallpapers 2>/dev/null
-sudo -u $SUDO_USER ln -sf ~/.dotfiles/wallpapers ~/Pictures/wallpapers
+sudo -u $SUDO_USER ln -sfT ~/.dotfiles/wallpapers ~/Pictures/wallpapers # -T because a directory
 sudo -u $SUDO_USER ln -sf ~/.dotfiles/media/abstergo-transparent-small.png ~/Pictures/abstergo-transparent-small.png
 sudo -u $SUDO_USER plasma-apply-wallpaperimage ~/Pictures/wallpapers/wallhaven-136m9w.png
 
