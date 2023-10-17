@@ -771,7 +771,7 @@ PreloadWeight=100
 SystrayContainmentId=94
 
 [Containments][86][ConfigDialog]
-DialogHeight=67
+DialogHeight=74
 DialogWidth=1920
 
 [Containments][86][Configuration]

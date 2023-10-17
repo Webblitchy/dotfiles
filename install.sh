@@ -106,7 +106,7 @@ if [[ $(dmidecode | grep -A2 '^System Information' | xargs | cut -d " " --f 8,9,
 fi
 
 # Fix Wezterm focus window bug
-echo "StartupNotify=true" >>/usr/share/applications/org.wezfurlong.wezterm.desktop
+sed -i -E "/^Exec=/s/--cwd ./--cwd . --always-new-process/" /usr/share/applications/org.wezfurlong.wezterm.desktop
 
 # To define terminal used by EOS Welcome app
 echo 'EOS_YAD_TERMINAL="wezterm"' >>/etc/eos-script-lib-yad.conf
