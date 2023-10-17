@@ -152,7 +152,7 @@ sudo -u $SUDO_USER echo export MOZ_USE_XINPUT2=1 | sudo tee /etc/profile.d/use-x
 sed -i '45 a\unlock_time = 10' /etc/security/faillock.conf
 
 # set grub chose time to 0 seconds
-sed -i -E "/GRUB_TIMEOUT/s/[0-9]+/0" /etc/default/grub
+sed -i -E "/GRUB_TIMEOUT/s/[0-9]+/0/" /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
 
 # Configure wireshark
