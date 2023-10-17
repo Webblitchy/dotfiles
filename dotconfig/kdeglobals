@@ -136,7 +136,7 @@ ForegroundPositive=39,174,96
 ForegroundVisited=155,89,182
 
 [DirSelect Dialog]
-DirSelectDialog Size=801,612
+DirSelectDialog Size=835,616
 History Items[$e]=file:$HOME/Documents,file:$HOME/kDrive/HEIG-VD/TB,file:$HOME/Desktop/TokioStreetWallpaper,file:$HOME/Pictures/wallpapers/TokioStreetWallpaper,file:$HOME/Pictures/Screenshots,file:$HOME/Virtual Machines/Shared,file:$HOME/Virtual Machines/Shared,file:$HOME/Virtual Machines,file:$HOME/Virtual Machines/Shared,file:$HOME/Virtual Machines/Shared,file:$HOME/Virtual Machines/Shared,file:$HOME/Virtual Machines/Shared,file:$HOME/kDrive/HEIG-VD/E2,file:$HOME/VM Shared,file:$HOME/Pictures,file:$HOME/VirtualBox VMs/reds2021-09/Shared,file:$HOME/OwnCloud,file:$HOME
 
 [General]
@@ -146,7 +146,7 @@ ColorScheme=breezeV2
 ColorSchemeHash=01662607e36cd33eacc7d7d7189f69c26b9a2cc8
 LastUsedCustomAccentColor=8,69,116
 Name=Breeze Dark
-TerminalApplication=wezterm start --cwd .
+TerminalApplication=wezterm start --cwd . --always-new-process
 TerminalService=org.wezfurlong.wezterm.desktop
 UseSystemBell=true
 XftAntialias=true

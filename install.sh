@@ -49,6 +49,9 @@ done
 
 # Copy specifc settings
 
+# Change defaults
+sudo -u $SUDO_USER cp ~/.dotfiles/manual/mimeapps.list ~/.config/mimeapps.list
+
 # libinput gestures
 gpasswd -a $SUDO_USER input
 sudo -u $SUDO_USER libinput-gestures-setup autostart
@@ -78,11 +81,6 @@ done
 sudo -u $SUDO_USER curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sudo -u $SUDO_USER sh -s -- -y
 sudo -u $SUDO_USER mkdir ~/.cargo 2>/dev/null
 sudo -u $SUDO_USER ln -sf ~/.dotfiles/manual/cargo-config.toml ~/.cargo/config.toml
-
-# add zsh plugins
-# git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /usr/share/zsh/plugins/zsh-syntax-highlighting/
-# git clone https://github.com/zsh-users/zsh-history-substring-search.git /usr/share/zsh/plugins/zsh-history-substring-search/
-# git clone https://github.com/zsh-users/zsh-autosuggestions.git /usr/share/zsh/plugins/zsh-autosuggestions/
 
 # transfer wallpapers
 sudo -u $SUDO_USER mkdir ~/Pictures/wallpapers 2>/dev/null
@@ -170,7 +168,7 @@ systemctl enable docker.service
 # Enable bluetooth
 systemctl enable bluetooth.service
 
-# Set locale
+# Generate and set locale
 cp ~/.dotfiles/manual/locale.gen /etc/locale.gen
 locale-gen
 cp ~/.dotfiles/manual/locale.conf /etc/locale.conf

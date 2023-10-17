@@ -277,7 +277,7 @@ plugin=org.kde.plasma.battery
 
 [Containments][39][Applets][48][Configuration]
 PreloadWeight=100
-popupHeight=364
+popupHeight=478
 popupWidth=280
 
 [Containments][39][Applets][49]
@@ -497,7 +497,7 @@ DialogHeight=420
 DialogWidth=698
 
 [Containments][80][Applets][82][Configuration][General]
-launchers=preferred://filemanager,applications:firefox.desktop,applications:thunderbird.desktop,applications:org.wezfurlong.wezterm.desktop,applications:org.telegram.desktop.desktop,applications:morgen.desktop,applications:spotify.desktop,applications:simplenote.desktop,applications:joplin.desktop,applications:notion-app.desktop,applications:anytype.desktop,applications:org.kde.kate.desktop,applications:code.desktop,applications:jetbrains-clion.desktop,applications:pycharm.desktop,applications:virtualbox.desktop,applications:onlyoffice-desktopeditors.desktop,applications:org.qbittorrent.qBittorrent.desktop,applications:systemsettings.desktop
+launchers=preferred://filemanager,applications:org.wezfurlong.wezterm.desktop,applications:firefox.desktop,applications:org.mozilla.Thunderbird.desktop,applications:org.telegram.desktop.desktop,applications:morgen.desktop,applications:spotify.desktop,applications:simplenote.desktop,applications:joplin.desktop,applications:notion-app.desktop,applications:anytype.desktop,applications:org.kde.kate.desktop,applications:code.desktop,applications:jetbrains-clion.desktop,applications:pycharm.desktop,applications:virtualbox.desktop,applications:onlyoffice-desktopeditors.desktop,applications:org.qbittorrent.qBittorrent.desktop,applications:systemsettings.desktop
 maxStripes=1
 showOnlyCurrentActivity=false
 showOnlyCurrentDesktop=false
@@ -536,7 +536,7 @@ DialogHeight=420
 DialogWidth=560
 
 [Containments][85][Applets][117][Configuration][General]
-launchers=preferred://filemanager,applications:org.wezfurlong.wezterm.desktop,applications:firefox.desktop,applications:thunderbird.desktop,applications:org.telegram.desktop.desktop,applications:morgen.desktop,applications:spotify.desktop,applications:simplenote.desktop,applications:joplin.desktop,applications:notion-app.desktop,applications:code.desktop,applications:org.kde.kate.desktop,applications:pycharm.desktop,applications:jetbrains-clion.desktop,applications:jetbrains-idea.desktop,applications:virtualbox.desktop,applications:org.qbittorrent.qBittorrent.desktop,applications:systemsettings.desktop
+launchers=preferred://filemanager,applications:org.wezfurlong.wezterm.desktop,applications:firefox.desktop,applications:org.mozilla.Thunderbird.desktop,applications:org.telegram.desktop.desktop,applications:morgen.desktop,applications:spotify.desktop,applications:simplenote.desktop,applications:joplin.desktop,applications:notion-app.desktop,applications:anytype.desktop,applications:code.desktop,applications:org.kde.kate.desktop,applications:pycharm.desktop,applications:jetbrains-clion.desktop,applications:virtualbox.desktop,applications:jetbrains-idea.desktop,applications:org.qbittorrent.qBittorrent.desktop,applications:systemsettings.desktop
 maxStripes=1
 showOnlyCurrentActivity=false
 showOnlyCurrentDesktop=false
