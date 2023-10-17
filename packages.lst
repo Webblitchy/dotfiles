@@ -5,8 +5,9 @@ discord
 gimp
 # qbittorrent
 transmission-qt
-virtualbox-bin
+virtualbox # virtualbox-bin is not up2date
 virtualbox-ext-oracle
+virtualbox-guest-iso
 wireshark-qt
 firefox
 joplin
@@ -26,10 +27,10 @@ chromium
 # intellij-idea-ultimate-edition
 # clion
 kdrive-bin
-etcher-bin # flash SD card
-foliate    # Epub reader
-peek       # Screen recorder
-wezterm    # Terminal emulator
+# balena-etcher # flash SD card (too slow)
+foliate # Epub reader
+peek    # Screen recorder
+wezterm # Terminal emulator
 minecraft-launcher
 morgen-bin   # calendar
 qdirstat-bin # win dir stat

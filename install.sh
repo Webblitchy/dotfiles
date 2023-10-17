@@ -63,6 +63,9 @@ sudo -u $SUDO_USER ln -sf ~/.dotfiles/vscode/settings.json ~/.config/Code/User/s
 # jetbrains settings
 programs=("clion" "intellij" "pycharm")
 for nickname in ${programs[@]}; do
+	if [[ ! -f /bin/$nickname* ]]; then
+		continue # skips if program not installed
+	fi
 	timeout 1s /bin/$nickname* # open the app to create the config folder
 	program=$(ls ~/.config/JetBrains | grep -i $nickname)
 	sudo -u $SUDO_USER mkdir -p ~/.config/JetBrains/$program/options 2>/dev/null
@@ -73,6 +76,8 @@ done
 
 # install rust
 sudo -u $SUDO_USER curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sudo -u $SUDO_USER sh -s -- -y
+sudo -u $SUDO_USER mkdir ~/.cargo 2>/dev/null
+sudo -u $SUDO_USER ln -sf ~/.dotfiles/manual/cargo-config.toml ~/.cargo/config.toml
 
 # add zsh plugins
 # git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /usr/share/zsh/plugins/zsh-syntax-highlighting/
@@ -93,7 +98,7 @@ cp ~/.dotfiles/wallpapers/sunset-in-the-mountains-illustration_3840x2160_xtrafon
 
 # transfer optimus-manager settings
 mkdir /etc/optimus-manager 2>/dev/null
-cp ~/.dotfiles/optimus-manager.conf /etc/optimus-manager/
+cp ~/.dotfiles/manual/optimus-manager.conf /etc/optimus-manager/
 
 # resolve XPS15 screen issues
 if [[ $(dmidecode | grep -A2 '^System Information' | xargs | cut -d " " --f 8,9,10) = "XPS 15 9570" ]]; then
@@ -111,7 +116,7 @@ echo 'EOS_YAD_TERMINAL="wezterm"' >>/etc/eos-script-lib-yad.conf
 # (already applied)
 
 # Make fonts available on system (p.ex filename in Dolphin)
-ln -sf ~/.dotfiles/local.conf /etc/fonts/local.conf
+ln -sf ~/.dotfiles/manual/fonts-local.conf /etc/fonts/local.conf
 
 # save firefox settings
 saveFirefoxData() {
@@ -166,8 +171,9 @@ systemctl enable docker.service
 systemctl enable bluetooth.service
 
 # Set locale
-cp ~/.dotfiles/locale.conf /etc/locale.conf
-localectl set-locale LANG=en_US.UTF-8 # if error with locale defaults
+cp ~/.dotfiles/manual/locale.gen /etc/locale.gen
+locale-gen
+cp ~/.dotfiles/manual/locale.conf /etc/locale.conf
 
 # change shell for zsh
 chsh -s /bin/zsh $SUDO_USER

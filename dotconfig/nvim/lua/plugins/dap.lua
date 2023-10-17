@@ -54,7 +54,9 @@ local codelldbConfig = {
         or fileType == "c" then
       return GetParentFolderPath() .. "/" .. GetParentFolderName()
     elseif fileType == "rust" then
-      return vim.fn.system("find '" .. GetParentFolderPath() .. "/target/debug' -maxdepth 1 -type f -executable")
+      local executablePath = vim.fn.system("find '" ..
+        GetParentFolderPath() .. "/../target/debug' -maxdepth 1 -type f -executable")
+      return executablePath:sub(1, -2) -- remove the last '\n'
     end
   end,
   cwd = GetParentFolderPath()

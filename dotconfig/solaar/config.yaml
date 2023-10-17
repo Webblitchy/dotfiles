@@ -27,7 +27,7 @@
     crown-smooth, divert-crown, divert-gkeys, m-key-leds, mr-key-led, gesture2-gestures, gesture2-divert, gesture2-params, sidetone, equalizer, adc_power_management]
   _battery: 4096
   _modelId: B35B408A0000
-  _sensitive: {change-host: false, multiplatform: false}
+  _sensitive: {backlight: false, change-host: false, disable-keyboard-keys: false, divert-keys: false, fn-swap: false, multiplatform: false}
   _serial: 6E1E91F0
   _unitId: 6E1E91F0
   _wpid: 408A
@@ -118,6 +118,17 @@
   thumb-scroll-invert: false
   thumb-scroll-mode: false
 - _NAME: MX Master 3 Wireless Mouse
+  _absent: [hi-res-scroll, lowres-scroll-mode, onboard_profiles, report_rate, pointer_speed, speed-change, backlight, backlight-timed, reprogrammable-keys,
+    persistent-remappable-keys, divert-keys, disable-keyboard-keys, crown-smooth, divert-crown, divert-gkeys, m-key-leds, mr-key-led, multiplatform, gesture2-gestures,
+    gesture2-divert, gesture2-params, sidetone, equalizer, adc_power_management]
+  _battery: 4096
   _modelId: MX Master 3 Wireless Mouse
   _sensitive: {hires-scroll-mode: ignore, hires-smooth-invert: ignore, hires-smooth-resolution: ignore}
   _unitId: '14000000'
+  change-host: null
+  dpi: 1000
+  fn-swap: false
+  scroll-ratchet: 2
+  smart-shift: 10
+  thumb-scroll-invert: false
+  thumb-scroll-mode: false
