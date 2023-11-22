@@ -32,6 +32,16 @@ require("lazy").setup({
     },
   },
 
+  -- Use formatter when not available in lsp
+  {
+    "stevearc/conform.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    config = function()
+      local conform = require("conform")
+    end,
+  },
+  "WhoIsSethDaniel/mason-tool-installer.nvim", -- use mason to install formatters
+
   {
     -- Autocompletion (with menu)
     "hrsh7th/nvim-cmp",
@@ -175,10 +185,6 @@ require("lazy").setup({
     event = "VeryLazy"
   },
 
-
-  -- Use formatter when not available in lsp
-  "jose-elias-alvarez/null-ls.nvim",
-  "jay-babu/mason-null-ls.nvim", -- use mason to install formatters
 
   -- Save with sudo
   "lambdalisue/suda.vim",

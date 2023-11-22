@@ -7,7 +7,7 @@ local goodScrollOff = math.ceil(vim.api.nvim_win_get_height(0) / 4)
 -- [[ CURSOR AUTO COMMANDS ]]
 --
 -- always have a 1/4 of the screen of margin after / before the cursor
-autocmd({ "VimResized", "VimEnter", "WinEnter", "WinLeave" }, {
+autocmd({ "VimResized", "VimEnter", "WinEnter", "WinLeave", "BufEnter" }, {
   callback = function()
     -- normal buffer (not terminal or prompt or NvimTree)
     if vim.bo.buftype ~= "" then
@@ -38,6 +38,10 @@ autocmd({ "CursorMoved" }, {
       return
     end
 
+    -- disabled when debugging
+    if require("dap").status() ~= "" then
+      return
+    end
 
     local windowLines = vim.api.nvim_win_get_height(0)
     local currLine = vim.fn.line(".")
@@ -149,6 +153,7 @@ for language, askConfirmation in pairs(templates) do
       end
       local templatePath = GetConfigFolder() .. "/lua/templates/template." .. language
       vim.api.nvim_input(":0r " .. templatePath .. "<CR>") -- insert template file
+      ClearCommandLine()
     end,
     pattern = "*." .. language
   })
@@ -336,6 +341,12 @@ end
 
 vim.api.nvim_create_user_command(
   "ToggleAutoFormat",
+  "lua ToggleAutoFormat()",
+  {}
+)
+
+vim.api.nvim_create_user_command(
+  "AF",
   "lua ToggleAutoFormat()",
   {}
 )

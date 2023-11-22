@@ -27,10 +27,11 @@ require("plugins.vimtex")            -- to add latex compilation and live rander
 require("plugins.alpha-nvim")        -- to add a nice welcome screen (after ...line plugins)
 require("plugins.nvim-treesitter")   -- better highlighting and object selection
 require("plugins.lsp")               -- handle language server protocols
+require("plugins.formatting")        -- handle formatting (when not available with LSP)
 require("plugins.nvim-cmp")          -- handle autocompletion
 require("plugins.nvim-tree")         -- file tree
 require("plugins.dap")               -- set debugger (after colorscheme)
-require("plugins.nvim-scrollbar")   -- Add a scrollbar
+require("plugins.nvim-scrollbar")    -- Add a scrollbar
 require("plugins.nvim-surround")     -- Add a surrounding action (with s)
 
 

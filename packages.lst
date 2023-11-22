@@ -13,7 +13,8 @@ firefox
 joplin-appimage
 solaar  # logitech device manager
 normcap # ocr
-notion-app
+notion-app-electron
+anytype
 onlyoffice-bin
 spotify
 simplenote-electron-bin
@@ -56,7 +57,7 @@ kdegraphics-thumbnailers # pdf thumbnails
 ffmpegthumbs             # video thumbnails
 nm-connection-editor
 appmenu-gtk-module
-kde-servicemenus-pdf # pdf actions in dolphin
+# kde-servicemenus-pdf # pdf actions in dolphin (no more available)
 
 # CLI Apps
 neofetch
@@ -119,3 +120,5 @@ wmctrl
 xdg-desktop-portal
 p7zip
 termscp-bin
+ddcutil # to change external display brightness
+pipx # to install python global packages

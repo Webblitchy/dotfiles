@@ -1,9 +1,13 @@
 -- nvim-cmp setup
-local cmp = require 'cmp'
-local luasnip = require 'luasnip'
+local cmp = require("cmp")
+local luasnip = require("luasnip")
 local lspkind = require("lspkind") -- add icons in completion menu
 
 cmp.setup {
+  window = {
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
+  },
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)
@@ -28,7 +32,7 @@ cmp.setup {
       if cmp.visible() then
         cmp.select_next_item()
       elseif luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
+        -- luasnip.expand_or_jump()
       else
         fallback()
       end
@@ -37,7 +41,7 @@ cmp.setup {
       if cmp.visible() then
         cmp.select_prev_item()
       elseif luasnip.jumpable(-1) then
-        luasnip.jump(-1)
+        -- luasnip.jump(-1)
       else
         fallback()
       end

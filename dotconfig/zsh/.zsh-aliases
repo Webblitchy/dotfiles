@@ -8,6 +8,7 @@ alias mv='mv -i'
 alias grep='grep --color=auto'
 alias ip='ip -c -br'                                  # color and brief
 alias bat='bat --style header,header-filename,header-filesize,grid,snip'
+alias nvim='f(){ env TERM=wezterm nvim "$@" }; f'
 if [[ -f /usr/bin/rmtrash ]]; then
 # need rmtrash
      alias rm='rmtrash'
@@ -21,10 +22,9 @@ alias powertop='sudo powertop'
 # new commands
 alias ll='lsd -Al --date +"%e %h %Y|%R" --blocks permission,size,date,name --group-dirs first -I .directory'
 alias open='xdg-open $1 &>/dev/null'
-alias vrc='vim ~/.vimrc'
 alias nrc='cd ~/.config/nvim/lua'
-alias zrc='nvim ~/.zshrc; source ~/.zshrc'
-alias tb='cd /home/eliott/kDrive/HEIG-VD/S6/TB'
+alias zrc='nvim $ZDOTDIR/.zshrc; source $ZDOTDIR/.zshrc'
+alias zalias='nvim $ZDOTDIR/.zsh-aliases; source $ZDOTDIR/.zsh-aliases'
 alias hello="notify-send 'Hello world!' 'This is an example notification.' --icon=dialog-information"
 alias wifi-list='nmcli device wifi'
 alias wifi-connect='nmcli device wifi connect --ask'

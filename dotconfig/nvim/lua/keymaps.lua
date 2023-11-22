@@ -37,7 +37,7 @@ map("n", "<Esc>", "<Esc>:echo ''<CR>", { silent = true })
 map({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 
-map("n", "<CR>", "ciw") -- enter to change word in normal mode
+map("n", "<CR>", "") -- disable return in normal mode
 
 
 -- Add a message when restartingSearch
@@ -97,7 +97,6 @@ map("n", "mm", ToggleGlobalMark)
 map("n", "md", "<Plug>(Marks-deleteline)")
 
 -- Diagnostic keymaps (warnings and errors)
--- TODO: useful ?
 map('n', '[d', vim.diagnostic.goto_prev, { desc = "Goto previous diagnostic" })
 map('n', ']d', vim.diagnostic.goto_next, { desc = "Goto next diagnostic" })
 map('n', '<leader>e', vim.diagnostic.open_float, { desc = "Diagnostic popup" })

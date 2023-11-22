@@ -98,13 +98,17 @@ require('lualine').setup {
 
             local lsps = {}
             for i, client in ipairs(clients) do
-              local lsp = client.name
-              if lsp == "null-ls" then
-                lsp = GetNullLsps()
-              end
-              lsps[i] = lsp
+              lsps[i] = client.name
             end
-            local runningLsp = "󰦕 LSP [" .. table.concat(lsps, " | ") .. "]"
+            local runningLsp = "󰦕 LSP ["
+            runningLsp = runningLsp .. table.concat(lsps, " | ")
+            if GetConformFormatters() ~= "" then
+              if #lsps > 0 then
+                runningLsp = runningLsp .. " | "
+              end
+              runningLsp = runningLsp .. GetConformFormatters()
+            end
+            runningLsp = runningLsp .. "]"
             if #runningLsp + 65 > vim.fn.winwidth(0) then
               runningLsp = "󰦕 LSP"
             end
@@ -232,8 +236,8 @@ require("lsp-progress").setup({
     if #series_messages > 0 then
       for _, act_client in ipairs(GetBufferLSPs()) do
         if act_client.name == client_name then
-          if client_name == "null-ls" then
-            client_name = GetNullLsps()
+          if client_name == "conform" then
+            client_name = GetConformFormatters()
           end
           local lastMsg = series_messages[#series_messages]
           return "[" .. client_name .. "] " .. spinner .. " " .. lastMsg

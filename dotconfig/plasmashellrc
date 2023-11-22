@@ -15,7 +15,7 @@ eDP-1 DP-3 Width 1920x1080=1300
 Number of Actions=0
 
 [KFileDialog Settings]
-Recent Files[$e]=abstergo-transparent-small.png,file:$HOME/Pictures/TokioStreetWallpaper/1.jpg,file:$HOME/Pictures/wallpapers/wallpaper.avif,file:$HOME/Pictures/abstergo-transparent-small.png
+Recent Files[$e]=abstergo-transparent-small.png,file:$HOME/Pictures/wallpapers/wallpaper.avif,file:$HOME/Pictures/TokioStreetWallpaper/1.jpg,file:$HOME/Pictures/abstergo-transparent-small.png
 Recent URLs[$e]=file:$HOME/Downloads/,file:$HOME/Pictures/,file:$HOME/,file:$HOME/Documents/,file:$HOME/kDrive/,file:$HOME/Pictures/wallpapers/,file:$HOME/Desktop/,file:$HOME/Pictures/TokioStreetWallpaper/
 detailViewIconSize=16
 
@@ -23,7 +23,7 @@ detailViewIconSize=16
 1920x1080 screen: Height=598
 1920x1080 screen: Width=435
 2 screens: Height=634
-2 screens: Width=488
+2 screens: Width=580
 eDP-1 DP-3 Height 1920x1080=545
 eDP-1 DP-3 Height 2560x1440=584
 eDP-1 DP-3 Width 1920x1080=345
@@ -32,7 +32,7 @@ eDP-1 Height 1920x1080 eDP-1=598
 eDP-1 Width 1920x1080 eDP-1=435
 
 [PlasmaTransientsConfig]
-PreloadWeight=26
+PreloadWeight=0
 
 [PlasmaViews][Panel 11][Defaults]
 thickness=27
@@ -147,4 +147,4 @@ thickness=32
 3=DP-1-3
 
 [Updates]
-performed=/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/containmentactions_middlebutton.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/obsolete_kickoffrc.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/move_desktop_layout_config.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/klipper_clear_config.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/systemloadviewer_systemmonitor.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/unlock_widgets.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/digitalclock_rename_timezonedisplay_key.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/maintain_existing_desktop_icon_sizes.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/no_middle_click_paste_on_panels.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/keyboardlayout_migrateiconsetting.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/digitalclock_migrate_font_settings.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/keyboardlayout_remove_shortcut.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/mediaframe_migrate_useBackground_setting.js
+performed=/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/containmentactions_middlebutton.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/obsolete_kickoffrc.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/move_desktop_layout_config.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/klipper_clear_config.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/systemloadviewer_systemmonitor.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/unlock_widgets.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/digitalclock_rename_timezonedisplay_key.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/maintain_existing_desktop_icon_sizes.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/no_middle_click_paste_on_panels.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/keyboardlayout_migrateiconsetting.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/digitalclock_migrate_font_settings.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/keyboardlayout_remove_shortcut.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/mediaframe_migrate_useBackground_setting.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/folderview_fix_recursive_screenmapping.js

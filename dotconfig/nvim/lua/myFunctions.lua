@@ -46,12 +46,12 @@ function GetBufferLSPs(bufNbr)
   return lspsReindexed
 end
 
-function GetNullLsps()
-  local nullLsps = {}
-  for j, nullLsp in ipairs(require("null-ls").get_source({ filetype = vim.bo.filetype })) do
-    nullLsps[j] = nullLsp.name
+function GetConformFormatters()
+  local formatters = {}
+  for i, formatter in ipairs(require("conform").list_formatters()) do
+    formatters[i] = formatter.name
   end
-  return table.concat(nullLsps, " | ")
+  return table.concat(formatters, " | ") -- return "" if no formatters
 end
 
 function GetParentFolderPath()
@@ -172,8 +172,8 @@ function CanFormat()
   local bufFiletype = vim.api.nvim_buf_get_option(bufNbr, "filetype")
 
 
-  if GetBufferLSPs(bufNbr)[1].server_capabilities.documentFormattingProvider                                    -- can format with LSP
-      or #require("null-ls.sources").get_available(bufFiletype, require("null-ls").methods.FORMATTING) > 0 then -- can format with null ls
+  if GetBufferLSPs(bufNbr)[1].server_capabilities.documentFormattingProvider -- can format with LSP
+      or #require("conform").list_formatters(bufNbr) > 0 then
     return true
   end
   return false
@@ -184,6 +184,8 @@ function FormatOnSave()
     return
   end
 
+  local bufNbr = vim.api.nvim_get_current_buf()
+
   if GetBufferLSPs()[1].server_capabilities.documentFormattingProvider then -- can format with LSP
     local lspState = vim.lsp.util.get_progress_messages()[1]
     if lspState ~= nil then                                                 -- if has progress messages
@@ -191,9 +193,9 @@ function FormatOnSave()
         return
       end
     end
-    vim.lsp.buf.format({ async = false })                                                                           -- is async so it can save before quitting
-  elseif #require("null-ls.sources").get_available(vim.bo.filetype, require("null-ls").methods.FORMATTING) > 0 then -- can format with null ls
-    vim.lsp.buf.format({ async = false })                                                                           -- is async so it can save before quitting
+    vim.lsp.buf.format({ async = false }) -- is async so it can save before quitting
+  elseif #require("conform").list_formatters(bufNbr) > 0 then
+    require("conform").format({ async = false })
   end
   -- when saving with :wq
   -- if vim.lsp.buf.server_ready()

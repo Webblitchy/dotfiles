@@ -131,17 +131,17 @@ ForegroundPositive=39,174,96
 ForegroundVisited=155,89,182
 
 [General]
-ColorScheme=BreezeDarkV2
-Name=Breeze Dark V2
+ColorScheme=BreezeDarkTransparent
+Name=Breeze Dark Transparent
 shadeSortColumn=true
 
 [KDE]
 contrast=4
 
 [WM]
-activeBackground=49,54,59
+activeBackground=49,54,59,204
 activeBlend=252,252,252
 activeForeground=252,252,252
-inactiveBackground=42,46,50
+inactiveBackground=42,46,50,204
 inactiveBlend=161,169,177
 inactiveForeground=161,169,177

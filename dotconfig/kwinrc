@@ -124,9 +124,7 @@ tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"wi
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
 [org.kde.kdecoration2]
-BorderSize=None
-BorderSizeAuto=false
-ButtonsOnLeft=FS
+ButtonsOnLeft=F
 ButtonsOnRight=AIX
-library=org.kde.kwin.aurorae
-theme=__aurorae__svg__Sweet-Dark
+library=org.kde.lightly
+theme=Lightly

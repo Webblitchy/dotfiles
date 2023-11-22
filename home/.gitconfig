@@ -10,10 +10,11 @@
     autostash = true
 [core]
     editor = nvim
-    excludesfile = ~/.gitignore_global
+    excludesfile = ~/.config/git/gitignore_global
 [alias]
     graph = log --all --decorate --oneline --graph
     poule = pull
+    s = status
 [init]
     defaultBranch = main
 [advice]

@@ -121,32 +121,14 @@ mason_lspconfig.setup_handlers {
 -- to disable small functions as one-liners (with LLVM style)
 table.insert(require("lspconfig")["clangd"].cmd, "--fallback-style=Chromium")
 
-
--- [ NULL-LS ]
-local null_ls_status_ok, null_ls = pcall(require, "null-ls")
-if not null_ls_status_ok then
-  return
-end
-
-local formatting = null_ls.builtins.formatting
-local diagnostics = null_ls.builtins.diagnostics
-
-null_ls.setup({
-  debug = false,
-  sources = {
-    formatting.black, -- python formatting
-    formatting.shfmt, -- bash formatting
-
-  },
+-- Change border of documentation hover window (Shift-K), See https://github.com/neovim/neovim/pull/13998.
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+  border = "rounded",
 })
-
--- Auto Download Null-LS sources
-require("mason-null-ls").setup({
-  ensure_installed = nil,
-  automatic_installation = true, -- auto install formatters defined in null-ls
-  automatic_setup = false,
+-- Same for signatureHelp (Ctrl-k)
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+  border = "rounded",
 })
-
 
 -- Edit lsp diagnostics signs (in margin)
 local signs = require("../icons").lspSigns
@@ -155,13 +137,15 @@ for type, icon in pairs(signs) do
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
--- Edit inline diagnostic preferences
+-- Edit inline (+ popup) diagnostic preferences
 vim.diagnostic.config({
   virtual_text = {
     prefix = "", -- Could be 󰔰 󰜋 󰹞 󰏃 󰊍 󰭹  ■ ▎ (one char width is better)
   },
   severity_sort = true,
+  -- update_in_insert = true, -- overwhelming
   float = {
-    source = "always",
+    source = "if_many", -- or "always"
+    border = "rounded",
   },
 })

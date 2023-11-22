@@ -1,4 +1,6 @@
-local unselected_color = GetHex("LineNr", "fg") -- gray color
+local color = require("colorscheme")
+
+local unselected_color = color["lightGray1"]
 
 local components = {
   space = {
@@ -30,7 +32,7 @@ local components = {
       return buffer.is_focused
     end,
     fg = function(buffer)
-      return buffer.is_focused and buffer.diagnostics.errors ~= 0 and GetHex("DiagnosticError", "fg")
+      return buffer.is_focused and buffer.diagnostics.errors ~= 0 and color["red"]
           or nil
     end,
     truncation = {
@@ -65,11 +67,11 @@ require('cokeline').setup({
     fg = function(buffer)
       return
           buffer.is_focused
-          and GetHex('Normal', 'fg')
+          and color["white"]
           or unselected_color
     end,
     bg = function(buffer)
-      return GetHex("CursorColumn", "bg") -- same color as the rest of the bar
+      return color["lightBlack"] -- same color as the rest of the bar
     end,
   },
   sidebar = {
@@ -82,7 +84,7 @@ require('cokeline').setup({
           local margin = string.rep("—", borderLen)
           return margin .. " " .. title .. " " .. margin
         end,
-        fg = GetHex('Boolean', 'fg'), -- orange
+        fg = color["orange"],
         bg = "none",
         bold = true,
       },

@@ -1,5 +1,14 @@
 #!/bin/bash
 
+function asUser {
+	if [[ $# -lt 1 ]]; then
+		echo "Enter a parameter !"
+		return
+	fi
+
+	sudo -u $SUDO_USER $@
+}
+
 if (($EUID != 0)); then
 	echo "Please run as root"
 	exit 1
@@ -15,11 +24,11 @@ reflector --sort rate --protocol https --latest 5 --save /etc/pacman.d/mirrorlis
 
 # Install packages
 cat packages.lst |
-	grep -o '^[^#]*' |                                                # select only non-comments
-	xargs sudo -u $SUDO_USER yay -Syu --needed --noconfirm --sudoloop # yay cannot be run as root
+	grep -o '^[^#]*' |                                    # select only non-comments
+	xargs asUser yay -Syu --needed --noconfirm --sudoloop # yay cannot be run as root
 
 # to copy dolphin layout files
-sudo -u $SUDO_USER mkdir ~/.local/share/kxmlgui5 2>/dev/null
+asUser mkdir ~/.local/share/kxmlgui5 2>/dev/null
 
 # remove useless dirs
 rm -r ~/Templates 2>/dev/null
@@ -31,7 +40,7 @@ for file in .*; do
 	if [[ "$file" == "." ]] || [[ "$file" == ".." ]]; then
 		continue
 	fi
-	sudo -u $SUDO_USER ln -sf ~/.dotfiles/home/$file ~/$file
+	asUser ln -sf ~/.dotfiles/home/$file ~/$file
 done
 cd ..
 
@@ -42,7 +51,7 @@ for dotDir in */; do
 	for dir in $dotDir*; do
 		unescapedDir=$(echo $dir | sed "s/dot/./g" | sed "s/_/\//g")
 		rm -rf ~/$unescapedDir 2>/dev/null
-		sudo -u $SUDO_USER ln -sf ~/.dotfiles/$dir ~/$unescapedDir 2>/dev/null ||
+		asUser ln -sf ~/.dotfiles/$dir ~/$unescapedDir 2>/dev/null ||
 			echo "$dir cannot be transfered" # message when error
 	done
 done
@@ -50,18 +59,18 @@ done
 # Copy specifc settings
 
 # Change defaults
-sudo -u $SUDO_USER cp ~/.dotfiles/manual/mimeapps.list ~/.config/mimeapps.list
+asUser cp ~/.dotfiles/manual/mimeapps.list ~/.config/mimeapps.list
 
 # libinput gestures
 gpasswd -a $SUDO_USER input
-sudo -u $SUDO_USER libinput-gestures-setup autostart
+asUser libinput-gestures-setup autostart
 
 # virtualbox
 usermod -aG vboxusers $SUDO_USER
 
 # vscode settings
-sudo -u $SUDO_USER mkdir -p ~/.config/Code/User 2>/dev/null
-sudo -u $SUDO_USER ln -sf ~/.dotfiles/vscode/settings.json ~/.config/Code/User/settings.json
+asUser mkdir -p ~/.config/Code/User 2>/dev/null
+asUser ln -sf ~/.dotfiles/vscode/settings.json ~/.config/Code/User/settings.json
 
 # jetbrains settings
 programs=("clion" "intellij" "pycharm")
@@ -71,22 +80,28 @@ for nickname in ${programs[@]}; do
 	fi
 	timeout 1s /bin/$nickname* # open the app to create the config folder
 	program=$(ls ~/.config/JetBrains | grep -i $nickname)
-	sudo -u $SUDO_USER mkdir -p ~/.config/JetBrains/$program/options 2>/dev/null
+	asUser mkdir -p ~/.config/JetBrains/$program/options 2>/dev/null
 	for file in $(ls ~/.dotfiles/jetbrains/); do
-		sudo -u $SUDO_USER ln -sf ~/.dotfiles/jetbrains/$file ~/.config/JetBrains/$program/options/$file
+		asUser ln -sf ~/.dotfiles/jetbrains/$file ~/.config/JetBrains/$program/options/$file
 	done
 done
 
 # install rust
-sudo -u $SUDO_USER curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sudo -u $SUDO_USER sh -s -- -y
-sudo -u $SUDO_USER mkdir ~/.cargo 2>/dev/null
-sudo -u $SUDO_USER ln -sf ~/.dotfiles/manual/cargo-config.toml ~/.cargo/config.toml
+asUser curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | asUser sh -s -- -y
+asUser mkdir ~/.cargo 2>/dev/null
+asUser ln -sf ~/.dotfiles/manual/cargo-config.toml ~/.cargo/config.toml
+
+# install ddcci-plasmoid (to set external display brightness)
+cp /usr/share/ddcutil/data/45-ddcutil-i2c.rules /etc/udev/rules.d
+groupadd --system i2c
+usermod -aG i2c $SUDO_USER
+echo i2c_dev | tee /etc/modules-load.d/i2c_dev.conf
+asUser pipx install ddcci-plasmoid-backend
 
 # transfer wallpapers
-sudo -u $SUDO_USER mkdir ~/Pictures/wallpapers 2>/dev/null
-sudo -u $SUDO_USER ln -sfT ~/.dotfiles/wallpapers ~/Pictures/wallpapers # -T because a directory
-sudo -u $SUDO_USER ln -sf ~/.dotfiles/media/abstergo-transparent-small.png ~/Pictures/abstergo-transparent-small.png
-sudo -u $SUDO_USER plasma-apply-wallpaperimage ~/Pictures/wallpapers/wallhaven-136m9w.png
+asUser ln -sfT ~/.dotfiles/wallpapers ~/Pictures/wallpapers # -T because a directory
+asUser ln -sf ~/.dotfiles/media/abstergo-transparent-small.png ~/Pictures/abstergo-transparent-small.png
+asUser plasma-apply-wallpaperimage ~/Pictures/wallpapers/wallhaven-136m9w.png
 
 # transfer sddm background
 # (doesn't work with ln)
@@ -110,7 +125,7 @@ sed -i -E "/^Exec=/s/--cwd ./--cwd . --always-new-process/" /usr/share/applicati
 echo 'EOS_YAD_TERMINAL="wezterm"' >>/etc/eos-script-lib-yad.conf
 
 # Apply icon theme
-# sudo -u $SUDO_USER /usr/lib/plasma-changeicons ~/.local/share/icons/kora
+# asUser /usr/lib/plasma-changeicons ~/.local/share/icons/kora
 # (already applied)
 
 # Make fonts available on system (p.ex filename in Dolphin)
@@ -121,12 +136,12 @@ saveFirefoxData() {
 	# if too big, clear cache before
 	oldPath=$(pwd)
 	cd ~/
-	sudo -u $SUDO_USER tar -jcvf dotmozilla.tar.bz2 .mozilla
-	sudo -u $SUDO_USER mv dotmozilla.tar.bz2 ~/.dotfiles/
+	asUser tar -jcvf dotmozilla.tar.bz2 .mozilla
+	asUser mv dotmozilla.tar.bz2 ~/.dotfiles/
 	cd ~/.dotfiles
 	read -sp "You will have to enter the key to encrypt Firefox profile [Enter]"
 	echo
-	sudo -u $SUDO_USER gpg -c dotmozilla.tar.bz2
+	asUser gpg -c dotmozilla.tar.bz2
 	rm dotmozilla.tar.bz2
 	cd $oldPath
 }
@@ -138,18 +153,21 @@ restoreFirefoxData() {
 	rm -rf ~/.mozilla 2>/dev/null
 	read -sp "You will have to enter the key to decrypt Firefox profile [Enter]"
 	echo
-	sudo -u $SUDO_USER gpg ~/.dotfiles/dotmozilla.tar.bz2.gpg
-	sudo -u $SUDO_USER mv ~/.dotfiles/dotmozilla.tar.bz2 ./
-	sudo -u $SUDO_USER tar -xvf ~/dotmozilla.tar.bz2
+	asUser gpg ~/.dotfiles/dotmozilla.tar.bz2.gpg
+	asUser mv ~/.dotfiles/dotmozilla.tar.bz2 ./
+	asUser tar -xvf ~/dotmozilla.tar.bz2
 	rm ~/dotmozilla.tar.bz2
 	cd $oldPath
 }
 
 # Smooth scroll firefox
-sudo -u $SUDO_USER echo export MOZ_USE_XINPUT2=1 | sudo tee /etc/profile.d/use-xinput2.sh
+echo export MOZ_USE_XINPUT2=1 | tee /etc/profile.d/use-xinput2.sh
 
-# Set too many errors password time to 10s
-sed -i '45 a\unlock_time = 10' /etc/security/faillock.conf
+# Set zsh config file path
+echo export ZDOTDIR='$HOME/.config/zsh' >>/etc/zsh/zshenv
+
+# Set too many errors (3) password time to 30s
+sed -i -E '/# unlock_time = /s/.+/unlock_time = 60/' /etc/security/faillock.conf
 
 # set grub chose time to 0 seconds
 sed -i -E "/GRUB_TIMEOUT/s/[0-9]+/0/" /etc/default/grub
@@ -179,7 +197,7 @@ chsh -s /bin/zsh $SUDO_USER
 # restoreFirefoxData
 
 echo Everything is done !
-read -p "Do you want to reboot to apply config ?[y/n]: " userEntry
-if [[ "$userEntry" == "y" ]]; then
+read -p "Do you want to reboot to apply config ?[y/N]: " shouldRestart
+if [[ "$shouldRestart" == "y" ]]; then
 	shutdown -r now
 fi

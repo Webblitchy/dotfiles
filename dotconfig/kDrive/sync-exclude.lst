@@ -1,0 +1,11 @@
+]*.log
+]*.mypyg
+]*.toc
+].bloop
+].fingerprint
+].gradle
+].metals
+].venv
+]build
+]node_modules
+]target

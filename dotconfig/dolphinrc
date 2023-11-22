@@ -11,7 +11,12 @@ ShowAddToPlaces=false
 
 [DetailsMode]
 ExpandableFolders=false
-PreviewSize=64
+PreviewSize=96
+
+[ExtractDialog]
+1920x1080 screen: Height=560
+1920x1080 screen: Width=1280
+DirHistory[$e]=$HOME/Downloads/,$HOME/Downloads/ch99/mounted/Files/,$HOME/Downloads/ch99/,$HOME/Downloads/challfor/,$HOME/Downloads/chall20/
 
 [General]
 AutoExpandFolders=true
@@ -34,6 +39,9 @@ dateFormat=ShortFormat
 [KFileDialog Settings]
 Places Icons Auto-resize=false
 Places Icons Static Size=22
+Recent Files[$e]=file:$HOME
+Recent URLs[$e]=file:$HOME/Downloads/chall20/,file:$HOME/Downloads/challfor/,file:$HOME/Downloads/ch99/,file:$HOME/Downloads/,file:$HOME/Downloads/ch99/mounted/Files/,file:$HOME/
+detailViewIconSize=16
 
 [KPropertiesDialog]
 1536x864 screen: Height=496

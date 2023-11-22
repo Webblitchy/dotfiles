@@ -8,3 +8,7 @@ dotconfig/nvim/backup/*
 dotconfig/nvim/lazy-lock.json
 dotconfig/qBittorrent
 !dotconfig/qBittorrent/qBittorrent.conf
+
+dotconfig/zsh/.zhistory
+dotconfig/zsh/.zcompdump
+dotconfig/zsh/cache

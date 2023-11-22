@@ -28,8 +28,8 @@ zstyle ':completion:*' rehash true                              # automatically 
 # Speed up completions
 zstyle ':completion:*' accept-exact '*(N)'
 zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path ~/.zsh/cache
-HISTFILE=~/.zhistory
+zstyle ':completion:*' cache-path $ZDOTDIR/cache
+HISTFILE=$ZDOTDIR/.zhistory
 HISTSIZE=10000
 SAVEHIST=10000
 WORDCHARS=${WORDCHARS//\/[&.;]}                                 # Don't consider certain characters part of the word
@@ -86,7 +86,7 @@ source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Load my p10k config
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+[[ ! -f $ZDOTDIR/.p10k.zsh ]] || source $ZDOTDIR/.p10k.zsh
 
 # Use syntax highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -207,29 +207,11 @@ alias ls='ls --group-directories-first $LS_OPTIONS'
 
 
 #######################################################################
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=244'
-
-
-
-export EDITOR="nvim"
-
-
-# Apply fzf-gruvbox theme
-# https://github.com/base16-project/base16-fzf
-source ~/.config/fzf-gruvbox.config
-export BAT_THEME="gruvbox-dark"
-
-# To use docker constant like on mac or windows
-export DOCKER_GATEWAY_HOST=172.17.0.1
-
-
-# To use local bin programs as in bin
-export PATH="$PATH:$HOME/.local/bin"
 
 
 # Autojump
 [[ -s /etc/profile.d/autojump.sh ]] && source /etc/profile.d/autojump.sh
 
 # Add aliases
-[[ -f ~/.dotfiles/home/.zsh-aliases ]] && source ~/.dotfiles/home/.zsh-aliases
+[[ -f $ZDOTDIR/.zsh-aliases ]] && source $ZDOTDIR/.zsh-aliases
 

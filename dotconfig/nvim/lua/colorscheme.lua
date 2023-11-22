@@ -43,81 +43,46 @@ require("catppuccin").setup({
     },
     mason = true,
     which_key = true,
-
+    native_lsp = {
+      enabled = true,
+      underlines = {
+        errors = { "undercurl" },
+        warnings = { "undercurl" },
+        hints = {},
+        information = {},
+      },
+    },
     -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
   },
 })
 
--- GRUVBOX
--- local gruvbox_palette = require("gruvbox.palette").colors
--- require("gruvbox").setup({
---   undercurl = true,
---   underline = true,
---   bold = true,
---   italic = {
---     comments = true,
---     strings = false,
---     operators = false,
---     folds = true
---   },
---   strikethrough = true,
---   invert_selection = true,
---   invert_signs = false,
---   invert_tabline = false,
---   invert_intend_guides = false,
---   inverse = true, -- invert background for search, diffs, statuslines and errors
---   contrast = "",  -- can be "hard", "soft" or empty string
---   palette_overrides = {},
---   overrides = {
---     CursorLineNr = { fg = gruvbox_palette.bright_orange, bg = "NONE" }, -- current line
---     IncSearch = { fg = gruvbox_palette.bright_green },                  -- search selection
---   },
---   dim_inactive = false,
---   transparent_mode = true, -- disable background color for transparent terminal
--- })
---
-
---]]
-
 -- enable theme
-
--- vim.cmd("colorscheme gruvbox")
 vim.cmd.colorscheme("catppuccin")
--- color variables
--- GRUVBOX
--- local green = gruvbox_palette.bright_green    -- #b8bb26
--- local blue = gruvbox_palette.neutral_aqua     -- #689d6a
--- local lightBlue = gruvbox_palette.bright_aqua -- #8ec07c
--- local red = gruvbox_palette.bright_red        -- #fb4934
--- local orange = gruvbox_palette.faded_yellow   -- #b57614
--- local yellow = gruvbox_palette.bright_yellow  -- #fabd2f
--- local black = gruvbox_palette.dark0           -- #282828
--- local darkGray = gruvbox_palette.dark1        -- #3c3836
--- local gray = gruvbox_palette.dark3            -- #665c54
--- local darkWhite = gruvbox_palette.light4      -- #a89984
--- local white = gruvbox_palette.light1          -- #ebdbb2
 
 
--- catppuccin
-local green      = catppuccin_palette.green    -- #A6E3A1
-local lightGreen = catppuccin_palette.teal     -- #94E2D5
-local blue       = catppuccin_palette.sapphire -- #74C7EC
-local lightBlue  = catppuccin_palette.sky      -- #89DCEB
-local red        = catppuccin_palette.red      -- #F38BA8
-local pink       = catppuccin_palette.pink     -- #F5C2E7
-local purple     = catppuccin_palette.mauve    -- #CBA6F7
-local orange     = catppuccin_palette.peach    -- #FAB387
-local yellow     = catppuccin_palette.yellow   -- #F9E2AF
-local black      = catppuccin_palette.crust    -- #11111B
-local darkGray   = catppuccin_palette.mantle   -- #181825
-local background = catppuccin_palette.base     -- #1E1E2E
-local gray       = catppuccin_palette.surface1 -- #45475A
-local lightGray1 = catppuccin_palette.overlay0 -- #6C7086
-local lightGray2 = catppuccin_palette.overlay1 -- #7F849C
-local lightGray3 = catppuccin_palette.overlay2 -- #9399B2
-local lightGray4 = catppuccin_palette.subtext0 -- #A6ADC8
-local darkWhite  = catppuccin_palette.subtext1 -- #BAC2DE
-local white      = catppuccin_palette.text     -- #CDD6F4
+-- catppuccin mocha colors
+Colors = {
+  green       = catppuccin_palette.green,     -- #A6E3A1
+  lightGreen  = catppuccin_palette.teal,      -- #94E2D5
+  blue        = catppuccin_palette.sapphire,  -- #74C7EC
+  lightBlue   = catppuccin_palette.sky,       -- #89DCEB
+  red         = catppuccin_palette.red,       -- #F38BA8
+  pink        = catppuccin_palette.pink,      -- #F5C2E7
+  purple      = catppuccin_palette.mauve,     -- #CBA6F7
+  orange      = catppuccin_palette.peach,     -- #FAB387
+  lightOrange = catppuccin_palette.rosewater, -- #F5E0DC
+  yellow      = catppuccin_palette.yellow,    -- #F9E2AF
+  black       = catppuccin_palette.crust,     -- #11111B
+  lightBlack  = catppuccin_palette.mantle,    -- #181825
+  background  = catppuccin_palette.base,      -- #1E1E2E
+  gray        = catppuccin_palette.surface1,  -- #45475A
+  lightGray1  = catppuccin_palette.overlay0,  -- #6C7086
+  lightGray2  = catppuccin_palette.overlay1,  -- #7F849C
+  lightGray3  = catppuccin_palette.overlay2,  -- #9399B2
+  lightGray4  = catppuccin_palette.subtext0,  -- #A6ADC8
+  darkWhite   = catppuccin_palette.subtext1,  -- #BAC2DE
+  white       = catppuccin_palette.text,      -- #CDD6F4
+}
 
 
 -- git sign colors
@@ -129,12 +94,12 @@ local white      = catppuccin_palette.text     -- #CDD6F4
 -- vim.cmd("highlight GitSignsUntracked guibg=NONE guifg=" .. orange)
 
 -- Make :%s more visible
-vim.cmd.highlight("Substitute guibg=" .. pink .. " guifg=" .. gray)
+vim.cmd.highlight("Substitute guibg=" .. Colors["pink"] .. " guifg=" .. Colors["gray"])
 
 -- Lighter colors for transparent window
-vim.cmd.highlight("LineNr guibg=NONE guifg=" .. lightGray1)
-vim.cmd.highlight("Comment guibg=NONE guifg=" .. pink) --lightGray3
-vim.cmd.highlight("Visual guibg=" .. lightGray1)
+vim.cmd.highlight("LineNr guibg=NONE guifg=" .. Colors["lightGray1"])
+vim.cmd.highlight("Comment guibg=NONE guifg=" .. Colors["lightOrange"]) --lightGray3
+vim.cmd.highlight("Visual guibg=" .. Colors["lightGray1"])
 
 
 -- lsp colors
@@ -144,64 +109,66 @@ vim.cmd("highlight DiagnosticVirtualTextInfo guibg=NONE")
 vim.cmd("highlight DiagnosticVirtualTextHint guibg=NONE")
 
 -- Indent signs
-vim.cmd("highlight IndentBlanklineChar guifg=" .. darkGray)               -- Indent line : very dark comments
-vim.cmd("highlight IndentBlanklineContextChar guifg=" .. gray)            -- Current indent line
-vim.cmd("highlight IndentBlanklineSpaceChar guifg=" .. lightGray1)        -- space
-vim.cmd("highlight IndentBlanklineContextSpaceChar guifg=" .. lightGray1) -- space
+vim.cmd("highlight IndentBlanklineChar guifg=" .. Colors["lightBlack"])             -- Indent line : very dark comments
+vim.cmd("highlight IndentBlanklineContextChar guifg=" .. Colors["gray"])            -- Current indent line
+vim.cmd("highlight IndentBlanklineSpaceChar guifg=" .. Colors["lightGray1"])        -- space
+vim.cmd("highlight IndentBlanklineContextSpaceChar guifg=" .. Colors["lightGray1"]) -- space
 
 -- Dap
-vim.api.nvim_set_hl(0, 'DapBreakpoint', { ctermbg = 0, fg = red, bg = '' })
-vim.api.nvim_set_hl(0, 'DapStopped', { ctermbg = 0, fg = blue, bg = '' })
+vim.api.nvim_set_hl(0, 'DapBreakpoint', { ctermbg = 0, fg = Colors["red"], bg = '' })
+vim.api.nvim_set_hl(0, 'DapStopped', { ctermbg = 0, fg = Colors["blue"], bg = '' })
 
 -- DapUI
-vim.cmd("highlight DapUIBreakpointsDisabledLine guifg=" .. darkGray)
-vim.cmd("highlight DapUIBreakpointsCurrentLine guifg=" .. lightGreen)
-vim.cmd("highlight DapUICurrentFrameName guifg=" .. lightGreen)
-vim.cmd("highlight DapUIBreakpointsPath guifg=" .. lightBlue)
-vim.cmd("highlight DapUIBreakpointsLine guifg=" .. lightBlue)
-vim.cmd("highlight DapUIBreakpointsInfo guifg=" .. lightGreen)
-vim.cmd("highlight DapUIUnavailableNC guifg=" .. darkGray)
-vim.cmd("highlight DapUIStoppedThread guifg=" .. lightBlue)
-vim.cmd("highlight DapUIModifiedValue guifg=" .. lightBlue)
-vim.cmd("highlight DapUIWatchesValue guifg=" .. lightGreen)
-vim.cmd("highlight DapUIWatchesError guifg=" .. red)
-vim.cmd("highlight DapUIWatchesEmpty guifg=" .. red)
-vim.cmd("highlight DapUIUnavailable guifg=" .. darkGray)
-vim.cmd("highlight DapUIPlayPauseNC guifg=" .. lightGreen)
-vim.cmd("highlight DapUIFloatNormal guifg=" .. white)
-vim.cmd("highlight DapUIFloatBorder guifg=" .. lightBlue)
-vim.cmd("highlight DapUIEndofBuffer guifg=" .. white)
-vim.cmd("highlight DapUIStepOverNC guifg=" .. lightBlue)
-vim.cmd("highlight DapUIStepIntoNC guifg=" .. lightBlue)
-vim.cmd("highlight DapUIStepBackNC guifg=" .. lightBlue)
-vim.cmd("highlight DapUILineNumber guifg=" .. lightBlue)
-vim.cmd("highlight DapUIDecoration guifg=" .. lightBlue)
-vim.cmd("highlight DapUIWinSelect guifg=" .. lightBlue)
-vim.cmd("highlight DapUIStepOutNC guifg=" .. lightBlue)
-vim.cmd("highlight DapUIRestartNC guifg=" .. lightGreen)
-vim.cmd("highlight DapUIPlayPause guifg=" .. lightGreen)
-vim.cmd("highlight DapUIFrameName guifg=" .. white)
-vim.cmd("highlight DapUIVariable guifg=" .. white)
-vim.cmd("highlight DapUIStepOver guifg=" .. lightBlue)
-vim.cmd("highlight DapUIStepInto guifg=" .. lightBlue)
-vim.cmd("highlight DapUIStepBack guifg=" .. lightBlue)
-vim.cmd("highlight DapUINormalNC guifg=" .. white)
-vim.cmd("highlight DapUIStepOut guifg=" .. lightBlue)
-vim.cmd("highlight DapUIRestart guifg=" .. lightGreen)
-vim.cmd("highlight DapUIThread guifg=" .. lightGreen)
-vim.cmd("highlight DapUIStopNC guifg=" .. red)
-vim.cmd("highlight DapUISource guifg=" .. purple)
-vim.cmd("highlight DapUINormal guifg=" .. white)
-vim.cmd("highlight DapUIValue guifg=" .. white)
-vim.cmd("highlight DapUIScope guifg=" .. lightBlue)
-vim.cmd("highlight DapUIType guifg=" .. purple)
-vim.cmd("highlight DapUIStop guifg=" .. red)
+vim.cmd("highlight DapUIBreakpointsDisabledLine guifg=" .. Colors["lightBlack"])
+vim.cmd("highlight DapUIBreakpointsCurrentLine guifg=" .. Colors["lightGreen"])
+vim.cmd("highlight DapUICurrentFrameName guifg=" .. Colors["lightGreen"])
+vim.cmd("highlight DapUIBreakpointsPath guifg=" .. Colors["lightBlue"])
+vim.cmd("highlight DapUIBreakpointsLine guifg=" .. Colors["lightBlue"])
+vim.cmd("highlight DapUIBreakpointsInfo guifg=" .. Colors["lightGreen"])
+vim.cmd("highlight DapUIUnavailableNC guifg=" .. Colors["lightBlack"])
+vim.cmd("highlight DapUIStoppedThread guifg=" .. Colors["lightBlue"])
+vim.cmd("highlight DapUIModifiedValue guifg=" .. Colors["lightBlue"])
+vim.cmd("highlight DapUIWatchesValue guifg=" .. Colors["lightGreen"])
+vim.cmd("highlight DapUIWatchesError guifg=" .. Colors["red"])
+vim.cmd("highlight DapUIWatchesEmpty guifg=" .. Colors["red"])
+vim.cmd("highlight DapUIUnavailable guifg=" .. Colors["lightBlack"])
+vim.cmd("highlight DapUIPlayPauseNC guifg=" .. Colors["lightGreen"])
+vim.cmd("highlight DapUIFloatNormal guifg=" .. Colors["white"])
+vim.cmd("highlight DapUIFloatBorder guifg=" .. Colors["lightBlue"])
+vim.cmd("highlight DapUIEndofBuffer guifg=" .. Colors["white"])
+vim.cmd("highlight DapUIStepOverNC guifg=" .. Colors["lightBlue"])
+vim.cmd("highlight DapUIStepIntoNC guifg=" .. Colors["lightBlue"])
+vim.cmd("highlight DapUIStepBackNC guifg=" .. Colors["lightBlue"])
+vim.cmd("highlight DapUILineNumber guifg=" .. Colors["lightBlue"])
+vim.cmd("highlight DapUIDecoration guifg=" .. Colors["lightBlue"])
+vim.cmd("highlight DapUIWinSelect guifg=" .. Colors["lightBlue"])
+vim.cmd("highlight DapUIStepOutNC guifg=" .. Colors["lightBlue"])
+vim.cmd("highlight DapUIRestartNC guifg=" .. Colors["lightGreen"])
+vim.cmd("highlight DapUIPlayPause guifg=" .. Colors["lightGreen"])
+vim.cmd("highlight DapUIFrameName guifg=" .. Colors["white"])
+vim.cmd("highlight DapUIVariable guifg=" .. Colors["white"])
+vim.cmd("highlight DapUIStepOver guifg=" .. Colors["lightBlue"])
+vim.cmd("highlight DapUIStepInto guifg=" .. Colors["lightBlue"])
+vim.cmd("highlight DapUIStepBack guifg=" .. Colors["lightBlue"])
+vim.cmd("highlight DapUINormalNC guifg=" .. Colors["white"])
+vim.cmd("highlight DapUIStepOut guifg=" .. Colors["lightBlue"])
+vim.cmd("highlight DapUIRestart guifg=" .. Colors["lightGreen"])
+vim.cmd("highlight DapUIThread guifg=" .. Colors["lightGreen"])
+vim.cmd("highlight DapUIStopNC guifg=" .. Colors["red"])
+vim.cmd("highlight DapUISource guifg=" .. Colors["purple"])
+vim.cmd("highlight DapUINormal guifg=" .. Colors["white"])
+vim.cmd("highlight DapUIValue guifg=" .. Colors["white"])
+vim.cmd("highlight DapUIScope guifg=" .. Colors["lightBlue"])
+vim.cmd("highlight DapUIType guifg=" .. Colors["purple"])
+vim.cmd("highlight DapUIStop guifg=" .. Colors["red"])
 
 -- Marks
-vim.cmd("highlight MarkSignHL gui=bold guifg=" .. yellow)
+vim.cmd("highlight MarkSignHL gui=bold guifg=" .. Colors["yellow"])
 
 
 -- Transparency handled by theme
 -- vim.cmd [[highlight Normal guibg=NONE ctermbg=NONE]]
 -- transparent background
 -- vim.cmd [[highlight SignColumn guibg=NONE]] -- Sign column has same color as number column
+
+return Colors -- Can be used with require("colorscheme")
