@@ -8,7 +8,7 @@ IntensityAmount=0.1
 IntensityEffect=2
 
 [ColorEffects:Inactive]
-ChangeSelectionColor=true
+ChangeSelectionColor=false
 Color=112,111,110
 ColorAmount=0.025000000000000001
 ColorEffect=2
@@ -105,12 +105,12 @@ Name=DarkBlue
 shadeSortColumn=true
 
 [KDE]
-contrast=4
+contrast=0
 
 [WM]
 activeBackground=18,21,31,204
 activeBlend=18,21,31
 activeForeground=211,218,227
-inactiveBackground=34,39,57,204
+inactiveBackground=18,21,31,204
 inactiveBlend=18,21,31
 inactiveForeground=141,147,159

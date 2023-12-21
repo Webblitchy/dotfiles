@@ -37,12 +37,22 @@ config.tab_max_width = 25
 config.initial_cols = 100
 config.initial_rows = 25
 
-
 config.window_padding = {
   left = '3cell',
   right = '3cell',
   top = '1cell',
   bottom = '1cell',
+}
+
+-- VISUAL BELL
+config.visual_bell = {
+  fade_in_function = 'EaseIn',
+  fade_in_duration_ms = 75,
+  fade_out_function = 'EaseOut',
+  fade_out_duration_ms = 75,
+}
+config.colors = {
+  visual_bell = '#a1a2a6',
 }
 
 -- [[ CURSOR ]]

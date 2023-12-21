@@ -64,7 +64,11 @@ require('lualine').setup {
           end
         end,
         color = { fg = orange },
-      }
+      },
+      {
+        function() return "󰓆 " .. vim.o.spelllang end,
+        cond = function() return vim.o.spell end
+      },
     },
     lualine_c = {
       {
@@ -115,7 +119,7 @@ require('lualine').setup {
             return runningLsp
           end
         })
-      end
+      end,
     },
     lualine_x = {
       {

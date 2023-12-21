@@ -21,7 +21,7 @@ map("v", "p", "\"_dP")
 map({ "n", "v" }, "x", "\"_x")
 
 -- ctrl backspace for removing a whole word
-map({ "i", "c" }, "", "<C-W>")
+map({ "i", "c" }, "", "<C-W>", { desc = "Remove precedent word" })
 -- Works with wezterm and Konsole (use <C-BS> for kitty)
 
 -- Remap for dealing with word wrap
@@ -68,10 +68,10 @@ map("n", "n",
 -- map("n", "<C-B>", ":bn<CR>", { silent = true })
 
 -- use cokeline (avoid hidden buffers)
-map("n", "<C-B>", '<Plug>(cokeline-focus-next)', { silent = true })
-map("n", "<C-Right>", '<Plug>(cokeline-focus-next)', { silent = true })
-map("n", "<C-Left>", '<Plug>(cokeline-focus-prev)', { silent = true })
-map("n", "<C-Q>", ":bd<CR>", { silent = true })
+map("n", "<C-B>", '<Plug>(cokeline-focus-next)', { silent = true, desc = "Goto next buffer" })
+map("n", "<C-Right>", '<Plug>(cokeline-focus-next)', { silent = true, desc = "Goto next buffer" })
+map("n", "<C-Left>", '<Plug>(cokeline-focus-prev)', { silent = true, desc = "Goto precedent buffer" })
+map("n", "<C-Q>", ":bd<CR>", { silent = true, desc = "Close buffer" })
 
 -- Make more use of H and L
 map("n", "<S-H>", "{")
@@ -109,8 +109,8 @@ map("t", "<C-W>", "<C-\\><C-N><C-W>") -- move to other window as usual
 -- [[ PLUGINS ]]
 
 -- ctrl + 7 for commenting code
-map('n', '<C-7>', '<Plug>(comment_toggle_linewise_current)')
-map('v', '<C-7>', '<Plug>(comment_toggle_linewise_visual)')
+map('n', '<C-7>', '<Plug>(comment_toggle_linewise_current)', { desc = "Toggle comment" })
+map('v', '<C-7>', '<Plug>(comment_toggle_linewise_visual)', { desc = "Toggle comment" })
 -- Works with kitty and wezterm (use  for Konsole)
 
 -- Git
@@ -118,7 +118,7 @@ map("n", "<leader>g", ":Git<CR>")         -- git status
 map("n", "<leader>d", ":Gvdiffsplit<CR>") -- git diff view
 
 
--- NvimTree
+-- Show NvimTree
 map("n", "<C-T>", ":NvimTreeToggle<CR>", { silent = true, desc = "Toggle NvimTree" })
 
 -- Dap

@@ -28,7 +28,7 @@ chromium
 # intellij-idea-ultimate-edition
 # clion
 kdrive-bin
-# balena-etcher # flash SD card (too slow)
+etcher-bin # flash SD card and usb iso
 foliate # Epub reader
 peek    # Screen recorder
 wezterm # Terminal emulator
@@ -57,6 +57,7 @@ kdegraphics-thumbnailers # pdf thumbnails
 ffmpegthumbs             # video thumbnails
 nm-connection-editor
 appmenu-gtk-module
+kio-admin # open folder as admin
 # kde-servicemenus-pdf # pdf actions in dolphin (no more available)
 
 # CLI Apps
@@ -105,7 +106,7 @@ zsh-autosuggestions
 zsh-syntax-highlighting
 zsh-history-substring-search
 
-# Required components
+# System components
 gcc
 clang
 optimus-manager
@@ -122,3 +123,4 @@ p7zip
 termscp-bin
 ddcutil # to change external display brightness
 pipx # to install python global packages
+paccache-hook # hook to clear cache of old pacman packages after install

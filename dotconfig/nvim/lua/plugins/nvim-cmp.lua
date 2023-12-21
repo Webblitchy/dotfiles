@@ -3,7 +3,7 @@ local cmp = require("cmp")
 local luasnip = require("luasnip")
 local lspkind = require("lspkind") -- add icons in completion menu
 
-cmp.setup {
+cmp.setup({
   window = {
     completion = cmp.config.window.bordered(),
     documentation = cmp.config.window.bordered(),
@@ -23,7 +23,7 @@ cmp.setup {
   mapping = cmp.mapping.preset.insert {
     ['<Up>'] = cmp.mapping.scroll_docs(-4),
     ['<Down>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
     ['<CR>'] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Replace,
       select = false, -- if nothing is selected: autoselect the first
@@ -50,5 +50,15 @@ cmp.setup {
   sources = {
     { name = 'nvim_lsp' }, -- lsp suggestions
     { name = 'luasnip' },  -- show available snippets
+    { name = 'path' },
+    {
+      name = 'spell',
+      option = {
+        keep_all_entries = false,
+        enable_in_context = function()
+          return true
+        end,
+      },
+    },
   },
-}
+})

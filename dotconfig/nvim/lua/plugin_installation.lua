@@ -50,6 +50,8 @@ require("lazy").setup({
       "L3MON4D3/LuaSnip",
       "saadparwaiz1/cmp_luasnip",
       "onsails/lspkind.nvim", -- add fancy icons
+      "f3fora/cmp-spell",
+      "hrsh7th/cmp-path",
     },
   },
 

@@ -20,10 +20,10 @@ vim.o.breakindent = true             -- Enable break indent
 vim.o.shiftround = true              -- use multiple of shiftwidth when indenting with '<' and '>'
 vim.o.smartindent = true
 vim.o.tabstop = 4                    -- visual size of tabs (when no expandtab)
-vim.o.shiftwidth = 4                 -- default number of spaces to use for autoindenting
+vim.o.shiftwidth = 4                 -- default number of spaces to use for autoindenting (overwritten by type)
 vim.o.softtabstop = vim.o.shiftwidth -- when hitting <BS>, pretend like a tab is removed, even if spaces
 vim.o.expandtab = true               -- expand tabs to spaces
---> guess-indent can change these settings when reading existing file
+--> guess-indent plugin can change these settings when reading existing file
 
 
 -- History
@@ -71,3 +71,10 @@ vim.opt.fillchars:append('eob: ') -- hide ~ at the end of buffer
 
 -- create hl for an invisible cursor
 vim.api.nvim_set_hl(0, "HiddenCursor", { reverse = true, blend = 100 })
+
+-- Disable auto adding comments (after return and o/O)
+vim.api.nvim_create_autocmd("FileType", {
+    callback = function()
+        vim.opt.formatoptions:remove { "r", "o" }
+    end
+})

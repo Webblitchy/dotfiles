@@ -136,16 +136,28 @@ autocmd("TermClose", {
 
 -- create templates for files types
 local templates = {
-  -- file extention: ask confirmation
-  sh = false,
-  c = true,
-  cpp = true,
+  sh = {
+    askConfirmation = false,
+    cursorLineAfter = "#!",
+  },
+  c = {
+    askConfirmation = true,
+    cursorLineAfter = "int main",
+  },
+  cpp = {
+    askConfirmation = true,
+    cursorLineAfter = "int main",
+  },
+  java = {
+    askConfirmation = false,
+    cursorLineAfter = "void main",
+  },
 }
 
-for language, askConfirmation in pairs(templates) do
+for language, opt in pairs(templates) do
   autocmd("BufNewFile", {
     callback = function()
-      if askConfirmation then
+      if opt.askConfirmation then
         local res = vim.fn.input("Do you want to fill new file with template ? [y/N] : ")
         if string.lower(res) ~= "y" then
           return
@@ -153,7 +165,10 @@ for language, askConfirmation in pairs(templates) do
       end
       local templatePath = GetConfigFolder() .. "/lua/templates/template." .. language
       vim.api.nvim_input(":0r " .. templatePath .. "<CR>") -- insert template file
+      vim.api.nvim_input("Gdd")                            -- remove empty last line
+      vim.api.nvim_input("/" .. opt.cursorLineAfter .. "<CR>")
       ClearCommandLine()
+      vim.api.nvim_input("o")
     end,
     pattern = "*." .. language
   })

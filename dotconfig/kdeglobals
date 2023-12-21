@@ -13,7 +13,7 @@ IntensityAmount=0.1
 IntensityEffect=2
 
 [ColorEffects:Inactive]
-ChangeSelectionColor=true
+ChangeSelectionColor=false
 Color=112,111,110
 ColorAmount=0.025000000000000001
 ColorEffect=2
@@ -142,7 +142,8 @@ History Items[$e]=file:$HOME/Documents,file:$HOME/kDrive/HEIG-VD/TB,file:$HOME/D
 [General]
 AccentColor=0,0,0,0
 BrowserApplication=firefox.desktop
-ColorSchemeHash=b5c6dcf72c5049e17a2b9b02d216b8d25dff24a7
+ColorScheme=DarkBlue
+ColorSchemeHash=21fe59b6138f74d9cd81eb802426966397d66965
 LastUsedCustomAccentColor=8,69,116
 Name=Breeze Dark
 TerminalApplication=wezterm start --cwd . --always-new-process
@@ -197,7 +198,7 @@ ScaleFactor=1.25
 ScreenScaleFactors=eDP-1=1.25;DP-1=1.25;DP-2=1.25;DP-3=1.25;
 
 [KShortcutsDialog Settings]
-Dialog Size=600,480
+Dialog Size=635,480
 
 [PreviewSettings]
 MaximumRemoteSize=0
@@ -211,6 +212,6 @@ activeBackground=18,21,31,204
 activeBlend=18,21,31
 activeFont=Clarity City,10,-1,5,50,0,0,0,0,0
 activeForeground=211,218,227
-inactiveBackground=34,39,57,204
+inactiveBackground=18,21,31,204
 inactiveBlend=18,21,31
 inactiveForeground=141,147,159
