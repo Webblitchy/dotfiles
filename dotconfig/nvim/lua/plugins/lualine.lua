@@ -9,11 +9,14 @@ local function min_window_width(width)
 end
 
 
-local lightGray = GetHex("Comment", "fg")
+local commentColor = GetHex("Comment", "fg")
 local blackColor = GetHex("CursorColumn", "bg")
 local green = GetHex("DiagnosticOk", "fg")
 local red = GetHex("Error", "fg")
 local orange = GetHex("Constant", "fg")
+
+
+local color = require("colorscheme")
 
 local icons = require("../icons").lspSigns
 local autoFormatIcon = "AF" -- 󰽎 󰷲 󰁨       󰉩 󰃢
@@ -165,7 +168,7 @@ require('lualine').setup {
             return " TAB"
           end
         end,
-        color = { bg = blackColor, fg = lightGray }
+        color = { bg = blackColor, fg = commentColor }
       },
       {
         'fileformat',
@@ -174,7 +177,7 @@ require('lualine').setup {
           dos = " CRLF", -- e70f
           mac = " CR", -- e711
         },
-        color = { bg = blackColor, fg = lightGray }
+        color = { bg = blackColor, fg = commentColor }
       },
       --[[
       {
@@ -220,6 +223,24 @@ require('lualine').setup {
     } }
     -- lualine_z = { 'location' }  -- line : character
   },
+  winbar = {
+    lualine_c = {
+      {
+        "filename",
+        path = 3, -- show fullpath with ~ shorting_target = 3, -- leave 3 empty spaces
+        symbols = {
+          modified = '',
+          readonly = '[RO]',
+          unnamed = '',      -- already shown in buffer name
+          newfile = '[New]', -- before first write
+        },
+        color = { fg = color["lightGray1"], gui = "italic" },
+        -- is not terminal
+        cond = function() return not string.find(vim.api.nvim_buf_get_name(0), "term:") end
+      }
+    },
+  },
+  inactive_winbar = {}
 }
 
 -- refresh lualine for lsp status

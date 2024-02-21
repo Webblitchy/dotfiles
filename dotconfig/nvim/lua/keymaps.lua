@@ -14,11 +14,12 @@ vim.g.maplocalleader = " "
 -- Make ctrl-c work always as esc
 map("", '<C-c>', '<Esc>', { remap = true }) -- recursive mapping
 
--- disable weird vim feature to "cut and paste" with "delete and paste"
+-- replace weird vim feature to "cut and paste" with "delete and paste"
 map("v", "p", "\"_dP")
 
 -- disable copy when using x
 map({ "n", "v" }, "x", "\"_x")
+
 
 -- ctrl backspace for removing a whole word
 map({ "i", "c" }, "", "<C-W>", { desc = "Remove precedent word" })

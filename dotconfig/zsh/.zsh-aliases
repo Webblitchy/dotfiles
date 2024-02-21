@@ -1,14 +1,20 @@
-### MY ALIASES ###
 
-# replacement aliases
-alias cp='cp -i'                                      # Confirm before overwriting something
-alias df='df -h'                                      # Human-readable sizes
-alias free='free -m'                                  # Show sizes in MB
+#### REPLACEMENT ####
+# Confirm before overwriting something
 alias mv='mv -i'
+alias cp='cp -i'                                      
+alias crontab='crontab -i'
+
+# Human-readable sizes
+alias df='df -h'
+alias free='free -m'
+
+# Style
 alias grep='grep --color=auto'
-alias ip='ip -c -br'                                  # color and brief
+alias ip='ip -c -br'
 alias bat='bat --style header,header-filename,header-filesize,grid,snip'
-alias nvim='f(){ env TERM=wezterm nvim "$@" }; f'
+alias nvim='f(){ title Neovim; env TERM=wezterm nvim "$@"}; f'
+
 if [[ -f /usr/bin/rmtrash ]]; then
 # need rmtrash
      alias rm='rmtrash'
@@ -19,7 +25,7 @@ fi
 alias btop='sudo btop'
 alias powertop='sudo powertop'
 
-# new commands
+#### NEW COMMANDS ####
 alias ll='lsd -Al --date +"%e %h %Y|%R" --blocks permission,size,date,name --group-dirs first -I .directory'
 alias open='xdg-open $1 &>/dev/null'
 alias nrc='cd ~/.config/nvim/lua'

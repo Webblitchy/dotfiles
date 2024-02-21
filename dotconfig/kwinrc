@@ -39,6 +39,16 @@ SlideDocks=true
 [Effect-windowview]
 BorderActivateAll=9
 
+[Effect-ًRound-Corners]
+ActiveOutlineAlpha=0
+ActiveShadowAlpha=0
+ActiveShadowUseCustom=true
+ActiveShadowUsePalette=false
+InactiveOutlineAlpha=0
+InactiveShadowAlpha=0
+InactiveShadowUseCustom=true
+InactiveShadowUsePalette=false
+
 [ModifierOnlyShortcuts]
 Meta=org.kde.lattedock,/Latte,org.kde.LatteDock,activateLauncherMenu
 
@@ -60,6 +70,7 @@ contrastEnabled=true
 desktopchangeosdEnabled=false
 forceblurEnabled=false
 keepjetbrainsaboveEnabled=true
+kwin4_effect_shapecornersEnabled=true
 kwin4_effect_translucencyEnabled=true
 minimizeallEnabled=false
 screenedgeEnabled=false

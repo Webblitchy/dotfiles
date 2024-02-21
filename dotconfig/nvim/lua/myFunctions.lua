@@ -75,6 +75,20 @@ function Timer()
   end)
 end
 
+-- Maybe usefull
+function ExecuteAfter(ms, f)
+  local timer = vim.loop.new_timer()
+  timer:start(ms, 0, function()
+    vim.schedule(f)
+    timer:close()
+  end)
+end
+
+function BlocAsync(f)
+  -- Wait for 5 seconds or until function ended, checking every ~300 ms
+  vim.wait(5000, f, 300)
+end
+
 function GetHex(hl, fgOrBg)
   local rgb = vim.api.nvim_get_hl(0, { name = hl })[fgOrBg]
 
@@ -282,4 +296,11 @@ function GetNextSearchCount()
   else
     return next
   end
+end
+
+function ChangeTabWidth(width)
+  local curPos = vim.api.nvim_win_get_cursor(0)
+  vim.opt_local.shiftwidth = width
+  vim.api.nvim_input("gg=G")
+  ExecuteAfter(500, function() vim.api.nvim_win_set_cursor(0, curPos) end)
 end
