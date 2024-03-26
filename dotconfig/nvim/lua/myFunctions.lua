@@ -62,6 +62,35 @@ function GetParentFolderName()
   return vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ":p:h:t")
 end
 
+function PrettyPath(remainingSpace)
+  -- stole function from lualine.nvim
+
+  local sep = package.config:sub(1, 1)
+
+  local path = vim.fn.expand('%:p:~') -- absolute path, with tilde
+
+  local max_len = vim.fn.winwidth(0) - remainingSpace
+
+  local len = #path
+  if len <= max_len then
+    return path
+  end
+
+  local segments = vim.split(path, sep)
+  for idx = 1, #segments - 1 do
+    if len <= max_len then
+      break
+    end
+
+    local segment = segments[idx]
+    local shortened = segment:sub(1, vim.startswith(segment, '.') and 2 or 1)
+    segments[idx] = shortened
+    len = len - (#segment - #shortened)
+  end
+
+  return table.concat(segments, sep)
+end
+
 -- Maybe usefull (timer)
 function Timer()
   local timer = vim.loop.new_timer()

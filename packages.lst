@@ -58,7 +58,6 @@ ffmpegthumbs             # video thumbnails
 nm-connection-editor
 appmenu-gtk-module
 kio-admin # open folder as admin
-# kde-servicemenus-pdf # pdf actions in dolphin (no more available)
 
 # CLI Apps
 neofetch
@@ -68,8 +67,8 @@ android-tools
 powertop
 traceroute
 tree
-autojump
-rmtrash
+zoxide # cd++
+rmtrash # rm++
 wget
 docker
 docker-compose

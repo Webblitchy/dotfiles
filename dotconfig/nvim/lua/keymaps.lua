@@ -14,12 +14,14 @@ vim.g.maplocalleader = " "
 -- Make ctrl-c work always as esc
 map("", '<C-c>', '<Esc>', { remap = true }) -- recursive mapping
 
+-- When going to start of line (^) : scroll screen to left
+map("n", '^', '^ze', { remap = true }) -- recursive mapping
+
 -- replace weird vim feature to "cut and paste" with "delete and paste"
 map("v", "p", "\"_dP")
 
 -- disable copy when using x
 map({ "n", "v" }, "x", "\"_x")
-
 
 -- ctrl backspace for removing a whole word
 map({ "i", "c" }, "", "<C-W>", { desc = "Remove precedent word" })
@@ -38,7 +40,8 @@ map("n", "<Esc>", "<Esc>:echo ''<CR>", { silent = true })
 map({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 
-map("n", "<CR>", "") -- disable return in normal mode
+map("n", "<CR>", "") -- disable "return" in normal mode
+map("n", "q:", ":")  -- replace q: by : to avoid errors
 
 
 -- Add a message when restartingSearch
@@ -71,6 +74,7 @@ map("n", "n",
 -- use cokeline (avoid hidden buffers)
 map("n", "<C-B>", '<Plug>(cokeline-focus-next)', { silent = true, desc = "Goto next buffer" })
 map("n", "<C-Right>", '<Plug>(cokeline-focus-next)', { silent = true, desc = "Goto next buffer" })
+map("n", "<Tab>", '<Plug>(cokeline-focus-next)', { silent = true, desc = "Goto next buffer" })
 map("n", "<C-Left>", '<Plug>(cokeline-focus-prev)', { silent = true, desc = "Goto precedent buffer" })
 map("n", "<C-Q>", ":bd<CR>", { silent = true, desc = "Close buffer" })
 

@@ -2,7 +2,7 @@
 #### REPLACEMENT ####
 # Confirm before overwriting something
 alias mv='mv -i'
-alias cp='cp -i'                                      
+alias cp='cp -i'
 alias crontab='crontab -i'
 
 # Human-readable sizes
@@ -15,11 +15,14 @@ alias ip='ip -c -br'
 alias bat='bat --style header,header-filename,header-filesize,grid,snip'
 alias nvim='f(){ title Neovim; env TERM=wezterm nvim "$@"}; f'
 
+# Alternative commands
 if [[ -f /usr/bin/rmtrash ]]; then
 # need rmtrash
      alias rm='rmtrash'
      alias rmdir='rmdirtrash'
 fi
+
+alias cd='z'
 
 # sudo commands
 alias btop='sudo btop'

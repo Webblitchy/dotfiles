@@ -224,7 +224,11 @@ require("lazy").setup({
   },
 
   -- [[ Debugging ]]
-  'mfussenegger/nvim-dap',
+  {
+    "mfussenegger/nvim-dap",
+    dependencies = { "nvim-neotest/nvim-nio" }
+  },
+
   "jay-babu/mason-nvim-dap.nvim", -- autoinstall debug clients (not dap clients)
 
   -- UI

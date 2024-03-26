@@ -169,7 +169,7 @@ AnimationDurationFactor=0.5
 ColorScheme=BreezeDark
 LookAndFeelPackage=org.kde.breezedark.desktop
 ShowDeleteCommand=false
-SingleClick=true
+SingleClick=false
 contrast=4
 widgetStyle=Lightly
 

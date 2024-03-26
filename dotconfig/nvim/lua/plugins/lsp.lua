@@ -50,20 +50,23 @@ local lsp_servers = {
   lua_ls = {
     Lua = {
       workspace = {
-        -- Make the server aware of Neovim runtime files
         checkThirdParty = false, -- to stop asking for third party in nvim
+        ignoreDir = {
+          "undo/**",
+        },
       },
       -- Do not send telemetry data containing a randomized but unique identifier
       telemetry = {
         enable = false,
       },
+      diagnostics = { disable = { 'missing-fields' } }, -- disable noisy warnings
     }
-  },            -- Lua
-  bashls = {},  -- Bash
-  html = {},    -- HTML
-  jsonls = {},  -- json
-  yamlls = {},  -- YAML
-  lemminx = {}, -- XML
+  },                                                    -- Lua
+  bashls = {},                                          -- Bash
+  html = {},                                            -- HTML
+  jsonls = {},                                          -- json
+  yamlls = {},                                          -- YAML
+  lemminx = {},                                         -- XML
   ltex = {
     ltex = {
       language = { "fr", "en" },

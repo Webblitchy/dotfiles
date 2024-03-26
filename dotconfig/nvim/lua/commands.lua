@@ -159,6 +159,7 @@ for language, opt in pairs(templates) do
     callback = function()
       if opt.askConfirmation then
         local res = vim.fn.input("Do you want to fill new file with template ? [y/N] : ")
+        ClearCommandLine()
         if string.lower(res) ~= "y" then
           return
         end
@@ -168,7 +169,7 @@ for language, opt in pairs(templates) do
       vim.api.nvim_input("Gdd")                            -- remove empty last line
       vim.api.nvim_input("/" .. opt.cursorLineAfter .. "<CR>")
       ClearCommandLine()
-      vim.api.nvim_input("o")
+      vim.api.nvim_input("o.<BS><ESC>") -- add good increment and go to normal mode
     end,
     pattern = "*." .. language
   })

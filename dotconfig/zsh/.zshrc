@@ -209,8 +209,8 @@ alias ls='ls --group-directories-first $LS_OPTIONS'
 #######################################################################
 
 
-# Autojump
-[[ -s /etc/profile.d/autojump.sh ]] && source /etc/profile.d/autojump.sh
+# ZOxide (better cd)
+eval "$(zoxide init zsh)"
 
 # Add aliases
 [[ -f $ZDOTDIR/.zsh-aliases ]] && source $ZDOTDIR/.zsh-aliases

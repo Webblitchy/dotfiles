@@ -223,20 +223,16 @@ require('lualine').setup {
     } }
     -- lualine_z = { 'location' }  -- line : character
   },
-  winbar = {
+  winbar = { -- path at the top of windows
     lualine_c = {
       {
-        "filename",
-        path = 3, -- show fullpath with ~ shorting_target = 3, -- leave 3 empty spaces
-        symbols = {
-          modified = '',
-          readonly = '[RO]',
-          unnamed = '',      -- already shown in buffer name
-          newfile = '[New]', -- before first write
-        },
+        function() return " " .. PrettyPath(4) end,
         color = { fg = color["lightGray1"], gui = "italic" },
         -- is not terminal
-        cond = function() return not string.find(vim.api.nvim_buf_get_name(0), "term:") end
+        cond = function()
+          return vim.api.nvim_buf_get_name(0) ~= "" and
+              not string.find(vim.api.nvim_buf_get_name(0), "term:")
+        end
       }
     },
   },
