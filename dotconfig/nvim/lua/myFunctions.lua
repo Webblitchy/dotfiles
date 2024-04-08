@@ -333,3 +333,29 @@ function ChangeTabWidth(width)
   vim.api.nvim_input("gg=G")
   ExecuteAfter(500, function() vim.api.nvim_win_set_cursor(0, curPos) end)
 end
+
+function ShowPopup(text)
+  local width = #text + 2
+  local height = 3
+  local enterPopup = false
+
+  local opts = {
+    relative = "editor",
+    width = width,
+    height = height,
+    row = math.floor((vim.o.lines - height) / 2),  -- center y
+    col = math.floor((vim.o.columns - width) / 2), -- center x
+    style = "minimal",
+    border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" }
+  }
+  local buf = vim.api.nvim_create_buf(false, true)
+  local win = vim.api.nvim_open_win(buf, enterPopup, opts)
+
+  -- Add text to popup
+  vim.api.nvim_buf_set_lines(buf, 0, -1, false, { "", " " .. text .. " ", "" })
+
+  vim.defer_fn(function()
+    -- try to close window
+    pcall(vim.api.nvim_win_close, win, true)
+  end, 1000)
+end

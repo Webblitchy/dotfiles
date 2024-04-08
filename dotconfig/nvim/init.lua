@@ -1,6 +1,7 @@
 -------------------------------------------------------------------------------------------
 -- Require the different config files
 -------------------------------------------------------------------------------------------
+
 require("myFunctions")         -- utility functions and personnal ones
 
 require("vim_config")          -- set basic vim settings
@@ -11,7 +12,8 @@ require("commands")            -- set commands to be run automatically or by use
 
 require("plugin_installation") -- commands to install the plugins (with Lazy-nvim)
 
-require("colorscheme")         -- Set theme
+
+require("colorscheme") -- Set theme
 
 
 
@@ -33,7 +35,6 @@ require("plugins.nvim-tree")         -- file tree
 require("plugins.dap")               -- set debugger (after colorscheme)
 require("plugins.nvim-scrollbar")    -- Add a scrollbar
 require("plugins.nvim-surround")     -- Add a surrounding action (with s)
-
 
 -- Source zsh config (apply blur when directly starting neovim)
 vim.fn.system("source ~/.zshrc")

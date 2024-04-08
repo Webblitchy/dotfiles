@@ -4,6 +4,7 @@ require("mason-tool-installer").setup({
     "prettier", -- prettier formatter
     "black",    -- python formatter
     "shfmt",    -- bash formatter
+    "djlint",   -- django formatter
   },
 })
 
@@ -17,5 +18,6 @@ require("conform").setup({
     markdown = { "prettier" },
     python = { "black" },
     bash = { "shfmt" },
+    htmldjango = { "djlint" },
   },
 })

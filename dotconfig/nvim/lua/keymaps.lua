@@ -2,6 +2,7 @@
 -- Keymaps Settings
 -------------------------------------------------------------------------------------------
 
+--local popup = require("plenary.popup")
 local map = vim.keymap.set -- local alias for conciseness
 
 -- Set <space> as the leader key
@@ -33,7 +34,7 @@ map('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 
 -- hide messages on Esc (and also ctrl-c)
-map("n", "<Esc>", "<Esc>:echo ''<CR>", { silent = true })
+--map("n", "<Esc>", "<Esc>:echo ''<CR>", { silent = true })
 
 
 -- Disable space in normal mode (better for leader key)
@@ -43,24 +44,51 @@ map({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 map("n", "<CR>", "") -- disable "return" in normal mode
 map("n", "q:", ":")  -- replace q: by : to avoid errors
 
+-- Tab auto indent correctly on empty line (insert <C-f>)
+map("i", "<TAB>",
+  function()
+    local ctrlF = vim.api.nvim_replace_termcodes("<C-f>", true, false, true)
+    local tabKey = vim.api.nvim_replace_termcodes("<TAB>", true, false, true)
+    local backspace = vim.api.nvim_replace_termcodes("<BS>", true, false, true)
+
+    -- smart indent
+    if vim.api.nvim_get_current_line() == "" then
+      vim.api.nvim_feedkeys("i" .. ctrlF .. " " .. backspace, "n", false)
+      vim.api.nvim_feedkeys("", "x", true) -- empty feed buffer
+
+      -- Force insert a tab when ctrl-f didn't do anything
+      if vim.api.nvim_get_current_line() == "" then
+        vim.api.nvim_feedkeys(tabKey, "n", false)
+      end
+
+      -- Pass in insert mode again
+      vim.api.nvim_input("<ESC>A")
+    else
+      -- normal TAB
+      vim.api.nvim_feedkeys(tabKey, "n", false)
+    end
+  end
+)
 
 -- Add a message when restartingSearch
 map("n", "n",
   function()
-    local restartingSearch = false
-    if vim.b.searchStartPos == 0 then -- if was a new search
-      vim.b.searchStartPos = vim.fn.searchcount().current
-    else
-      if GetNextSearchCount() == vim.b.searchStartPos then
-        restartingSearch = true
+    -- close popup (for restartingSearch popup)
+    for _, winNb in ipairs(vim.api.nvim_list_wins()) do
+      if vim.api.nvim_win_get_config(winNb).relative ~= "" then -- is popup
+        vim.api.nvim_win_close(winNb, true)                     -- close
       end
     end
 
     local searchWord = vim.fn.histget("search", -1)
     vim.api.nvim_input("/" .. searchWord .. "<CR>")
 
-    if restartingSearch then
-      vim.api.nvim_input(":echohl WarningMsg | echo '/" .. searchWord .. "   󰑐 Restarting search'<CR>")
+    if vim.b.searchStartPos == 0 then -- if was a new search
+      vim.b.searchStartPos = vim.fn.searchcount().current
+    elseif vim.b.searchStartPos == GetNextSearchCount() then
+      vim.b.searchStartPos = 0 -- restart search
+      ShowPopup("󰑐 Restarting search")
+      return
     end
   end
 )
