@@ -23,3 +23,8 @@ git clone git@github.com:Webblitchy/dotfiles.git . ||
 chmod +x install.sh
 sudo -E ./install.sh
 ```
+
+## Shortcuts
+[Neovim config](/dotconfig/nvim)
+
+
