@@ -20,6 +20,10 @@ function File_exists(name)
   end
 end
 
+function Keycode(key)
+  return vim.api.nvim_replace_termcodes(key, true, true, true)
+end
+
 function ClearCommandLine()
   vim.api.nvim_input(":<BS>")
 end
@@ -335,7 +339,7 @@ function ChangeTabWidth(width)
 end
 
 function ShowPopup(text)
-  local width = #text + 2
+  local width = vim.fn.strdisplaywidth(text) + 2 -- works with utf8
   local height = 3
   local enterPopup = false
 

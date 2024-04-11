@@ -20,7 +20,8 @@ spotify
 simplenote-electron-bin
 telegram-desktop
 visual-studio-code-bin
-lightly-git
+# lightly-git
+lightly-plasma6-qt
 thunderbird
 anydesk # teamviewer alternative
 chromium
@@ -114,8 +115,10 @@ gnupg
 openssh
 cmake
 libinput-gestures
-xdotool
-xclip # to handle shared clipbord in NVIM
+#xdotool
+wtype # xdotool type for wayland
+#xclip # to handle shared clipboard in NVIM
+wl-clipboard # handle wayland clipboard in NVIM
 wmctrl
 xdg-desktop-portal
 p7zip

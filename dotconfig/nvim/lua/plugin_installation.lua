@@ -242,6 +242,10 @@ require("lazy").setup({
     ft = "python"
   }
 
+  -- Remote-nvim
+
+
+
 }, {
   ui = {
     border = "rounded",

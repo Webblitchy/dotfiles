@@ -25,7 +25,7 @@ map("v", "p", "\"_dP")
 map({ "n", "v" }, "x", "\"_x")
 
 -- ctrl backspace for removing a whole word
-map({ "i", "c" }, "", "<C-W>", { desc = "Remove precedent word" })
+map({ "i", "c" }, "<C-H>", "<C-W>", { desc = "Remove precedent word" })
 -- Works with wezterm and Konsole (use <C-BS> for kitty)
 
 -- Remap for dealing with word wrap
@@ -47,25 +47,21 @@ map("n", "q:", ":")  -- replace q: by : to avoid errors
 -- Tab auto indent correctly on empty line (insert <C-f>)
 map("i", "<TAB>",
   function()
-    local ctrlF = vim.api.nvim_replace_termcodes("<C-f>", true, false, true)
-    local tabKey = vim.api.nvim_replace_termcodes("<TAB>", true, false, true)
-    local backspace = vim.api.nvim_replace_termcodes("<BS>", true, false, true)
-
     -- smart indent
     if vim.api.nvim_get_current_line() == "" then
-      vim.api.nvim_feedkeys("i" .. ctrlF .. " " .. backspace, "n", false)
+      vim.api.nvim_feedkeys("i" .. Keycode("<C-f>") .. " " .. Keycode("<BS>"), "n", false)
       vim.api.nvim_feedkeys("", "x", true) -- empty feed buffer
 
       -- Force insert a tab when ctrl-f didn't do anything
       if vim.api.nvim_get_current_line() == "" then
-        vim.api.nvim_feedkeys(tabKey, "n", false)
+        vim.api.nvim_feedkeys(Keycode("<TAB>"), "n", false)
       end
 
       -- Pass in insert mode again
       vim.api.nvim_input("<ESC>A")
     else
       -- normal TAB
-      vim.api.nvim_feedkeys(tabKey, "n", false)
+      vim.api.nvim_feedkeys(Keycode("<TAB>"), "n", false)
     end
   end
 )

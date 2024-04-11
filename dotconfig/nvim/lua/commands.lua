@@ -57,10 +57,10 @@ autocmd({ "CursorMoved" }, {
 
     local marginBottom = currLine + vim.o.scrolloff - bottom
     if marginBottom == 0 then
-      vim.api.nvim_input("zb")                    -- align cursor with bottom of file
+      vim.cmd("normal! zb")
     elseif marginBottom > 0 then
-      vim.api.nvim_input("zb")                    -- align cursor with bottom of file
-      vim.api.nvim_input(marginBottom .. "<C-E>") -- scroll down
+      vim.cmd("normal! zb")
+      vim.cmd("normal! " .. vim.api.nvim_replace_termcodes(marginBottom .. '<C-e>', true, true, true))
     end
   end,
 })
@@ -395,7 +395,6 @@ vim.api.nvim_create_user_command(
   "lua print(vim.api.nvim_buf_get_name(0))",
   {}
 )
-
 
 -- Preview markdown in okular with :MD
 vim.cmd [[command! -complete=shellcmd -nargs=1 -bang Silent execute ':silent !' . (<bang>0 ? 'nohup ' . <q-args> . '</dev/null >/dev/null 2>&1 &' : <q-args>) | execute ':redraw!']]
