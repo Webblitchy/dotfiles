@@ -2,9 +2,13 @@
 update_info=spectacle_clipboard.upd:clipboard-settings-change,spectacle_rememberregion.upd:spectacle-migrate-rememberregion
 
 [Annotations]
-annotationToolType=2
+annotationToolType=8
 rectangleShadow=false
 rectangleStrokeColor=170,0,0
+
+[FileDialogSize]
+2 screens: Height=608
+2 screens: Width=980
 
 [General]
 onLaunchAction=UseLastUsedCapturemode
@@ -16,11 +20,11 @@ quitAfterSaveCopyExport=true
 window-position=406,358
 
 [KFileDialog Settings]
-Recent Files[$e]=file:$HOME/Desktop/neovim2.png,file:$HOME/Desktop/neovim2.png
-Recent URLs[$e]=file:$HOME/Desktop/,file:$HOME/,file:$HOME/Documents/
+Recent Files[$e]=file:$HOME/.dotfiles/Screenshots/Dolphin.png,file:$HOME/.dotfiles/Screenshots/Wezterm.png,file:$HOME/.dotfiles/Screenshots/Desktop.png
+Recent URLs[$e]=file:$HOME/.dotfiles/,file:$HOME/Desktop/,file:$HOME/,file:$HOME/Documents/,file:$HOME/.dotfiles/Screenshots/
 detailViewIconSize=16
 
 [Save]
 defaultSaveLocation=file:///home/eliott/Pictures/Screenshots
-lastSaveAsLocation=file:///home/eliott/Desktop/neovim2.png
-lastSaveLocation=file:///home/eliott/Pictures/Screenshots/Screenshot_20240304_190742.png
+lastSaveAsLocation=file:///home/eliott/.dotfiles/Screenshots/Wezterm.png
+lastSaveLocation=file:///home/eliott/.dotfiles/Screenshots/Wezterm.png

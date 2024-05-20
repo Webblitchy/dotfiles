@@ -11,7 +11,7 @@ ShowAddToPlaces=false
 
 [DetailsMode]
 ExpandableFolders=false
-PreviewSize=96
+PreviewSize=64
 
 [ExtractDialog]
 1920x1080 screen: Height=560
@@ -46,10 +46,10 @@ detailViewIconSize=16
 [KPropertiesDialog]
 1536x864 screen: Height=496
 1536x864 screen: Width=384
-1920x1080 screen: Height=542
-1920x1080 screen: Width=472
-2 screens: Height=647
-2 screens: Width=563
+1920x1080 screen: Height=647
+1920x1080 screen: Width=563
+2 screens: Height=542
+2 screens: Width=459
 eDP-1 DP-3 Height 1536x864=619
 eDP-1 DP-3 Height 2048x1152=619
 eDP-1 DP-3 Height 2560x1440=647
