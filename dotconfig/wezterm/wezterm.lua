@@ -21,12 +21,10 @@ config.font = wezterm.font(
 
 -- Transparent background
 
-config.window_background_opacity = 0.8
+config.window_background_opacity = .85
 
-wezterm.on("window-focus-changed", function()
-  os.execute(
-    'xdotool search -classname org.wezfurlong.wezterm | xargs -I{} xprop -f _KDE_NET_WM_BLUR_BEHIND_REGION 32c -set _KDE_NET_WM_BLUR_BEHIND_REGION 0 -id {}')
-end)
+-- Nvim wheel scroll
+config.alternate_buffer_wheel_scroll_speed = 1
 
 -- Tab bar
 config.use_fancy_tab_bar = false
@@ -79,15 +77,26 @@ config.keys = {
   },
 }
 
--- CTRL-Click on links
+
 config.mouse_bindings = {
+  -- Change mouse scroll amount
+  {
+    event = { Down = { streak = 1, button = { WheelUp = 1 } } },
+    mods = 'NONE',
+    action = wezterm.action.ScrollByLine(-3),
+    alt_screen = false -- not in nvim
+  },
+  {
+    event = { Down = { streak = 1, button = { WheelDown = 1 } } },
+    mods = 'NONE',
+    action = wezterm.action.ScrollByLine(3),
+    alt_screen = false -- not in nvim
+  },
+
+
+  -- CTRL-Click on links
   -- Change the default click behavior so that it only selects
   -- text and doesn't open hyperlinks
-  {
-    event = { Up = { streak = 1, button = "Left" } },
-    mods = "NONE",
-    action = wezterm.action.CompleteSelection("PrimarySelection"),
-  },
 
   -- and make CTRL-Click open hyperlinks
   {
@@ -101,9 +110,9 @@ config.mouse_bindings = {
     event = { Down = { streak = 1, button = 'Left' } },
     mods = 'CTRL',
     action = wezterm.action.Nop,
-  }
+  },
+
 }
 
 
--- and finally, return the configuration to wezterm
 return config

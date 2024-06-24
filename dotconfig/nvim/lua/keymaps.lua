@@ -134,12 +134,20 @@ map('n', '<leader>q', vim.diagnostic.setqflist, { desc = "Diagnostic sub window"
 -- Terminal remaps
 map("t", "<C-W>", "<C-\\><C-N><C-W>") -- move to other window as usual
 
+-- Inlay hints
+map(
+  'n',
+  '<leader>h',
+  function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end,
+  { desc = "Toggle Inlay Hints" }
+)
+
 
 -- [[ PLUGINS ]]
 
 -- ctrl + 7 for commenting code
-map('n', '<C-7>', '<Plug>(comment_toggle_linewise_current)', { desc = "Toggle comment" })
-map('v', '<C-7>', '<Plug>(comment_toggle_linewise_visual)', { desc = "Toggle comment" })
+map('n', '<C-7>', 'gcc', { desc = "Toggle comment", remap = true })
+map('v', '<C-7>', 'gc', { desc = "Toggle comment", remap = true })
 -- Works with kitty and wezterm (use  for Konsole)
 
 -- Git

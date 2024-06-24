@@ -1,5 +1,5 @@
 # For Rust
-. "$HOME/.cargo/env"
+#. "$HOME/.cargo/env"
 
 # Define fzf catpuccin theme
 export FZF_DEFAULT_OPTS=" \

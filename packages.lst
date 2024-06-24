@@ -1,7 +1,7 @@
 # Base apps
 audacity
 bitwarden
-discord
+#discord
 gimp
 # qbittorrent
 transmission-qt
@@ -11,8 +11,8 @@ virtualbox-guest-iso
 wireshark-qt
 firefox
 joplin-appimage
-solaar  # logitech device manager
-normcap # ocr
+solaar # logitech device manager
+#normcap # ocr
 notion-app-electron
 anytype
 onlyoffice-bin
@@ -20,8 +20,6 @@ spotify
 simplenote-electron-bin
 telegram-desktop
 visual-studio-code-bin
-# lightly-git
-lightly-plasma6-qt
 thunderbird
 anydesk # teamviewer alternative
 chromium
@@ -30,12 +28,13 @@ chromium
 # clion
 kdrive-bin
 etcher-bin # flash SD card and usb iso
-foliate # Epub reader
-peek    # Screen recorder
+foliate    # Epub reader
+#peek    # Screen recorder
 wezterm # Terminal emulator
-minecraft-launcher
+#minecraft-launcher
 morgen-bin   # calendar
 qdirstat-bin # win dir stat
+parsec-bin
 
 # KDE Apps
 ark
@@ -50,6 +49,7 @@ partitionmanager
 okular
 pinta
 spectacle
+plasma-systemmonitor
 
 # KDE Components
 dolphin-plugins
@@ -59,6 +59,9 @@ ffmpegthumbs             # video thumbnails
 nm-connection-editor
 appmenu-gtk-module
 kio-admin # open folder as admin
+kwin-effects-forceblur
+kora-icon-theme
+plasma5-wallpapers-dynamic
 
 # CLI Apps
 neofetch
@@ -68,7 +71,7 @@ android-tools
 powertop
 traceroute
 tree
-zoxide # cd++
+zoxide  # cd++
 rmtrash # rm++
 wget
 docker
@@ -109,20 +112,15 @@ zsh-history-substring-search
 # System components
 gcc
 clang
-optimus-manager
-optimus-manager-qt
+#optimus-manager
+#optimus-manager-qt
 gnupg
 openssh
 cmake
-libinput-gestures
-#xdotool
-wtype # xdotool type for wayland
-#xclip # to handle shared clipboard in NVIM
+wtype        # xdotool type for wayland
 wl-clipboard # handle wayland clipboard in NVIM
 wmctrl
 xdg-desktop-portal
 p7zip
 termscp-bin
-ddcutil # to change external display brightness
-pipx # to install python global packages
-paccache-hook # hook to clear cache of old pacman packages after install
+python-pipx # to install python global packages

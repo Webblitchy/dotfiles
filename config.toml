@@ -1,4 +1,0 @@
-# https://doc.rust-lang.org/cargo/reference/config.html#configuration-format
-
-[cargo-new]
-vcs = "none" # disable git creation by default

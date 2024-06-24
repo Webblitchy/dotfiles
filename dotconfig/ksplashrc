@@ -1,2 +1,3 @@
 [KSplash]
-Theme=YaplassArchLinux
+Engine=KSplashQML
+Theme=archsimpleblue

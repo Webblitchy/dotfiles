@@ -1,32 +1,7 @@
-[PlasmaRunnerManager]
-migrated=true
-
 [Plugins]
-CharacterRunnerEnabled=true
-DictionaryEnabled=true
-Kill RunnerEnabled=true
-PowerDevilEnabled=true
-Spell CheckerEnabled=true
-appstreamEnabled=true
-baloosearchEnabled=true
-bookmarksEnabled=true
 browserhistoryEnabled=false
 browsertabsEnabled=false
-calculatorEnabled=true
-desktopsessionsEnabled=true
-katesessionsEnabled=true
-konsoleprofilesEnabled=true
-krunner_systemsettingsEnabled=true
-kwinEnabled=true
-locationsEnabled=true
-org.kde.activities2Enabled=false
-org.kde.datetimeEnabled=true
-org.kde.windowedwidgetsEnabled=true
-placesEnabled=true
-plasma-desktopEnabled=true
-recentdocumentsEnabled=true
-servicesEnabled=true
-shellEnabled=true
-unitconverterEnabled=true
-webshortcutsEnabled=false
-windowsEnabled=true
+krunner_webshortcutsEnabled=false
+
+[Plugins][Favorites]
+plugins=krunner_services,krunner_systemsettings

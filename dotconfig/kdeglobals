@@ -1,6 +1,3 @@
-[$Version]
-update_info=filepicker.upd:filepicker-remove-old-previews-entry,fonts_global.upd:Fonts_Global,fonts_global_toolbar.upd:Fonts_Global_Toolbar,icons_remove_effects.upd:IconsRemoveEffects,kwin.upd:animation-speed,style_widgetstyle_default_breeze.upd:StyleWidgetStyleDefaultBreeze
-
 [ColorEffects:Disabled]
 ChangeSelectionColor=
 Color=56,56,56
@@ -42,42 +39,11 @@ BackgroundAlternate=18,21,31
 BackgroundNormal=18,21,31
 DecorationFocus=36,66,109
 DecorationHover=41,76,126
-ForegroundActive[$d]
-ForegroundInactive[$d]
 ForegroundLink=0,121,181
 ForegroundNegative=150,75,112
 ForegroundNeutral=0,121,181
-ForegroundNormal[$d]
 ForegroundPositive=0,170,127
 ForegroundVisited=170,85,255
-
-[Colors:Header]
-BackgroundAlternate[$d]
-BackgroundNormal[$d]
-DecorationFocus[$d]
-DecorationHover[$d]
-ForegroundActive[$d]
-ForegroundInactive[$d]
-ForegroundLink[$d]
-ForegroundNegative[$d]
-ForegroundNeutral[$d]
-ForegroundNormal[$d]
-ForegroundPositive[$d]
-ForegroundVisited[$d]
-
-[Colors:Header][Inactive]
-BackgroundAlternate[$d]
-BackgroundNormal[$d]
-DecorationFocus[$d]
-DecorationHover[$d]
-ForegroundActive[$d]
-ForegroundInactive[$d]
-ForegroundLink[$d]
-ForegroundNegative[$d]
-ForegroundNeutral[$d]
-ForegroundNormal[$d]
-ForegroundPositive[$d]
-ForegroundVisited[$d]
 
 [Colors:Selection]
 BackgroundAlternate=29,153,243
@@ -135,42 +101,17 @@ ForegroundNormal=211,218,227
 ForegroundPositive=0,170,127
 ForegroundVisited=159,79,238
 
-[DirSelect Dialog]
-DirSelectDialog Size=835,616
-History Items[$e]=file:$HOME/Documents,file:$HOME/kDrive/HEIG-VD/TB,file:$HOME/Desktop/TokioStreetWallpaper,file:$HOME/Pictures/wallpapers/TokioStreetWallpaper,file:$HOME/Pictures/Screenshots,file:$HOME/Virtual Machines/Shared,file:$HOME/Virtual Machines/Shared,file:$HOME/Virtual Machines,file:$HOME/Virtual Machines/Shared,file:$HOME/Virtual Machines/Shared,file:$HOME/Virtual Machines/Shared,file:$HOME/Virtual Machines/Shared,file:$HOME/kDrive/HEIG-VD/E2,file:$HOME/VM Shared,file:$HOME/Pictures,file:$HOME/VirtualBox VMs/reds2021-09/Shared,file:$HOME/OwnCloud,file:$HOME
-
 [General]
 AccentColor=0,0,0,0
-BrowserApplication=firefox.desktop
-ColorScheme=DarkBlue
 ColorSchemeHash=21fe59b6138f74d9cd81eb802426966397d66965
-LastUsedCustomAccentColor=8,69,116
-Name=Breeze Dark
-TerminalApplication=wezterm start --cwd . --always-new-process
+TerminalApplication=wezterm start --cwd .
 TerminalService=org.wezfurlong.wezterm.desktop
-UseSystemBell=true
-XftAntialias=true
-XftHintStyle=hintslight
-XftSubPixel=rgb
-accentColorFromWallpaper=false
-fixed=JetBrainsMono Nerd Font Mono,10,-1,5,50,0,0,0,0,0
-font=Clarity City,10,-1,5,50,0,0,0,0,0
-menuFont=Clarity City,10,-1,5,50,0,0,0,0,0
-shadeSortColumn=true
-smallestReadableFont=Clarity City,9,-1,5,50,0,0,0,0,0
-toolBarFont=Clarity City,10,-1,5,50,0,0,0,0,0
-widgetStyle=Breeze
 
 [Icons]
 Theme=kora
 
 [KDE]
-AnimationDurationFactor=0.5
-ColorScheme=BreezeDark
-LookAndFeelPackage=org.kde.breezedark.desktop
 ShowDeleteCommand=false
-SingleClick=false
-contrast=4
 widgetStyle=Lightly
 
 [KFileDialog Settings]
@@ -185,32 +126,20 @@ Show Full Path=false
 Show Inline Previews=true
 Show Preview=false
 Show Speedbar=true
-Show hidden files=false
-Sort by=Date
+Show hidden files=true
+Sort by=Name
 Sort directories first=true
 Sort hidden files last=false
-Sort reversed=true
-Speedbar Width=138
-View Style=Detail
-
-[KScreen]
-ScaleFactor=1.25
-ScreenScaleFactors=eDP-1=1.25;DP-1=1.25;DP-2=1.25;DP-3=1.25;
-
-[KShortcutsDialog Settings]
-Dialog Size=635,480
+Sort reversed=false
+Speedbar Width=140
+View Style=DetailTree
 
 [PreviewSettings]
 MaximumRemoteSize=0
 
-[Shortcuts]
-Back=Back
-Forward=Forward
-
 [WM]
 activeBackground=18,21,31,204
 activeBlend=18,21,31
-activeFont=Clarity City,10,-1,5,50,0,0,0,0,0
 activeForeground=211,218,227
 inactiveBackground=18,21,31,204
 inactiveBlend=18,21,31

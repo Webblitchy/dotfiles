@@ -212,9 +212,10 @@ end
 function CanFormat()
   local bufNbr = vim.api.nvim_get_current_buf()
 
-  if not vim.lsp.buf.server_ready() then -- only on current buffer
-    return false
-  end
+  -- TODO: not working anymore
+  -- if not vim.lsp.buf.server_ready() then -- only on current buffer
+  -- return false
+  -- end
 
   local bufFiletype = vim.api.nvim_buf_get_option(bufNbr, "filetype")
 

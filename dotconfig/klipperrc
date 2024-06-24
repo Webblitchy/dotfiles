@@ -1,7 +1,4 @@
-[Actions]
-EnableMagicMimeActions=false
-
 [General]
 IgnoreImages=false
-TimeoutForActionPopups=0
-Version=5.26.5
+MaxClipItems=50
+Version=6.1.0

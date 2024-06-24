@@ -41,8 +41,17 @@ end
 
 -- Enable the following language servers
 local lsp_servers = {
-  clangd = {},        -- C/C++
-  pyright = {},       -- Python
+  clangd = {}, -- C/C++
+  basedpyright = {
+    basedpyright = {
+      typeCheckingMode = "standard",
+      -- NOT AVAILABLE YET
+      -- diagnosticRuleSet = {
+      --   reportConstantRedefinition = "warning",
+      --   reportUnknownVariableType = "warning",
+      -- }
+    }
+  },                  -- Python
   rust_analyzer = {}, -- Rust
   jdtls = {},         -- Java
   tsserver = {},      -- Javascript / TS
@@ -122,7 +131,7 @@ mason_lspconfig.setup_handlers {
 -- [[ Specific lsp settings ]]
 
 -- to disable small functions as one-liners (with LLVM style)
-table.insert(require("lspconfig")["clangd"].cmd, "--fallback-style=Chromium")
+table.insert(require("lspconfig").clangd.cmd, "--fallback-style=Chromium")
 
 -- Change border of documentation hover window (Shift-K), See https://github.com/neovim/neovim/pull/13998.
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {

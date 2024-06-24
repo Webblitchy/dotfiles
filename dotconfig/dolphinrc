@@ -1,124 +1,33 @@
-MenuBar=Disabled
-
-[$Version]
-update_info=dolphin_detailsmodesettings.upd:rename-leading-padding,dolphin_detailsmodesettings.upd:move-content-display
-
-[ContentDisplay]
-DirectorySizeCount=false
-
 [ContextMenu]
 ShowAddToPlaces=false
+ShowMoveToOtherSplitView=false
+ShowOpenInNewTab=false
+ShowOpenInNewWindow=false
+ShowOpenInSplitView=false
 
 [DetailsMode]
 ExpandableFolders=false
 PreviewSize=64
 
-[ExtractDialog]
-1920x1080 screen: Height=560
-1920x1080 screen: Width=1280
-DirHistory[$e]=$HOME/Desktop/latex_lna/,$HOME/Downloads/,$HOME/Downloads/ch99/mounted/Files/,$HOME/Downloads/ch99/,$HOME/Downloads/challfor/,$HOME/Downloads/chall20/
-
 [General]
-AutoExpandFolders=true
-BrowseThroughArchives=true
-CommandBarLastUsedActions=
-ConfirmClosingMultipleTabs=false
-GlobalViewProps=false
 RememberOpenedTabs=false
 ShowSelectionToggle=false
 ShowZoomSlider=false
 Version=202
-ViewPropsTimestamp=2021,12,28,12,46,57.213
-
-[IconsMode]
-PreviewSize=208
-
-[InformationPanel]
-dateFormat=ShortFormat
+ViewPropsTimestamp=2024,5,21,22,6,26.844
 
 [KFileDialog Settings]
 Places Icons Auto-resize=false
 Places Icons Static Size=22
-Recent Files[$e]=file:$HOME
-Recent URLs[$e]=file:$HOME/Downloads/chall20/,file:$HOME/Downloads/challfor/,file:$HOME/Downloads/ch99/,file:$HOME/Downloads/,file:$HOME/Downloads/ch99/mounted/Files/,file:$HOME/,file:$HOME/Desktop/latex_lna/
-detailViewIconSize=16
-
-[KPropertiesDialog]
-1536x864 screen: Height=496
-1536x864 screen: Width=384
-1920x1080 screen: Height=647
-1920x1080 screen: Width=563
-2 screens: Height=542
-2 screens: Width=459
-eDP-1 DP-3 Height 1536x864=619
-eDP-1 DP-3 Height 2048x1152=619
-eDP-1 DP-3 Height 2560x1440=647
-eDP-1 DP-3 Width 1536x864=385
-eDP-1 DP-3 Width 2048x1152=435
-eDP-1 DP-3 Width 2560x1440=520
-eDP-1 Height 1536x864=575
-eDP-1 Height 1536x864 eDP-1=496
-eDP-1 Height 1920x1080=441
-eDP-1 Width 1536x864=465
-eDP-1 Width 1536x864 eDP-1=304
-eDP-1 Width 1920x1080=347
-eDP-1-1 DP-1-3 Height 2560x1440=545
-eDP-1-1 DP-1-3 Width 2560x1440=368
 
 [MainWindow]
-DP-3 Height 2048x1152=690
-DP-3 Width 2048x1152=1094
-DP-3 Window-Maximized 2048x1152=true
-DP-3 XPosition 2048x1152=384
-DP-3 XPosition 2560x1440=675
-DP-3 YPosition 2048x1152=202
-DP-3 YPosition 2560x1440=325
-MenuBar=Disabled
 ToolBarsMovable=Disabled
-eDP-1 DP-3 Height 1536x864=643
-eDP-1 DP-3 Height 1920x1080=631
-eDP-1 DP-3 Height 2048x1152=643
-eDP-1 DP-3 Height 2560x1440=721
-eDP-1 DP-3 Width 1536x864=1358
-eDP-1 DP-3 Width 1920x1080=1194
-eDP-1 DP-3 Width 2048x1152=1358
-eDP-1 DP-3 Width 2560x1440=1194
-eDP-1 DP-3 XPosition 1536x864=89
-eDP-1 DP-3 XPosition 1920x1080=2901
-eDP-1 DP-3 XPosition 2048x1152=533
-eDP-1 DP-3 XPosition 2560x1440=590
-eDP-1 DP-3 YPosition 1536x864=133
-eDP-1 DP-3 YPosition 1920x1080=559
-eDP-1 DP-3 YPosition 2048x1152=326
-eDP-1 DP-3 YPosition 2560x1440=337
-eDP-1 Height 1536x864=582
-eDP-1 Height 1920x1080=631
-eDP-1 Width 1536x864=1066
-eDP-1 Width 1920x1080=1073
-eDP-1 XPosition 1536x864=174
-eDP-1 XPosition 1920x1080=826
-eDP-1 YPosition 1536x864=218
-eDP-1 YPosition 1920x1080=292
-eDP-1-1 XPosition 1920x1080=551
-eDP-1-1 YPosition 1920x1080=259
 
 [MainWindow][Toolbar mainToolBar]
 ToolButtonStyle=IconOnly
 
-[Open-with settings]
-CompletionMode=1
-History=kate,aud,auda,vis,kat,intel,inte,int,fire,vlc,gwe,vl,code,intell,visu
-
 [PreviewSettings]
-Plugins=appimagethumbnail,audiothumbnail,comicbookthumbnail,cursorthumbnail,djvuthumbnail,ebookthumbnail,exrthumbnail,fontthumbnail,imagethumbnail,jpegthumbnail,kraorathumbnail,windowsexethumbnail,windowsimagethumbnail,opendocumentthumbnail,gsthumbnail,svgthumbnail,ffmpegthumbs
+Plugins=appimagethumbnail,audiothumbnail,blenderthumbnail,comicbookthumbnail,cursorthumbnail,djvuthumbnail,ebookthumbnail,exrthumbnail,fontthumbnail,imagethumbnail,jpegthumbnail,kraorathumbnail,windowsexethumbnail,windowsimagethumbnail,mobithumbnail,opendocumentthumbnail,gsthumbnail,rawthumbnail,svgthumbnail,ffmpegthumbs
 
 [Toolbar mainToolBar]
 ToolButtonStyle=IconOnly
-
-[ViewPropertiesDialog]
-eDP-1 DP-3 Height 2048x1152=648
-eDP-1 DP-3 Height 2560x1440=400
-eDP-1 DP-3 Width 2048x1152=383
-eDP-1 DP-3 Width 2560x1440=396
-eDP-1 Height 1536x864 eDP-1=642
-eDP-1 Width 1536x864 eDP-1=386
