@@ -14,6 +14,13 @@ echo "---------------------------------"
 echo "  ->  Add the key here : https://github.com/settings/keys"
 ```
 
+Or transfer old key (~/.ssh and ~/.gnupg)
+and give the right permissions
+```
+chmod 700 ~/.shh
+chmod 600 ~/.ssh/authorized_keys
+```
+
 Install the programs and configs
 ```bash
 mkdir ~/.dotfiles
