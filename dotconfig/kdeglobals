@@ -106,6 +106,10 @@ AccentColor=0,0,0,0
 ColorSchemeHash=21fe59b6138f74d9cd81eb802426966397d66965
 TerminalApplication=wezterm start --cwd .
 TerminalService=org.wezfurlong.wezterm.desktop
+XftAntialias=true
+XftHintStyle=hintslight
+XftSubPixel=none
+font=Clarity City,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
 
 [Icons]
 Theme=kora

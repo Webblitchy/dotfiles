@@ -25,9 +25,7 @@ cd /home/$SUDO_USER/.dotfiles
 #reflector --sort rate --protocol https --latest 5 --save /etc/pacman.d/mirrorlist
 
 # Install packages
-cat packages.lst |
-	grep -o '^[^#]*' |                                    # select only non-comments
-	xargs asUser yay -Syu --needed --noconfirm --sudoloop # yay cannot be run as root
+asUser yay -Syu --needed --noconfirm --sudoloop $(cat packages.lst | grep -o '^[^#]*') # yay cannot be run as root
 
 # to copy dolphin layout files
 asUser mkdir /home/$SUDO_USER/.local/share/kxmlgui5 2>/dev/null
@@ -62,6 +60,7 @@ done
 
 
 ### Install Lightly
+rm -rf /tmp/lightly 2> /dev/null
 asUser mkdir /tmp/lightly
 asUser cd /tmp/lightly
 

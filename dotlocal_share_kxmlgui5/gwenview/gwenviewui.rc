@@ -1,6 +1,6 @@
 <?xml version='1.0'?>
 <!DOCTYPE gui SYSTEM 'kpartgui.dtd'>
-<gui version="68" name="gwenview">
+<gui name="gwenview" version="69">
  <MenuBar>
   <Menu name="file">
    <Action name="file_save"/>
@@ -19,6 +19,8 @@
   <Menu name="view">
    <Action name="browse"/>
    <Action name="view"/>
+   <Separator/>
+   <Action name="view_toggle_spotlightmode"/>
    <Separator/>
    <Action name="fullscreen"/>
    <Separator/>
@@ -81,7 +83,7 @@
    <Action name="go_start_page"/>
   </Menu>
  </MenuBar>
- <ToolBar alreadyVisited="1" noMerge="1" name="mainToolBar">
+ <ToolBar alreadyVisited="1" name="mainToolBar" noMerge="1">
   <text translationDomain="gwenview">Main Toolbar</text>
   <Action name="go_start_page"/>
   <Separator name="separator_0"/>
@@ -98,6 +100,6 @@
   <Action name="hamburger_menu"/>
  </ToolBar>
  <ActionProperties scheme="Default">
-  <Action priority="0" name="fullscreen"/>
+  <Action name="fullscreen" priority="0"/>
  </ActionProperties>
 </gui>
