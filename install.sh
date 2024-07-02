@@ -18,11 +18,9 @@ cd /home/$SUDO_USER/.dotfiles
 
 # Get the best mirror before installing packages
 # EOS
-# TODO: reenable after
-#eos-rankmirrors
+eos-rankmirrors
 # Arch
-# TODO: reenable after
-#reflector --sort rate --protocol https --latest 5 --save /etc/pacman.d/mirrorlist
+reflector --sort rate --protocol https --latest 5 --save /etc/pacman.d/mirrorlist
 
 # Install packages
 asUser yay -Syu --needed --noconfirm --sudoloop $(cat packages.lst | grep -o '^[^#]*') # yay cannot be run as root
@@ -78,10 +76,6 @@ asUser makepkg -si
 # Change defaults
 #asUser cp /home/$SUDO_USER/.dotfiles/manual/mimeapps.list /home/$SUDO_USER/.config/mimeapps.list
 
-# libinput gestures
-#gpasswd -a $SUDO_USER input
-#asUser libinput-gestures-setup autostart
-
 # virtualbox
 usermod -aG vboxusers $SUDO_USER
 
@@ -89,19 +83,6 @@ usermod -aG vboxusers $SUDO_USER
 asUser mkdir -p /home/$SUDO_USER/.config/Code/User 2>/dev/null
 asUser ln -sf /home/$SUDO_USER/.dotfiles/vscode/settings.json /home/$SUDO_USER/.config/Code/User/settings.json
 
-# jetbrains settings
-#programs=("clion" "intellij" "pycharm")
-#for nickname in ${programs[@]}; do
-#	if [[ ! -f /bin/$nickname* ]]; then
-#		continue # skips if program not installed
-#	fi
-#	timeout 1s /bin/$nickname* # open the app to create the config folder
-#	program=$(ls /home/$SUDO_USER/.config/JetBrains | grep -i $nickname)
-#	asUser mkdir -p /home/$SUDO_USER/.config/JetBrains/$program/options 2>/dev/null
-#	for file in $(ls /home/$SUDO_USER/.dotfiles/jetbrains/); do
-#		asUser ln -sf /home/$SUDO_USER/.dotfiles/jetbrains/$file /home/$SUDO_USER/.config/JetBrains/$program/options/$file
-#	done
-#done
 
 # install rust
 asUser curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | asUser sh -s -- -y
