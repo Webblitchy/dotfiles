@@ -60,16 +60,17 @@ done
 ### Install Lightly
 rm -rf /tmp/lightly 2> /dev/null
 asUser mkdir /tmp/lightly
-asUser cd /tmp/lightly
+cd /tmp/lightly
 
 # Download aur PKGBuild and Patch
 asUser git clone https://aur.archlinux.org/lightly-git.git .
 
 # Disable qt5
-asUser sed -i -E "/_build_kf5/s/true/false/" PKGBUILD
+sed -i -E "/_build_kf5/s/true/false/" PKGBUILD
 
 # Run makepkg
 asUser makepkg -si
+
 
 
 
@@ -91,7 +92,7 @@ asUser ln -sf /home/$SUDO_USER/.dotfiles/manual/cargo-config.toml /home/$SUDO_US
 
 # install ddcci-plasmoid (to set external display brightness)
 cp /usr/share/ddcutil/data/*-ddcutil-i2c.rules /etc/udev/rules.d
-groupadd --system i2c
+#groupadd --system i2c
 usermod -aG i2c $SUDO_USER
 echo i2c_dev | tee /etc/modules-load.d/i2c_dev.conf
 asUser pipx install ddcci-plasmoid-backend
@@ -99,7 +100,8 @@ asUser pipx install ddcci-plasmoid-backend
 # transfer wallpapers
 asUser ln -sfT /home/$SUDO_USER/.dotfiles/wallpapers /home/$SUDO_USER/Pictures/wallpapers # -T because a directory
 asUser ln -sf /home/$SUDO_USER/.dotfiles/media/abstergo-transparent-small.png /home/$SUDO_USER/Pictures/abstergo-transparent-small.png
-asUser plasma-apply-wallpaperimage /home/$SUDO_USER/Pictures/wallpapers/wallhaven-136m9w.png
+# TODO
+#asUser plasma-apply-wallpaperimage /home/$SUDO_USER/Pictures/wallpapers/wallhaven-136m9w.png
 
 # transfer sddm background
 # (doesn't work with ln)
