@@ -18,6 +18,7 @@ Or transfer old key (~/.ssh and ~/.gnupg)
 and give the right permissions
 ```
 chmod 700 ~/.ssh
+chmod 600 ~/.ssh/*
 ```
 
 Install the programs and configs
