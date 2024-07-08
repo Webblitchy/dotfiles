@@ -2,6 +2,7 @@
 _k_friendly_name=Activity Manager
 switch-to-activity-aa194b61-76fe-4927-93d3-360626041f8b=none,none,Switch to activity "Default"
 switch-to-activity-b6105713-a4ba-426a-9931-11b7768986b0=none,none,Switch to activity "Default"
+switch-to-activity-d421af01-3060-455d-afe6-2439347ad9a2=none,none,Switch to activity "Default"
 
 [KDE Keyboard Layout Switcher]
 Switch to Last-Used Keyboard Layout=Meta+Alt+L,Meta+Alt+L,Switch to Last-Used Keyboard Layout

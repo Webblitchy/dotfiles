@@ -3,6 +3,18 @@ Id_1=ddb556ba-418e-4955-8865-4898c928504f
 Number=1
 Rows=1
 
+[Effect-blurplus]
+BlurStrength=11
+WindowClasses=org.wezfurlong.wezterm
+
+[Effect-overview]
+BorderActivate=9
+
+[Plugins]
+blurEnabled=false
+forceblurEnabled=true
+screenedgeEnabled=false
+
 [Tiling]
 padding=4
 

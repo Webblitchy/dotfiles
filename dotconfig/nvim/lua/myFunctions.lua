@@ -234,13 +234,12 @@ function FormatOnSave()
 
   local bufNbr = vim.api.nvim_get_current_buf()
 
-  if GetBufferLSPs()[1].server_capabilities.documentFormattingProvider then -- can format with LSP
-    local lspState = vim.lsp.util.get_progress_messages()[1]
-    if lspState ~= nil then                                                 -- if has progress messages
-      if not lspState.done then                                             -- saying the server isn't ready
-        return
-      end
+  local lspClient = GetBufferLSPs()[1]
+  if lspClient.server_capabilities.documentFormattingProvider then -- can format with LSP
+    if #lspClient.progress.pending ~= 0 then                       -- if has progress messages
+      return
     end
+
     vim.lsp.buf.format({ async = false }) -- is async so it can save before quitting
   elseif #require("conform").list_formatters(bufNbr) > 0 then
     require("conform").format({ async = false })

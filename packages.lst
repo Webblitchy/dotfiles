@@ -109,6 +109,11 @@ zsh-autosuggestions
 zsh-syntax-highlighting
 zsh-history-substring-search
 
+# For backups
+timeshift
+timeshift-autosnap
+grub-btrfs
+
 # System components
 gcc
 clang
