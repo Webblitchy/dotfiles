@@ -28,5 +28,6 @@ tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"wi
 Scale=1.25
 
 [org.kde.kdecoration2]
+ButtonsOnLeft=F
 library=org.kde.lightly
 theme=Lightly
