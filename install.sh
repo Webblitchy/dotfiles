@@ -154,8 +154,6 @@ systemctl enable --now bluetooth.service
 # change shell for zsh
 chsh -s /bin/zsh $SUDO_USER
 
-# restoreFirefoxData
-
 echo Everything is done !
 read -p "Do you want to reboot to apply config ?[y/N]: " shouldRestart
 if [[ "$shouldRestart" == "y" ]]; then
