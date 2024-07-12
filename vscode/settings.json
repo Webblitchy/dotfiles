@@ -1,31 +1,30 @@
 {
-    "editor.inlineSuggest.enabled": true,
-    "github.copilot.enable": {
-        "*": false,
-        "plaintext": false,
-        "markdown": false,
-        "scminput": false,
-        "yaml": false,
-        "scala": true
-    },
-    "terminal.integrated.fontFamily": "MesloLGS NF",
     "telemetry.telemetryLevel": "off",
-    "workbench.startupEditor": "none",
-    "javascript.updateImportsOnFileMove.enabled": "always",
     "explorer.confirmDelete": false,
-    "editor.unicodeHighlight.nonBasicASCII": false,
     "extensions.ignoreRecommendations": true,
+    "editor.unicodeHighlight.nonBasicASCII": false,
+    "editor.inlineSuggest.enabled": true,
+    "editor.fontFamily": "JetBrainsMono Nerd Font",
+    "editor.fontLigatures": true,
+    "editor.autoClosingBrackets": "never",
+    "editor.autoClosingComments": "never",
+    "editor.autoClosingQuotes": "never",
+    "update.showReleaseNotes": false,
+    "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font",
+    "terminal.integrated.fontWeight": "normal",
+    "terminal.integrated.persistentSessionScrollback": 1000,
+    "terminal.integrated.scrollback": 5000,
+    "vim.vimrc.enable": true,
+    "vim.useSystemClipboard": true,
+    "workbench.colorTheme": "Catppuccin Mocha",
+    "workbench.startupEditor": "none",
+    "workbench.editorAssociations": {
+        "*.pdf": "pdf.preview"
+    },
+    "javascript.updateImportsOnFileMove.enabled": "always",
     "files.watcherExclude": {
         "**/.bloop": true,
         "**/.metals": true,
         "**/.ammonite": true
-    },
-    "editor.fontFamily": "JetBrainsMono Nerd Font",
-    "editor.fontLigatures": true,
-    "workbench.editorAssociations": {
-        "*.pdf": "pdf.preview"
-    },
-    "window.zoomLevel": 1,
-    "update.showReleaseNotes": false,
-
+    }
 }
