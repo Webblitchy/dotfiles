@@ -21,7 +21,7 @@ DialogHeight=390
 DialogWidth=520
 
 [Containments][1][Wallpaper][org.kde.image][General]
-Image=/home/eliott/.dotfiles/wallpapers/minimalist--from-firewatch-wallpaper.jpg
+Image=/home/eliott/Pictures/wallpapers/wallpapersden.com_anime-field-4k-anime-landscape_3840x2240.jpg
 SlidePaths=/usr/share/wallpapers/
 
 [Containments][2]
@@ -40,7 +40,7 @@ DialogHeight=390
 DialogWidth=520
 
 [Containments][2][Wallpaper][org.kde.image][General]
-Image=/home/eliott/.dotfiles/wallpapers/Lockscreen.jpg
+Image=/home/eliott/Pictures/wallpapers/wallpapersden.com_anime-field-4k-anime-landscape_3840x2240.jpg
 SlidePaths=/usr/share/wallpapers/
 
 [Containments][29]
@@ -165,7 +165,7 @@ immutability=1
 plugin=org.kde.plasma.systemtray
 
 [Containments][3][Applets][8][Configuration]
-PreloadWeight=95
+PreloadWeight=100
 SystrayContainmentId=9
 
 [Containments][3][General]
@@ -238,7 +238,7 @@ immutability=1
 plugin=org.kde.plasma.systemtray
 
 [Containments][35][Applets][40][Configuration]
-PreloadWeight=60
+PreloadWeight=70
 SystrayContainmentId=41
 
 [Containments][35][Applets][57]
@@ -323,6 +323,9 @@ plugin=org.kde.plasma.clipboard
 immutability=1
 plugin=org.kde.plasma.devicenotifier
 
+[Containments][41][Applets][45][Configuration]
+PreloadWeight=55
+
 [Containments][41][Applets][46]
 immutability=1
 plugin=org.kde.plasma.manage-inputmethod
@@ -376,7 +379,7 @@ immutability=1
 plugin=org.kde.plasma.bluetooth
 
 [Containments][41][Applets][55][Configuration]
-PreloadWeight=42
+PreloadWeight=39
 
 [Containments][41][Applets][56]
 immutability=1
@@ -421,7 +424,7 @@ immutability=1
 plugin=org.kde.plasma.devicenotifier
 
 [Containments][9][Applets][13][Configuration]
-PreloadWeight=60
+PreloadWeight=65
 
 [Containments][9][Applets][14]
 immutability=1
@@ -492,7 +495,7 @@ immutability=1
 plugin=org.kde.plasma.bluetooth
 
 [Containments][9][Applets][26][Configuration]
-PreloadWeight=97
+PreloadWeight=89
 
 [Containments][9][Applets][34]
 immutability=1
@@ -507,4 +510,4 @@ knownItems=org.kde.plasma.bluetooth,org.kde.kdeconnect,org.kde.plasma.battery,or
 
 [ScreenMapping]
 itemsOnDisabledScreens=
-screenMapping=
+screenMapping=desktop:/lastFreezeErrors.txt,0,d421af01-3060-455d-afe6-2439347ad9a2
