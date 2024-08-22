@@ -1,0 +1,16 @@
+[General]
+autoSaveImage=true
+clipboardGroup=PostScreenshotCopyImage
+launchAction=UseLastUsedCapturemode
+
+[GuiConfig]
+captureMode=0
+quitAfterSaveCopyExport=true
+
+[ImageSave]
+lastImageSaveAsLocation=file:///home/eliott/Pictures/Screenshots/cuisine1.png
+lastImageSaveLocation=file:///home/eliott/Pictures/Screenshots/Screenshot_20240813_213717.png
+translatedScreenshotsFolder=Screenshots
+
+[VideoSave]
+translatedScreencastsFolder=Screencasts

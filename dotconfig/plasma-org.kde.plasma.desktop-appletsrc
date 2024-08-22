@@ -462,6 +462,9 @@ plugin=org.kde.plasma.cameraindicator
 immutability=1
 plugin=org.kde.plasma.clipboard
 
+[Containments][9][Applets][12][Configuration]
+PreloadWeight=55
+
 [Containments][9][Applets][13]
 immutability=1
 plugin=org.kde.plasma.devicenotifier
@@ -478,11 +481,10 @@ immutability=1
 plugin=org.kde.plasma.notifications
 
 [Containments][9][Applets][15][Configuration]
-PreloadWeight=55
+PreloadWeight=60
 
-[Containments][9][Applets][16]
-immutability=1
-plugin=org.kde.plasma.keyboardindicator
+[Containments][9][Applets][16][Configuration]
+PreloadWeight=42
 
 [Containments][9][Applets][17]
 immutability=1
@@ -521,7 +523,7 @@ immutability=1
 plugin=org.kde.plasma.brightness
 
 [Containments][9][Applets][24][Configuration]
-PreloadWeight=0
+PreloadWeight=5
 
 [Containments][9][Applets][25]
 immutability=1
@@ -547,8 +549,13 @@ plugin=org.kde.plasma.mediacontroller
 [Containments][9][Applets][34][Configuration]
 PreloadWeight=0
 
+[Containments][9][ConfigDialog]
+DialogHeight=540
+DialogWidth=720
+
 [Containments][9][General]
-extraItems=org.kde.plasma.bluetooth,org.kde.kdeconnect,org.kde.plasma.battery,org.kde.plasma.brightness,org.kde.plasma.cameraindicator,org.kde.plasma.clipboard,org.kde.plasma.devicenotifier,org.kde.plasma.manage-inputmethod,org.kde.plasma.mediacontroller,org.kde.plasma.notifications,org.kde.plasma.keyboardindicator,org.kde.kscreen,org.kde.plasma.keyboardlayout,org.kde.plasma.networkmanagement,org.kde.plasma.volume,org.kde.plasma.printmanager
+extraItems=org.kde.plasma.bluetooth,org.kde.kdeconnect,org.kde.plasma.battery,org.kde.plasma.brightness,org.kde.plasma.cameraindicator,org.kde.plasma.devicenotifier,org.kde.plasma.manage-inputmethod,org.kde.plasma.mediacontroller,org.kde.plasma.notifications,org.kde.kscreen,org.kde.plasma.keyboardlayout,org.kde.plasma.networkmanagement,org.kde.plasma.volume,org.kde.plasma.printmanager,org.kde.plasma.clipboard
+hiddenItems=firewall-applet,org.kde.plasma.clipboard
 knownItems=org.kde.plasma.bluetooth,org.kde.kdeconnect,org.kde.plasma.battery,org.kde.plasma.brightness,org.kde.plasma.cameraindicator,org.kde.plasma.clipboard,org.kde.plasma.devicenotifier,org.kde.plasma.manage-inputmethod,org.kde.plasma.mediacontroller,org.kde.plasma.notifications,org.kde.plasma.keyboardindicator,org.kde.kscreen,org.kde.plasma.keyboardlayout,org.kde.plasma.networkmanagement,org.kde.plasma.volume,org.kde.plasma.printmanager
 
 [ScreenMapping]
