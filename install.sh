@@ -121,7 +121,7 @@ echo 'EOS_YAD_TERMINAL="wezterm"' >>/etc/eos-script-lib-yad.conf
 
 # Disable ugly icons
 iconPath="/usr/share/icons/kora/apps/scalable"
-uglyIcons=("notion" "gimp")
+uglyIcons=("gimp" "minecraft" "wireshark" "neovim" "spotify-client" "firewall-config")
 for uglyIcon in "${uglyIcons[@]}"; do
     mv "${iconPath}/${uglyIcon}.svg" "${iconPath}/${uglyIcon}.bak"
 done
