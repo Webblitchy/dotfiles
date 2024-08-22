@@ -20,6 +20,10 @@ wallpaperplugin=org.kde.image
 DialogHeight=390
 DialogWidth=520
 
+[Containments][1][General]
+positions={"2048x1152":[]}
+sortMode=-1
+
 [Containments][1][Wallpaper][org.kde.image][General]
 Image=/home/eliott/Pictures/wallpapers/wallpapersden.com_anime-field-4k-anime-landscape_3840x2240.jpg
 SlidePaths=/usr/share/wallpapers/
@@ -160,6 +164,22 @@ plugin=org.kde.plasma.panelspacer
 [Containments][3][Applets][68][Configuration][General]
 expanding=false
 
+[Containments][3][Applets][69]
+immutability=1
+plugin=de.davidhi.ddcci-brightness
+
+[Containments][3][Applets][69][Configuration]
+PreloadWeight=70
+popupHeight=100
+popupWidth=406
+
+[Containments][3][Applets][69][Configuration][ConfigDialog]
+DialogHeight=540
+DialogWidth=720
+
+[Containments][3][Applets][69][Configuration][General]
+executable=/home/eliott/.local/share/pipx/venvs/ddcci-plasmoid-backend/bin/ddcci_plasmoid_backend
+
 [Containments][3][Applets][8]
 immutability=1
 plugin=org.kde.plasma.systemtray
@@ -169,7 +189,7 @@ PreloadWeight=100
 SystrayContainmentId=9
 
 [Containments][3][General]
-AppletOrder=4;68;66;64;27;21;28;8;33
+AppletOrder=4;68;66;64;27;21;28;69;8;33
 
 [Containments][34]
 activityId=
@@ -238,7 +258,7 @@ immutability=1
 plugin=org.kde.plasma.systemtray
 
 [Containments][35][Applets][40][Configuration]
-PreloadWeight=70
+PreloadWeight=100
 SystrayContainmentId=41
 
 [Containments][35][Applets][57]
@@ -293,8 +313,24 @@ plugin=org.kde.plasma.panelspacer
 [Containments][35][Applets][67][Configuration][General]
 expanding=false
 
+[Containments][35][Applets][70]
+immutability=1
+plugin=de.davidhi.ddcci-brightness
+
+[Containments][35][Applets][70][Configuration]
+PreloadWeight=65
+popupHeight=100
+popupWidth=406
+
+[Containments][35][Applets][70][Configuration][ConfigDialog]
+DialogHeight=540
+DialogWidth=720
+
+[Containments][35][Applets][70][Configuration][General]
+executable=/home/eliott/.local/share/pipx/venvs/ddcci-plasmoid-backend/bin/ddcci_plasmoid_backend
+
 [Containments][35][General]
-AppletOrder=36;67;65;63;58;39;59;40;57
+AppletOrder=36;67;65;63;58;39;59;70;40;57
 
 [Containments][41]
 activityId=
@@ -324,7 +360,7 @@ immutability=1
 plugin=org.kde.plasma.devicenotifier
 
 [Containments][41][Applets][45][Configuration]
-PreloadWeight=55
+PreloadWeight=75
 
 [Containments][41][Applets][46]
 immutability=1
@@ -374,16 +410,23 @@ plugin=org.kde.plasma.brightness
 [Containments][41][Applets][54][Configuration]
 PreloadWeight=0
 
+[Containments][41][Applets][54][Configuration][ConfigDialog]
+DialogHeight=540
+DialogWidth=720
+
 [Containments][41][Applets][55]
 immutability=1
 plugin=org.kde.plasma.bluetooth
 
 [Containments][41][Applets][55][Configuration]
-PreloadWeight=39
+PreloadWeight=36
 
 [Containments][41][Applets][56]
 immutability=1
 plugin=org.kde.plasma.networkmanagement
+
+[Containments][41][Applets][56][Configuration]
+PreloadWeight=55
 
 [Containments][41][Applets][69]
 immutability=1
@@ -424,7 +467,7 @@ immutability=1
 plugin=org.kde.plasma.devicenotifier
 
 [Containments][9][Applets][13][Configuration]
-PreloadWeight=65
+PreloadWeight=95
 
 [Containments][9][Applets][14]
 immutability=1
@@ -495,7 +538,7 @@ immutability=1
 plugin=org.kde.plasma.bluetooth
 
 [Containments][9][Applets][26][Configuration]
-PreloadWeight=89
+PreloadWeight=78
 
 [Containments][9][Applets][34]
 immutability=1
@@ -510,4 +553,4 @@ knownItems=org.kde.plasma.bluetooth,org.kde.kdeconnect,org.kde.plasma.battery,or
 
 [ScreenMapping]
 itemsOnDisabledScreens=
-screenMapping=desktop:/lastFreezeErrors.txt,0,d421af01-3060-455d-afe6-2439347ad9a2
+screenMapping=

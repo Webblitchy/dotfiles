@@ -10,6 +10,9 @@ WindowClasses=org.wezfurlong.wezterm
 [Effect-overview]
 BorderActivate=9
 
+[NightColor]
+Active=true
+
 [Plugins]
 blurEnabled=false
 forceblurEnabled=true

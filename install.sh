@@ -119,6 +119,13 @@ echo 'EOS_YAD_TERMINAL="wezterm"' >>/etc/eos-script-lib-yad.conf
 # asUser /usr/lib/plasma-changeicons /home/$SUDO_USER/.local/share/icons/kora
 # (already applied)
 
+# Disable ugly icons
+iconPath="/usr/share/icons/kora/apps/scalable"
+uglyIcons=("notion" "gimp")
+for uglyIcon in "${uglyIcons[@]}"; do
+    mv "${iconPath}/${uglyIcon}.svg" "${iconPath}/${uglyIcon}.bak"
+done
+
 # Make fonts available on system (p.ex filename in Dolphin)
 ln -sf /home/$SUDO_USER/.dotfiles/manual/fonts-local.conf /etc/fonts/local.conf
 
