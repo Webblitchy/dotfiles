@@ -21,7 +21,7 @@ DialogHeight=390
 DialogWidth=520
 
 [Containments][1][General]
-positions={"2048x1152":[]}
+positions={"2048x1152":[]\\,"1536x864":[]}
 sortMode=-1
 
 [Containments][1][Wallpaper][org.kde.image][General]
@@ -169,7 +169,7 @@ immutability=1
 plugin=de.davidhi.ddcci-brightness
 
 [Containments][3][Applets][69][Configuration]
-PreloadWeight=70
+PreloadWeight=95
 popupHeight=100
 popupWidth=406
 
@@ -244,6 +244,11 @@ systemFavorites=suspend\\,hibernate\\,reboot\\,shutdown
 [Containments][35][Applets][39]
 immutability=1
 plugin=org.kde.plasma.digitalclock
+
+[Containments][35][Applets][39][Configuration]
+PreloadWeight=55
+popupHeight=450
+popupWidth=455
 
 [Containments][35][Applets][39][Configuration][Appearance]
 showDate=false
@@ -360,7 +365,7 @@ immutability=1
 plugin=org.kde.plasma.devicenotifier
 
 [Containments][41][Applets][45][Configuration]
-PreloadWeight=75
+PreloadWeight=100
 
 [Containments][41][Applets][46]
 immutability=1
@@ -419,7 +424,7 @@ immutability=1
 plugin=org.kde.plasma.bluetooth
 
 [Containments][41][Applets][55][Configuration]
-PreloadWeight=36
+PreloadWeight=38
 
 [Containments][41][Applets][56]
 immutability=1
@@ -470,7 +475,7 @@ immutability=1
 plugin=org.kde.plasma.devicenotifier
 
 [Containments][9][Applets][13][Configuration]
-PreloadWeight=95
+PreloadWeight=100
 
 [Containments][9][Applets][14]
 immutability=1
@@ -499,7 +504,7 @@ immutability=1
 plugin=org.kde.plasma.volume
 
 [Containments][9][Applets][19][Configuration]
-PreloadWeight=65
+PreloadWeight=70
 
 [Containments][9][Applets][19][Configuration][General]
 migrated=true
@@ -523,7 +528,7 @@ immutability=1
 plugin=org.kde.plasma.brightness
 
 [Containments][9][Applets][24][Configuration]
-PreloadWeight=5
+PreloadWeight=0
 
 [Containments][9][Applets][25]
 immutability=1
@@ -540,7 +545,7 @@ immutability=1
 plugin=org.kde.plasma.bluetooth
 
 [Containments][9][Applets][26][Configuration]
-PreloadWeight=78
+PreloadWeight=85
 
 [Containments][9][Applets][34]
 immutability=1
