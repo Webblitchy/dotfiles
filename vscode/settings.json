@@ -14,6 +14,7 @@
     "terminal.integrated.fontWeight": "normal",
     "terminal.integrated.persistentSessionScrollback": 1000,
     "terminal.integrated.scrollback": 5000,
+    "terminal.integrated.fontLigatures": true,
     "vim.vimrc.enable": true,
     "vim.useSystemClipboard": true,
     "workbench.colorTheme": "Catppuccin Mocha",
