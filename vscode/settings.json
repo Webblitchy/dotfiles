@@ -27,5 +27,9 @@
         "**/.bloop": true,
         "**/.metals": true,
         "**/.ammonite": true
+    },
+    "search.exclude": {
+        "**/.vscode-server/data/**":true,
+        "**/.git": true
     }
 }
